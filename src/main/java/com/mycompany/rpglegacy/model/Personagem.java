@@ -11,7 +11,8 @@ import java.util.Random;
  * @author aluno
  */
 public abstract class Personagem <T extends Personagem> {
-
+    
+    private int id;
     private String personName;
     private int atak;
     private int defe;
@@ -20,8 +21,22 @@ public abstract class Personagem <T extends Personagem> {
     private int vidaAtual;
     private int expNxtLvel;
     private int lvel;
+    private Usuario usuario;
 
-    public Personagem(String name, int atak, int defe, int sped, int vidaMaxima) {
+    public Personagem(int id, String personName, int atak, int defe, int sped, int vidaMaxima, int vidaAtual, int expNxtLvel, int lvel, Usuario usuario) {
+        this.id = id;
+        this.personName = personName;
+        this.atak = atak;
+        this.defe = defe;
+        this.sped = sped;
+        this.vidaAtual = vidaMaxima;
+        this.vidaMaxima = vidaMaxima;
+        this.expNxtLvel = 0;
+        this.lvel = 1;
+        this.usuario = usuario;
+    }
+    
+    public Personagem(String name, int atak, int defe, int sped, int vidaMaxima, Usuario usuario) {
         this.personName = name;
         this.atak = atak;
         this.defe = defe;
@@ -30,13 +45,22 @@ public abstract class Personagem <T extends Personagem> {
         this.vidaMaxima = vidaMaxima;
         this.expNxtLvel = 0;
         this.lvel = 1;
+        this.usuario = usuario;
     }
     
-    public void setLvel(){
-        if(expNxtLvel>= ((this.lvel)*10)){
+    public boolean setLvel(){
+        int upLvelRule = (int) ((this.lvel*10)/2);
+        if(expNxtLvel>= upLvelRule){
             this.lvel ++;
+            this.expNxtLvel = this.expNxtLvel - upLvelRule;
+            setLvel();
+            return true;
         }
-            
+        return false;
+    }
+
+    public int getLvel() {
+        return lvel;
     }
     
     public boolean estaVivo(){
