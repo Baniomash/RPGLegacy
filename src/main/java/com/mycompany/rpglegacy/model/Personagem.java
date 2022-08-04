@@ -21,18 +21,20 @@ public abstract class Personagem <T extends Personagem> {
     private int vidaAtual;
     private int expNxtLvel;
     private int lvel;
+    private int progress;
     private Usuario usuario;
 
-    public Personagem(int id, String personName, int atak, int defe, int sped, int vidaMaxima, int vidaAtual, int expNxtLvel, int lvel, Usuario usuario) {
+    public Personagem(int id, String personName, int atak, int defe, int sped, int vidaMaxima, int vidaAtual, int expNxtLvel, int lvel, int progress, Usuario usuario) {
         this.id = id;
         this.personName = personName;
         this.atak = atak;
         this.defe = defe;
         this.sped = sped;
-        this.vidaAtual = vidaMaxima;
+        this.vidaAtual = vidaAtual;
         this.vidaMaxima = vidaMaxima;
-        this.expNxtLvel = 0;
-        this.lvel = 1;
+        this.expNxtLvel = expNxtLvel;
+        this.lvel = lvel;
+        this.progress = progress;
         this.usuario = usuario;
     }
     
@@ -45,6 +47,7 @@ public abstract class Personagem <T extends Personagem> {
         this.vidaMaxima = vidaMaxima;
         this.expNxtLvel = 0;
         this.lvel = 1;
+        this.progress = 0;
         this.usuario = usuario;
     }
     
@@ -137,7 +140,18 @@ public abstract class Personagem <T extends Personagem> {
         this.expNxtLvel += expAdicional;
         this.setLvel();
     }
-    
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
     
     
     public int spdDisputa(Personagem alvo){

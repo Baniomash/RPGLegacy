@@ -16,7 +16,8 @@ public class DatabaseConnection {
     
     private static final String host = "jdbc:mysql://localhost/RPGLegacy";
     private static final String user = "root";
-    private static final String password = "ifrn.cn";
+//    private static final String password = "ifrn.cn";
+    private static final String password = "";
     private static Connection conexao = null;
 
     // Padrão Singleton
