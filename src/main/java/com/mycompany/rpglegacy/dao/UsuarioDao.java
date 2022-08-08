@@ -19,7 +19,7 @@ import java.sql.SQLException;
 public class UsuarioDao {
     private final String SALT = "Increment";
     
-    public void save(Usuario user) throws SQLException {
+    public void criar(Usuario user) throws SQLException {
         String sql = "INSERT INTO usuarios (login, senha) "
                 + "VALUES (?, SHA2(?, 256))";
 
@@ -32,13 +32,26 @@ public class UsuarioDao {
         pstm.execute();
     }
     
-    public Usuario getUsuarioById(int id) throws SQLException{
+public void mudarUsuarioNome(String novoNome, int idUsuario) throws SQLException {
+        String sql = "UPDATE usuarios SET login=?"
+                + "WHERE id=?";
+
+        Connection con = DatabaseConnection.getConnection();
+        PreparedStatement pstm = con.prepareStatement(sql);
+        
+        pstm.setString(1, novoNome);
+        pstm.setInt(2, idUsuario);
+
+        pstm.execute();
+    }
+    
+    public Usuario getUsuarioPorId(int idUsuario) throws SQLException{
         String sql = "SELECT * FROM usuarios WHERE id = ?";
         
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement pstm = con.prepareStatement(sql);
         
-        pstm.setInt(1, id);
+        pstm.setInt(1, idUsuario);
         
         ResultSet resposta = pstm.executeQuery();
         Usuario usuarioResposta = null;
@@ -76,14 +89,20 @@ public class UsuarioDao {
 //        Usuario novoUsuario1 = new Usuario( "User1", "yoyo");
 //        Usuario novoUsuario2 = new Usuario( "Caba_Bom", "123456");
 
-        Heroi novoHeroi1 = new Heroi("Sr. Cavalheiro", 5, 5, 5, 10, 5, 5, usuarioDao.getUsuarioById(2));
+//        Heroi editaHeroi1 = heroiDao.getHeroiById(1) ;
+//        editaHeroi1.setPersonName("Sr. MudaNome");
 //  
-//        usuarioDao.save(novoUsuario1);
-//        usuarioDao.save(novoUsuario2);
-        heroiDao.save(novoHeroi1);
+//        usuarioDao.salvar(novoUsuario1);
+//        usuarioDao.salvar(novoUsuario2);
+//        heroiDao.salvar(editaHeroi1);
+//        usuarioDao.mudarUsuarioNome("Cabeça de arupemba", 2);
+
+//        heroiDao.mudarHeroiNome("Sr. Cavalheiro", 1);
+//        heroiDao.deletarHeroiPorId(2);
         
         System.out.println(usuarioDao.validarLogin("User1", "fasvjvbjkasbvja"));
         System.out.println(usuarioDao.validarLogin("User1", "yoyo"));
-        System.out.println(heroiDao.getHeroiById(2));
+        System.out.println(heroiDao.getHeroiById(1).getPersonName());
+        System.out.println(usuarioDao.getUsuarioPorId(2).getLogin());
     }
 }

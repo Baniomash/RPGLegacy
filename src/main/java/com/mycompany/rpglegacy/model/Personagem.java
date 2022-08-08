@@ -22,9 +22,9 @@ public abstract class Personagem <T extends Personagem> {
     private int expNxtLvel;
     private int lvel;
     private int progress;
-    private Usuario usuario;
 
-    public Personagem(int id, String personName, int atak, int defe, int sped, int vidaMaxima, int vidaAtual, int expNxtLvel, int lvel, int progress, Usuario usuario) {
+
+    public Personagem(int id, String personName, int atak, int defe, int sped, int vidaMaxima, int vidaAtual, int expNxtLvel, int lvel, int progress) {
         this.id = id;
         this.personName = personName;
         this.atak = atak;
@@ -35,10 +35,9 @@ public abstract class Personagem <T extends Personagem> {
         this.expNxtLvel = expNxtLvel;
         this.lvel = lvel;
         this.progress = progress;
-        this.usuario = usuario;
     }
     
-    public Personagem(String name, int atak, int defe, int sped, int vidaMaxima, Usuario usuario) {
+    public Personagem(String name, int atak, int defe, int sped, int vidaMaxima) {
         this.personName = name;
         this.atak = atak;
         this.defe = defe;
@@ -48,7 +47,6 @@ public abstract class Personagem <T extends Personagem> {
         this.expNxtLvel = 0;
         this.lvel = 1;
         this.progress = 0;
-        this.usuario = usuario;
     }
     
     public boolean setLvel(){
@@ -149,9 +147,10 @@ public abstract class Personagem <T extends Personagem> {
         this.progress = progress;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getId() {
+        return id;
     }
+
     
     
     public int spdDisputa(Personagem alvo){
@@ -173,4 +172,17 @@ public abstract class Personagem <T extends Personagem> {
 //        return totalThisSpd - totalAlvoSpd;
     }
     
+    public int spdDisputa(Monstro alvo){
+        Random rng = new Random();
+        int difSped = this.sped-alvo.getSped();
+        if(((difSped-alvo.getSped())*-1) >= (rng.nextInt(100))){
+            return 0;
+        }else{
+            if(difSped<1){
+                return ((difSped%10)*-1)+rng.nextInt(7);
+            }else{
+                return difSped%10+rng.nextInt(7);
+            }
+        }
+    }
 }

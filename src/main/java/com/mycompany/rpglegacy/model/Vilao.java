@@ -10,8 +10,8 @@ package com.mycompany.rpglegacy.model;
  */
 public class Vilao extends Personagem <Heroi>{
 
-    public Vilao(String personName, int atak, int defe, int sped, int vidaMaxima, int expNxtLvel, int lvel, Usuario usuario) {
-        super(personName, atak, defe, sped, vidaMaxima, usuario);
+    public Vilao(String personName, int atak, int defe, int sped, int vidaMaxima, int expNxtLvel, int lvel) {
+        super(personName, atak, defe, sped, vidaMaxima);
     }
     
     public int atacar(Heroi alvo) {

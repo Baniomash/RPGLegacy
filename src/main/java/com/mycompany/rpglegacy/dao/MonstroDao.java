@@ -14,13 +14,11 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Windows10
+ * @author aluno
  */
-public class HeroiDao {
-    private UsuarioDao dao = new UsuarioDao();
-    
+public class MonstroDao {
     public void criar(Heroi heroi) throws SQLException {
-        String sql = "INSERT INTO herois (personName, atak, defe, sped, vidaMaxima, vidaAtual, expNxtLvel, lvel, progress, id_usuario) "
+        String sql = "INSERT INTO inimigos (personName, atak, defe, sped, vidaMaxima, vidaAtual, expNxtLvel, lvel, progress, id_usuario) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         Connection con = DatabaseConnection.getConnection();
@@ -111,8 +109,7 @@ public class HeroiDao {
             int novoExpNxtLvel = resultado.getInt("expNxtLvel");
             int novoLvel = resultado.getInt("lvel");
             int novoProgress = resultado.getInt("progress");
-            Usuario novoUsuario = dao.getUsuarioPorId(resultado.getInt("id_usuario"));
-            
+            Usuario novoUsuario = null;
             respostaFinal = new Heroi(novoId, novoPersonName, novoAtak, novoDefe, novoSped, novoVidaMaxima, novoVidaAtual, novoExpNxtLvel, novoLvel, novoProgress, novoUsuario);
         }
         return respostaFinal;
