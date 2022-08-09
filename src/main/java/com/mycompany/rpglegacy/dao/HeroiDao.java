@@ -6,6 +6,7 @@ package com.mycompany.rpglegacy.dao;
 
 import com.mycompany.rpglegacy.connection.DatabaseConnection;
 import com.mycompany.rpglegacy.model.Heroi;
+import com.mycompany.rpglegacy.model.Progress;
 import com.mycompany.rpglegacy.model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,7 +35,7 @@ public class HeroiDao {
         pstm.setInt(6, heroi.getAtak());
         pstm.setInt(7, heroi.getAtak());
         pstm.setInt(8, heroi.getAtak());
-        pstm.setInt(9, heroi.getProgress());
+        pstm.setInt(9, heroi.getProgress().getValor());
         pstm.setInt(10, heroi.getUsuario().getId());
         
 
@@ -57,7 +58,7 @@ public class HeroiDao {
         pstm.setInt(6, heroi.getAtak());
         pstm.setInt(7, heroi.getAtak());
         pstm.setInt(8, heroi.getAtak());
-        pstm.setInt(9, heroi.getProgress());
+        pstm.setInt(9, heroi.getProgress().getValor());
         pstm.setInt(10, heroi.getId());
         
 
@@ -88,7 +89,7 @@ public class HeroiDao {
         pstm.execute();
     }
     
-    public Heroi getHeroiById(int id) throws SQLException {
+    public Heroi getHeroiPorId(int id) throws SQLException {
         String sql = "SELECT * FROM herois WHERE "
                 + "id = ?";
 
@@ -110,7 +111,7 @@ public class HeroiDao {
             int novoVidaAtual = resultado.getInt("vidaAtual");
             int novoExpNxtLvel = resultado.getInt("expNxtLvel");
             int novoLvel = resultado.getInt("lvel");
-            int novoProgress = resultado.getInt("progress");
+            Progress novoProgress = new Progress(resultado.getInt("progress"));
             Usuario novoUsuario = dao.getUsuarioPorId(resultado.getInt("id_usuario"));
             
             respostaFinal = new Heroi(novoId, novoPersonName, novoAtak, novoDefe, novoSped, novoVidaMaxima, novoVidaAtual, novoExpNxtLvel, novoLvel, novoProgress, novoUsuario);

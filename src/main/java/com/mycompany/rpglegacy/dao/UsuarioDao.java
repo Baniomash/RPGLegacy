@@ -102,7 +102,7 @@ public void mudarUsuarioNome(String novoNome, int idUsuario) throws SQLException
         
         System.out.println(usuarioDao.validarLogin("User1", "fasvjvbjkasbvja"));
         System.out.println(usuarioDao.validarLogin("User1", "yoyo"));
-        System.out.println(heroiDao.getHeroiById(1).getPersonName());
+        System.out.println(heroiDao.getHeroiPorId(1).getPersonName());
         System.out.println(usuarioDao.getUsuarioPorId(2).getLogin());
     }
 }

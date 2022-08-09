@@ -9,20 +9,55 @@ package com.mycompany.rpglegacy.model;
  * @author aluno
  */
 public class Heroi extends Personagem <Vilao>{
+    private int expNxtLvel;
+    private Progress progress;
     private Usuario usuario;
     
-    public Heroi(String personaName, int atak, int defe, int sped, int vidaMaxima, int expNxtLvel, int lvel, Usuario usuario) {
+    public Heroi(String personaName, int atak, int defe, int sped, int vidaMaxima, Usuario usuario) {
         super(personaName, atak, defe, sped, vidaMaxima);
         this.usuario = usuario;
+        this.expNxtLvel = 0;
+        this.progress = new Progress();
     }
 
-    public Heroi(int id, String personName, int atak, int defe, int sped, int vidaMaxima, int vidaAtual, int expNxtLvel, int lvel, int progress, Usuario usuario) {
-        super(id, personName, atak, defe, sped, vidaMaxima, vidaAtual, expNxtLvel, lvel, progress);
+    public Heroi(int id, String personName, int atak, int defe, int sped, int vidaMaxima, int vidaAtual, int expNxtLvel, int lvel, Progress progress, Usuario usuario) {
+        super(id, personName, atak, defe, sped, vidaMaxima, vidaAtual, lvel);
         this.usuario = usuario;
+        this.expNxtLvel = expNxtLvel;
+        this.progress = progress;
+    }
+    
+    public boolean setLvel(){
+        int upLvelRule = (int) ((this.getLvel()*10)/2);
+        if(expNxtLvel>= upLvelRule){
+            int lvelAtual = this.getLvel();
+            this.setLvel(lvelAtual++);
+            this.expNxtLvel = this.expNxtLvel - upLvelRule;
+            setLvel();
+            return true;
+        }
+        return false;
     }
     
     public Usuario getUsuario() {
         return usuario;
+    }
+    
+    public int getExpNxtLvel() {
+        return expNxtLvel;
+    }
+
+    public void setExpNxtLvel(int expAdicional) {
+        this.expNxtLvel += expAdicional;
+        this.setLvel();
+    }
+
+    public Progress getProgress() {
+        return progress;
+    }
+
+    public void setProgress(Progress progress) {
+        this.progress = progress;
     }
     
     

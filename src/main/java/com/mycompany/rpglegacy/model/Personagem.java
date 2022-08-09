@@ -19,12 +19,10 @@ public abstract class Personagem <T extends Personagem> {
     private int sped;
     private int vidaMaxima;
     private int vidaAtual;
-    private int expNxtLvel;
     private int lvel;
-    private int progress;
 
 
-    public Personagem(int id, String personName, int atak, int defe, int sped, int vidaMaxima, int vidaAtual, int expNxtLvel, int lvel, int progress) {
+    public Personagem(int id, String personName, int atak, int defe, int sped, int vidaMaxima, int vidaAtual, int lvel) {
         this.id = id;
         this.personName = personName;
         this.atak = atak;
@@ -32,9 +30,7 @@ public abstract class Personagem <T extends Personagem> {
         this.sped = sped;
         this.vidaAtual = vidaAtual;
         this.vidaMaxima = vidaMaxima;
-        this.expNxtLvel = expNxtLvel;
         this.lvel = lvel;
-        this.progress = progress;
     }
     
     public Personagem(String name, int atak, int defe, int sped, int vidaMaxima) {
@@ -44,22 +40,13 @@ public abstract class Personagem <T extends Personagem> {
         this.sped = sped;
         this.vidaAtual = vidaMaxima;
         this.vidaMaxima = vidaMaxima;
-        this.expNxtLvel = 0;
         this.lvel = 1;
-        this.progress = 0;
-    }
-    
-    public boolean setLvel(){
-        int upLvelRule = (int) ((this.lvel*10)/2);
-        if(expNxtLvel>= upLvelRule){
-            this.lvel ++;
-            this.expNxtLvel = this.expNxtLvel - upLvelRule;
-            setLvel();
-            return true;
-        }
-        return false;
     }
 
+    public void setLvel(int lvel) {
+        this.lvel = lvel;
+    }
+    
     public int getLvel() {
         return lvel;
     }
@@ -130,22 +117,6 @@ public abstract class Personagem <T extends Personagem> {
         }
     }
 
-    public int getExpNxtLvel() {
-        return expNxtLvel;
-    }
-
-    public void setExpNxtLvel(int expAdicional) {
-        this.expNxtLvel += expAdicional;
-        this.setLvel();
-    }
-
-    public int getProgress() {
-        return progress;
-    }
-
-    public void setProgress(int progress) {
-        this.progress = progress;
-    }
 
     public int getId() {
         return id;
