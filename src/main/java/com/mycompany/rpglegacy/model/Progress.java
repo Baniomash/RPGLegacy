@@ -20,9 +20,9 @@ public class Progress {
     }
     
     public Progress() {
-        this.mundo = 1;
-        this.fase = 1;
         this.valor = 1;
+        verificaProgresso();
+        
     }
     
     public Progress(int progress) {
@@ -54,11 +54,19 @@ public class Progress {
     }
 
     private void verificaProgresso() {
-        int world = (int) ((valor-1)/3)+1;
-        int stage = ((valor-1)%3)+1;
-                
-        this.mundo = world;
-        this.fase = stage;
+        if(valor < 1){
+            this.valor = 1;
+            verificaProgresso();
+        }else if(valor > 12){
+            this.valor = 12;
+            verificaProgresso();
+        }else{
+            int world = (int) ((valor-1)/3)+1;
+            int stage = ((valor-1)%3)+1;
+
+            this.mundo = world;
+            this.fase = stage;
+        }
     }
 
     @Override

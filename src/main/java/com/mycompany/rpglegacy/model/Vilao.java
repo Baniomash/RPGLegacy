@@ -13,6 +13,7 @@ public class Vilao extends Personagem <Heroi>{
     
     public Vilao(String personName, int atak, int defe, int sped, int vidaMaxima, int lvel, int expGanho) {
         super(personName, atak, defe, sped, vidaMaxima);
+        this.setLvel(lvel);
         this.expGanho = expGanho;
     }
 

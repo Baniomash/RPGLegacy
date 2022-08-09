@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -46,19 +48,19 @@ public class InimigoDao {
         
         pstm.setString(1, monstro.getTipo());
         pstm.setInt(2, monstro.getAtak());
-        pstm.setInt(3, monstro.getAtak());
-        pstm.setInt(4, monstro.getAtak());
-        pstm.setInt(5, monstro.getAtak());
-        pstm.setInt(6, monstro.getAtak());
-        pstm.setInt(7, monstro.getAtak());        
+        pstm.setInt(3, monstro.getDefe());
+        pstm.setInt(4, monstro.getSped());
+        pstm.setInt(5, monstro.getVidaMaxima());
+        pstm.setInt(6, monstro.getVidaAtual());
+        pstm.setInt(7, monstro.getLvel());        
         pstm.setInt(8, monstro.getExpGanho());        
 
         pstm.execute();
     }
     
     public Vilao getVilaoPorId(int id) throws SQLException {
-        String sql = "SELECT * FROM herois WHERE "
-                + "id = ?";
+        String sql = "SELECT * FROM inimigos WHERE "
+                + "id = ? AND personName IS NOT NULL";
 
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement pstm = con.prepareStatement(sql);
@@ -69,7 +71,37 @@ public class InimigoDao {
         Vilao respostaFinal = null;
         
         
-        if(resultado.next() && resultado.getString("tipo") == null){
+        if(resultado.next()){
+            int novoId = resultado.getInt("id");
+            int novoAtak = resultado.getInt("atak");
+            int novoDefe = resultado.getInt("defe");
+            int novoSped = resultado.getInt("sped");
+            int novoVidaMaxima = resultado.getInt("vidaMaxima");
+            int novoVidaAtual = resultado.getInt("vidaAtual");
+            int novoLvel = resultado.getInt("lvel");
+            int novoExpGanho = resultado.getInt("expGanho");
+            String novoPersonName = resultado.getString("personName");
+
+            respostaFinal = new Vilao(novoId, novoPersonName, novoAtak, novoDefe, novoSped, novoVidaMaxima, novoVidaAtual, novoLvel, novoExpGanho);
+
+            return respostaFinal;
+        }
+        
+        return respostaFinal;
+    }
+    public Vilao getVilaoPorLvel(int lvel) throws SQLException {
+        String sql = "SELECT * FROM inimigos WHERE "
+                + "lvel = ? AND personName IS NOT NULL";
+
+        Connection con = DatabaseConnection.getConnection();
+        PreparedStatement pstm = con.prepareStatement(sql);
+
+        pstm.setInt(1, lvel);
+
+        ResultSet resultado = pstm.executeQuery();
+        Vilao respostaFinal = null;
+        
+        if(resultado.next()){
             int novoId = resultado.getInt("id");
             int novoAtak = resultado.getInt("atak");
             int novoDefe = resultado.getInt("defe");
@@ -88,8 +120,8 @@ public class InimigoDao {
         return respostaFinal;
     }
     public Monstro getMonstroPorId(int id) throws SQLException {
-        String sql = "SELECT * FROM herois WHERE "
-                + "id = ?";
+        String sql = "SELECT * FROM inimigos WHERE "
+                + "id = ? AND tipo IS NOT NULL";
 
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement pstm = con.prepareStatement(sql);
@@ -100,7 +132,7 @@ public class InimigoDao {
         Monstro respostaFinal = null;
         
         
-        if(resultado.next() && resultado.getString("personName") == null){
+        if(resultado.next()){
             int novoId = resultado.getInt("id");
             int novoAtak = resultado.getInt("atak");
             int novoDefe = resultado.getInt("defe");
@@ -114,6 +146,65 @@ public class InimigoDao {
             respostaFinal = new Monstro(novoId, novoTipo, novoAtak, novoDefe, novoSped, novoVidaMaxima, novoVidaAtual, novoLvel, novoExpGanho);
 
             return respostaFinal;
+        }
+        
+        return respostaFinal;
+    }
+    public List<Monstro> getMonstroPorLvel(int lvel) throws SQLException {
+        String sql = "SELECT * FROM inimigos WHERE "
+                + "lvel = ? AND tipo IS NOT NULL";
+
+        Connection con = DatabaseConnection.getConnection();
+        PreparedStatement pstm = con.prepareStatement(sql);
+
+        pstm.setInt(1, lvel);
+
+        ResultSet resultado = pstm.executeQuery();
+        ArrayList<Monstro> respostaFinal = new ArrayList();
+        
+        while(resultado.next()){
+            int novoId = resultado.getInt("id");
+            int novoAtak = resultado.getInt("atak");
+            int novoDefe = resultado.getInt("defe");
+            int novoSped = resultado.getInt("sped");
+            int novoVidaMaxima = resultado.getInt("vidaMaxima");
+            int novoVidaAtual = resultado.getInt("vidaAtual");
+            int novoLvel = resultado.getInt("lvel");
+            int novoExpGanho = resultado.getInt("expGanho");
+            String novoTipo = resultado.getString("tipo");
+
+            Monstro monstro = new Monstro(novoId, novoTipo, novoAtak, novoDefe, novoSped, novoVidaMaxima, novoVidaAtual, novoLvel, novoExpGanho);
+            respostaFinal.add(monstro);
+        }
+        
+        return respostaFinal;
+    }
+    public List<Monstro> getMonstroPorFachaLvel(int lvelMin, int lvelMax) throws SQLException {
+        String sql = "SELECT * FROM inimigos WHERE "
+                + "tipo IS NOT NULL AND (lvel >= ? OR lvel <= ?)";
+
+        Connection con = DatabaseConnection.getConnection();
+        PreparedStatement pstm = con.prepareStatement(sql);
+
+        pstm.setInt(1, lvelMin);
+        pstm.setInt(2, lvelMax);
+
+        ResultSet resultado = pstm.executeQuery();
+        ArrayList<Monstro> respostaFinal = new ArrayList();
+        
+        while(resultado.next()){
+            int novoId = resultado.getInt("id");
+            int novoAtak = resultado.getInt("atak");
+            int novoDefe = resultado.getInt("defe");
+            int novoSped = resultado.getInt("sped");
+            int novoVidaMaxima = resultado.getInt("vidaMaxima");
+            int novoVidaAtual = resultado.getInt("vidaAtual");
+            int novoLvel = resultado.getInt("lvel");
+            int novoExpGanho = resultado.getInt("expGanho");
+            String novoTipo = resultado.getString("tipo");
+
+            Monstro monstro = new Monstro(novoId, novoTipo, novoAtak, novoDefe, novoSped, novoVidaMaxima, novoVidaAtual, novoLvel, novoExpGanho);
+            respostaFinal.add(monstro);
         }
         
         return respostaFinal;
