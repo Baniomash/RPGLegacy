@@ -29,6 +29,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
         novoJogoButton = new javax.swing.JButton();
         carregarJogoButton = new javax.swing.JButton();
         signInButton = new javax.swing.JButton();
+        usuarioPanel = new javax.swing.JPanel();
         bolinhaLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(620, 440));
@@ -37,7 +38,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         novoJogoButton.setText("NOVO JOGO");
-        novoJogoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        novoJogoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         novoJogoButton.setMaximumSize(new java.awt.Dimension(255, 64));
         novoJogoButton.setMinimumSize(new java.awt.Dimension(255, 64));
         novoJogoButton.setPreferredSize(new java.awt.Dimension(255, 64));
@@ -49,7 +50,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
         add(novoJogoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
 
         carregarJogoButton.setText("CARREGAR");
-        carregarJogoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        carregarJogoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         carregarJogoButton.setMaximumSize(new java.awt.Dimension(255, 64));
         carregarJogoButton.setMinimumSize(new java.awt.Dimension(255, 64));
         carregarJogoButton.setPreferredSize(new java.awt.Dimension(255, 64));
@@ -61,7 +62,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
         add(carregarJogoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
 
         signInButton.setText("SIGN IN");
-        signInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         signInButton.setMaximumSize(new java.awt.Dimension(128, 64));
         signInButton.setMinimumSize(new java.awt.Dimension(64, 64));
         signInButton.setPreferredSize(new java.awt.Dimension(128, 64));
@@ -72,10 +73,21 @@ public class TelaPrincipal extends javax.swing.JPanel {
         });
         add(signInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, -1, -1));
 
+        usuarioPanel.setBackground(new java.awt.Color(220, 220, 220));
+        usuarioPanel.setMaximumSize(new java.awt.Dimension(256, 90));
+        usuarioPanel.setMinimumSize(new java.awt.Dimension(256, 90));
+        usuarioPanel.setPreferredSize(new java.awt.Dimension(256, 90));
+        usuarioPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         bolinhaLabel.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        bolinhaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/rpglegacy/view/1200px-Disc_Plain_grey.svg.png"))); // NOI18N
+        bolinhaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/rpglegacy/assets/img/1200px-Disc_Plain_grey.svg.png"))); // NOI18N
         bolinhaLabel.setText("USUARIO");
-        add(bolinhaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        bolinhaLabel.setMaximumSize(new java.awt.Dimension(256, 64));
+        bolinhaLabel.setMinimumSize(new java.awt.Dimension(256, 64));
+        bolinhaLabel.setPreferredSize(new java.awt.Dimension(256, 64));
+        usuarioPanel.add(bolinhaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+
+        add(usuarioPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButtonActionPerformed
@@ -96,5 +108,6 @@ public class TelaPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton carregarJogoButton;
     private javax.swing.JButton novoJogoButton;
     private javax.swing.JButton signInButton;
+    private javax.swing.JPanel usuarioPanel;
     // End of variables declaration//GEN-END:variables
 }

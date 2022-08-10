@@ -25,73 +25,89 @@ public class CriarPersonagem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nomeHeroi1 = new javax.swing.JTextField();
-        nomeHeroiLabel1 = new javax.swing.JLabel();
         tituloPanel = new javax.swing.JPanel();
         tituloLabel = new javax.swing.JLabel();
         classeComboBox = new javax.swing.JComboBox<>();
+        nomeTextField = new javax.swing.JTextField();
+        nomeLabel = new javax.swing.JLabel();
+        classeLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
         setPreferredSize(new java.awt.Dimension(640, 480));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nomeHeroi1.setMaximumSize(new java.awt.Dimension(256, 32));
-        nomeHeroi1.setMinimumSize(new java.awt.Dimension(256, 32));
-        nomeHeroi1.setPreferredSize(new java.awt.Dimension(256, 32));
-        nomeHeroi1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeHeroi1ActionPerformed(evt);
-            }
-        });
-        add(nomeHeroi1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, -1, -1));
-
-        nomeHeroiLabel1.setText("Nome do Heroi");
-        add(nomeHeroiLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, -1));
-
         tituloPanel.setBackground(new java.awt.Color(200, 200, 200));
-        tituloPanel.setMaximumSize(new java.awt.Dimension(512, 64));
-        tituloPanel.setMinimumSize(new java.awt.Dimension(512, 64));
-        tituloPanel.setPreferredSize(new java.awt.Dimension(512, 64));
+        tituloPanel.setMaximumSize(new java.awt.Dimension(400, 256));
+        tituloPanel.setMinimumSize(new java.awt.Dimension(400, 256));
+        tituloPanel.setPreferredSize(new java.awt.Dimension(400, 256));
 
         tituloLabel.setFont(new java.awt.Font("Cantarell", 1, 36)); // NOI18N
-        tituloLabel.setText("CRIE SEU HEROI!!");
+        tituloLabel.setText("CRIE SEU HEROI!");
+
+        classeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        classeComboBox.setMaximumSize(new java.awt.Dimension(255, 32));
+        classeComboBox.setMinimumSize(new java.awt.Dimension(255, 32));
+        classeComboBox.setPreferredSize(new java.awt.Dimension(255, 32));
+
+        nomeTextField.setMaximumSize(new java.awt.Dimension(256, 32));
+        nomeTextField.setMinimumSize(new java.awt.Dimension(256, 32));
+        nomeTextField.setPreferredSize(new java.awt.Dimension(256, 32));
+        nomeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeTextFieldActionPerformed(evt);
+            }
+        });
+
+        nomeLabel.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
+        nomeLabel.setText("NOME DO HEROI:");
+
+        classeLabel.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
+        classeLabel.setText("NOME DO HEROI:");
 
         javax.swing.GroupLayout tituloPanelLayout = new javax.swing.GroupLayout(tituloPanel);
         tituloPanel.setLayout(tituloPanelLayout);
         tituloPanelLayout.setHorizontalGroup(
             tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tituloPanelLayout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
-                .addComponent(tituloLabel)
-                .addGap(104, 104, 104))
+            .addGroup(tituloPanelLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(classeLabel)
+                    .addComponent(classeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeLabel)
+                    .addComponent(tituloLabel))
+                .addGap(0, 53, Short.MAX_VALUE))
         );
         tituloPanelLayout.setVerticalGroup(
             tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tituloPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tituloLabel)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(nomeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(classeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(classeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
 
-        add(tituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        classeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        classeComboBox.setMaximumSize(new java.awt.Dimension(255, 32));
-        classeComboBox.setMinimumSize(new java.awt.Dimension(255, 32));
-        classeComboBox.setPreferredSize(new java.awt.Dimension(255, 32));
-        add(classeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, -1, -1));
+        add(tituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nomeHeroi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeHeroi1ActionPerformed
+    private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomeHeroi1ActionPerformed
+    }//GEN-LAST:event_nomeTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> classeComboBox;
-    private javax.swing.JTextField nomeHeroi1;
-    private javax.swing.JLabel nomeHeroiLabel1;
+    private javax.swing.JLabel classeLabel;
+    private javax.swing.JLabel nomeLabel;
+    private javax.swing.JTextField nomeTextField;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JPanel tituloPanel;
     // End of variables declaration//GEN-END:variables
