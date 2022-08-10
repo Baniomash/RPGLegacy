@@ -2,43 +2,43 @@ create database if not exists RPGLegacy;
 
 use RPGLegacy;
 
-create table usuarios (
-	id integer auto_increment not null,
-    login varchar(50),
-    senha varchar(30),
-    primary key (id)
-    );
+CREATE TABLE usuarios (
+    id INTEGER AUTO_INCREMENT NOT NULL,
+    login VARCHAR(50),
+    senha VARCHAR(256),
+    PRIMARY KEY (id)
+);
     
-create table herois (
-	id integer auto_increment not null,
-    personName varchar(50),
-    atak integer,
-    defe integer,
-    sped integer,
-    vidaMaxima integer,
-    vidaAtual integer,
-    expNxtLvel integer,
-    lvel integer,
-    progress varchar(50),
-    id_usuario integer,
-    primary key(id),
-    foreign key(id_usuario)
-		references usuarios(id)
-	);
+CREATE TABLE herois (
+    id INTEGER AUTO_INCREMENT NOT NULL,
+    personName VARCHAR(50),
+    atak INTEGER,
+    defe INTEGER,
+    sped INTEGER,
+    vidaMaxima INTEGER,
+    vidaAtual INTEGER,
+    expNxtLvel INTEGER,
+    lvel INTEGER,
+    progress VARCHAR(50),
+    id_usuario INTEGER,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_usuario)
+        REFERENCES usuarios (id)
+);
     
-create table inimigos (
-	id integer auto_increment not null,
-    tipo varchar(70),
-    personName varchar(50),
-    atak integer not null,
-    defe integer not null,
-    sped integer not null,
-    vidaMaxima integer not null,
-    vidaAtual integer not null,
-    lvel integer not null,
-    expGanho integer not null,
-    primary key(id)
-    );
+CREATE TABLE inimigos (
+    id INTEGER AUTO_INCREMENT NOT NULL,
+    tipo VARCHAR(70),
+    personName VARCHAR(50),
+    atak INTEGER NOT NULL,
+    defe INTEGER NOT NULL,
+    sped INTEGER NOT NULL,
+    vidaMaxima INTEGER NOT NULL,
+    vidaAtual INTEGER NOT NULL,
+    lvel INTEGER NOT NULL,
+    expGanho INTEGER NOT NULL,
+    PRIMARY KEY (id)
+);
 
 select * from herois;
 select * from inimigos;
