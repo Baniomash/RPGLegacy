@@ -4,12 +4,16 @@
  */
 package com.mycompany.rpglegacy.view;
 
+import com.mycompany.rpglegacy.controller.RPGController;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
 /**
  *
  * @author aluno
  */
 public class TelaPrincipal extends javax.swing.JPanel {
-
+    private RPGController controller;
     /**
      * Creates new form TelaPrincipal
      */
@@ -80,7 +84,6 @@ public class TelaPrincipal extends javax.swing.JPanel {
         usuarioPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bolinhaLabel.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        bolinhaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/rpglegacy/assets/img/1200px-Disc_Plain_grey.svg.png"))); // NOI18N
         bolinhaLabel.setText("USUARIO");
         bolinhaLabel.setMaximumSize(new java.awt.Dimension(256, 64));
         bolinhaLabel.setMinimumSize(new java.awt.Dimension(256, 64));
@@ -91,7 +94,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButtonActionPerformed
-        // TODO add your handling code here:
+        controller.validaAuth("User1", "yoyo");
     }//GEN-LAST:event_signInButtonActionPerformed
 
     private void carregarJogoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregarJogoButtonActionPerformed
@@ -102,6 +105,40 @@ public class TelaPrincipal extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_novoJogoButtonActionPerformed
 
+    public void setController(RPGController controller) {
+        this.controller = controller;
+    }
+    
+    public JButton getCarregarJogoButton() {
+        return carregarJogoButton;
+    }
+
+    public JButton getNovoJogoButton() {
+        return novoJogoButton;
+    }
+
+    public JButton getSignInButton() {
+        return signInButton;
+    }
+
+    public JPanel getUsuarioPanel() {
+        return usuarioPanel;
+    }
+    
+    public void confirmaAutenticacao(){
+        if(controller.getIsAuth()){
+            this.signInButton.setVisible(false);
+            this.usuarioPanel.setVisible(true);
+            this.carregarJogoButton.setVisible(true);
+            this.novoJogoButton.setVisible(true);
+        } else {
+            this.signInButton.setVisible(true);
+            this.usuarioPanel.setVisible(false);
+            this.carregarJogoButton.setVisible(false);
+            this.novoJogoButton.setVisible(false);
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bolinhaLabel;

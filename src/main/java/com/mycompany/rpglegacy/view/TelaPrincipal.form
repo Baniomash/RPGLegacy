@@ -134,9 +134,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Cantarell" size="15" style="1"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mycompany/rpglegacy/assets/img/1200px-Disc_Plain_grey.svg.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="USUARIO"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[256, 64]"/>

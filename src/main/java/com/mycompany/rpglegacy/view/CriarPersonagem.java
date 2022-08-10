@@ -4,13 +4,17 @@
  */
 
 package com.mycompany.rpglegacy.view;
+    
+import com.mycompany.rpglegacy.controller.RPGController;
 
 /**
  *
  * @author aluno
  */
 public class CriarPersonagem extends javax.swing.JPanel {
-
+    private RPGController controller;
+    
+    
     /** Creates new form criarPersonagem */
     public CriarPersonagem() {
         initComponents();
@@ -102,7 +106,10 @@ public class CriarPersonagem extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTextFieldActionPerformed
 
-
+    public void setController(RPGController controller) {
+        this.controller = controller;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> classeComboBox;
     private javax.swing.JLabel classeLabel;

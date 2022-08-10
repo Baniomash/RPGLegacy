@@ -4,6 +4,8 @@
  */
 package com.mycompany.rpglegacy.view;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author aluno
@@ -32,7 +34,6 @@ public class MainFrame extends javax.swing.JFrame {
         fundoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
 
         principalPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -49,10 +50,8 @@ public class MainFrame extends javax.swing.JFrame {
         navegacaoPanel.setLayout(new java.awt.CardLayout());
         principalPanel.add(navegacaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 620, 440));
 
-        fundoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/rpglegacy/assets/img/ezgif.com-gif-maker.gif"))); // NOI18N
         fundoLabel.setMaximumSize(new java.awt.Dimension(620, 440));
         fundoLabel.setMinimumSize(new java.awt.Dimension(620, 440));
-        fundoLabel.setPreferredSize(new java.awt.Dimension(640, 480));
         principalPanel.add(fundoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,6 +108,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
+
+    public JPanel getNavegacaoPanel() {
+        return navegacaoPanel;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fundoLabel;
