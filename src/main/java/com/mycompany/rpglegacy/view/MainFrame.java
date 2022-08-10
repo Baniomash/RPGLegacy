@@ -15,6 +15,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+//      iniciaTelas();
     }
 
     /**
@@ -26,17 +27,78 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        principalPanel = new javax.swing.JPanel();
+        logoPanel = new javax.swing.JPanel();
+        tituloLabel = new javax.swing.JLabel();
+        navegacaoPanel = new javax.swing.JPanel();
+        fundoLabel = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(640, 480));
+        setMinimumSize(new java.awt.Dimension(640, 480));
+
+        principalPanel.setBackground(new java.awt.Color(255, 255, 255));
+        principalPanel.setMaximumSize(new java.awt.Dimension(620, 440));
+        principalPanel.setMinimumSize(new java.awt.Dimension(620, 440));
+        principalPanel.setPreferredSize(new java.awt.Dimension(620, 440));
+        principalPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logoPanel.setBackground(new java.awt.Color(200, 200, 200));
+        logoPanel.setOpaque(false);
+        logoPanel.setPreferredSize(new java.awt.Dimension(32, 32));
+
+        tituloLabel.setFont(new java.awt.Font("Courier 10 Pitch", 1, 15)); // NOI18N
+        tituloLabel.setForeground(new java.awt.Color(255, 255, 255));
+        tituloLabel.setText("Bem Vindo ao RPGLegacy");
+
+        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
+        logoPanel.setLayout(logoPanelLayout);
+        logoPanelLayout.setHorizontalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoPanelLayout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addComponent(tituloLabel)
+                .addContainerGap())
+        );
+        logoPanelLayout.setVerticalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(logoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloLabel)
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
+
+        principalPanel.add(logoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 250, -1));
+
+        navegacaoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        navegacaoPanel.setMaximumSize(new java.awt.Dimension(620, 440));
+        navegacaoPanel.setMinimumSize(new java.awt.Dimension(620, 480));
+        navegacaoPanel.setOpaque(false);
+        navegacaoPanel.setPreferredSize(new java.awt.Dimension(620, 440));
+        navegacaoPanel.setLayout(new java.awt.CardLayout());
+        principalPanel.add(navegacaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 630, 370));
+
+        fundoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/rpglegacy/view/ezgif.com-gif-maker.gif"))); // NOI18N
+        fundoLabel.setMaximumSize(new java.awt.Dimension(620, 440));
+        fundoLabel.setMinimumSize(new java.awt.Dimension(620, 440));
+        fundoLabel.setPreferredSize(new java.awt.Dimension(640, 480));
+        principalPanel.add(fundoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(principalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(principalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,5 +140,10 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fundoLabel;
+    private javax.swing.JPanel logoPanel;
+    private javax.swing.JPanel navegacaoPanel;
+    private javax.swing.JPanel principalPanel;
+    private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
 }
