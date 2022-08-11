@@ -7,7 +7,7 @@ package com.mycompany.rpglegacy.controller;
 import com.mycompany.rpglegacy.dao.HeroiDao;
 import com.mycompany.rpglegacy.dao.InimigoDao;
 import com.mycompany.rpglegacy.dao.UsuarioDao;
-import com.mycompany.rpglegacy.util.Constantes;
+import com.mycompany.rpglegacy.model.Usuario;
 import com.mycompany.rpglegacy.view.CriarPersonagem;
 import com.mycompany.rpglegacy.view.MainFrame;
 import com.mycompany.rpglegacy.view.TelaPrincipal;
@@ -16,29 +16,35 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
+import com.mycompany.rpglegacy.util.Telas;
+import com.mycompany.rpglegacy.view.AutenticarUsuario;
+import com.mycompany.rpglegacy.view.CadastrarUsuario;
+import com.mycompany.rpglegacy.view.CarregarPersonagem;
 
 /**
  *
  * @author aluno
  */
 public class RPGController {
-    private MainFrame mainFrame;
-    private TelaPrincipal telaPrincipal;
-    private CriarPersonagem criarPersonagem;
+    private final MainFrame mainFrame = new MainFrame();
+    private final TelaPrincipal telaPrincipal = new TelaPrincipal();
+    private final CriarPersonagem criarPersonagem = new CriarPersonagem();
+    private final CarregarPersonagem carregarPersonagem = new CarregarPersonagem();
+    private final AutenticarUsuario autenticarUsuario = new AutenticarUsuario();
+    private final CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+    
     
     private JPanel navPanel;
     private CardLayout navLayout;
     
+    private Usuario usr = null;
     private Boolean isAuth = false;
     
-    private UsuarioDao usrDao = new UsuarioDao();
-    private HeroiDao hroDao = new HeroiDao();
-    private InimigoDao inmDao = new InimigoDao();
+    private final UsuarioDao usrDao = new UsuarioDao();
+    private final HeroiDao hroDao = new HeroiDao();
+    private final InimigoDao inmDao = new InimigoDao();
     
-    public RPGController(MainFrame mainFrame, TelaPrincipal telaPrincipal, CriarPersonagem criarPersonagem) {
-        this.mainFrame = mainFrame;
-        this.telaPrincipal = telaPrincipal;
-        this.criarPersonagem = criarPersonagem;
+    public RPGController() {
         setMainframePanLay();
         setController();
     }
@@ -66,43 +72,58 @@ public class RPGController {
     
     public void  iniciaTelas(){
         mainFrame.setVisible(true);        
-        navPanel.add(this.telaPrincipal, Constantes.TELA_PRINCIPAL);
-//        navPanel.add(this.criarPersonagem);
+        navPanel.add(this.telaPrincipal, Telas.TELA_PRINCIPAL);
+        navPanel.add(this.criarPersonagem, Telas.CRIAR_PERSONAGEM);
+        navPanel.add(this.carregarPersonagem, Telas.CARREGAR_PERSONAGEM);
+        navPanel.add(this.autenticarUsuario, Telas.AUTENTICAR_USUARIO);
+        navPanel.add(this.cadastrarUsuario, Telas.CADASTRAR_USUARIO);
         
-        irTelaInicial();
+        irTelaPrincipal();
     }
     
     private void setController() {
         telaPrincipal.setController(this);
         criarPersonagem.setController(this);
+        carregarPersonagem.setController(this);
+        autenticarUsuario.setController(this);
+        cadastrarUsuario.setController(this);
     }
     
-    public void irTelaInicial(){
-        navLayout.show(navPanel, Constantes.TELA_PRINCIPAL);
+    public void irTelaPrincipal(){
+        navLayout.show(navPanel, Telas.TELA_PRINCIPAL);
         telaPrincipal.confirmaAutenticacao();
     }
-    
-    public void irTelaAutenticar(){
-        
+    public void irAutenticarUsuario(){
+        navLayout.show(navPanel, Telas.AUTENTICAR_USUARIO);
+//        autenticarUsuario.confirmaAutenticacao();
     }
-    
-    public void irTelaCadastrar(){
-        
+    public void irCadastrarUsuario(){
+        navLayout.show(navPanel, Telas.CADASTRAR_USUARIO);
+//        cadastrarUsuario.confirmaAutenticacao();
     }
-    
-    public void irTelaCriarPersonagem(){
-        
+    public void irCriarPersonagem(){
+        navLayout.show(navPanel, Telas.CRIAR_PERSONAGEM);
+//        criarPersonagem.confirmaAutenticacao();
+    }
+    public void irCarregarPersonagem(){
+        navLayout.show(navPanel, Telas.CARREGAR_PERSONAGEM);
+//        carregarPersonagem.confirmaAutenticacao();
     }
     
     public void validaAuth(String login, String senha){
         try {
             this.isAuth = usrDao.validarLogin(login, senha);
             if(isAuth){
-                irTelaInicial();
+                this.usr = usrDao.getUsuarioPorLogin(login);
+                irTelaPrincipal();
             }
         } catch (SQLException ex) {
             Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public Usuario getUsr() {
+        return usr;
     }
 
 }

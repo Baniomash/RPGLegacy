@@ -102,38 +102,29 @@ public class TelaPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_carregarJogoButtonActionPerformed
 
     private void novoJogoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoJogoButtonActionPerformed
-        // TODO add your handling code here:
+        controller.irCriarPersonagem();
     }//GEN-LAST:event_novoJogoButtonActionPerformed
 
+    
+    
+    
     public void setController(RPGController controller) {
         this.controller = controller;
     }
+  
     
-    public JButton getCarregarJogoButton() {
-        return carregarJogoButton;
-    }
-
-    public JButton getNovoJogoButton() {
-        return novoJogoButton;
-    }
-
-    public JButton getSignInButton() {
-        return signInButton;
-    }
-
-    public JPanel getUsuarioPanel() {
-        return usuarioPanel;
-    }
     
     public void confirmaAutenticacao(){
         if(controller.getIsAuth()){
             this.signInButton.setVisible(false);
             this.usuarioPanel.setVisible(true);
+            this.bolinhaLabel.setText(controller.getUsr().getLogin());
             this.carregarJogoButton.setVisible(true);
             this.novoJogoButton.setVisible(true);
         } else {
             this.signInButton.setVisible(true);
             this.usuarioPanel.setVisible(false);
+            this.bolinhaLabel.setText("USUARIO");
             this.carregarJogoButton.setVisible(false);
             this.novoJogoButton.setVisible(false);
         }

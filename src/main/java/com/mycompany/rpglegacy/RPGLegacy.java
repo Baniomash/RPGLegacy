@@ -6,9 +6,6 @@
 package com.mycompany.rpglegacy;
 
 import com.mycompany.rpglegacy.controller.RPGController;
-import com.mycompany.rpglegacy.view.CriarPersonagem;
-import com.mycompany.rpglegacy.view.MainFrame;
-import com.mycompany.rpglegacy.view.TelaPrincipal;
 
 /**
  *
@@ -16,12 +13,8 @@ import com.mycompany.rpglegacy.view.TelaPrincipal;
  */
 public class RPGLegacy {
 
-    public static void main(String[] args) {
-        MainFrame mainFrame = new MainFrame();
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
-        CriarPersonagem criarPersonagem = new CriarPersonagem();
-        
-        RPGController controller = new RPGController(mainFrame, telaPrincipal, criarPersonagem);
+    public static void main(String[] args) {        
+        RPGController controller = new RPGController();
         
         controller.iniciaTelas();
     }

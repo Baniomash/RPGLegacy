@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -115,6 +117,37 @@ public class HeroiDao {
             Usuario novoUsuario = dao.getUsuarioPorId(resultado.getInt("id_usuario"));
             
             respostaFinal = new Heroi(novoId, novoPersonName, novoAtak, novoDefe, novoSped, novoVidaMaxima, novoVidaAtual, novoExpNxtLvel, novoLvel, novoProgress, novoUsuario);
+        }
+        return respostaFinal;
+    }
+    
+    public List getHeroisPorIdUsuario(int idUsuario) throws SQLException {
+        String sql = "SELECT * FROM herois WHERE "
+                + "id_usuario = ?";
+
+        Connection con = DatabaseConnection.getConnection();
+        PreparedStatement pstm = con.prepareStatement(sql);
+
+        pstm.setInt(1, idUsuario);
+
+        ResultSet resultado = pstm.executeQuery();
+        ArrayList<Heroi> respostaFinal = new ArrayList();
+        
+        while(resultado.next()){
+            int novoId = resultado.getInt("id");
+            String novoPersonName = resultado.getString("personName");
+            int novoAtak = resultado.getInt("atak");
+            int novoDefe = resultado.getInt("defe");
+            int novoSped = resultado.getInt("sped");
+            int novoVidaMaxima = resultado.getInt("vidaMaxima");
+            int novoVidaAtual = resultado.getInt("vidaAtual");
+            int novoExpNxtLvel = resultado.getInt("expNxtLvel");
+            int novoLvel = resultado.getInt("lvel");
+            Progress novoProgress = new Progress(resultado.getInt("progress"));
+            Usuario novoUsuario = dao.getUsuarioPorId(resultado.getInt("id_usuario"));
+            
+            Heroi heroi = new Heroi(novoId, novoPersonName, novoAtak, novoDefe, novoSped, novoVidaMaxima, novoVidaAtual, novoExpNxtLvel, novoLvel, novoProgress, novoUsuario);
+            respostaFinal.add(heroi); 
         }
         return respostaFinal;
     }

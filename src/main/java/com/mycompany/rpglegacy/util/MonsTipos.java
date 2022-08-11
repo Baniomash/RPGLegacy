@@ -8,6 +8,6 @@ package com.mycompany.rpglegacy.util;
  *
  * @author Windows10
  */
-public interface Constantes {
-    public static final String TELA_PRINCIPAL = "telaPrincipal";
+public interface MonsTipos {
+    public static final String ARANHA = "aranha_da_caverna";
 }
