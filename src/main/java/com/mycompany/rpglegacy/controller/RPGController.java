@@ -7,6 +7,7 @@ package com.mycompany.rpglegacy.controller;
 import com.mycompany.rpglegacy.dao.HeroiDao;
 import com.mycompany.rpglegacy.dao.InimigoDao;
 import com.mycompany.rpglegacy.dao.UsuarioDao;
+import com.mycompany.rpglegacy.model.Heroi;
 import com.mycompany.rpglegacy.model.Usuario;
 import com.mycompany.rpglegacy.view.CriarPersonagem;
 import com.mycompany.rpglegacy.view.MainFrame;
@@ -20,6 +21,8 @@ import com.mycompany.rpglegacy.util.Telas;
 import com.mycompany.rpglegacy.view.AutenticarUsuario;
 import com.mycompany.rpglegacy.view.CadastrarUsuario;
 import com.mycompany.rpglegacy.view.CarregarPersonagem;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -110,6 +113,7 @@ public class RPGController {
 //        carregarPersonagem.confirmaAutenticacao();
     }
     
+
     public void validaAuth(String login, String senha){
         try {
             this.isAuth = usrDao.validarLogin(login, senha);
@@ -121,9 +125,40 @@ public class RPGController {
             Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    public void criarUsuario(String login, String senha){
+        try {
+            usrDao.criar(new Usuario(login, senha));
+        } catch (SQLException ex) {
+            Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    
+    public void criarHeroi(String personName, int atak, int defe, int sped, int vidaMaxima, Usuario usuario){
+        try {
+            hroDao.criar(new Heroi(personName, atak, defe, sped, vidaMaxima, usuario));
+        } catch (SQLException ex) {
+            Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public List<Heroi> carregarHerois(int id){
+        try {
+            return new ArrayList(this.hroDao.getHeroisPorIdUsuario(id));
+        } catch (SQLException ex) {
+            Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return new ArrayList();
+    }
+    
+    
+    
     public Usuario getUsr() {
         return usr;
     }
-
+    
+    
+    
 }

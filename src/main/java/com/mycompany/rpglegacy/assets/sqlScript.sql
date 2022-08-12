@@ -4,23 +4,23 @@ use RPGLegacy;
 
 CREATE TABLE usuarios (
     id INTEGER AUTO_INCREMENT NOT NULL,
-    login VARCHAR(50),
-    senha VARCHAR(256),
+    login VARCHAR(50)NOT NULL UNIQUE,
+    senha VARCHAR(256)NOT NULL,
     PRIMARY KEY (id)
 );
     
 CREATE TABLE herois (
     id INTEGER AUTO_INCREMENT NOT NULL,
-    personName VARCHAR(50),
-    atak INTEGER,
-    defe INTEGER,
-    sped INTEGER,
-    vidaMaxima INTEGER,
-    vidaAtual INTEGER,
-    expNxtLvel INTEGER,
-    lvel INTEGER,
-    progress VARCHAR(50),
-    id_usuario INTEGER,
+    personName VARCHAR(50) NOT NULL,
+    atak INTEGER NOT NULL,
+    defe INTEGER NOT NULL,
+    sped INTEGER NOT NULL,
+    vidaMaxima INTEGER NOT NULL,
+    vidaAtual INTEGER NOT NULL,
+    expNxtLvel INTEGER NOT NULL,
+    lvel INTEGER NOT NULL,
+    progress VARCHAR(50) NOT NULL,
+    id_usuario INTEGER NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_usuario)
         REFERENCES usuarios (id)
