@@ -5,14 +5,15 @@
 package com.mycompany.rpglegacy.dao;
 
 import com.mycompany.rpglegacy.connection.DatabaseConnection;
-import com.mycompany.rpglegacy.model.Heroi;
-import com.mycompany.rpglegacy.model.Monstro;
 import com.mycompany.rpglegacy.model.Usuario;
-import com.mycompany.rpglegacy.model.Vilao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.mycompany.rpglegacy.model.Heroi;
+import com.mycompany.rpglegacy.model.Monstro;
+import com.mycompany.rpglegacy.model.Vilao;
 import java.util.List;
 
 /**
@@ -41,16 +42,18 @@ public class UsuarioDao {
     }
     
     public void mudarUsuarioNome(String novoNome, int idUsuario) throws SQLException {
-        String sql = "UPDATE usuarios SET login=?"
-                + "WHERE id=?";
+        if(this.getUsuarioPorLogin(novoNome) == null){
+            String sql = "UPDATE usuarios SET login=?"
+                    + "WHERE id=?";
 
-        Connection con = DatabaseConnection.getConnection();
-        PreparedStatement pstm = con.prepareStatement(sql);
-        
-        pstm.setString(1, novoNome);
-        pstm.setInt(2, idUsuario);
+            Connection con = DatabaseConnection.getConnection();
+            PreparedStatement pstm = con.prepareStatement(sql);
 
-        pstm.execute();
+            pstm.setString(1, novoNome);
+            pstm.setInt(2, idUsuario);
+
+            pstm.execute();
+        }
     }
     
     public Usuario getUsuarioPorId(int idUsuario) throws SQLException{

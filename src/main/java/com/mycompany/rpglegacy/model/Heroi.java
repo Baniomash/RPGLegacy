@@ -51,6 +51,7 @@ public class Heroi extends Personagem <Vilao>{
         this.expNxtLvel += expAdicional;
         this.setLvel();
     }
+    
 
     public Progress getProgress() {
         return progress;
