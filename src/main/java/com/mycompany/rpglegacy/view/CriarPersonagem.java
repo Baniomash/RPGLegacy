@@ -9,6 +9,7 @@ import com.mycompany.rpglegacy.controller.RPGController;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -115,13 +116,13 @@ public class CriarPersonagem extends javax.swing.JPanel {
 
         spdHeroiLabel.setText("Velociadade: ");
 
-        vidaValorLabel.setText("00");
+        vidaValorLabel.setText("080");
 
-        atkValorLabel.setText("00");
+        atkValorLabel.setText("08");
 
-        defValorLabel.setText("00");
+        defValorLabel.setText("08");
 
-        spdValorLabel.setText("00");
+        spdValorLabel.setText("08");
 
         javax.swing.GroupLayout atributosPanelLayout = new javax.swing.GroupLayout(atributosPanel);
         atributosPanel.setLayout(atributosPanelLayout);
@@ -236,11 +237,11 @@ public class CriarPersonagem extends javax.swing.JPanel {
     }//GEN-LAST:event_nomeHeroiTextFieldActionPerformed
 
     private void criarHeroiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarHeroiButtonActionPerformed
-//        controller.criarHeroi();
+        controller.novoHeroi();
     }//GEN-LAST:event_criarHeroiButtonActionPerformed
 
     private void classeComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_classeComboBoxItemStateChanged
-        // botar as parada aqui.
+        controller.atualizaStatusNovoHeroi();
     }//GEN-LAST:event_classeComboBoxItemStateChanged
 
     private void classeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classeComboBoxActionPerformed
@@ -251,6 +252,10 @@ public class CriarPersonagem extends javax.swing.JPanel {
         controller.irTelaPrincipal();
     }//GEN-LAST:event_voltarButtonActionPerformed
 
+    public JTextField getNomeHeroiTextField() {
+        return nomeHeroiTextField;
+    }
+    
     public JButton getVoltarButton() {
         return voltarButton;
     }

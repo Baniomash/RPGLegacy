@@ -221,6 +221,43 @@ public class RPGController {
         }
     }
     
+    public void atualizaStatusNovoHeroi(){
+        String classe = String.valueOf(this.criarPersonagem.getClasseComboBox().getSelectedItem());
+        switch(classe){
+            case Outros.CAVALEIRO:
+                    this.criarPersonagem.getVidaValorLabel().setText("80");
+                    this.criarPersonagem.getAtkValorLabel().setText("08");
+                    this.criarPersonagem.getDefValorLabel().setText("08");
+                    this.criarPersonagem.getSpdValorLabel().setText("08");
+                break;
+            case Outros.BARBARO:
+                    this.criarPersonagem.getVidaValorLabel().setText("120");
+                    this.criarPersonagem.getAtkValorLabel().setText("12");
+                    this.criarPersonagem.getDefValorLabel().setText("06");
+                    this.criarPersonagem.getSpdValorLabel().setText("06");
+                break;
+            case Outros.PALADINO:
+                    this.criarPersonagem.getVidaValorLabel().setText("80");
+                    this.criarPersonagem.getAtkValorLabel().setText("06");
+                    this.criarPersonagem.getDefValorLabel().setText("12");
+                    this.criarPersonagem.getSpdValorLabel().setText("06");
+                break;
+        }
+    }
     
+    public void novoHeroi(){
+        String personName = this.criarPersonagem.getNomeHeroiTextField().getText();
+        int vidaMaxima = Integer.parseInt(this.criarPersonagem.getVidaValorLabel().getText());
+        int atak = Integer.parseInt(this.criarPersonagem.getAtkValorLabel().getText());
+        int defe = Integer.parseInt(this.criarPersonagem.getDefValorLabel().getText());
+        int sped = Integer.parseInt(this.criarPersonagem.getSpdValorLabel().getText());
+        if(!"".equals(personName)){
+            criarHeroi(personName, atak, defe, sped, vidaMaxima, this.usr);
+        }
+    }
+    
+//    cavaleiro (32) (8*10)080 - 08 - 08 - 08
+//    barbaro   (32) (8*15)120 - 12 - 06 - 06
+//    paladino  (32) (8*10)080 - 06 - 12 - 06
     
 }

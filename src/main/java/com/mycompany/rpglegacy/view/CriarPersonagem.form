@@ -291,22 +291,22 @@
             </Component>
             <Component class="javax.swing.JLabel" name="vidaValorLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="00"/>
+                <Property name="text" type="java.lang.String" value="080"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="atkValorLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="00"/>
+                <Property name="text" type="java.lang.String" value="08"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="defValorLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="00"/>
+                <Property name="text" type="java.lang.String" value="08"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="spdValorLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="00"/>
+                <Property name="text" type="java.lang.String" value="08"/>
               </Properties>
             </Component>
           </SubComponents>

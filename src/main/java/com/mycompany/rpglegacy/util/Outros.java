@@ -11,5 +11,8 @@ package com.mycompany.rpglegacy.util;
 public interface Outros {
     public static final String ERRO_NAO_PREENCHIDO = "*PREENCHA TODOS OS CAMPOS!";
     public static final String ERRO_CREDENCIAIS_ERRADAS = "*LOGIN E/OU SENHA ERRADO/S(A)";
+    public static final String CAVALEIRO = "Cavaleiro";
+    public static final String BARBARO = "Barbaro";
+    public static final String PALADINO = "Paladino";
 
 }
