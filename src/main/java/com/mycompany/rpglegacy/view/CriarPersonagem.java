@@ -169,6 +169,11 @@ public class CriarPersonagem extends javax.swing.JPanel {
         );
 
         voltarButton.setText("Voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tituloPanelLayout = new javax.swing.GroupLayout(tituloPanel);
         tituloPanel.setLayout(tituloPanelLayout);
@@ -239,6 +244,10 @@ public class CriarPersonagem extends javax.swing.JPanel {
     private void classeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classeComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_classeComboBoxActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        controller.irTelaPrincipal();
+    }//GEN-LAST:event_voltarButtonActionPerformed
 
     public JButton getVoltarButton() {
         return voltarButton;

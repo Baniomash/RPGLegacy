@@ -94,11 +94,11 @@ public class TelaPrincipal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButtonActionPerformed
-        controller.validaAuth("User1", "yoyo");
+        controller.irAutenticarUsuario();
     }//GEN-LAST:event_signInButtonActionPerformed
 
     private void carregarJogoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregarJogoButtonActionPerformed
-        // TODO add your handling code here:
+        controller.irCarregarPersonagem();
     }//GEN-LAST:event_carregarJogoButtonActionPerformed
 
     private void novoJogoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoJogoButtonActionPerformed

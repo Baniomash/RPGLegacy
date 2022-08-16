@@ -9,6 +9,7 @@ import com.mycompany.rpglegacy.dao.InimigoDao;
 import com.mycompany.rpglegacy.dao.UsuarioDao;
 import com.mycompany.rpglegacy.model.Heroi;
 import com.mycompany.rpglegacy.model.Usuario;
+import com.mycompany.rpglegacy.util.Outros;
 import com.mycompany.rpglegacy.view.CriarPersonagem;
 import com.mycompany.rpglegacy.view.MainFrame;
 import com.mycompany.rpglegacy.view.TelaPrincipal;
@@ -35,6 +36,7 @@ public class RPGController {
     private final CarregarPersonagem carregarPersonagem = new CarregarPersonagem();
     private final AutenticarUsuario autenticarUsuario = new AutenticarUsuario();
     private final CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+    private final BattleController btController = new BattleController();
     
     
     private JPanel navPanel;
@@ -76,10 +78,7 @@ public class RPGController {
     public void  iniciaTelas(){
         mainFrame.setVisible(true);        
         navPanel.add(this.telaPrincipal, Telas.TELA_PRINCIPAL);
-        navPanel.add(this.criarPersonagem, Telas.CRIAR_PERSONAGEM);
         navPanel.add(this.carregarPersonagem, Telas.CARREGAR_PERSONAGEM);
-        navPanel.add(this.autenticarUsuario, Telas.AUTENTICAR_USUARIO);
-        navPanel.add(this.cadastrarUsuario, Telas.CADASTRAR_USUARIO);
         
         irTelaPrincipal();
     }
@@ -97,15 +96,28 @@ public class RPGController {
         telaPrincipal.confirmaAutenticacao();
     }
     public void irAutenticarUsuario(){
+        navPanel.add(this.autenticarUsuario, Telas.AUTENTICAR_USUARIO);
         navLayout.show(navPanel, Telas.AUTENTICAR_USUARIO);
 //        autenticarUsuario.confirmaAutenticacao();
     }
+    public void sairAutenticarUsuario(){
+        navPanel.remove(this.autenticarUsuario);
+    }
     public void irCadastrarUsuario(){
+        navPanel.add(this.cadastrarUsuario, Telas.CADASTRAR_USUARIO);
         navLayout.show(navPanel, Telas.CADASTRAR_USUARIO);
 //        cadastrarUsuario.confirmaAutenticacao();
     }
+    public void sairCadastrarUsuario(){
+        navPanel.remove(this.cadastrarUsuario);
+    }
     public void irCriarPersonagem(){
+        navPanel.add(this.criarPersonagem, Telas.CRIAR_PERSONAGEM);
         navLayout.show(navPanel, Telas.CRIAR_PERSONAGEM);
+//        criarPersonagem.confirmaAutenticacao();
+    }
+    public void sairCriarPersonagem(){
+        navPanel.remove(this.criarPersonagem);
 //        criarPersonagem.confirmaAutenticacao();
     }
     public void irCarregarPersonagem(){
@@ -120,6 +132,8 @@ public class RPGController {
             if(isAuth){
                 this.usr = usrDao.getUsuarioPorLogin(login);
                 irTelaPrincipal();
+            }else{
+                erroNoLogin(Outros.ERRO_CREDENCIAIS_ERRADAS);
             }
         } catch (SQLException ex) {
             Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
@@ -153,10 +167,58 @@ public class RPGController {
         return new ArrayList();
     }
     
+    public void iniciarJogo(){
+        mainFrame.setVisible(false);
+        mainFrame.dispose();
+        btController.iniciaTelas();
+    }
     
     
     public Usuario getUsr() {
         return usr;
+    }
+
+    public void autenticarUsuario() {
+        String login = this.autenticarUsuario.getLoginTextField().getText();
+        String senha = String.valueOf(this.autenticarUsuario.getSenhaPassField().getPassword());
+        if(!"".equals(login) && !"".equals(senha)){
+            validaAuth(login, senha);
+        } else {
+            erroNoLogin(Outros.ERRO_NAO_PREENCHIDO);
+        }
+    }
+
+    private void erroNoLogin(String erroTipo) {
+        switch(erroTipo){
+            case Outros.ERRO_NAO_PREENCHIDO:
+                this.autenticarUsuario.getErroLabel().setText(erroTipo);
+                break;
+            case Outros.ERRO_CREDENCIAIS_ERRADAS:
+                this.autenticarUsuario.getErroLabel().setText(erroTipo);
+                break;
+        }
+    }
+    
+    private void erroNoCadastro(String erroTipo) {
+        switch(erroTipo){
+            case Outros.ERRO_NAO_PREENCHIDO:
+                this.cadastrarUsuario.getErroLabel().setText(erroTipo);
+                break;
+            case Outros.ERRO_CREDENCIAIS_ERRADAS:
+                this.cadastrarUsuario.getErroLabel().setText(erroTipo);
+                break;
+        }
+    }
+
+    public void cadastrarUsuario() {
+        String login = this.cadastrarUsuario.getCadastroTextField().getText();
+        String senha = String.valueOf(this.cadastrarUsuario.getSenhaPassField().getPassword());
+        if(!"".equals(login) && !"".equals(senha)){
+            criarUsuario(login, senha);
+            irAutenticarUsuario();
+        } else {
+            erroNoCadastro(Outros.ERRO_NAO_PREENCHIDO);
+        }
     }
     
     

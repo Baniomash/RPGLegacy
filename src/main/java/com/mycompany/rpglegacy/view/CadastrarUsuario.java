@@ -6,6 +6,8 @@ package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.RPGController;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -32,28 +34,28 @@ public class CadastrarUsuario extends javax.swing.JPanel {
 
         voltarButton = new javax.swing.JButton();
         cadastroPanel = new javax.swing.JPanel();
-        cadastroSenhaTextField = new javax.swing.JTextField();
         cadastroLabel = new javax.swing.JLabel();
         cadastroTextField = new javax.swing.JTextField();
         cadastrarButton = new javax.swing.JButton();
+        senhaPassField = new javax.swing.JPasswordField();
+        erroLabel = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         voltarButton.setText("Voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
         add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         cadastroPanel.setBackground(new java.awt.Color(220, 220, 220));
         cadastroPanel.setPreferredSize(new java.awt.Dimension(300, 350));
 
-        cadastroSenhaTextField.setText("Digite sua senha");
-        cadastroSenhaTextField.setMaximumSize(new java.awt.Dimension(256, 64));
-        cadastroSenhaTextField.setMinimumSize(new java.awt.Dimension(256, 64));
-        cadastroSenhaTextField.setPreferredSize(new java.awt.Dimension(256, 64));
-
         cadastroLabel.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         cadastroLabel.setText("CADASTRO");
 
-        cadastroTextField.setText("Digite seu nome de usuario");
         cadastroTextField.setMaximumSize(new java.awt.Dimension(256, 64));
         cadastroTextField.setMinimumSize(new java.awt.Dimension(256, 64));
         cadastroTextField.setPreferredSize(new java.awt.Dimension(256, 64));
@@ -63,6 +65,14 @@ public class CadastrarUsuario extends javax.swing.JPanel {
         cadastrarButton.setMinimumSize(new java.awt.Dimension(256, 64));
         cadastrarButton.setOpaque(true);
         cadastrarButton.setPreferredSize(new java.awt.Dimension(256, 64));
+        cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarButtonActionPerformed(evt);
+            }
+        });
+
+        erroLabel.setForeground(new java.awt.Color(255, 0, 0));
+        erroLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout cadastroPanelLayout = new javax.swing.GroupLayout(cadastroPanel);
         cadastroPanel.setLayout(cadastroPanelLayout);
@@ -73,24 +83,26 @@ public class CadastrarUsuario extends javax.swing.JPanel {
                 .addGroup(cadastroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanelLayout.createSequentialGroup()
                         .addGroup(cadastroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(senhaPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(cadastroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(cadastroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cadastroSenhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cadastroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(erroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanelLayout.createSequentialGroup()
                         .addComponent(cadastroLabel)
-                        .addGap(97, 97, 97))))
+                        .addGap(96, 96, 96))))
         );
         cadastroPanelLayout.setVerticalGroup(
             cadastroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cadastroPanelLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(23, 23, 23)
                 .addComponent(cadastroLabel)
+                .addGap(15, 15, 15)
+                .addComponent(erroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cadastroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(cadastroSenhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(senhaPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -99,13 +111,22 @@ public class CadastrarUsuario extends javax.swing.JPanel {
         add(cadastroPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        controller.irTelaPrincipal();
+    }//GEN-LAST:event_voltarButtonActionPerformed
+
+    private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
+        controller.cadastrarUsuario();
+    }//GEN-LAST:event_cadastrarButtonActionPerformed
+
     public JButton getCadastrarButton() {
         return cadastrarButton;
     }
 
-    public JTextField getCadastroSenhaTextField() {
-        return cadastroSenhaTextField;
+    public JPasswordField getSenhaPassField() {
+        return senhaPassField;
     }
+
 
     public JTextField getCadastroTextField() {
         return cadastroTextField;
@@ -114,7 +135,10 @@ public class CadastrarUsuario extends javax.swing.JPanel {
     public JButton getVoltarButton() {
         return voltarButton;
     }
-    
+
+    public JLabel getErroLabel() {
+        return erroLabel;
+    }
     
     
     public void setController(RPGController controller) {
@@ -125,8 +149,9 @@ public class CadastrarUsuario extends javax.swing.JPanel {
     private javax.swing.JButton cadastrarButton;
     private javax.swing.JLabel cadastroLabel;
     private javax.swing.JPanel cadastroPanel;
-    private javax.swing.JTextField cadastroSenhaTextField;
     private javax.swing.JTextField cadastroTextField;
+    private javax.swing.JLabel erroLabel;
+    private javax.swing.JPasswordField senhaPassField;
     private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }
