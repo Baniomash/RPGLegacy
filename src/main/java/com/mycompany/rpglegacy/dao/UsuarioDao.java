@@ -117,32 +117,32 @@ public class UsuarioDao {
 //        HeroiDao heroiDao = new HeroiDao();
 //        InimigoDao inimigoDao = new InimigoDao();
 //        
-////        Usuario novoUsuario1 = new Usuario( "User1", "yoyo");
-////        Usuario novoUsuario2 = new Usuario( "Caba_Bom", "123456");
-////        Vilao novoVilao1 = new Vilao("Rei Malvado", 5, 5, 5, 150, 5, 24);
-////        Monstro novoMonstro1 = new Monstro("aranha_da_caverna", 5, 5, 5, 90, 4, 7);
-////        Monstro novoMonstro2 = new Monstro("lobo_sanguinario", 5, 5, 5, 90, 3, 7);
+//        Usuario novoUsuario1 = new Usuario( "User1", "yoyo");
+//        Usuario novoUsuario2 = new Usuario( "Caba_Bom", "123456");
+//        Vilao novoVilao1 = new Vilao("Rei Malvado", 5, 5, 5, 150, 5, 24);
+//        Monstro novoMonstro1 = new Monstro("aranha_da_caverna", 5, 5, 5, 90, 4, 7);
+//        Monstro novoMonstro2 = new Monstro("lobo_sanguinario", 5, 5, 5, 90, 3, 7);
 //        
 //
-////  
-////        inimigoDao.criar(novoVilao1);
-////        inimigoDao.criar(novoMonstro1);
-////        inimigoDao.criar(novoMonstro2);
-////        System.out.println(usuarioDao.criar(novoUsuario1));
-////        usuarioDao.criar(novoUsuario2);
-////        
-////        
+//  
+//        inimigoDao.criar(novoVilao1);
+//        inimigoDao.criar(novoMonstro1);
+//        inimigoDao.criar(novoMonstro2);
+//        System.out.println(usuarioDao.criar(novoUsuario1));
+//        usuarioDao.criar(novoUsuario2);
+//        
+//        
 //        Usuario usuarioSQL = usuarioDao.getUsuarioPorId(1);
-////        Heroi novoHeroi1 = new Heroi("Sr. TopanHead", 5, 5, 5, 150, usuarioSQL);
-////        Heroi novoHeroi2 = new Heroi("Sr. Heroizaum", 5, 4, 6, 170, usuarioSQL);
-////        
-////        
-////        heroiDao.criar(novoHeroi1);
-////        heroiDao.criar(novoHeroi2);
-////        usuarioDao.mudarUsuarioNome("Cabeça de arupemba", 2);
-////
-////        heroiDao.mudarHeroiNome("Sr. Cavalheiro", 1);
-////        heroiDao.deletarHeroiPorId(2);
+//        Heroi novoHeroi1 = new Heroi("Sr. TopanHead", 5, 5, 5, 150, usuarioSQL);
+//        Heroi novoHeroi2 = new Heroi("Sr. Heroizaum", 5, 4, 6, 170, usuarioSQL);
+//        
+//        
+//        heroiDao.criar(novoHeroi1);
+//        heroiDao.criar(novoHeroi2);
+//        usuarioDao.mudarUsuarioNome("Cabeça de arupemba", 2);
+//
+//        heroiDao.mudarHeroiNome("Sr. Cavalheiro", 1);
+//        heroiDao.deletarHeroiPorId(2);
 //        
 //        System.out.println(usuarioDao.getUsuarioPorId(1).getLogin());
 //        System.out.println(usuarioDao.validarLogin("User1", "fasvjvbjkasbvja"));
