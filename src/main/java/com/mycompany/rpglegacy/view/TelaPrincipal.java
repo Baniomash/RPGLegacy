@@ -75,7 +75,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
                 signInButtonActionPerformed(evt);
             }
         });
-        add(signInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, -1, -1));
+        add(signInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
 
         usuarioPanel.setBackground(new java.awt.Color(220, 220, 220));
         usuarioPanel.setMaximumSize(new java.awt.Dimension(256, 90));

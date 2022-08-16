@@ -31,7 +31,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         principalPanel = new javax.swing.JPanel();
         navegacaoPanel = new javax.swing.JPanel();
-        fundoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(640, 480));
@@ -49,11 +48,6 @@ public class MainFrame extends javax.swing.JFrame {
         navegacaoPanel.setPreferredSize(new java.awt.Dimension(620, 440));
         navegacaoPanel.setLayout(new java.awt.CardLayout());
         principalPanel.add(navegacaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 440));
-
-        fundoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/rpglegacy/assets/img/ezgif.com-gif-maker.gif"))); // NOI18N
-        fundoLabel.setMaximumSize(new java.awt.Dimension(620, 440));
-        fundoLabel.setMinimumSize(new java.awt.Dimension(620, 440));
-        principalPanel.add(fundoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,7 +111,6 @@ public class MainFrame extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel fundoLabel;
     private javax.swing.JPanel navegacaoPanel;
     private javax.swing.JPanel principalPanel;
     // End of variables declaration//GEN-END:variables

@@ -5,6 +5,8 @@
 package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.RPGController;
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -28,22 +30,103 @@ public class CadastrarUsuario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        voltarButton = new javax.swing.JButton();
+        cadastroPanel = new javax.swing.JPanel();
+        cadastroSenhaTextField = new javax.swing.JTextField();
+        cadastroLabel = new javax.swing.JLabel();
+        cadastroTextField = new javax.swing.JTextField();
+        cadastrarButton = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        voltarButton.setText("Voltar");
+        add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        cadastroPanel.setBackground(new java.awt.Color(220, 220, 220));
+        cadastroPanel.setPreferredSize(new java.awt.Dimension(300, 350));
+
+        cadastroSenhaTextField.setText("Digite sua senha");
+        cadastroSenhaTextField.setMaximumSize(new java.awt.Dimension(256, 64));
+        cadastroSenhaTextField.setMinimumSize(new java.awt.Dimension(256, 64));
+        cadastroSenhaTextField.setPreferredSize(new java.awt.Dimension(256, 64));
+
+        cadastroLabel.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
+        cadastroLabel.setText("CADASTRO");
+
+        cadastroTextField.setText("Digite seu nome de usuario");
+        cadastroTextField.setMaximumSize(new java.awt.Dimension(256, 64));
+        cadastroTextField.setMinimumSize(new java.awt.Dimension(256, 64));
+        cadastroTextField.setPreferredSize(new java.awt.Dimension(256, 64));
+
+        cadastrarButton.setText("SIGN UP");
+        cadastrarButton.setMaximumSize(new java.awt.Dimension(256, 64));
+        cadastrarButton.setMinimumSize(new java.awt.Dimension(256, 64));
+        cadastrarButton.setOpaque(true);
+        cadastrarButton.setPreferredSize(new java.awt.Dimension(256, 64));
+
+        javax.swing.GroupLayout cadastroPanelLayout = new javax.swing.GroupLayout(cadastroPanel);
+        cadastroPanel.setLayout(cadastroPanelLayout);
+        cadastroPanelLayout.setHorizontalGroup(
+            cadastroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cadastroPanelLayout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(cadastroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanelLayout.createSequentialGroup()
+                        .addGroup(cadastroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(cadastroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(cadastroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cadastroSenhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanelLayout.createSequentialGroup()
+                        .addComponent(cadastroLabel)
+                        .addGap(97, 97, 97))))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        cadastroPanelLayout.setVerticalGroup(
+            cadastroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cadastroPanelLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(cadastroLabel)
+                .addGap(18, 18, 18)
+                .addComponent(cadastroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cadastroSenhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
+
+        add(cadastroPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getCadastrarButton() {
+        return cadastrarButton;
+    }
+
+    public JTextField getCadastroSenhaTextField() {
+        return cadastroSenhaTextField;
+    }
+
+    public JTextField getCadastroTextField() {
+        return cadastroTextField;
+    }
+
+    public JButton getVoltarButton() {
+        return voltarButton;
+    }
+    
+    
+    
     public void setController(RPGController controller) {
         this.controller = controller;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cadastrarButton;
+    private javax.swing.JLabel cadastroLabel;
+    private javax.swing.JPanel cadastroPanel;
+    private javax.swing.JTextField cadastroSenhaTextField;
+    private javax.swing.JTextField cadastroTextField;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

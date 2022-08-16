@@ -5,6 +5,8 @@
 package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.RPGController;
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -28,14 +30,127 @@ public class AutenticarUsuario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setMaximumSize(new java.awt.Dimension(25, 2147483647));
+        jPanel1 = new javax.swing.JPanel();
+        senhaTextField = new javax.swing.JTextField();
+        loginLabel = new javax.swing.JLabel();
+        loginTextField = new javax.swing.JTextField();
+        logarButton = new javax.swing.JButton();
+        signUpButton = new javax.swing.JButton();
+        voltarButton = new javax.swing.JButton();
+
+        setMaximumSize(new java.awt.Dimension(640, 480));
+        setMinimumSize(new java.awt.Dimension(640, 480));
+        setPreferredSize(new java.awt.Dimension(640, 480));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(220, 220, 220));
+        jPanel1.setPreferredSize(new java.awt.Dimension(300, 350));
+
+        senhaTextField.setText("Digite sua senha");
+        senhaTextField.setMaximumSize(new java.awt.Dimension(256, 64));
+        senhaTextField.setMinimumSize(new java.awt.Dimension(256, 64));
+        senhaTextField.setPreferredSize(new java.awt.Dimension(256, 64));
+
+        loginLabel.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
+        loginLabel.setText("LOGIN");
+
+        loginTextField.setText("Digite seu nome de usuario");
+        loginTextField.setMaximumSize(new java.awt.Dimension(256, 64));
+        loginTextField.setMinimumSize(new java.awt.Dimension(256, 64));
+        loginTextField.setPreferredSize(new java.awt.Dimension(256, 64));
+
+        logarButton.setText("SIGN IN");
+        logarButton.setMaximumSize(new java.awt.Dimension(256, 64));
+        logarButton.setMinimumSize(new java.awt.Dimension(256, 64));
+        logarButton.setPreferredSize(new java.awt.Dimension(256, 64));
+
+        signUpButton.setText("SIGN UP");
+        signUpButton.setMaximumSize(new java.awt.Dimension(256, 64));
+        signUpButton.setMinimumSize(new java.awt.Dimension(256, 64));
+        signUpButton.setPreferredSize(new java.awt.Dimension(256, 64));
+        signUpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signUpButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(loginLabel)
+                        .addGap(118, 118, 118))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(loginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(logarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(loginLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(loginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(logarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
+
+        voltarButton.setText("Voltar");
+        add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signUpButtonActionPerformed
+
+    public JButton getLogarButton() {
+        return logarButton;
+    }
+
+    public JTextField getLoginTextField1() {
+        return loginTextField;
+    }
+
+    public JTextField getSenhaTextField() {
+        return senhaTextField;
+    }
+
+    public JButton getSignUpButton() {
+        return signUpButton;
+    }
+
+    public JButton getVoltarButton() {
+        return voltarButton;
+    }
+    
+    
+    
     public void setController(RPGController controller) {
         this.controller = controller;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton logarButton;
+    private javax.swing.JLabel loginLabel;
+    private javax.swing.JTextField loginTextField;
+    private javax.swing.JTextField senhaTextField;
+    private javax.swing.JButton signUpButton;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

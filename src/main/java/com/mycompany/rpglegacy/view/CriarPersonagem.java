@@ -6,6 +6,9 @@
 package com.mycompany.rpglegacy.view;
     
 import com.mycompany.rpglegacy.controller.RPGController;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 
 /**
  *
@@ -32,7 +35,7 @@ public class CriarPersonagem extends javax.swing.JPanel {
         tituloPanel = new javax.swing.JPanel();
         tituloLabel = new javax.swing.JLabel();
         classeComboBox = new javax.swing.JComboBox<>();
-        nomeTextField = new javax.swing.JTextField();
+        nomeHeroiTextField = new javax.swing.JTextField();
         nomeLabel = new javax.swing.JLabel();
         classeLabel = new javax.swing.JLabel();
         criarHeroiButton = new javax.swing.JButton();
@@ -40,7 +43,12 @@ public class CriarPersonagem extends javax.swing.JPanel {
         vidaHeroiLabel = new javax.swing.JLabel();
         atkHeroiLabel = new javax.swing.JLabel();
         defHeroiLabel = new javax.swing.JLabel();
-        defHeroiLabel1 = new javax.swing.JLabel();
+        spdHeroiLabel = new javax.swing.JLabel();
+        vidaValorLabel = new javax.swing.JLabel();
+        atkValorLabel = new javax.swing.JLabel();
+        defValorLabel = new javax.swing.JLabel();
+        spdValorLabel = new javax.swing.JLabel();
+        voltarButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
@@ -64,13 +72,18 @@ public class CriarPersonagem extends javax.swing.JPanel {
                 classeComboBoxItemStateChanged(evt);
             }
         });
-
-        nomeTextField.setMaximumSize(new java.awt.Dimension(256, 32));
-        nomeTextField.setMinimumSize(new java.awt.Dimension(256, 32));
-        nomeTextField.setPreferredSize(new java.awt.Dimension(256, 32));
-        nomeTextField.addActionListener(new java.awt.event.ActionListener() {
+        classeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeTextFieldActionPerformed(evt);
+                classeComboBoxActionPerformed(evt);
+            }
+        });
+
+        nomeHeroiTextField.setMaximumSize(new java.awt.Dimension(256, 32));
+        nomeHeroiTextField.setMinimumSize(new java.awt.Dimension(256, 32));
+        nomeHeroiTextField.setPreferredSize(new java.awt.Dimension(256, 32));
+        nomeHeroiTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeHeroiTextFieldActionPerformed(evt);
             }
         });
 
@@ -98,7 +111,15 @@ public class CriarPersonagem extends javax.swing.JPanel {
 
         defHeroiLabel.setText("Defesa: ");
 
-        defHeroiLabel1.setText("Velociadade: ");
+        spdHeroiLabel.setText("Velociadade: ");
+
+        vidaValorLabel.setText("00");
+
+        atkValorLabel.setText("00");
+
+        defValorLabel.setText("00");
+
+        spdValorLabel.setText("00");
 
         javax.swing.GroupLayout atributosPanelLayout = new javax.swing.GroupLayout(atributosPanel);
         atributosPanel.setLayout(atributosPanelLayout);
@@ -107,77 +128,105 @@ public class CriarPersonagem extends javax.swing.JPanel {
             .addGroup(atributosPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(atributosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(vidaHeroiLabel)
-                    .addComponent(atkHeroiLabel)
-                    .addComponent(defHeroiLabel)
-                    .addComponent(defHeroiLabel1))
-                .addContainerGap(161, Short.MAX_VALUE))
+                    .addGroup(atributosPanelLayout.createSequentialGroup()
+                        .addComponent(vidaHeroiLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(vidaValorLabel))
+                    .addGroup(atributosPanelLayout.createSequentialGroup()
+                        .addComponent(spdHeroiLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                        .addComponent(spdValorLabel))
+                    .addGroup(atributosPanelLayout.createSequentialGroup()
+                        .addComponent(atkHeroiLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(atkValorLabel))
+                    .addGroup(atributosPanelLayout.createSequentialGroup()
+                        .addComponent(defHeroiLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(defValorLabel)))
+                .addContainerGap())
         );
         atributosPanelLayout.setVerticalGroup(
             atributosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(atributosPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(vidaHeroiLabel)
+                .addGroup(atributosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vidaHeroiLabel)
+                    .addComponent(vidaValorLabel))
                 .addGap(18, 18, 18)
-                .addComponent(atkHeroiLabel)
+                .addGroup(atributosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(atkHeroiLabel)
+                    .addComponent(atkValorLabel))
                 .addGap(18, 18, 18)
-                .addComponent(defHeroiLabel)
+                .addGroup(atributosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(defHeroiLabel)
+                    .addComponent(defValorLabel))
                 .addGap(18, 18, 18)
-                .addComponent(defHeroiLabel1)
+                .addGroup(atributosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(spdHeroiLabel)
+                    .addComponent(spdValorLabel))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
+
+        voltarButton.setText("Voltar");
 
         javax.swing.GroupLayout tituloPanelLayout = new javax.swing.GroupLayout(tituloPanel);
         tituloPanel.setLayout(tituloPanelLayout);
         tituloPanelLayout.setHorizontalGroup(
             tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tituloPanelLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(tituloLabel)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(tituloPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tituloPanelLayout.createSequentialGroup()
-                        .addComponent(criarHeroiButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1))
+                        .addComponent(tituloLabel)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(tituloPanelLayout.createSequentialGroup()
                         .addComponent(atributosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(41, 41, 41)
-                        .addGroup(tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(classeLabel)
-                            .addComponent(classeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nomeLabel))))
-                .addGap(17, 17, 17))
+                        .addGap(40, 40, 40)
+                        .addGroup(tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(nomeHeroiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(classeLabel)
+                                .addComponent(classeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nomeLabel))
+                            .addGroup(tituloPanelLayout.createSequentialGroup()
+                                .addComponent(criarHeroiButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)))
+                        .addGap(17, 17, 17))))
+            .addGroup(tituloPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(voltarButton)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         tituloPanelLayout.setVerticalGroup(
             tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tituloPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(tituloLabel)
                 .addGap(18, 18, 18)
                 .addComponent(nomeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(tituloPanelLayout.createSequentialGroup()
-                        .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nomeHeroiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(classeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(classeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(classeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(criarHeroiButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(atributosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(criarHeroiButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addComponent(voltarButton)
                 .addContainerGap())
         );
 
         add(tituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
+    private void nomeHeroiTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeHeroiTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomeTextFieldActionPerformed
+    }//GEN-LAST:event_nomeHeroiTextFieldActionPerformed
 
     private void criarHeroiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarHeroiButtonActionPerformed
 //        controller.criarHeroi();
@@ -187,23 +236,62 @@ public class CriarPersonagem extends javax.swing.JPanel {
         System.out.println(this.classeComboBox.getSelectedItem());
     }//GEN-LAST:event_classeComboBoxItemStateChanged
 
+    private void classeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_classeComboBoxActionPerformed
+
+    public JButton getVoltarButton() {
+        return voltarButton;
+    }
+    
     public void setController(RPGController controller) {
         this.controller = controller;
     }
+
+    public JLabel getAtkValorLabel() {
+        return atkValorLabel;
+    }
+
+    public JComboBox<String> getClasseComboBox() {
+        return classeComboBox;
+    }
+
+    public JButton getCriarHeroiButton() {
+        return criarHeroiButton;
+    }
+
+    public JLabel getDefValorLabel() {
+        return defValorLabel;
+    }
+
+    public JLabel getSpdValorLabel() {
+        return spdValorLabel;
+    }
+
+    public JLabel getVidaValorLabel() {
+        return vidaValorLabel;
+    }
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel atkHeroiLabel;
+    private javax.swing.JLabel atkValorLabel;
     private javax.swing.JPanel atributosPanel;
     private javax.swing.JComboBox<String> classeComboBox;
     private javax.swing.JLabel classeLabel;
     private javax.swing.JButton criarHeroiButton;
     private javax.swing.JLabel defHeroiLabel;
-    private javax.swing.JLabel defHeroiLabel1;
+    private javax.swing.JLabel defValorLabel;
+    private javax.swing.JTextField nomeHeroiTextField;
     private javax.swing.JLabel nomeLabel;
-    private javax.swing.JTextField nomeTextField;
+    private javax.swing.JLabel spdHeroiLabel;
+    private javax.swing.JLabel spdValorLabel;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JPanel tituloPanel;
     private javax.swing.JLabel vidaHeroiLabel;
+    private javax.swing.JLabel vidaValorLabel;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 
 }
