@@ -36,18 +36,18 @@ public class MainFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(640, 480));
 
         principalPanel.setBackground(new java.awt.Color(255, 255, 255));
-        principalPanel.setMaximumSize(new java.awt.Dimension(620, 440));
-        principalPanel.setMinimumSize(new java.awt.Dimension(620, 440));
-        principalPanel.setPreferredSize(new java.awt.Dimension(620, 440));
+        principalPanel.setMaximumSize(new java.awt.Dimension(640, 480));
+        principalPanel.setMinimumSize(new java.awt.Dimension(640, 480));
+        principalPanel.setPreferredSize(new java.awt.Dimension(640, 480));
         principalPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         navegacaoPanel.setBackground(new java.awt.Color(255, 255, 255));
-        navegacaoPanel.setMaximumSize(new java.awt.Dimension(620, 440));
-        navegacaoPanel.setMinimumSize(new java.awt.Dimension(620, 480));
+        navegacaoPanel.setMaximumSize(new java.awt.Dimension(640, 480));
+        navegacaoPanel.setMinimumSize(new java.awt.Dimension(640, 480));
         navegacaoPanel.setOpaque(false);
-        navegacaoPanel.setPreferredSize(new java.awt.Dimension(620, 440));
+        navegacaoPanel.setPreferredSize(new java.awt.Dimension(640, 480));
         navegacaoPanel.setLayout(new java.awt.CardLayout());
-        principalPanel.add(navegacaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 440));
+        principalPanel.add(navegacaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -55,7 +55,7 @@ public class MainFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(principalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(principalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

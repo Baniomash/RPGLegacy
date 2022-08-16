@@ -43,6 +43,7 @@ public class AutenticarUsuario extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(640, 480));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

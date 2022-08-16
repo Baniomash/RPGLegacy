@@ -52,6 +52,7 @@ public class CriarPersonagem extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(640, 480));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -63,7 +64,8 @@ public class CriarPersonagem extends javax.swing.JPanel {
         tituloLabel.setFont(new java.awt.Font("Cantarell", 1, 36)); // NOI18N
         tituloLabel.setText("CRIE SEU HEROI!");
 
-        classeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        classeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cavaleiro", "Barbaro", "Paladino" }));
+        classeComboBox.setToolTipText("");
         classeComboBox.setMaximumSize(new java.awt.Dimension(255, 32));
         classeComboBox.setMinimumSize(new java.awt.Dimension(255, 32));
         classeComboBox.setPreferredSize(new java.awt.Dimension(255, 32));
@@ -238,7 +240,7 @@ public class CriarPersonagem extends javax.swing.JPanel {
     }//GEN-LAST:event_criarHeroiButtonActionPerformed
 
     private void classeComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_classeComboBoxItemStateChanged
-        System.out.println(this.classeComboBox.getSelectedItem());
+        // botar as parada aqui.
     }//GEN-LAST:event_classeComboBoxItemStateChanged
 
     private void classeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classeComboBoxActionPerformed

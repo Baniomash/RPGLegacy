@@ -40,6 +40,7 @@ public class CadastrarUsuario extends javax.swing.JPanel {
         senhaPassField = new javax.swing.JPasswordField();
         erroLabel = new javax.swing.JLabel();
 
+        setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         voltarButton.setText("Voltar");
