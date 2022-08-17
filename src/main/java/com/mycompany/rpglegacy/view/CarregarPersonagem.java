@@ -5,6 +5,7 @@
 package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.RPGController;
+import javax.swing.JTable;
 
 /**
  *
@@ -29,11 +30,9 @@ public class CarregarPersonagem extends javax.swing.JPanel {
     private void initComponents() {
 
         listaHeroisPanel = new javax.swing.JPanel();
-        nomeLabel = new javax.swing.JLabel();
-        nomeList = new javax.swing.JList<>();
-        levelLabel = new javax.swing.JLabel();
-        levelList = new javax.swing.JList<>();
-        carregarHeroiButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        heroisTable = new javax.swing.JTable();
+        voltarButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
@@ -47,34 +46,36 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         listaHeroisPanel.setMinimumSize(new java.awt.Dimension(400, 400));
         listaHeroisPanel.setPreferredSize(new java.awt.Dimension(400, 400));
 
-        nomeLabel.setText("Nome");
+        heroisTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "Level", "Progresso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        nomeList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        nomeList.setMaximumSize(new java.awt.Dimension(90, 90));
-        nomeList.setMinimumSize(new java.awt.Dimension(90, 90));
-        nomeList.setPreferredSize(new java.awt.Dimension(90, 90));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        levelLabel.setText("Level");
-
-        levelList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        levelList.setMaximumSize(new java.awt.Dimension(90, 90));
-        levelList.setMinimumSize(new java.awt.Dimension(90, 90));
-        levelList.setPreferredSize(new java.awt.Dimension(90, 90));
-
-        carregarHeroiButton.setText("Carregar");
-        carregarHeroiButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carregarHeroiButtonActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        heroisTable.setMaximumSize(new java.awt.Dimension(400, 400));
+        heroisTable.setMinimumSize(new java.awt.Dimension(400, 400));
+        heroisTable.setPreferredSize(new java.awt.Dimension(400, 400));
+        jScrollPane1.setViewportView(heroisTable);
 
         javax.swing.GroupLayout listaHeroisPanelLayout = new javax.swing.GroupLayout(listaHeroisPanel);
         listaHeroisPanel.setLayout(listaHeroisPanelLayout);
@@ -82,66 +83,65 @@ public class CarregarPersonagem extends javax.swing.JPanel {
             listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listaHeroisPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nomeList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nomeLabel))
-                .addGap(26, 26, 26)
-                .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(levelLabel)
-                    .addGroup(listaHeroisPanelLayout.createSequentialGroup()
-                        .addComponent(levelList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(carregarHeroiButton)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         listaHeroisPanelLayout.setVerticalGroup(
             listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listaHeroisPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeLabel)
-                    .addComponent(levelLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nomeList, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(levelList, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(carregarHeroiButton)))
-                .addGap(8, 8, 8))
+            .addGroup(listaHeroisPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
+
+        voltarButton.setText("Voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(231, Short.MAX_VALUE)
-                .addComponent(listaHeroisPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(voltarButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(listaHeroisPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(listaHeroisPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(voltarButton)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(listaHeroisPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void carregarHeroiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregarHeroiButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_carregarHeroiButtonActionPerformed
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        controller.irTelaPrincipal();
+    }//GEN-LAST:event_voltarButtonActionPerformed
 
     public void setController(RPGController controller) {
         this.controller = controller;
     }
+
+    public JTable getHeroisTable() {
+        return heroisTable;
+    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton carregarHeroiButton;
-    private javax.swing.JLabel levelLabel;
-    private javax.swing.JList<String> levelList;
+    private javax.swing.JTable heroisTable;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel listaHeroisPanel;
-    private javax.swing.JLabel nomeLabel;
-    private javax.swing.JList<String> nomeList;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

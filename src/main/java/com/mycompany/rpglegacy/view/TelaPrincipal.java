@@ -38,6 +38,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(620, 440));
         setMinimumSize(new java.awt.Dimension(620, 440));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(620, 440));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
