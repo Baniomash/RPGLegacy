@@ -28,7 +28,12 @@ public class CarregarPersonagem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        listaHeroisPanel = new javax.swing.JPanel();
+        nomeLabel = new javax.swing.JLabel();
+        nomeList = new javax.swing.JList<>();
+        levelLabel = new javax.swing.JLabel();
+        levelList = new javax.swing.JList<>();
+        carregarHeroiButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
@@ -36,19 +41,73 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(640, 480));
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(400, 400));
-        jPanel1.setMinimumSize(new java.awt.Dimension(400, 400));
-        jPanel1.setPreferredSize(new java.awt.Dimension(400, 400));
+        listaHeroisPanel.setBackground(new java.awt.Color(232, 232, 232));
+        listaHeroisPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escolha um Heroi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        listaHeroisPanel.setMaximumSize(new java.awt.Dimension(400, 400));
+        listaHeroisPanel.setMinimumSize(new java.awt.Dimension(400, 400));
+        listaHeroisPanel.setPreferredSize(new java.awt.Dimension(400, 400));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        nomeLabel.setText("Nome");
+
+        nomeList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        nomeList.setMaximumSize(new java.awt.Dimension(90, 90));
+        nomeList.setMinimumSize(new java.awt.Dimension(90, 90));
+        nomeList.setPreferredSize(new java.awt.Dimension(90, 90));
+
+        levelLabel.setText("Level");
+
+        levelList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        levelList.setMaximumSize(new java.awt.Dimension(90, 90));
+        levelList.setMinimumSize(new java.awt.Dimension(90, 90));
+        levelList.setPreferredSize(new java.awt.Dimension(90, 90));
+
+        carregarHeroiButton.setText("Carregar");
+        carregarHeroiButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carregarHeroiButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout listaHeroisPanelLayout = new javax.swing.GroupLayout(listaHeroisPanel);
+        listaHeroisPanel.setLayout(listaHeroisPanelLayout);
+        listaHeroisPanelLayout.setHorizontalGroup(
+            listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listaHeroisPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nomeList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeLabel))
+                .addGap(26, 26, 26)
+                .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(levelLabel)
+                    .addGroup(listaHeroisPanelLayout.createSequentialGroup()
+                        .addComponent(levelList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(carregarHeroiButton)))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 468, Short.MAX_VALUE)
+        listaHeroisPanelLayout.setVerticalGroup(
+            listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listaHeroisPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nomeLabel)
+                    .addComponent(levelLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nomeList, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(levelList, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(carregarHeroiButton)))
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -56,24 +115,33 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(234, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(231, Short.MAX_VALUE)
+                .addComponent(listaHeroisPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                .addComponent(listaHeroisPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void carregarHeroiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregarHeroiButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_carregarHeroiButtonActionPerformed
 
     public void setController(RPGController controller) {
         this.controller = controller;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton carregarHeroiButton;
+    private javax.swing.JLabel levelLabel;
+    private javax.swing.JList<String> levelList;
+    private javax.swing.JPanel listaHeroisPanel;
+    private javax.swing.JLabel nomeLabel;
+    private javax.swing.JList<String> nomeList;
     // End of variables declaration//GEN-END:variables
 }
