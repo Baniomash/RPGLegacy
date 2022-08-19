@@ -17,7 +17,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        fundoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/teste.png")));
+        fundoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fundo.gif")));
     }
 
     /**
@@ -44,7 +44,6 @@ public class MainFrame extends javax.swing.JFrame {
         navegacaoPanel.setLayout(new java.awt.CardLayout());
         getContentPane().add(navegacaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        fundoLabel.setOpaque(true);
         fundoLabel.setPreferredSize(new java.awt.Dimension(640, 480));
         getContentPane().add(fundoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 640, 490));
 
