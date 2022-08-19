@@ -181,13 +181,22 @@ public class InimigoDao {
     }
     public List<Monstro> getMonstroPorFachaLvel(int lvelMin, int lvelMax) throws SQLException {
         String sql = "SELECT * FROM inimigos WHERE "
-                + "tipo IS NOT NULL AND (lvel >= ? OR lvel <= ?)";
+                + "tipo IS NOT NULL AND (lvel >= ? AND lvel <= ?)";
 
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement pstm = con.prepareStatement(sql);
-
+        
+        if(lvelMin<1){
+        pstm.setInt(1, 1);
+        }
+        if(lvelMax<1 || lvelMax<lvelMin){
+        pstm.setInt(2, lvelMin);
+        }
+        
+        if(lvelMin>=1 && lvelMax>=1 && lvelMax>=lvelMin){
         pstm.setInt(1, lvelMin);
-        pstm.setInt(2, lvelMax);
+        pstm.setInt(2, lvelMax);            
+        }
 
         ResultSet resultado = pstm.executeQuery();
         ArrayList<Monstro> respostaFinal = new ArrayList();

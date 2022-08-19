@@ -36,7 +36,7 @@ public class RPGController {
     private final CarregarPersonagem carregarPersonagem = new CarregarPersonagem();
     private final AutenticarUsuario autenticarUsuario = new AutenticarUsuario();
     private final CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
-    private final BattleController btController = new BattleController();
+    private BattleController btController;
     
     
     private JPanel navPanel;
@@ -167,9 +167,15 @@ public class RPGController {
         return new ArrayList();
     }
     
-    public void iniciarJogo(){
+    public void atualizaListaHerois(){
+        
+    }
+    
+    public void iniciarJogo(int IdHeroi){
         mainFrame.setVisible(false);
         mainFrame.dispose();
+        btController = new BattleController(this);
+        btController.setHeroiUsuario(IdHeroi);
         btController.iniciaTelas();
     }
     
@@ -253,6 +259,7 @@ public class RPGController {
         int sped = Integer.parseInt(this.criarPersonagem.getSpdValorLabel().getText());
         if(!"".equals(personName)){
             criarHeroi(personName, atak, defe, sped, vidaMaxima, this.usr);
+            this.irCarregarPersonagem();
         }
     }
     

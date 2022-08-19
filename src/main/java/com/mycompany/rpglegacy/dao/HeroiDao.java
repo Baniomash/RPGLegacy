@@ -22,7 +22,15 @@ import java.util.List;
 public class HeroiDao {
     private UsuarioDao dao = new UsuarioDao();
     
-    public void criar(Heroi heroi) throws SQLException {
+    public Boolean criar(Heroi heroi) throws SQLException {
+        Heroi heroiNomeIgual = this.getHeroiPorPersonNameEIdUsuario(heroi.getPersonName(), heroi.getUsuario().getId());
+        List<Heroi> listaHeroisUsuario = this.getHeroisPorIdUsuario(heroi.getUsuario().getId());
+        if(heroiNomeIgual != null){
+            return false;
+        } else if(listaHeroisUsuario.size()>4){
+            return false;
+        }
+        
         String sql = "INSERT INTO herois (personName, atak, defe, sped, vidaMaxima, vidaAtual, expNxtLvel, lvel, progress, id_usuario) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -42,42 +50,48 @@ public class HeroiDao {
         
 
         pstm.execute();
+        return true;
     }
     
     public void salvar(Heroi heroi) throws SQLException {
-        String sql = "UPDATE herois SET personName=?, atak=?, defe=?, sped=?, "
+        String sql = "UPDATE herois SET atak=?, defe=?, sped=?, "
                 + "vidaMaxima=?, vidaAtual=?, expNxtLvel=?, lvel=?, progress=? "
                 + "WHERE id=?";
 
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement pstm = con.prepareStatement(sql);
         
-        pstm.setString(1, heroi.getPersonName());
+        pstm.setInt(1, heroi.getAtak());
         pstm.setInt(2, heroi.getAtak());
         pstm.setInt(3, heroi.getAtak());
         pstm.setInt(4, heroi.getAtak());
         pstm.setInt(5, heroi.getAtak());
         pstm.setInt(6, heroi.getAtak());
         pstm.setInt(7, heroi.getAtak());
-        pstm.setInt(8, heroi.getAtak());
-        pstm.setInt(9, heroi.getProgress().getValor());
-        pstm.setInt(10, heroi.getId());
+        pstm.setInt(8, heroi.getProgress().getValor());
+        pstm.setInt(9, heroi.getId());
         
 
         pstm.execute();
     }
     
-    public void mudarHeroiNome(String novoNome, int idHeroi) throws SQLException {
+    public Boolean mudarHeroiNome(String novoNome, int idHeroi) throws SQLException {
+        Heroi heroiOriginal = this.getHeroiPorId(idHeroi);
+        Heroi heroiNomeIgual = this.getHeroiPorPersonNameEIdUsuario(novoNome, heroiOriginal.getUsuario().getId());
+        if(heroiNomeIgual != null){
+            return false;
+        }
         String sql = "UPDATE herois SET personName=?"
                 + "WHERE id=?";
 
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement pstm = con.prepareStatement(sql);
-        
+
         pstm.setString(1, novoNome);
         pstm.setInt(2, idHeroi);
 
         pstm.execute();
+        return true;
     }
     
     public void deletarHeroiPorId(int idHeroi) throws SQLException {
@@ -99,6 +113,36 @@ public class HeroiDao {
         PreparedStatement pstm = con.prepareStatement(sql);
 
         pstm.setInt(1, id);
+
+        ResultSet resultado = pstm.executeQuery();
+        Heroi respostaFinal = null;
+        
+        if(resultado.next()){
+            int novoId = resultado.getInt("id");
+            String novoPersonName = resultado.getString("personName");
+            int novoAtak = resultado.getInt("atak");
+            int novoDefe = resultado.getInt("defe");
+            int novoSped = resultado.getInt("sped");
+            int novoVidaMaxima = resultado.getInt("vidaMaxima");
+            int novoVidaAtual = resultado.getInt("vidaAtual");
+            int novoExpNxtLvel = resultado.getInt("expNxtLvel");
+            int novoLvel = resultado.getInt("lvel");
+            Progress novoProgress = new Progress(resultado.getInt("progress"));
+            Usuario novoUsuario = dao.getUsuarioPorId(resultado.getInt("id_usuario"));
+            
+            respostaFinal = new Heroi(novoId, novoPersonName, novoAtak, novoDefe, novoSped, novoVidaMaxima, novoVidaAtual, novoExpNxtLvel, novoLvel, novoProgress, novoUsuario);
+        }
+        return respostaFinal;
+    }
+    public Heroi getHeroiPorPersonNameEIdUsuario(String personName, int idUsuario) throws SQLException {
+        String sql = "SELECT * FROM herois WHERE "
+                + "personName = ? AND id_usuario = ?";
+
+        Connection con = DatabaseConnection.getConnection();
+        PreparedStatement pstm = con.prepareStatement(sql);
+        
+        pstm.setString(1, personName);
+        pstm.setInt(2, idUsuario);
 
         ResultSet resultado = pstm.executeQuery();
         Heroi respostaFinal = null;

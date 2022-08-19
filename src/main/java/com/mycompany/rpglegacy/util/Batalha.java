@@ -14,4 +14,8 @@ public interface Batalha {
     public static final String MONSTRO_1 = "monstro1";
     public static final String MONSTRO_2 = "monstro2";
     public static final String MONSTRO_3 = "monstro3";
+    public static final String BATALHA_FACIL = "batalhaFacil";
+    public static final String BATALHA_MEDIA = "batalhaMedia";
+    public static final String BATALHA_DIFICIL = "batalhaDificil";
+    
 }
