@@ -40,7 +40,7 @@ public abstract class Personagem <T extends Personagem> {
         this.sped = sped;
         this.vidaAtual = vidaMaxima;
         this.vidaMaxima = vidaMaxima;
-        this.lvel = 1;
+        this.lvel = 01;
     }
 
     public void setLvel(int lvel) {

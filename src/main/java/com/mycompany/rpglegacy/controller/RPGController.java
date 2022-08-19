@@ -22,8 +22,10 @@ import com.mycompany.rpglegacy.util.Telas;
 import com.mycompany.rpglegacy.view.AutenticarUsuario;
 import com.mycompany.rpglegacy.view.CadastrarUsuario;
 import com.mycompany.rpglegacy.view.CarregarPersonagem;
+import java.awt.LayoutManager;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -122,6 +124,8 @@ public class RPGController {
     }
     public void irCarregarPersonagem(){
         navLayout.show(navPanel, Telas.CARREGAR_PERSONAGEM);
+        atualizaListaHerois();
+        
 //        carregarPersonagem.confirmaAutenticacao();
     }
     
@@ -168,7 +172,15 @@ public class RPGController {
     }
     
     public void atualizaListaHerois(){
-        
+        try {
+            carregarPersonagem.getListaHerois().setModel(new DefaultListModel<>());
+            DefaultListModel modelo = (DefaultListModel) carregarPersonagem.getListaHerois().getModel();
+            List<Heroi> herois;
+            herois = hroDao.getHeroisPorIdUsuario(this.usr.getId());
+            modelo.addAll(herois);
+        } catch (SQLException ex) {
+            Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void iniciarJogo(int IdHeroi){
