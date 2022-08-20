@@ -14,4 +14,6 @@ public interface Telas {
     public static final String CARREGAR_PERSONAGEM = "carregarPersonagem";
     public static final String AUTENTICAR_USUARIO = "autenticarUsuario";
     public static final String CADASTRAR_USUARIO = "cadastrarUsuario";
+    public static final String TELA_BATALHA = "telaBatalha";
+    public static final String MENU_PRINCIPAL = "menuPrincipal";
 }

@@ -4,6 +4,7 @@
  */
 package com.mycompany.rpglegacy.view;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -87,6 +88,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     public JPanel getNavegacaoPanel() {
         return navegacaoPanel;
+    }
+
+    public JLabel getFundoLabel() {
+        return fundoLabel;
     }
 
 

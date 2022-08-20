@@ -4,18 +4,18 @@
  */
 package com.mycompany.rpglegacy.view;
 
-import com.mycompany.rpglegacy.controller.RPGController;
+import com.mycompany.rpglegacy.controller.BattleController;
 
 /**
  *
  * @author Administrador
  */
-public class Batalha extends javax.swing.JPanel {
-    private RPGController controller;
+public class TelaBatalha extends javax.swing.JPanel {
+    private BattleController controller;
     /**
      * Creates new form Batalha
      */
-    public Batalha() {
+    public TelaBatalha() {
         initComponents();
     }
 
@@ -173,9 +173,13 @@ public class Batalha extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton5ActionPerformed
-        controller.irTelaPrincipal();
+//        controller.irTelaPrincipal();
     }//GEN-LAST:event_voltarButton5ActionPerformed
 
+    public void setController(BattleController controller) {
+        this.controller = controller;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atacarButton;

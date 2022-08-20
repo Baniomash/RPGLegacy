@@ -4,14 +4,15 @@
  */
 package com.mycompany.rpglegacy.view;
 
-import com.mycompany.rpglegacy.controller.RPGController;
+import com.mycompany.rpglegacy.controller.BattleController;
+import javax.swing.JLabel;
 
 /**
  *
  * @author Administrador
  */
 public class MenuPrincipal extends javax.swing.JPanel {
-    private RPGController controller;
+    private BattleController controller;
     /**
      * Creates new form MenuPrincipal
      */
@@ -198,9 +199,17 @@ public class MenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_acao1ButtonActionPerformed
 
     private void voltarButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton5ActionPerformed
-        controller.irTelaPrincipal();
+        controller.voltarTelaIncial();
     }//GEN-LAST:event_voltarButton5ActionPerformed
 
+    public void setController(BattleController controller) {
+        this.controller = controller;
+    }
+
+    public JLabel getProgressoLabel() {
+        return progressoLabel;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acao1Button;

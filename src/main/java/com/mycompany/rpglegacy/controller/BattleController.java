@@ -11,12 +11,18 @@ import com.mycompany.rpglegacy.model.Heroi;
 import com.mycompany.rpglegacy.model.Monstro;
 import com.mycompany.rpglegacy.model.Vilao;
 import com.mycompany.rpglegacy.util.Batalha;
+import com.mycompany.rpglegacy.util.Telas;
+import com.mycompany.rpglegacy.view.MainFrame;
+import com.mycompany.rpglegacy.view.MenuPrincipal;
+import com.mycompany.rpglegacy.view.TelaBatalha;
+import java.awt.CardLayout;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 
 /**
  *
@@ -28,15 +34,42 @@ public class BattleController {
     private Heroi heroiUsuario;
     private HeroiDao hroDao = new HeroiDao();
     private InimigoDao inmDao = new InimigoDao();
+    
+    private MainFrame mainFrame;
+    private MenuPrincipal menuPrincipal = new MenuPrincipal();
+    private TelaBatalha telaBatalha = new TelaBatalha();
 
-    public BattleController(RPGController mainController) {
+    private JPanel navPanel;
+    private CardLayout navLayout;
+    
+    public BattleController(RPGController mainController, MainFrame mainFrame, JPanel navPanel, CardLayout navLayout) {
         this.mainController = mainController;
+        this.mainFrame = mainFrame;
+        this.navPanel = navPanel;
+        this.navLayout = navLayout;
+        setController();
     }
     
-    
+    private void setController() {
+        menuPrincipal.setController(this);
+        telaBatalha.setController(this);
+    }
     
     public void iniciaTelas(){
+        navPanel.add(this.menuPrincipal, Telas.MENU_PRINCIPAL);
+        mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
         
+        irTelaPrincipal();
+    }
+    
+    public void irTelaPrincipal() {
+        navLayout.show(navPanel, Telas.MENU_PRINCIPAL);
+        menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+    }
+    
+    public void voltarTelaIncial(){
+        navPanel.removeAll();
+        mainController.iniciaTelas();
     }
     
     public void receberMonstros(String dificuldade){
@@ -116,6 +149,8 @@ public class BattleController {
             Logger.getLogger(BattleController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+
 
     
 }

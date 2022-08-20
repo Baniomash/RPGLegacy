@@ -5,16 +5,17 @@
 package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.RPGController;
+import com.mycompany.rpglegacy.model.Heroi;
 import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JTable;
 
 /**
  *
  * @author Windows10
  */
 public class CarregarPersonagem extends javax.swing.JPanel {
+
     RPGController controller;
+
     /**
      * Creates new form CarregarPersonagem
      */
@@ -63,7 +64,7 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         spriteHeroiPanel.setLayout(spriteHeroiPanelLayout);
         spriteHeroiPanelLayout.setHorizontalGroup(
             spriteHeroiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 186, Short.MAX_VALUE)
+            .addGap(0, 216, Short.MAX_VALUE)
         );
         spriteHeroiPanelLayout.setVerticalGroup(
             spriteHeroiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +93,7 @@ public class CarregarPersonagem extends javax.swing.JPanel {
 
         ListNameHeaderLabel.setText("Nome");
 
-        ListNameHeaderLabel1.setText("Level");
+        ListNameHeaderLabel1.setText("/    Level    /");
 
         ListNameHeaderLabel2.setText("Progresso");
 
@@ -100,14 +101,14 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         ListHeaderPanel.setLayout(ListHeaderPanelLayout);
         ListHeaderPanelLayout.setHorizontalGroup(
             ListHeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListHeaderPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListHeaderPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ListNameHeaderLabel)
-                .addGap(100, 100, 100)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ListNameHeaderLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ListNameHeaderLabel2)
-                .addContainerGap())
+                .addGap(62, 62, 62))
         );
         ListHeaderPanelLayout.setVerticalGroup(
             ListHeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +127,7 @@ public class CarregarPersonagem extends javax.swing.JPanel {
             listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listaHeroisPanelLayout.createSequentialGroup()
                 .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                     .addComponent(ListHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusHeroiPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -141,7 +142,7 @@ public class CarregarPersonagem extends javax.swing.JPanel {
                     .addGroup(listaHeroisPanelLayout.createSequentialGroup()
                         .addComponent(ListHeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(69, 69, 69))
         );
 
@@ -176,27 +177,26 @@ public class CarregarPersonagem extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
-        controller.irTelaPrincipal();
+//        controller.irTelaPrincipal();
+        this.controller.iniciarJogo();
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     public void setController(RPGController controller) {
         this.controller = controller;
     }
 
-    public JList<String> getListaHerois() {
+    public JList<Heroi> getListaHerois() {
         return listaHerois;
     }
 
-    
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ListHeaderPanel;
     private javax.swing.JLabel ListNameHeaderLabel;
     private javax.swing.JLabel ListNameHeaderLabel1;
     private javax.swing.JLabel ListNameHeaderLabel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList<String> listaHerois;
+    private javax.swing.JList<Heroi> listaHerois;
     private javax.swing.JPanel listaHeroisPanel;
     private javax.swing.JPanel spriteHeroiPanel;
     private javax.swing.JPanel statusHeroiPanel;
