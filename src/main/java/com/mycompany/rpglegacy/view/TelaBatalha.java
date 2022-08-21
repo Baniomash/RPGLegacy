@@ -30,7 +30,7 @@ public class TelaBatalha extends javax.swing.JPanel {
 
         voltarButton5 = new javax.swing.JButton();
         spriteAdversarioPanel = new javax.swing.JPanel();
-        nomeHeroiLabel1 = new javax.swing.JLabel();
+        nomeAdversarioLabel = new javax.swing.JLabel();
         spriteHeroiPanel = new javax.swing.JPanel();
         nomeHeroiLabel = new javax.swing.JLabel();
         infoPanel = new javax.swing.JPanel();
@@ -40,6 +40,8 @@ public class TelaBatalha extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(640, 480));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         voltarButton5.setText("Voltar");
         voltarButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -47,31 +49,35 @@ public class TelaBatalha extends javax.swing.JPanel {
                 voltarButton5ActionPerformed(evt);
             }
         });
+        add(voltarButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         spriteAdversarioPanel.setBackground(new java.awt.Color(230, 230, 230));
-        spriteAdversarioPanel.setMaximumSize(new java.awt.Dimension(200, 300));
-        spriteAdversarioPanel.setMinimumSize(new java.awt.Dimension(200, 300));
+        spriteAdversarioPanel.setMaximumSize(new java.awt.Dimension(300, 300));
+        spriteAdversarioPanel.setMinimumSize(new java.awt.Dimension(300, 300));
         spriteAdversarioPanel.setName(""); // NOI18N
+        spriteAdversarioPanel.setPreferredSize(new java.awt.Dimension(300, 300));
 
-        nomeHeroiLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nomeHeroiLabel1.setText("jLabel1");
+        nomeAdversarioLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nomeAdversarioLabel.setText("jLabel1");
 
         javax.swing.GroupLayout spriteAdversarioPanelLayout = new javax.swing.GroupLayout(spriteAdversarioPanel);
         spriteAdversarioPanel.setLayout(spriteAdversarioPanelLayout);
         spriteAdversarioPanelLayout.setHorizontalGroup(
             spriteAdversarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, spriteAdversarioPanelLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
-                .addComponent(nomeHeroiLabel1)
-                .addGap(80, 80, 80))
+            .addGroup(spriteAdversarioPanelLayout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(nomeAdversarioLabel)
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         spriteAdversarioPanelLayout.setVerticalGroup(
             spriteAdversarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(spriteAdversarioPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nomeHeroiLabel1)
+                .addComponent(nomeAdversarioLabel)
                 .addContainerGap(274, Short.MAX_VALUE))
         );
+
+        add(spriteAdversarioPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, -1));
 
         spriteHeroiPanel.setBackground(new java.awt.Color(230, 230, 230));
         spriteHeroiPanel.setMaximumSize(new java.awt.Dimension(200, 300));
@@ -99,6 +105,8 @@ public class TelaBatalha extends javax.swing.JPanel {
                 .addContainerGap(274, Short.MAX_VALUE))
         );
 
+        add(spriteHeroiPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 88, -1, -1));
+
         infoPanel.setBackground(new java.awt.Color(220, 220, 220));
         infoPanel.setMaximumSize(new java.awt.Dimension(512, 64));
         infoPanel.setMinimumSize(new java.awt.Dimension(512, 64));
@@ -123,53 +131,14 @@ public class TelaBatalha extends javax.swing.JPanel {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
+        add(infoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 6, -1, -1));
+
         atacarButton.setBackground(new java.awt.Color(240, 240, 240));
         atacarButton.setText("jButton1");
         atacarButton.setMaximumSize(new java.awt.Dimension(200, 64));
         atacarButton.setMinimumSize(new java.awt.Dimension(200, 64));
         atacarButton.setPreferredSize(new java.awt.Dimension(200, 64));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(voltarButton5)
-                .addGap(31, 31, 31)
-                .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(atacarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(spriteHeroiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(spriteAdversarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(voltarButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spriteHeroiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spriteAdversarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(atacarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
-        );
+        add(atacarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 400, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton5ActionPerformed
@@ -185,8 +154,8 @@ public class TelaBatalha extends javax.swing.JPanel {
     private javax.swing.JButton atacarButton;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JPanel infoPanel;
+    private javax.swing.JLabel nomeAdversarioLabel;
     private javax.swing.JLabel nomeHeroiLabel;
-    private javax.swing.JLabel nomeHeroiLabel1;
     private javax.swing.JPanel spriteAdversarioPanel;
     private javax.swing.JPanel spriteHeroiPanel;
     private javax.swing.JButton voltarButton5;

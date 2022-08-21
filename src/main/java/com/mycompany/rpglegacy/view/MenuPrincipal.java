@@ -31,8 +31,8 @@ public class MenuPrincipal extends javax.swing.JPanel {
     private void initComponents() {
 
         progressoPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         progressoLabel = new javax.swing.JLabel();
-        voltarButton5 = new javax.swing.JButton();
         spriteHeroiPanel = new javax.swing.JPanel();
         nomeHeroiLabel = new javax.swing.JLabel();
         textoPanel = new javax.swing.JPanel();
@@ -41,6 +41,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         acao1Button = new javax.swing.JButton();
         acao2Button = new javax.swing.JButton();
         acao3Button = new javax.swing.JButton();
+        voltarButton5 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
@@ -49,42 +50,38 @@ public class MenuPrincipal extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         progressoPanel.setBackground(new java.awt.Color(230, 230, 230));
-        progressoPanel.setMaximumSize(new java.awt.Dimension(620, 64));
-        progressoPanel.setMinimumSize(new java.awt.Dimension(620, 64));
-        progressoPanel.setPreferredSize(new java.awt.Dimension(620, 64));
+        progressoPanel.setMaximumSize(new java.awt.Dimension(512, 64));
+        progressoPanel.setMinimumSize(new java.awt.Dimension(512, 64));
+        progressoPanel.setPreferredSize(new java.awt.Dimension(512, 64));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Progresso:");
 
         progressoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         progressoLabel.setText("progresso...");
-
-        voltarButton5.setText("Voltar");
-        voltarButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarButton5ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout progressoPanelLayout = new javax.swing.GroupLayout(progressoPanel);
         progressoPanel.setLayout(progressoPanelLayout);
         progressoPanelLayout.setHorizontalGroup(
             progressoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(progressoPanelLayout.createSequentialGroup()
-                .addComponent(voltarButton5)
-                .addGap(194, 194, 194)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(progressoLabel)
-                .addGap(0, 255, Short.MAX_VALUE))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         progressoPanelLayout.setVerticalGroup(
             progressoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(progressoPanelLayout.createSequentialGroup()
-                .addGroup(progressoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(voltarButton5)
-                    .addGroup(progressoPanelLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(progressoLabel)))
-                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, progressoPanelLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addGroup(progressoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(progressoLabel)
+                    .addComponent(jLabel1))
+                .addGap(17, 17, 17))
         );
 
-        add(progressoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        add(progressoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
         spriteHeroiPanel.setBackground(new java.awt.Color(230, 230, 230));
         spriteHeroiPanel.setMaximumSize(new java.awt.Dimension(200, 300));
@@ -129,7 +126,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
             .addGroup(textoPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(textoLabel)
-                .addContainerGap(495, Short.MAX_VALUE))
+                .addContainerGap(447, Short.MAX_VALUE))
         );
         textoPanelLayout.setVerticalGroup(
             textoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +136,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        add(textoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 560, 60));
+        add(textoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         botoesPanel.setBackground(new java.awt.Color(220, 220, 220));
         botoesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escolha uma Ação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
@@ -192,6 +189,14 @@ public class MenuPrincipal extends javax.swing.JPanel {
         );
 
         add(botoesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
+
+        voltarButton5.setText("Voltar");
+        voltarButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButton5ActionPerformed(evt);
+            }
+        });
+        add(voltarButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void acao1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acao1ButtonActionPerformed
@@ -216,17 +221,13 @@ public class MenuPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton acao2Button;
     private javax.swing.JButton acao3Button;
     private javax.swing.JPanel botoesPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nomeHeroiLabel;
     private javax.swing.JLabel progressoLabel;
     private javax.swing.JPanel progressoPanel;
     private javax.swing.JPanel spriteHeroiPanel;
     private javax.swing.JLabel textoLabel;
     private javax.swing.JPanel textoPanel;
-    private javax.swing.JButton voltarButton;
-    private javax.swing.JButton voltarButton1;
-    private javax.swing.JButton voltarButton2;
-    private javax.swing.JButton voltarButton3;
-    private javax.swing.JButton voltarButton4;
     private javax.swing.JButton voltarButton5;
     // End of variables declaration//GEN-END:variables
 }

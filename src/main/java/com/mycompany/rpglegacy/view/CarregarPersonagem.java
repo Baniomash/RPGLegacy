@@ -38,11 +38,11 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         listaHerois = new javax.swing.JList<>();
         statusHeroiPanel = new javax.swing.JPanel();
         spriteHeroiPanel = new javax.swing.JPanel();
+        voltarButton = new javax.swing.JButton();
         ListHeaderPanel = new javax.swing.JPanel();
         ListNameHeaderLabel = new javax.swing.JLabel();
         ListNameHeaderLabel1 = new javax.swing.JLabel();
         ListNameHeaderLabel2 = new javax.swing.JLabel();
-        voltarButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
@@ -60,15 +60,31 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         listaHerois.setAutoscrolls(false);
         jScrollPane2.setViewportView(listaHerois);
 
+        voltarButton.setText("Carregar");
+        voltarButton.setMaximumSize(new java.awt.Dimension(128, 64));
+        voltarButton.setMinimumSize(new java.awt.Dimension(128, 64));
+        voltarButton.setPreferredSize(new java.awt.Dimension(128, 64));
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout spriteHeroiPanelLayout = new javax.swing.GroupLayout(spriteHeroiPanel);
         spriteHeroiPanel.setLayout(spriteHeroiPanelLayout);
         spriteHeroiPanelLayout.setHorizontalGroup(
             spriteHeroiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 216, Short.MAX_VALUE)
+            .addGroup(spriteHeroiPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         spriteHeroiPanelLayout.setVerticalGroup(
             spriteHeroiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 194, Short.MAX_VALUE)
+            .addGroup(spriteHeroiPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout statusHeroiPanelLayout = new javax.swing.GroupLayout(statusHeroiPanel);
@@ -146,33 +162,20 @@ public class CarregarPersonagem extends javax.swing.JPanel {
                 .addGap(69, 69, 69))
         );
 
-        voltarButton.setText("Voltar");
-        voltarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(voltarButton)
-                .addGap(18, 18, 18)
-                .addComponent(listaHeroisPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                .addGap(99, 99, 99)
+                .addComponent(listaHeroisPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(listaHeroisPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(voltarButton)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(listaHeroisPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
