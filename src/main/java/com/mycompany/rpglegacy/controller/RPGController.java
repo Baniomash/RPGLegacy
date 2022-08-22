@@ -194,9 +194,9 @@ public class RPGController {
     }
 
     public void iniciarJogo() {
-        navPanel.removeAll();
-        btController = new BattleController(this, this.mainFrame, this.navPanel, this.navLayout);
         if (carregarPersonagem.getListaHerois().getSelectedValue() != null) {
+            navPanel.removeAll();
+            btController = new BattleController(this, this.mainFrame, this.navPanel, this.navLayout);
             Heroi heroi = carregarPersonagem.getListaHerois().getSelectedValue();
             btController.setHeroiUsuario(heroi.getId());
             btController.iniciaTelas();

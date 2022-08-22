@@ -94,14 +94,14 @@ public class Heroi extends Personagem <Vilao>{
 
     @Override
     public String toString() {
-        int dif = 24 - this.getPersonName().length();
+        int dif = 22 - this.getPersonName().length();
         String separa = " ";
         if(dif>0){
             for(int i=1; i<dif; i++){
                 separa += " ";
             }
         }
-        return this.getPersonName()+ separa + this.getLvel() + "          " + progress;
+        return this.getPersonName()+ separa + this.getLvel() + "       " + progress;
     }
     
 }

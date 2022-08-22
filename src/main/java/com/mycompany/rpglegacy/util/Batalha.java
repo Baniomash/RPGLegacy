@@ -17,5 +17,9 @@ public interface Batalha {
     public static final String BATALHA_FACIL = "batalhaFacil";
     public static final String BATALHA_MEDIA = "batalhaMedia";
     public static final String BATALHA_DIFICIL = "batalhaDificil";
+    public static final String DESCRICAO_BATALHA_1 = "<html>Ao entrar na floresta, você vê 3 caminhos.<br>Você vai seguir o caminho cercado por:</html>";
+    public static final String BATALHA_1_OPCAO_1 = "Arbustos";
+    public static final String BATALHA_1_OPCAO_2 = "Pedras";
+    public static final String BATALHA_1_OPCAO_3 = "Árvores";
     
 }

@@ -64,7 +64,6 @@ public class BattleController {
     
     public void iniciaTelas(){
         navPanel.add(this.menuPrincipal, Telas.MENU_PRINCIPAL);
-        mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
         
         irTelaPrincipal();
     }
@@ -78,12 +77,13 @@ public class BattleController {
     
     public void irTelaPrincipal() {
         navLayout.show(navPanel, Telas.MENU_PRINCIPAL);
-        menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
         setHeroiSpriteMapa();
         menuPrincipal.getSpriteHeroiPanel().add(this.heroiSprite, Telas.HEROI_SPRITE);
         CardLayout layout = (CardLayout) menuPrincipal.getSpriteHeroiPanel().getLayout();
         layout.show(menuPrincipal.getSpriteHeroiPanel(), Telas.HEROI_SPRITE);
+        setMapa();
     }
+    
     
     public void voltarTelaIncial(){
         navPanel.removeAll();
@@ -214,7 +214,107 @@ public class BattleController {
         menuBatalha.getAcaoPanel().setVisible(false);
         menuBatalha.getConfirmaPanel().setVisible(true);
     }
-    
+
 
     
+    private void setMapa() {
+        switch(heroiUsuario.getProgress().getValor()){
+            case 1:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+            case 2:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+            case 3:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+            case 4:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+            case 5:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+            case 6:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+            case 7:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+            case 8:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+            case 9:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+            case 10:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+            case 11:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+            case 12:
+                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                menuPrincipal.getTextoLabel().setText(Batalha.DESCRICAO_BATALHA_1);
+                menuPrincipal.getAcao1Button().setText(Batalha.BATALHA_1_OPCAO_1);
+                menuPrincipal.getAcao2Button().setText(Batalha.BATALHA_1_OPCAO_2);
+                menuPrincipal.getAcao3Button().setText(Batalha.BATALHA_1_OPCAO_3);
+                break;
+        }
+    }
 }

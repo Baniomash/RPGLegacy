@@ -5,6 +5,7 @@
 package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.BattleController;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -206,6 +207,23 @@ public class MenuPrincipal extends javax.swing.JPanel {
     public JLabel getProgressoLabel() {
         return progressoLabel;
     }
+
+    public JButton getAcao1Button() {
+        return acao1Button;
+    }
+
+    public JButton getAcao2Button() {
+        return acao2Button;
+    }
+
+    public JButton getAcao3Button() {
+        return acao3Button;
+    }
+
+    public JLabel getTextoLabel() {
+        return textoLabel;
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
