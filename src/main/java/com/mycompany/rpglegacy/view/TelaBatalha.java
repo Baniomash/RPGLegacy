@@ -77,7 +77,7 @@ public class TelaBatalha extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
-        add(adversarioSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, -1));
+        add(adversarioSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
 
         heroiSquarePanel.setBackground(new java.awt.Color(230, 230, 230));
         heroiSquarePanel.setMaximumSize(new java.awt.Dimension(200, 300));
@@ -105,7 +105,7 @@ public class TelaBatalha extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
-        add(heroiSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 88, -1, -1));
+        add(heroiSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         infoPanel.setBackground(new java.awt.Color(220, 220, 220));
         infoPanel.setMaximumSize(new java.awt.Dimension(512, 64));
@@ -134,9 +134,12 @@ public class TelaBatalha extends javax.swing.JPanel {
         add(infoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 6, -1, -1));
 
         statusPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        statusPanel.setMaximumSize(new java.awt.Dimension(620, 70));
+        statusPanel.setMinimumSize(new java.awt.Dimension(620, 70));
         statusPanel.setOpaque(false);
+        statusPanel.setPreferredSize(new java.awt.Dimension(620, 70));
         statusPanel.setLayout(new java.awt.CardLayout());
-        add(statusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 620, 70));
+        add(statusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton5ActionPerformed

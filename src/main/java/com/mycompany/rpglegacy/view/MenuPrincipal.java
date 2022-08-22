@@ -91,8 +91,11 @@ public class MenuPrincipal extends javax.swing.JPanel {
         heroiSquarePanel.setPreferredSize(new java.awt.Dimension(200, 300));
         heroiSquarePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        spriteHeroiPanel.setMaximumSize(new java.awt.Dimension(160, 260));
+        spriteHeroiPanel.setMinimumSize(new java.awt.Dimension(160, 260));
+        spriteHeroiPanel.setPreferredSize(new java.awt.Dimension(160, 260));
         spriteHeroiPanel.setLayout(new java.awt.CardLayout());
-        heroiSquarePanel.add(spriteHeroiPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 160, 260));
+        heroiSquarePanel.add(spriteHeroiPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         add(heroiSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 

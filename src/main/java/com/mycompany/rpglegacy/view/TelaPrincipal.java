@@ -14,6 +14,7 @@ import javax.swing.JPanel;
  */
 public class TelaPrincipal extends javax.swing.JPanel {
     private RPGController controller;
+    
     /**
      * Creates new form TelaPrincipal
      */
@@ -35,6 +36,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
         signInButton = new javax.swing.JButton();
         usuarioPanel = new javax.swing.JPanel();
         bolinhaLabel = new javax.swing.JLabel();
+        sairButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(620, 440));
         setMinimumSize(new java.awt.Dimension(620, 440));
@@ -92,6 +94,14 @@ public class TelaPrincipal extends javax.swing.JPanel {
         usuarioPanel.add(bolinhaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         add(usuarioPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
+
+        sairButton.setText("SAIR");
+        sairButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairButtonActionPerformed(evt);
+            }
+        });
+        add(sairButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 110, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButtonActionPerformed
@@ -105,6 +115,10 @@ public class TelaPrincipal extends javax.swing.JPanel {
     private void novoJogoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoJogoButtonActionPerformed
         controller.irCriarPersonagem();
     }//GEN-LAST:event_novoJogoButtonActionPerformed
+
+    private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
+//        controller.sairJogo();
+    }//GEN-LAST:event_sairButtonActionPerformed
 
     
     
@@ -136,6 +150,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
     private javax.swing.JLabel bolinhaLabel;
     private javax.swing.JButton carregarJogoButton;
     private javax.swing.JButton novoJogoButton;
+    private javax.swing.JButton sairButton;
     private javax.swing.JButton signInButton;
     private javax.swing.JPanel usuarioPanel;
     // End of variables declaration//GEN-END:variables
