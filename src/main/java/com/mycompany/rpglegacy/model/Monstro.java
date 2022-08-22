@@ -150,6 +150,11 @@ public class Monstro {
     public int getExpGanho() {
         return expGanho;
     }
+
+    @Override
+    public String toString() {
+        return tipo + ", lvel= " + lvel;
+    }
     
     
 }

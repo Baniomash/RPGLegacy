@@ -77,7 +77,7 @@ public class RPGController {
     }
 
     public void iniciaTelas() {
-        if(!mainFrame.isVisible()){
+        if (!mainFrame.isVisible()) {
             mainFrame.setVisible(true);
             mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/fundo.gif")));
         }
@@ -203,6 +203,11 @@ public class RPGController {
         }
     }
 
+    public void sairJogo() {
+        mainFrame.setVisible(false);
+        mainFrame.dispose();
+    }
+
     public Usuario getUsr() {
         return usr;
     }
@@ -227,6 +232,7 @@ public class RPGController {
                 break;
         }
     }
+
     private void erroNoHeroi(String erroTipo) {
         switch (erroTipo) {
             case Outros.ERRO_HEROI_EXISTE:
@@ -254,9 +260,9 @@ public class RPGController {
         String senha = String.valueOf(this.cadastrarUsuario.getSenhaPassField().getPassword());
         if (!"".equals(login) && !"".equals(senha)) {
             Boolean sucesso = criarUsuario(login, senha);
-            if(sucesso){
+            if (sucesso) {
                 irAutenticarUsuario();
-            }else{
+            } else {
                 erroNoCadastro(Outros.ERRO_USUARIO_EXISTE);
             }
         } else {
@@ -296,17 +302,25 @@ public class RPGController {
         int sped = Integer.parseInt(this.criarPersonagem.getSpdValorLabel().getText());
         if (!"".equals(personName)) {
             Boolean sucesso = criarHeroi(personName, atak, defe, sped, vidaMaxima, this.usr);
-            if(sucesso){
+            if (sucesso) {
                 this.irCarregarPersonagem();
-            }else{
+            } else {
                 erroNoHeroi(Outros.ERRO_HEROI_EXISTE);
             }
-        }else{
+        } else {
             erroNoHeroi(Outros.ERRO_NAO_PREENCHIDO);
         }
     }
 
-//    cavaleiro (32) (8*10)080 - 08 - 08 - 08
-//    barbaro   (32) (8*15)120 - 12 - 06 - 06
-//    paladino  (32) (8*10)080 - 06 - 12 - 06
+//      cavaleiro   (32) (08*10)080 - 08 - 08 - 08
+//      barbaro     (32) (08*15)120 - 12 - 06 - 06
+//      paladino    (32) (08*10)080 - 06 - 12 - 06
+
+//      monstro     (32) (05*10)050 - 16 - 06 - 05
+//      monstro     (40) (07*10)070 - 18 - 08 - 07
+//      monstro     (48) (09*10)090 - 20 - 10 - 09
+//      monstro     (56) (11*10)110 - 22 - 12 - 11
+//      monstro     (64) (13*10)130 - 24 - 14 - 13
+//    
+//      calcuo mons XP (PontosTotal * 1+(0.1*PontosVida)) /  10
 }

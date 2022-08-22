@@ -29,12 +29,21 @@
                     
                 </includes>            
             </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/java/com/mycompany/rpglegacy/assets/sprites</directory>
+                <includes>
+                    <include>**/*.png</include>
+                    <include>**/*.gif</include>
+                    
+                </includes>            
+            </resource>
         </resources>
     </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
         <exec.mainClass>com.mycompany.rpglegacy.RPGLegacy</exec.mainClass>
     </properties>
 </project>

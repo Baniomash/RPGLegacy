@@ -7,6 +7,7 @@ package com.mycompany.rpglegacy.dao;
 import com.mycompany.rpglegacy.connection.DatabaseConnection;
 import com.mycompany.rpglegacy.model.Monstro;
 import com.mycompany.rpglegacy.model.Vilao;
+import com.mycompany.rpglegacy.util.MonsTipos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -193,8 +194,10 @@ public class InimigoDao {
         pstm.setInt(2, lvelMin);
         }
         
-        if(lvelMin>=1 && lvelMax>=1 && lvelMax>=lvelMin){
-        pstm.setInt(1, lvelMin);
+        if(lvelMin>=1 && lvelMax>=lvelMin){
+        pstm.setInt(1, lvelMin);      
+        }
+        if(lvelMax>=1 && lvelMax>=lvelMin){
         pstm.setInt(2, lvelMax);            
         }
 
@@ -218,4 +221,43 @@ public class InimigoDao {
         
         return respostaFinal;
     }
+    
+//    public static void main(String[] args) throws SQLException {
+//        InimigoDao dao = new InimigoDao();
+//        
+////      ARANHAS =>>
+//        Monstro monstro1 = new Monstro(MonsTipos.ARANHA, 16, 6, 5, 50, 1, 5);
+//        Monstro monstro2 = new Monstro(MonsTipos.ARANHA, 18, 5, 4, 50, 1, 5);
+//        Monstro monstro3 = new Monstro(MonsTipos.ARANHA, 16, 5, 4, 70, 1, 5);
+//        Monstro monstro4 = new Monstro(MonsTipos.ARANHA, 18, 8, 7, 70, 2, 7);
+//        Monstro monstro5 = new Monstro(MonsTipos.ARANHA, 20, 7, 6, 70, 2, 7);
+//        Monstro monstro6 = new Monstro(MonsTipos.ARANHA, 18, 7, 6, 90, 2, 8);
+//        Monstro monstro7 = new Monstro(MonsTipos.ARANHA, 20, 10, 9, 90, 3, 9);
+//        Monstro monstro8 = new Monstro(MonsTipos.ARANHA, 22, 9, 8, 90, 3, 9);
+//        Monstro monstro9 = new Monstro(MonsTipos.ARANHA, 20, 9, 8, 110, 3, 10);
+//        Monstro monstro10 = new Monstro(MonsTipos.ARANHA, 22, 12, 11, 110, 4, 11);
+//        Monstro monstro11 = new Monstro(MonsTipos.ARANHA, 24, 11, 10, 110, 4, 11);
+//        Monstro monstro12 = new Monstro(MonsTipos.ARANHA, 22, 11, 10, 130, 4, 12);
+//        Monstro monstro13 = new Monstro(MonsTipos.ARANHA, 24, 14, 13, 130, 5, 15);
+//        Monstro monstro14 = new Monstro(MonsTipos.ARANHA, 26, 13, 12, 130, 5, 15);
+//        Monstro monstro15 = new Monstro(MonsTipos.ARANHA, 24, 13, 12, 150, 5, 16);
+//        
+//        
+////      CRIAR MONSTROS NO DB =>>
+//        dao.criar(monstro1);
+//        dao.criar(monstro2);
+//        dao.criar(monstro3);
+//        dao.criar(monstro4);
+//        dao.criar(monstro5);
+//        dao.criar(monstro6);
+//        dao.criar(monstro7);
+//        dao.criar(monstro8);
+//        dao.criar(monstro9);
+//        dao.criar(monstro10);
+//        dao.criar(monstro11);
+//        dao.criar(monstro12);
+//        dao.criar(monstro13);
+//        dao.criar(monstro14);
+//        dao.criar(monstro15);
+//    }
 }

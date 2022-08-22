@@ -112,17 +112,17 @@ public class MenuPrincipal extends javax.swing.JPanel {
         textoPanel.setLayout(textoPanelLayout);
         textoPanelLayout.setHorizontalGroup(
             textoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(textoPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(textoLabel)
-                .addContainerGap(447, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(textoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addContainerGap())
         );
         textoPanelLayout.setVerticalGroup(
             textoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(textoPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(textoLabel)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(textoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         add(textoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
@@ -147,11 +147,21 @@ public class MenuPrincipal extends javax.swing.JPanel {
         acao2Button.setMaximumSize(new java.awt.Dimension(320, 64));
         acao2Button.setMinimumSize(new java.awt.Dimension(320, 64));
         acao2Button.setPreferredSize(new java.awt.Dimension(320, 64));
+        acao2Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acao2ButtonActionPerformed(evt);
+            }
+        });
 
         acao3Button.setText("jButton1");
         acao3Button.setMaximumSize(new java.awt.Dimension(320, 64));
         acao3Button.setMinimumSize(new java.awt.Dimension(320, 64));
         acao3Button.setPreferredSize(new java.awt.Dimension(320, 64));
+        acao3Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acao3ButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout botoesPanelLayout = new javax.swing.GroupLayout(botoesPanel);
         botoesPanel.setLayout(botoesPanelLayout);
@@ -189,12 +199,20 @@ public class MenuPrincipal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void acao1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acao1ButtonActionPerformed
-        // TODO add your handling code here:
+        controller.selecionaDificuldade(1);
     }//GEN-LAST:event_acao1ButtonActionPerformed
 
     private void voltarButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton5ActionPerformed
         controller.abrirMenu();
     }//GEN-LAST:event_voltarButton5ActionPerformed
+
+    private void acao2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acao2ButtonActionPerformed
+        controller.selecionaDificuldade(2);
+    }//GEN-LAST:event_acao2ButtonActionPerformed
+
+    private void acao3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acao3ButtonActionPerformed
+        controller.selecionaDificuldade(3);
+    }//GEN-LAST:event_acao3ButtonActionPerformed
 
     public void setController(BattleController controller) {
         this.controller = controller;
