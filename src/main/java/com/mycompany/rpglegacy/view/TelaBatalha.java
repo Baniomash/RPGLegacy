@@ -29,13 +29,13 @@ public class TelaBatalha extends javax.swing.JPanel {
     private void initComponents() {
 
         voltarButton5 = new javax.swing.JButton();
+        adversarioSquarePanel = new javax.swing.JPanel();
         spriteAdversarioPanel = new javax.swing.JPanel();
-        nomeAdversarioLabel = new javax.swing.JLabel();
+        heroiSquarePanel = new javax.swing.JPanel();
         spriteHeroiPanel = new javax.swing.JPanel();
-        nomeHeroiLabel = new javax.swing.JLabel();
         infoPanel = new javax.swing.JPanel();
         infoLabel = new javax.swing.JLabel();
-        atacarButton = new javax.swing.JButton();
+        statusPanel = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
@@ -43,7 +43,7 @@ public class TelaBatalha extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(640, 480));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        voltarButton5.setText("Voltar");
+        voltarButton5.setText("Menu");
         voltarButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarButton5ActionPerformed(evt);
@@ -51,61 +51,61 @@ public class TelaBatalha extends javax.swing.JPanel {
         });
         add(voltarButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
-        spriteAdversarioPanel.setBackground(new java.awt.Color(230, 230, 230));
-        spriteAdversarioPanel.setMaximumSize(new java.awt.Dimension(300, 300));
-        spriteAdversarioPanel.setMinimumSize(new java.awt.Dimension(300, 300));
-        spriteAdversarioPanel.setName(""); // NOI18N
-        spriteAdversarioPanel.setPreferredSize(new java.awt.Dimension(300, 300));
+        adversarioSquarePanel.setBackground(new java.awt.Color(230, 230, 230));
+        adversarioSquarePanel.setMaximumSize(new java.awt.Dimension(300, 300));
+        adversarioSquarePanel.setMinimumSize(new java.awt.Dimension(300, 300));
+        adversarioSquarePanel.setName(""); // NOI18N
+        adversarioSquarePanel.setPreferredSize(new java.awt.Dimension(300, 300));
 
-        nomeAdversarioLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nomeAdversarioLabel.setText("jLabel1");
+        spriteAdversarioPanel.setOpaque(false);
+        spriteAdversarioPanel.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout spriteAdversarioPanelLayout = new javax.swing.GroupLayout(spriteAdversarioPanel);
-        spriteAdversarioPanel.setLayout(spriteAdversarioPanelLayout);
-        spriteAdversarioPanelLayout.setHorizontalGroup(
-            spriteAdversarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(spriteAdversarioPanelLayout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(nomeAdversarioLabel)
-                .addContainerGap(128, Short.MAX_VALUE))
+        javax.swing.GroupLayout adversarioSquarePanelLayout = new javax.swing.GroupLayout(adversarioSquarePanel);
+        adversarioSquarePanel.setLayout(adversarioSquarePanelLayout);
+        adversarioSquarePanelLayout.setHorizontalGroup(
+            adversarioSquarePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adversarioSquarePanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(spriteAdversarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
-        spriteAdversarioPanelLayout.setVerticalGroup(
-            spriteAdversarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(spriteAdversarioPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nomeAdversarioLabel)
-                .addContainerGap(274, Short.MAX_VALUE))
-        );
-
-        add(spriteAdversarioPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, -1));
-
-        spriteHeroiPanel.setBackground(new java.awt.Color(230, 230, 230));
-        spriteHeroiPanel.setMaximumSize(new java.awt.Dimension(200, 300));
-        spriteHeroiPanel.setMinimumSize(new java.awt.Dimension(200, 300));
-        spriteHeroiPanel.setName(""); // NOI18N
-        spriteHeroiPanel.setPreferredSize(new java.awt.Dimension(200, 300));
-
-        nomeHeroiLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nomeHeroiLabel.setText("jLabel1");
-
-        javax.swing.GroupLayout spriteHeroiPanelLayout = new javax.swing.GroupLayout(spriteHeroiPanel);
-        spriteHeroiPanel.setLayout(spriteHeroiPanelLayout);
-        spriteHeroiPanelLayout.setHorizontalGroup(
-            spriteHeroiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, spriteHeroiPanelLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
-                .addComponent(nomeHeroiLabel)
-                .addGap(80, 80, 80))
-        );
-        spriteHeroiPanelLayout.setVerticalGroup(
-            spriteHeroiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(spriteHeroiPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nomeHeroiLabel)
-                .addContainerGap(274, Short.MAX_VALUE))
+        adversarioSquarePanelLayout.setVerticalGroup(
+            adversarioSquarePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adversarioSquarePanelLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(spriteAdversarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
 
-        add(spriteHeroiPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 88, -1, -1));
+        add(adversarioSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, -1));
+
+        heroiSquarePanel.setBackground(new java.awt.Color(230, 230, 230));
+        heroiSquarePanel.setMaximumSize(new java.awt.Dimension(200, 300));
+        heroiSquarePanel.setMinimumSize(new java.awt.Dimension(200, 300));
+        heroiSquarePanel.setName(""); // NOI18N
+        heroiSquarePanel.setPreferredSize(new java.awt.Dimension(200, 300));
+
+        spriteHeroiPanel.setOpaque(false);
+        spriteHeroiPanel.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout heroiSquarePanelLayout = new javax.swing.GroupLayout(heroiSquarePanel);
+        heroiSquarePanel.setLayout(heroiSquarePanelLayout);
+        heroiSquarePanelLayout.setHorizontalGroup(
+            heroiSquarePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(heroiSquarePanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(spriteHeroiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        heroiSquarePanelLayout.setVerticalGroup(
+            heroiSquarePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, heroiSquarePanelLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(spriteHeroiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
+
+        add(heroiSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 88, -1, -1));
 
         infoPanel.setBackground(new java.awt.Color(220, 220, 220));
         infoPanel.setMaximumSize(new java.awt.Dimension(512, 64));
@@ -133,16 +133,14 @@ public class TelaBatalha extends javax.swing.JPanel {
 
         add(infoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 6, -1, -1));
 
-        atacarButton.setBackground(new java.awt.Color(240, 240, 240));
-        atacarButton.setText("jButton1");
-        atacarButton.setMaximumSize(new java.awt.Dimension(200, 64));
-        atacarButton.setMinimumSize(new java.awt.Dimension(200, 64));
-        atacarButton.setPreferredSize(new java.awt.Dimension(200, 64));
-        add(atacarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 400, -1, -1));
+        statusPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        statusPanel.setOpaque(false);
+        statusPanel.setLayout(new java.awt.CardLayout());
+        add(statusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 620, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton5ActionPerformed
-//        controller.irTelaPrincipal();
+        controller.abrirMenu();
     }//GEN-LAST:event_voltarButton5ActionPerformed
 
     public void setController(BattleController controller) {
@@ -151,13 +149,13 @@ public class TelaBatalha extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton atacarButton;
+    private javax.swing.JPanel adversarioSquarePanel;
+    private javax.swing.JPanel heroiSquarePanel;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JPanel infoPanel;
-    private javax.swing.JLabel nomeAdversarioLabel;
-    private javax.swing.JLabel nomeHeroiLabel;
     private javax.swing.JPanel spriteAdversarioPanel;
     private javax.swing.JPanel spriteHeroiPanel;
+    private javax.swing.JPanel statusPanel;
     private javax.swing.JButton voltarButton5;
     // End of variables declaration//GEN-END:variables
 }

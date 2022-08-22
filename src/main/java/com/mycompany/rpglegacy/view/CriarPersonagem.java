@@ -50,6 +50,7 @@ public class CriarPersonagem extends javax.swing.JPanel {
         defValorLabel = new javax.swing.JLabel();
         spdValorLabel = new javax.swing.JLabel();
         voltarButton = new javax.swing.JButton();
+        erroLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
@@ -178,6 +179,9 @@ public class CriarPersonagem extends javax.swing.JPanel {
             }
         });
 
+        erroLabel.setForeground(new java.awt.Color(255, 0, 0));
+        erroLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
         javax.swing.GroupLayout tituloPanelLayout = new javax.swing.GroupLayout(tituloPanel);
         tituloPanel.setLayout(tituloPanelLayout);
         tituloPanelLayout.setHorizontalGroup(
@@ -205,6 +209,10 @@ public class CriarPersonagem extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(voltarButton)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tituloPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(erroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         tituloPanelLayout.setVerticalGroup(
             tituloPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +232,9 @@ public class CriarPersonagem extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(criarHeroiButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(atributosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(erroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(voltarButton)
                 .addContainerGap())
         );
@@ -287,6 +297,10 @@ public class CriarPersonagem extends javax.swing.JPanel {
     public JLabel getVidaValorLabel() {
         return vidaValorLabel;
     }
+
+    public JLabel getErroLabel() {
+        return erroLabel;
+    }
     
     
     
@@ -299,6 +313,7 @@ public class CriarPersonagem extends javax.swing.JPanel {
     private javax.swing.JButton criarHeroiButton;
     private javax.swing.JLabel defHeroiLabel;
     private javax.swing.JLabel defValorLabel;
+    private javax.swing.JLabel erroLabel;
     private javax.swing.JTextField nomeHeroiTextField;
     private javax.swing.JLabel nomeLabel;
     private javax.swing.JLabel spdHeroiLabel;

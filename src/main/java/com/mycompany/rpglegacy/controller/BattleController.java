@@ -11,8 +11,11 @@ import com.mycompany.rpglegacy.model.Heroi;
 import com.mycompany.rpglegacy.model.Monstro;
 import com.mycompany.rpglegacy.model.Vilao;
 import com.mycompany.rpglegacy.util.Batalha;
+import com.mycompany.rpglegacy.util.Outros;
 import com.mycompany.rpglegacy.util.Telas;
+import com.mycompany.rpglegacy.view.HeroiSprite;
 import com.mycompany.rpglegacy.view.MainFrame;
+import com.mycompany.rpglegacy.view.MenuBatalha;
 import com.mycompany.rpglegacy.view.MenuPrincipal;
 import com.mycompany.rpglegacy.view.TelaBatalha;
 import java.awt.CardLayout;
@@ -38,6 +41,8 @@ public class BattleController {
     private MainFrame mainFrame;
     private MenuPrincipal menuPrincipal = new MenuPrincipal();
     private TelaBatalha telaBatalha = new TelaBatalha();
+    private MenuBatalha menuBatalha = new MenuBatalha(mainFrame, true);
+    private HeroiSprite heroiSprite = new HeroiSprite();
 
     private JPanel navPanel;
     private CardLayout navLayout;
@@ -53,6 +58,8 @@ public class BattleController {
     private void setController() {
         menuPrincipal.setController(this);
         telaBatalha.setController(this);
+        menuBatalha.setController(this);
+        heroiSprite.setController(this);
     }
     
     public void iniciaTelas(){
@@ -62,9 +69,20 @@ public class BattleController {
         irTelaPrincipal();
     }
     
+    public void setHeroiSpriteMapa(){
+        heroiSprite.getNomeHeroiLabel().setText(heroiUsuario.getPersonName());
+        heroiSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/hero_idle.png")));
+        heroiSprite.getHeroiProgressBar().setMaximum(heroiUsuario.getVidaMaxima());
+        heroiSprite.getHeroiProgressBar().setValue(heroiUsuario.getVidaAtual());
+    }
+    
     public void irTelaPrincipal() {
         navLayout.show(navPanel, Telas.MENU_PRINCIPAL);
         menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
+        setHeroiSpriteMapa();
+        menuPrincipal.getSpriteHeroiPanel().add(this.heroiSprite, Telas.HEROI_SPRITE);
+        CardLayout layout = (CardLayout) menuPrincipal.getSpriteHeroiPanel().getLayout();
+        layout.show(menuPrincipal.getSpriteHeroiPanel(), Telas.HEROI_SPRITE);
     }
     
     public void voltarTelaIncial(){
@@ -72,6 +90,10 @@ public class BattleController {
         mainController.iniciaTelas();
     }
     
+    public void sairJogo(){
+        mainFrame.setVisible(false);
+        mainFrame.dispose();
+    }
     public void receberMonstros(String dificuldade){
         try {
             int lvel = this.heroiUsuario.getLvel();
@@ -149,8 +171,50 @@ public class BattleController {
             Logger.getLogger(BattleController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-
+    
+    public void salvarJogo(){
+        try {
+            this.hroDao.salvar(heroiUsuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(BattleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    public void abrirMenu(){
+        menuBatalha.setVisible(true);
+    }
+    public void sairMenu(){
+        menuBatalha.setVisible(false);
+        menuBatalha.dispose();
+    }
+    public void sairConfirma(){
+        menuBatalha.setAcao("");
+        menuBatalha.getAcaoPanel().setVisible(true);
+        menuBatalha.getConfirmaPanel().setVisible(false);
+    }
+    public void confirmar(){
+        if(menuBatalha.getAcao().equals(Outros.VOLTAR_PRINCIPAL)){
+            salvarJogo();
+            sairMenu();
+            voltarTelaIncial();
+        } else if(menuBatalha.getAcao().equals(Outros.SAIR_JOGO)){
+            salvarJogo();
+            sairMenu();
+            sairJogo();
+        }
+    }
+    public void selecionaMenuPrincipal(){
+        menuBatalha.setAcao(Outros.VOLTAR_PRINCIPAL);
+        menuBatalha.getAcaoPanel().setVisible(false);
+        menuBatalha.getConfirmaPanel().setVisible(true);
+    }
+    public void selecionaSairJogo(){
+        menuBatalha.setAcao(Outros.SAIR_JOGO);
+        menuBatalha.getAcaoPanel().setVisible(false);
+        menuBatalha.getConfirmaPanel().setVisible(true);
+    }
+    
 
     
 }

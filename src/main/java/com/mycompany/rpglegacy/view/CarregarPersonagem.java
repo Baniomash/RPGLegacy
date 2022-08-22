@@ -43,6 +43,7 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         ListNameHeaderLabel = new javax.swing.JLabel();
         ListNameHeaderLabel1 = new javax.swing.JLabel();
         ListNameHeaderLabel2 = new javax.swing.JLabel();
+        voltarButton1 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
@@ -158,24 +159,38 @@ public class CarregarPersonagem extends javax.swing.JPanel {
                     .addGroup(listaHeroisPanelLayout.createSequentialGroup()
                         .addComponent(ListHeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(69, 69, 69))
         );
+
+        voltarButton1.setText("Voltar");
+        voltarButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addGap(15, 15, 15)
+                .addComponent(voltarButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(listaHeroisPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(listaHeroisPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(voltarButton1))
+                    .addComponent(listaHeroisPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -183,6 +198,10 @@ public class CarregarPersonagem extends javax.swing.JPanel {
 //        controller.irTelaPrincipal();
         this.controller.iniciarJogo();
     }//GEN-LAST:event_voltarButtonActionPerformed
+
+    private void voltarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton1ActionPerformed
+        controller.irTelaPrincipal();
+    }//GEN-LAST:event_voltarButton1ActionPerformed
 
     public void setController(RPGController controller) {
         this.controller = controller;
@@ -204,5 +223,6 @@ public class CarregarPersonagem extends javax.swing.JPanel {
     private javax.swing.JPanel spriteHeroiPanel;
     private javax.swing.JPanel statusHeroiPanel;
     private javax.swing.JButton voltarButton;
+    private javax.swing.JButton voltarButton1;
     // End of variables declaration//GEN-END:variables
 }

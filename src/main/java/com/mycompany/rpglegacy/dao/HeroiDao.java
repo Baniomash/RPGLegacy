@@ -61,13 +61,13 @@ public class HeroiDao {
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement pstm = con.prepareStatement(sql);
         
-        pstm.setInt(2, heroi.getAtak());
-        pstm.setInt(3, heroi.getDefe());
-        pstm.setInt(4, heroi.getSped());
-        pstm.setInt(5, heroi.getVidaMaxima());
-        pstm.setInt(6, heroi.getVidaAtual());
-        pstm.setInt(7, heroi.getExpNxtLvel());
-        pstm.setInt(8, heroi.getLvel());
+        pstm.setInt(1, heroi.getAtak());
+        pstm.setInt(2, heroi.getDefe());
+        pstm.setInt(3, heroi.getSped());
+        pstm.setInt(4, heroi.getVidaMaxima());
+        pstm.setInt(5, heroi.getVidaAtual());
+        pstm.setInt(6, heroi.getExpNxtLvel());
+        pstm.setInt(7, heroi.getLvel());
         pstm.setInt(8, heroi.getProgress().getValor());
         pstm.setInt(9, heroi.getId());
         

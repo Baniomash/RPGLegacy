@@ -6,6 +6,7 @@ package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.BattleController;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -33,8 +34,8 @@ public class MenuPrincipal extends javax.swing.JPanel {
         progressoPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         progressoLabel = new javax.swing.JLabel();
+        heroiSquarePanel = new javax.swing.JPanel();
         spriteHeroiPanel = new javax.swing.JPanel();
-        nomeHeroiLabel = new javax.swing.JLabel();
         textoPanel = new javax.swing.JPanel();
         textoLabel = new javax.swing.JLabel();
         botoesPanel = new javax.swing.JPanel();
@@ -83,33 +84,17 @@ public class MenuPrincipal extends javax.swing.JPanel {
 
         add(progressoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
-        spriteHeroiPanel.setBackground(new java.awt.Color(230, 230, 230));
-        spriteHeroiPanel.setMaximumSize(new java.awt.Dimension(200, 300));
-        spriteHeroiPanel.setMinimumSize(new java.awt.Dimension(200, 300));
-        spriteHeroiPanel.setName(""); // NOI18N
-        spriteHeroiPanel.setPreferredSize(new java.awt.Dimension(200, 300));
+        heroiSquarePanel.setBackground(new java.awt.Color(230, 230, 230));
+        heroiSquarePanel.setMaximumSize(new java.awt.Dimension(200, 300));
+        heroiSquarePanel.setMinimumSize(new java.awt.Dimension(200, 300));
+        heroiSquarePanel.setName(""); // NOI18N
+        heroiSquarePanel.setPreferredSize(new java.awt.Dimension(200, 300));
+        heroiSquarePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nomeHeroiLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nomeHeroiLabel.setText("jLabel1");
+        spriteHeroiPanel.setLayout(new java.awt.CardLayout());
+        heroiSquarePanel.add(spriteHeroiPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 160, 260));
 
-        javax.swing.GroupLayout spriteHeroiPanelLayout = new javax.swing.GroupLayout(spriteHeroiPanel);
-        spriteHeroiPanel.setLayout(spriteHeroiPanelLayout);
-        spriteHeroiPanelLayout.setHorizontalGroup(
-            spriteHeroiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, spriteHeroiPanelLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
-                .addComponent(nomeHeroiLabel)
-                .addGap(80, 80, 80))
-        );
-        spriteHeroiPanelLayout.setVerticalGroup(
-            spriteHeroiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(spriteHeroiPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nomeHeroiLabel)
-                .addContainerGap(274, Short.MAX_VALUE))
-        );
-
-        add(spriteHeroiPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+        add(heroiSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         textoPanel.setBackground(new java.awt.Color(220, 220, 220));
         textoPanel.setMaximumSize(new java.awt.Dimension(512, 64));
@@ -190,7 +175,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
 
         add(botoesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 
-        voltarButton5.setText("Voltar");
+        voltarButton5.setText("Menu");
         voltarButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarButton5ActionPerformed(evt);
@@ -204,13 +189,17 @@ public class MenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_acao1ButtonActionPerformed
 
     private void voltarButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton5ActionPerformed
-        controller.voltarTelaIncial();
+        controller.abrirMenu();
     }//GEN-LAST:event_voltarButton5ActionPerformed
 
     public void setController(BattleController controller) {
         this.controller = controller;
     }
 
+    public JPanel getSpriteHeroiPanel() {
+        return spriteHeroiPanel;
+    }
+    
     public JLabel getProgressoLabel() {
         return progressoLabel;
     }
@@ -221,8 +210,8 @@ public class MenuPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton acao2Button;
     private javax.swing.JButton acao3Button;
     private javax.swing.JPanel botoesPanel;
+    private javax.swing.JPanel heroiSquarePanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel nomeHeroiLabel;
     private javax.swing.JLabel progressoLabel;
     private javax.swing.JPanel progressoPanel;
     private javax.swing.JPanel spriteHeroiPanel;

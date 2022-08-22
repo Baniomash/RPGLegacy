@@ -18,7 +18,6 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        fundoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fundo.gif")));
     }
 
     /**

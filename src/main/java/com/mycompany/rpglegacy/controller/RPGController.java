@@ -77,8 +77,10 @@ public class RPGController {
     }
 
     public void iniciaTelas() {
-        mainFrame.setVisible(true);
-        mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/fundo.gif")));
+        if(!mainFrame.isVisible()){
+            mainFrame.setVisible(true);
+            mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/fundo.gif")));
+        }
         navPanel.add(this.telaPrincipal, Telas.TELA_PRINCIPAL);
         navPanel.add(this.carregarPersonagem, Telas.CARREGAR_PERSONAGEM);
 
@@ -96,6 +98,7 @@ public class RPGController {
     public void irTelaPrincipal() {
         navLayout.show(navPanel, Telas.TELA_PRINCIPAL);
         telaPrincipal.confirmaAutenticacao();
+        mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/fundo.gif")));
     }
 
     public void irAutenticarUsuario() {
@@ -150,20 +153,22 @@ public class RPGController {
         }
     }
 
-    public void criarUsuario(String login, String senha) {
+    public Boolean criarUsuario(String login, String senha) {
         try {
-            usrDao.criar(new Usuario(login, senha));
+            return usrDao.criar(new Usuario(login, senha));
         } catch (SQLException ex) {
             Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
 
-    public void criarHeroi(String personName, int atak, int defe, int sped, int vidaMaxima, Usuario usuario) {
+    public Boolean criarHeroi(String personName, int atak, int defe, int sped, int vidaMaxima, Usuario usuario) {
         try {
-            hroDao.criar(new Heroi(personName, atak, defe, sped, vidaMaxima, usuario));
+            return hroDao.criar(new Heroi(personName, atak, defe, sped, vidaMaxima, usuario));
         } catch (SQLException ex) {
             Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
 
     public List<Heroi> carregarHerois(int id) {
@@ -222,6 +227,16 @@ public class RPGController {
                 break;
         }
     }
+    private void erroNoHeroi(String erroTipo) {
+        switch (erroTipo) {
+            case Outros.ERRO_HEROI_EXISTE:
+                this.criarPersonagem.getErroLabel().setText(erroTipo);
+                break;
+            case Outros.ERRO_NAO_PREENCHIDO:
+                this.criarPersonagem.getErroLabel().setText(erroTipo);
+                break;
+        }
+    }
 
     private void erroNoCadastro(String erroTipo) {
         switch (erroTipo) {
@@ -238,8 +253,12 @@ public class RPGController {
         String login = this.cadastrarUsuario.getCadastroTextField().getText();
         String senha = String.valueOf(this.cadastrarUsuario.getSenhaPassField().getPassword());
         if (!"".equals(login) && !"".equals(senha)) {
-            criarUsuario(login, senha);
-            irAutenticarUsuario();
+            Boolean sucesso = criarUsuario(login, senha);
+            if(sucesso){
+                irAutenticarUsuario();
+            }else{
+                erroNoCadastro(Outros.ERRO_USUARIO_EXISTE);
+            }
         } else {
             erroNoCadastro(Outros.ERRO_NAO_PREENCHIDO);
         }
@@ -276,8 +295,14 @@ public class RPGController {
         int defe = Integer.parseInt(this.criarPersonagem.getDefValorLabel().getText());
         int sped = Integer.parseInt(this.criarPersonagem.getSpdValorLabel().getText());
         if (!"".equals(personName)) {
-            criarHeroi(personName, atak, defe, sped, vidaMaxima, this.usr);
-            this.irCarregarPersonagem();
+            Boolean sucesso = criarHeroi(personName, atak, defe, sped, vidaMaxima, this.usr);
+            if(sucesso){
+                this.irCarregarPersonagem();
+            }else{
+                erroNoHeroi(Outros.ERRO_HEROI_EXISTE);
+            }
+        }else{
+            erroNoHeroi(Outros.ERRO_NAO_PREENCHIDO);
         }
     }
 
