@@ -6,6 +6,7 @@ package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.BattleController;
 import java.awt.Color;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -120,7 +121,7 @@ public class TelaBatalha extends javax.swing.JPanel {
         infoPanel.setPreferredSize(new java.awt.Dimension(512, 64));
 
         infoLabel.setBackground(new Color(0,51,255, 50));
-        infoLabel.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        infoLabel.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         infoLabel.setForeground(new java.awt.Color(255, 255, 255));
         infoLabel.setText("jLabel1");
         infoLabel.setOpaque(true);
@@ -130,16 +131,16 @@ public class TelaBatalha extends javax.swing.JPanel {
         infoPanelLayout.setHorizontalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoPanelLayout.createSequentialGroup()
-                .addGap(226, 226, 226)
+                .addGap(222, 222, 222)
                 .addComponent(infoLabel)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addContainerGap(227, Short.MAX_VALUE))
         );
         infoPanelLayout.setVerticalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoPanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(14, 14, 14)
                 .addComponent(infoLabel)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         add(infoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 6, -1, 50));
@@ -167,6 +168,22 @@ public class TelaBatalha extends javax.swing.JPanel {
 
     public void setQualInimigo(String qualInimigo) {
         this.qualInimigo = qualInimigo;
+    }
+
+    public JLabel getInfoLabel() {
+        return infoLabel;
+    }
+
+    public String getQualInimigo() {
+        return qualInimigo;
+    }
+
+    public JPanel getSpriteAdversarioPanel() {
+        return spriteAdversarioPanel;
+    }
+
+    public JPanel getStatusPanel() {
+        return statusPanel;
     }
     
     

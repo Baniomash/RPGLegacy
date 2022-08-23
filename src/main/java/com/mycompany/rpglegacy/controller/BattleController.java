@@ -100,10 +100,15 @@ public class BattleController {
 //        navPanel.removeAll();
         navPanel.add(telaBatalha, Telas.TELA_BATALHA);
         navLayout.show(navPanel, Telas.TELA_BATALHA);
-        atualizaSpriteHeroiBatalha();
+        telaBatalha.getInfoLabel().setText(heroiUsuario.getProgress().toString());
+        atualizaTelaBatalha(heroiUsuario, Sprites.SPRITE_HEROI_IDLE);
         telaBatalha.setQualInimigo(qualInimigo);
     }
-
+    public void atualizaTelaBatalha(Heroi heroi, String spriteHeroi){
+        setHeroiSpriteBatalha(heroi, spriteHeroi);
+        atualizaSpriteHeroiBatalha();
+        
+    }
     public void atualizaSpriteHeroiBatalha() {
         telaBatalha.getSpriteHeroiPanel().add(this.heroiSprite, Telas.HEROI_SPRITE);
         CardLayout layout = (CardLayout) telaBatalha.getSpriteHeroiPanel().getLayout();
@@ -301,7 +306,8 @@ public class BattleController {
         abrirStatus();
     }
 
-    public void setPropiedadesBatalha(String descricaoBatalha, String batalhaOpcao1, String batalhaOpcao2, String batalhaOpcao3) {
+    public void setPropiedadesBatalha(String nomeMundo, String descricaoBatalha, String batalhaOpcao1, String batalhaOpcao2, String batalhaOpcao3) {
+        menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString()+ " / " + nomeMundo);
         menuPrincipal.getTextoLabel().setText(descricaoBatalha);
         menuPrincipal.getAcao1Button().setText(batalhaOpcao1);
         menuPrincipal.getAcao2Button().setText(batalhaOpcao2);
@@ -381,64 +387,52 @@ public class BattleController {
     public void setMapa() {
         switch (heroiUsuario.getProgress().getValor()) {
             case 1:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_1, Batalha.BATALHA_1_OPCAO_1, Batalha.BATALHA_1_OPCAO_2, Batalha.BATALHA_1_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_1, Batalha.DESCRICAO_BATALHA_1, Batalha.BATALHA_1_OPCAO_1, Batalha.BATALHA_1_OPCAO_2, Batalha.BATALHA_1_OPCAO_3);
                 break;
             case 2:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_2, Batalha.BATALHA_2_OPCAO_1, Batalha.BATALHA_2_OPCAO_2, Batalha.BATALHA_2_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_2, Batalha.DESCRICAO_BATALHA_2, Batalha.BATALHA_2_OPCAO_1, Batalha.BATALHA_2_OPCAO_2, Batalha.BATALHA_2_OPCAO_3);
                 break;
             case 3:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_3, Batalha.BATALHA_3_OPCAO_1, Batalha.BATALHA_3_OPCAO_2, Batalha.BATALHA_3_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.BATALHA_3_OPCAO_1, Batalha.BATALHA_3_OPCAO_2, Batalha.BATALHA_3_OPCAO_3);
                 break;
             case 4:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_4, Batalha.BATALHA_4_OPCAO_1, Batalha.BATALHA_4_OPCAO_2, Batalha.BATALHA_4_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_4, Batalha.DESCRICAO_BATALHA_4, Batalha.BATALHA_4_OPCAO_1, Batalha.BATALHA_4_OPCAO_2, Batalha.BATALHA_4_OPCAO_3);
                 break;
             case 5:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_5, Batalha.BATALHA_5_OPCAO_1, Batalha.BATALHA_5_OPCAO_2, Batalha.BATALHA_5_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_5, Batalha.DESCRICAO_BATALHA_5, Batalha.BATALHA_5_OPCAO_1, Batalha.BATALHA_5_OPCAO_2, Batalha.BATALHA_5_OPCAO_3);
                 break;
             case 6:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_6, Batalha.BATALHA_6_OPCAO_1, Batalha.BATALHA_6_OPCAO_2, Batalha.BATALHA_6_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_6, Batalha.DESCRICAO_BATALHA_6, Batalha.BATALHA_6_OPCAO_1, Batalha.BATALHA_6_OPCAO_2, Batalha.BATALHA_6_OPCAO_3);
                 break;
             case 7:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_7, Batalha.BATALHA_7_OPCAO_1, Batalha.BATALHA_7_OPCAO_2, Batalha.BATALHA_7_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_7, Batalha.DESCRICAO_BATALHA_7, Batalha.BATALHA_7_OPCAO_1, Batalha.BATALHA_7_OPCAO_2, Batalha.BATALHA_7_OPCAO_3);
                 break;
             case 8:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_8, Batalha.BATALHA_8_OPCAO_1, Batalha.BATALHA_8_OPCAO_2, Batalha.BATALHA_8_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_8, Batalha.DESCRICAO_BATALHA_8, Batalha.BATALHA_8_OPCAO_1, Batalha.BATALHA_8_OPCAO_2, Batalha.BATALHA_8_OPCAO_3);
                 break;
             case 9:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_9, Batalha.BATALHA_9_OPCAO_1, Batalha.BATALHA_9_OPCAO_2, Batalha.BATALHA_9_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_9, Batalha.DESCRICAO_BATALHA_9, Batalha.BATALHA_9_OPCAO_1, Batalha.BATALHA_9_OPCAO_2, Batalha.BATALHA_9_OPCAO_3);
                 break;
             case 10:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_10, Batalha.BATALHA_10_OPCAO_1, Batalha.BATALHA_10_OPCAO_2, Batalha.BATALHA_10_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_10, Batalha.DESCRICAO_BATALHA_10, Batalha.BATALHA_10_OPCAO_1, Batalha.BATALHA_10_OPCAO_2, Batalha.BATALHA_10_OPCAO_3);
                 break;
             case 11:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_11, Batalha.BATALHA_11_OPCAO_1, Batalha.BATALHA_11_OPCAO_2, Batalha.BATALHA_11_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_11, Batalha.DESCRICAO_BATALHA_11, Batalha.BATALHA_11_OPCAO_1, Batalha.BATALHA_11_OPCAO_2, Batalha.BATALHA_11_OPCAO_3);
                 break;
             case 12:
-                menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString());
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.DESCRICAO_BATALHA_12, Batalha.BATALHA_12_OPCAO_1, Batalha.BATALHA_12_OPCAO_2, Batalha.BATALHA_12_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_12, Batalha.DESCRICAO_BATALHA_12, Batalha.BATALHA_12_OPCAO_1, Batalha.BATALHA_12_OPCAO_2, Batalha.BATALHA_12_OPCAO_3);
                 break;
         }
     }
