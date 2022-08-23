@@ -12,11 +12,13 @@ import com.mycompany.rpglegacy.model.Monstro;
 import com.mycompany.rpglegacy.model.Vilao;
 import com.mycompany.rpglegacy.util.Batalha;
 import com.mycompany.rpglegacy.util.Outros;
+import com.mycompany.rpglegacy.util.Sprites;
 import com.mycompany.rpglegacy.util.Telas;
 import com.mycompany.rpglegacy.view.HeroiSprite;
 import com.mycompany.rpglegacy.view.MainFrame;
 import com.mycompany.rpglegacy.view.MenuBatalha;
 import com.mycompany.rpglegacy.view.MenuPrincipal;
+import com.mycompany.rpglegacy.view.StatusHeroi;
 import com.mycompany.rpglegacy.view.TelaBatalha;
 import java.awt.CardLayout;
 import java.sql.SQLException;
@@ -44,6 +46,7 @@ public class BattleController {
     private TelaBatalha telaBatalha = new TelaBatalha();
     private MenuBatalha menuBatalha = new MenuBatalha(mainFrame, true);
     private HeroiSprite heroiSprite = new HeroiSprite();
+    private StatusHeroi statusHeroi = new StatusHeroi(mainFrame, true);
 
     private JPanel navPanel;
     private CardLayout navLayout;
@@ -61,6 +64,7 @@ public class BattleController {
         telaBatalha.setController(this);
         menuBatalha.setController(this);
         heroiSprite.setController(this);
+        statusHeroi.setController(this);
     }
 
     public void iniciaTelas() {
@@ -71,9 +75,16 @@ public class BattleController {
 
     public void setHeroiSpriteMapa() {
         heroiSprite.getNomeHeroiLabel().setText(heroiUsuario.getPersonName());
-        heroiSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/hero_idle.png")));
+        heroiSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_HEROI_IDLE)));
         heroiSprite.getHeroiProgressBar().setMaximum(heroiUsuario.getVidaMaxima());
         heroiSprite.getHeroiProgressBar().setValue(heroiUsuario.getVidaAtual());
+    }
+
+    public void setHeroiSpriteBatalha(Heroi heroi, String heroSprite) {
+        heroiSprite.getNomeHeroiLabel().setText(heroi.getPersonName());
+        heroiSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(heroSprite)));
+        heroiSprite.getHeroiProgressBar().setMaximum(heroi.getVidaMaxima());
+        heroiSprite.getHeroiProgressBar().setValue(heroi.getVidaAtual());
     }
 
     public void irTelaPrincipal() {
@@ -83,6 +94,20 @@ public class BattleController {
         CardLayout layout = (CardLayout) menuPrincipal.getSpriteHeroiPanel().getLayout();
         layout.show(menuPrincipal.getSpriteHeroiPanel(), Telas.HEROI_SPRITE);
         setMapa();
+    }
+
+    public void irTelaBatalha(String qualInimigo) {
+//        navPanel.removeAll();
+        navPanel.add(telaBatalha, Telas.TELA_BATALHA);
+        navLayout.show(navPanel, Telas.TELA_BATALHA);
+        atualizaSpriteHeroiBatalha();
+        telaBatalha.setQualInimigo(qualInimigo);
+    }
+
+    public void atualizaSpriteHeroiBatalha() {
+        telaBatalha.getSpriteHeroiPanel().add(this.heroiSprite, Telas.HEROI_SPRITE);
+        CardLayout layout = (CardLayout) telaBatalha.getSpriteHeroiPanel().getLayout();
+        layout.show(telaBatalha.getSpriteHeroiPanel(), Telas.HEROI_SPRITE);
     }
 
     public void voltarTelaIncial() {
@@ -95,25 +120,25 @@ public class BattleController {
             int lvel = this.heroiUsuario.getLvel();
             switch (dificuldade) {
                 case Batalha.BATALHA_FACIL:
-                    List<Monstro> monstrosFacha1 =inmDao.getMonstroPorFachaLvel(lvel - 2, lvel);
+                    List<Monstro> monstrosFacha1 = inmDao.getMonstroPorFachaLvel(lvel - 2, lvel);
                     List<Monstro> monstrosFacil = selecionaMonstros(monstrosFacha1, 1, 2);
-                    System.out.println(monstrosFacha1+"    "+monstrosFacil);
+                    System.out.println(monstrosFacha1 + "    " + monstrosFacil);
                     iniciarBatalha(monstrosFacil);
                     monstrosFacha1.clear();
                     monstrosFacil.clear();
                     break;
                 case Batalha.BATALHA_MEDIA:
-                    List<Monstro> monstrosFacha2 =inmDao.getMonstroPorFachaLvel(lvel - 1, lvel + 1);
+                    List<Monstro> monstrosFacha2 = inmDao.getMonstroPorFachaLvel(lvel - 1, lvel + 1);
                     List<Monstro> monstrosMedio = selecionaMonstros(monstrosFacha2, 2, 2);
-                    System.out.println(monstrosFacha2+"    "+monstrosMedio);
+                    System.out.println(monstrosFacha2 + "    " + monstrosMedio);
                     iniciarBatalha(monstrosMedio);
                     monstrosFacha2.clear();
                     monstrosMedio.clear();
                     break;
                 case Batalha.BATALHA_DIFICIL:
-                    List<Monstro> monstrosFacha3 =inmDao.getMonstroPorFachaLvel(lvel, lvel + 2);
+                    List<Monstro> monstrosFacha3 = inmDao.getMonstroPorFachaLvel(lvel, lvel + 2);
                     List<Monstro> monstrosDificil = selecionaMonstros(monstrosFacha3, 2, 3);
-                    System.out.println(monstrosFacha3+"    "+monstrosDificil);
+                    System.out.println(monstrosFacha3 + "    " + monstrosDificil);
                     iniciarBatalha(monstrosDificil);
                     monstrosFacha3.clear();
                     monstrosDificil.clear();
@@ -128,7 +153,7 @@ public class BattleController {
         ArrayList<Monstro> monstrosSelecionados = new ArrayList();
         Random rng = new Random();
         int numMonstros = 1 + rng.nextInt(limiteNumeroMonstros);
-        if(numMonstros<minNumeroMonstros){
+        if (numMonstros < minNumeroMonstros) {
             numMonstros = minNumeroMonstros;
         }
         for (int i = 0; i < numMonstros; i++) {
@@ -160,12 +185,14 @@ public class BattleController {
     }
 
     public void iniciarBatalha(List<Monstro> monstros) {
-        this.batalha = new Battle(this.heroiUsuario, monstros);
-        System.out.println(monstros);
+        this.batalha = new Battle(this.heroiUsuario, monstros, this);
+        irTelaBatalha(Batalha.MONSTROS);
+
     }
 
     public void iniciarBatalha(Vilao boss) {
-        this.batalha = new Battle(this.heroiUsuario, boss);
+        this.batalha = new Battle(this.heroiUsuario, boss, this);
+        irTelaBatalha(Batalha.VILAO);
     }
 
     public Battle getBatalha() {
@@ -205,6 +232,39 @@ public class BattleController {
         menuBatalha.dispose();
     }
 
+    public void abrirStatus() {
+        atualizaTelaStatus();
+        statusHeroi.setVisible(true);
+    }
+    public void abrirStatus(Heroi heroi) {
+        atualizaTelaStatus(heroi);
+        statusHeroi.setVisible(true);
+    }
+
+    private void atualizaTelaStatus() {
+        statusHeroi.getNomeHeroiLabel().setText(heroiUsuario.getPersonName());
+        statusHeroi.getVidaValorLabel().setText(String.valueOf(heroiUsuario.getVidaAtual())+" / "+String.valueOf(heroiUsuario.getVidaMaxima()));
+        statusHeroi.getAtaqueValorLabel().setText(String.valueOf(heroiUsuario.getAtak()));
+        statusHeroi.getDefesaValorLabel().setText(String.valueOf(heroiUsuario.getDefe()));
+        statusHeroi.getVelocidadeValorLabel().setText(String.valueOf(heroiUsuario.getSped()));
+        statusHeroi.getLevelValorLabel().setText(String.valueOf(heroiUsuario.getLvel()));
+        statusHeroi.getXpProxLvlValorLabel().setText(String.valueOf(heroiUsuario.getExpNxtLvel()));
+    }
+    private void atualizaTelaStatus(Heroi heroi) {
+        statusHeroi.getNomeHeroiLabel().setText(heroi.getPersonName());
+        statusHeroi.getVidaValorLabel().setText(String.valueOf(heroi.getVidaAtual())+" / "+String.valueOf(heroiUsuario.getVidaMaxima()));
+        statusHeroi.getAtaqueValorLabel().setText(String.valueOf(heroi.getAtak()));
+        statusHeroi.getDefesaValorLabel().setText(String.valueOf(heroi.getDefe()));
+        statusHeroi.getVelocidadeValorLabel().setText(String.valueOf(heroi.getSped()));
+        statusHeroi.getLevelValorLabel().setText(String.valueOf(heroi.getLvel()));
+        statusHeroi.getXpProxLvlValorLabel().setText(String.valueOf(heroi.getExpNxtLvel()));
+    }
+
+    public void sairStatus() {
+        statusHeroi.setVisible(false);
+        statusHeroi.dispose();
+    }
+
     public void sairConfirma() {
         menuBatalha.setAcao("");
         menuBatalha.getAcaoPanel().setVisible(true);
@@ -220,6 +280,8 @@ public class BattleController {
             salvarJogo();
             sairMenu();
             mainController.sairJogo();
+        } else if (menuBatalha.getAcao().equals(Outros.VER_STATUS)) {
+
         }
     }
 
@@ -233,6 +295,10 @@ public class BattleController {
         menuBatalha.setAcao(Outros.SAIR_JOGO);
         menuBatalha.getAcaoPanel().setVisible(false);
         menuBatalha.getConfirmaPanel().setVisible(true);
+    }
+
+    public void selecionaVerStatusHeroi() {
+        abrirStatus();
     }
 
     public void setPropiedadesBatalha(String descricaoBatalha, String batalhaOpcao1, String batalhaOpcao2, String batalhaOpcao3) {
@@ -288,24 +354,26 @@ public class BattleController {
         }
 
         if (numBotao == facil) {
-            setDificuldade(facil);
-        }else if(numBotao == medio){
-            setDificuldade(medio);
-        }else{
-            setDificuldade(dificil);
+            setDificuldade(Batalha.BATALHA_FACIL);
+        } else if (numBotao == medio) {
+            setDificuldade(Batalha.BATALHA_MEDIA);
+        } else if (numBotao == dificil) {
+            setDificuldade(Batalha.BATALHA_DIFICIL);
+        } else {
+            setDificuldade(Batalha.BATALHA_MEDIA);
         }
     }
 
-    private void setDificuldade(int numDificuldade) {
-        switch(numDificuldade){
-            case 1:
+    private void setDificuldade(String dificuldade) {
+        switch (dificuldade) {
+            case Batalha.BATALHA_FACIL:
                 receberMonstros(Batalha.BATALHA_FACIL);
                 break;
-            case 2:
+            case Batalha.BATALHA_MEDIA:
                 receberMonstros(Batalha.BATALHA_MEDIA);
                 break;
-            case 3:
-                receberMonstros(Batalha.BATALHA_DIFICIL);                
+            case Batalha.BATALHA_DIFICIL:
+                receberMonstros(Batalha.BATALHA_DIFICIL);
                 break;
         }
     }

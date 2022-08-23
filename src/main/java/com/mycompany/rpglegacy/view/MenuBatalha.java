@@ -40,9 +40,12 @@ public class MenuBatalha extends javax.swing.JDialog {
         btnVoltar = new javax.swing.JButton();
         btnMenuPrincipal = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
+        btnStatusHeroi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        absoluteLayout.setMinimumSize(new java.awt.Dimension(418, 40));
+        absoluteLayout.setPreferredSize(new java.awt.Dimension(418, 40));
         absoluteLayout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cancelarBtn.setText("Cancelar");
@@ -63,12 +66,12 @@ public class MenuBatalha extends javax.swing.JDialog {
         confirmaPanel.setLayout(confirmaPanelLayout);
         confirmaPanelLayout.setHorizontalGroup(
             confirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, confirmaPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(confirmaPanelLayout.createSequentialGroup()
+                .addGap(79, 79, 79)
                 .addComponent(cancelarBtn)
                 .addGap(61, 61, 61)
                 .addComponent(confirmarBtn)
-                .addGap(40, 40, 40))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         confirmaPanelLayout.setVerticalGroup(
             confirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,7 +83,9 @@ public class MenuBatalha extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        absoluteLayout.add(confirmaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 0, -1, -1));
+        absoluteLayout.add(confirmaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, -1));
+
+        acaoPanel.setPreferredSize(new java.awt.Dimension(418, 40));
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -96,10 +101,17 @@ public class MenuBatalha extends javax.swing.JDialog {
             }
         });
 
-        btnSair.setText("Sair do Jogo");
+        btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
+            }
+        });
+
+        btnStatusHeroi.setText("Status");
+        btnStatusHeroi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStatusHeroiActionPerformed(evt);
             }
         });
 
@@ -110,6 +122,8 @@ public class MenuBatalha extends javax.swing.JDialog {
             .addGroup(acaoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnStatusHeroi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMenuPrincipal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -123,18 +137,19 @@ public class MenuBatalha extends javax.swing.JDialog {
                 .addGroup(acaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
                     .addComponent(btnMenuPrincipal)
-                    .addComponent(btnSair))
+                    .addComponent(btnSair)
+                    .addComponent(btnStatusHeroi))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        absoluteLayout.add(acaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+        absoluteLayout.add(acaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 0, 390, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(absoluteLayout, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                .addComponent(absoluteLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
@@ -164,6 +179,10 @@ public class MenuBatalha extends javax.swing.JDialog {
     private void confirmarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarBtnActionPerformed
         controller.confirmar();
     }//GEN-LAST:event_confirmarBtnActionPerformed
+
+    private void btnStatusHeroiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusHeroiActionPerformed
+        controller.selecionaVerStatusHeroi();
+    }//GEN-LAST:event_btnStatusHeroiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,6 +254,7 @@ public class MenuBatalha extends javax.swing.JDialog {
     private javax.swing.JPanel acaoPanel;
     private javax.swing.JButton btnMenuPrincipal;
     private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnStatusHeroi;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JButton cancelarBtn;
     private javax.swing.JPanel confirmaPanel;

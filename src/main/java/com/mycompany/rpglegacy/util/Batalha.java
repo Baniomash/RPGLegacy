@@ -12,6 +12,7 @@ public interface Batalha {
 
     public static final String HEROI = "heroi";
     public static final String VILAO = "vilao";
+    public static final String MONSTROS = "monstros";
     public static final String MONSTRO_1 = "monstro1";
     public static final String MONSTRO_2 = "monstro2";
     public static final String MONSTRO_3 = "monstro3";

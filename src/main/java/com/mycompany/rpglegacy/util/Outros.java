@@ -18,5 +18,6 @@ public interface Outros {
     public static final String PALADINO = "Paladino";
     public static final String VOLTAR_PRINCIPAL = "menuPrincipal";
     public static final String SAIR_JOGO = "exit";
+    public static final String VER_STATUS = "status";
 
 }

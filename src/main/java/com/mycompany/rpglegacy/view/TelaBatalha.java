@@ -5,6 +5,8 @@
 package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.BattleController;
+import java.awt.Color;
+import javax.swing.JPanel;
 
 /**
  *
@@ -12,6 +14,7 @@ import com.mycompany.rpglegacy.controller.BattleController;
  */
 public class TelaBatalha extends javax.swing.JPanel {
     private BattleController controller;
+    private String qualInimigo;
     /**
      * Creates new form Batalha
      */
@@ -44,6 +47,7 @@ public class TelaBatalha extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         voltarButton5.setText("Menu");
+        voltarButton5.setPreferredSize(new java.awt.Dimension(100, 50));
         voltarButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarButton5ActionPerformed(evt);
@@ -55,6 +59,7 @@ public class TelaBatalha extends javax.swing.JPanel {
         adversarioSquarePanel.setMaximumSize(new java.awt.Dimension(300, 300));
         adversarioSquarePanel.setMinimumSize(new java.awt.Dimension(300, 300));
         adversarioSquarePanel.setName(""); // NOI18N
+        adversarioSquarePanel.setOpaque(false);
         adversarioSquarePanel.setPreferredSize(new java.awt.Dimension(300, 300));
 
         spriteAdversarioPanel.setOpaque(false);
@@ -83,6 +88,7 @@ public class TelaBatalha extends javax.swing.JPanel {
         heroiSquarePanel.setMaximumSize(new java.awt.Dimension(200, 300));
         heroiSquarePanel.setMinimumSize(new java.awt.Dimension(200, 300));
         heroiSquarePanel.setName(""); // NOI18N
+        heroiSquarePanel.setOpaque(false);
         heroiSquarePanel.setPreferredSize(new java.awt.Dimension(200, 300));
 
         spriteHeroiPanel.setOpaque(false);
@@ -110,36 +116,41 @@ public class TelaBatalha extends javax.swing.JPanel {
         infoPanel.setBackground(new java.awt.Color(220, 220, 220));
         infoPanel.setMaximumSize(new java.awt.Dimension(512, 64));
         infoPanel.setMinimumSize(new java.awt.Dimension(512, 64));
+        infoPanel.setOpaque(false);
         infoPanel.setPreferredSize(new java.awt.Dimension(512, 64));
 
+        infoLabel.setBackground(new Color(0,51,255, 50));
+        infoLabel.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        infoLabel.setForeground(new java.awt.Color(255, 255, 255));
         infoLabel.setText("jLabel1");
+        infoLabel.setOpaque(true);
 
         javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
         infoPanel.setLayout(infoPanelLayout);
         infoPanelLayout.setHorizontalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoPanelLayout.createSequentialGroup()
-                .addGap(227, 227, 227)
+                .addGap(226, 226, 226)
                 .addComponent(infoLabel)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
         infoPanelLayout.setVerticalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoPanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(16, 16, 16)
                 .addComponent(infoLabel)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        add(infoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 6, -1, -1));
+        add(infoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 6, -1, 50));
 
+        statusPanel.setBackground(new Color(0,51,255, 50));
         statusPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         statusPanel.setMaximumSize(new java.awt.Dimension(620, 70));
         statusPanel.setMinimumSize(new java.awt.Dimension(620, 70));
-        statusPanel.setOpaque(false);
         statusPanel.setPreferredSize(new java.awt.Dimension(620, 70));
         statusPanel.setLayout(new java.awt.CardLayout());
-        add(statusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        add(statusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton5ActionPerformed
@@ -149,6 +160,15 @@ public class TelaBatalha extends javax.swing.JPanel {
     public void setController(BattleController controller) {
         this.controller = controller;
     }
+
+    public JPanel getSpriteHeroiPanel() {
+        return spriteHeroiPanel;
+    }
+
+    public void setQualInimigo(String qualInimigo) {
+        this.qualInimigo = qualInimigo;
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

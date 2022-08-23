@@ -5,6 +5,7 @@
 package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.BattleController;
+import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
@@ -36,6 +37,7 @@ public class HeroiSprite extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(160, 260));
         setMinimumSize(new java.awt.Dimension(160, 260));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(160, 260));
         setRequestFocusEnabled(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -54,8 +56,11 @@ public class HeroiSprite extends javax.swing.JPanel {
         spriteHeroiLabel.setPreferredSize(new java.awt.Dimension(148, 200));
         add(spriteHeroiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 130));
 
+        nomeHeroiLabel.setBackground(new Color(0,51,255, 40));
         nomeHeroiLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        nomeHeroiLabel.setForeground(new java.awt.Color(255, 255, 255));
         nomeHeroiLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nomeHeroiLabel.setOpaque(true);
         add(nomeHeroiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 20));
     }// </editor-fold>//GEN-END:initComponents
     

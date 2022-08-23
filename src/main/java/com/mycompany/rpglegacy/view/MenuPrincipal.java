@@ -5,6 +5,7 @@
 package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.BattleController;
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -51,15 +52,17 @@ public class MenuPrincipal extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(640, 480));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        progressoPanel.setBackground(new java.awt.Color(230, 230, 230));
+        progressoPanel.setBackground(new Color(0,51,255, 40));
         progressoPanel.setMaximumSize(new java.awt.Dimension(512, 64));
         progressoPanel.setMinimumSize(new java.awt.Dimension(512, 64));
         progressoPanel.setPreferredSize(new java.awt.Dimension(512, 64));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Progresso:");
 
         progressoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        progressoLabel.setForeground(new java.awt.Color(255, 255, 255));
         progressoLabel.setText("progresso...");
 
         javax.swing.GroupLayout progressoPanelLayout = new javax.swing.GroupLayout(progressoPanel);
@@ -83,29 +86,32 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 .addGap(17, 17, 17))
         );
 
-        add(progressoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+        add(progressoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
-        heroiSquarePanel.setBackground(new java.awt.Color(230, 230, 230));
+        heroiSquarePanel.setBackground(new Color(0,51,255, 40));
         heroiSquarePanel.setMaximumSize(new java.awt.Dimension(200, 300));
         heroiSquarePanel.setMinimumSize(new java.awt.Dimension(200, 300));
         heroiSquarePanel.setName(""); // NOI18N
+        heroiSquarePanel.setOpaque(false);
         heroiSquarePanel.setPreferredSize(new java.awt.Dimension(200, 300));
         heroiSquarePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         spriteHeroiPanel.setMaximumSize(new java.awt.Dimension(160, 260));
         spriteHeroiPanel.setMinimumSize(new java.awt.Dimension(160, 260));
+        spriteHeroiPanel.setOpaque(false);
         spriteHeroiPanel.setPreferredSize(new java.awt.Dimension(160, 260));
         spriteHeroiPanel.setLayout(new java.awt.CardLayout());
         heroiSquarePanel.add(spriteHeroiPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         add(heroiSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
-        textoPanel.setBackground(new java.awt.Color(220, 220, 220));
+        textoPanel.setBackground(new Color(0,51,255, 40));
         textoPanel.setMaximumSize(new java.awt.Dimension(512, 64));
         textoPanel.setMinimumSize(new java.awt.Dimension(512, 64));
         textoPanel.setPreferredSize(new java.awt.Dimension(512, 64));
 
         textoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        textoLabel.setForeground(new java.awt.Color(255, 255, 255));
         textoLabel.setText("texto");
 
         javax.swing.GroupLayout textoPanelLayout = new javax.swing.GroupLayout(textoPanel);
@@ -125,14 +131,16 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(textoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+        add(textoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
 
-        botoesPanel.setBackground(new java.awt.Color(220, 220, 220));
-        botoesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escolha uma Ação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        botoesPanel.setBackground(new Color(0,51,255, 40));
+        botoesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Escolha uma Ação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         botoesPanel.setMaximumSize(new java.awt.Dimension(360, 300));
         botoesPanel.setMinimumSize(new java.awt.Dimension(360, 300));
         botoesPanel.setPreferredSize(new java.awt.Dimension(360, 300));
 
+        acao1Button.setBackground(new Color(0,51,255, 40));
+        acao1Button.setForeground(new java.awt.Color(255, 255, 255));
         acao1Button.setText("jButton1");
         acao1Button.setMaximumSize(new java.awt.Dimension(320, 64));
         acao1Button.setMinimumSize(new java.awt.Dimension(320, 64));
@@ -143,6 +151,8 @@ public class MenuPrincipal extends javax.swing.JPanel {
             }
         });
 
+        acao2Button.setBackground(new Color(0,51,255, 40));
+        acao2Button.setForeground(new java.awt.Color(255, 255, 255));
         acao2Button.setText("jButton1");
         acao2Button.setMaximumSize(new java.awt.Dimension(320, 64));
         acao2Button.setMinimumSize(new java.awt.Dimension(320, 64));
@@ -153,6 +163,8 @@ public class MenuPrincipal extends javax.swing.JPanel {
             }
         });
 
+        acao3Button.setBackground(new Color(0,51,255, 40));
+        acao3Button.setForeground(new java.awt.Color(255, 255, 255));
         acao3Button.setText("jButton1");
         acao3Button.setMaximumSize(new java.awt.Dimension(320, 64));
         acao3Button.setMinimumSize(new java.awt.Dimension(320, 64));
@@ -189,13 +201,17 @@ public class MenuPrincipal extends javax.swing.JPanel {
 
         add(botoesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 
+        voltarButton5.setBackground(new java.awt.Color(0, 51, 204));
+        voltarButton5.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        voltarButton5.setForeground(new java.awt.Color(255, 255, 255));
         voltarButton5.setText("Menu");
+        voltarButton5.setPreferredSize(new java.awt.Dimension(100, 50));
         voltarButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarButton5ActionPerformed(evt);
             }
         });
-        add(voltarButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(voltarButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void acao1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acao1ButtonActionPerformed
