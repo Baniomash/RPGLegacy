@@ -111,6 +111,9 @@
               <Dimension value="[256, 64]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginTextFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="logarButton">
           <Properties>
@@ -155,6 +158,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="senhaPassField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Digite sua senha"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="senhaPassFieldActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

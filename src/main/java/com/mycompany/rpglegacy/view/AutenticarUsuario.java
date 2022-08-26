@@ -57,6 +57,11 @@ public class AutenticarUsuario extends javax.swing.JPanel {
         loginTextField.setMaximumSize(new java.awt.Dimension(256, 64));
         loginTextField.setMinimumSize(new java.awt.Dimension(256, 64));
         loginTextField.setPreferredSize(new java.awt.Dimension(256, 64));
+        loginTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginTextFieldActionPerformed(evt);
+            }
+        });
 
         logarButton.setText("SIGN IN");
         logarButton.setMaximumSize(new java.awt.Dimension(256, 64));
@@ -80,6 +85,13 @@ public class AutenticarUsuario extends javax.swing.JPanel {
 
         erroLabel.setForeground(new java.awt.Color(255, 0, 0));
         erroLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        senhaPassField.setToolTipText("Digite sua senha");
+        senhaPassField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                senhaPassFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,6 +152,14 @@ public class AutenticarUsuario extends javax.swing.JPanel {
     private void logarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logarButtonActionPerformed
         controller.autenticarUsuario();
     }//GEN-LAST:event_logarButtonActionPerformed
+
+    private void loginTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTextFieldActionPerformed
+        controller.autenticarUsuario();
+    }//GEN-LAST:event_loginTextFieldActionPerformed
+
+    private void senhaPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaPassFieldActionPerformed
+        controller.autenticarUsuario();
+    }//GEN-LAST:event_senhaPassFieldActionPerformed
 
     public JButton getLogarButton() {
         return logarButton;

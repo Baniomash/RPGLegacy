@@ -37,9 +37,8 @@ public interface Batalha {
     // BATALHA -- 3
     public static final String NOME_MUNDO_FASE_3 = "FLORESTA TENEBROSA";
     public static final String DESCRICAO_BATALHA_3 = "<html>Ao entrar na floresta, você vê 3 caminhos.<br>Você vai seguir o caminho cercado por:</html>";
-    public static final String BATALHA_3_OPCAO_1 = "Arbustos";
-    public static final String BATALHA_3_OPCAO_2 = "Pedras";
-    public static final String BATALHA_3_OPCAO_3 = "Árvores";
+    public static final String NOME_BOSS_1 = "1° Ministro Ithaurus O Indígno";
+
 
     // BATALHA -- 4
     public static final String NOME_MUNDO_FASE_4 = "CIDADE ASSOMBRADA";
@@ -56,11 +55,9 @@ public interface Batalha {
     public static final String BATALHA_5_OPCAO_3 = "Árvores";
 
     // BATALHA -- 6
-    public static final String NOME_MUNDO_FASE_6 = "CIDADE ASSOMBRADA";
+    public static final String NOME_MUNDO_FASE_6 = "FLORESTA TENEBROSA";
     public static final String DESCRICAO_BATALHA_6 = "<html>Ao entrar na floresta, você vê 3 caminhos.<br>Você vai seguir o caminho cercado por:</html>";
-    public static final String BATALHA_6_OPCAO_1 = "Arbustos";
-    public static final String BATALHA_6_OPCAO_2 = "Pedras";
-    public static final String BATALHA_6_OPCAO_3 = "Árvores";
+    public static final String NOME_BOSS_2 = "2° Ministro Maltus O Executor";
 
     // BATALHA -- 7
     public static final String NOME_MUNDO_FASE_7 = "CASTELO APODRECIDO";
@@ -77,11 +74,9 @@ public interface Batalha {
     public static final String BATALHA_8_OPCAO_3 = "Árvores";
 
     // BATALHA -- 9
-    public static final String NOME_MUNDO_FASE_9 = "CASTELO APODRECIDO";
+    public static final String NOME_MUNDO_FASE_9 = "FLORESTA TENEBROSA";
     public static final String DESCRICAO_BATALHA_9 = "<html>Ao entrar na floresta, você vê 3 caminhos.<br>Você vai seguir o caminho cercado por:</html>";
-    public static final String BATALHA_9_OPCAO_1 = "Arbustos";
-    public static final String BATALHA_9_OPCAO_2 = "Pedras";
-    public static final String BATALHA_9_OPCAO_3 = "Árvores";
+    public static final String NOME_BOSS_3 = "3° Ministro Letholdus O Traidor";
 
     // BATALHA -- 10
     public static final String NOME_MUNDO_FASE_10 = "SALA DO TRONO REAL";
@@ -98,9 +93,7 @@ public interface Batalha {
     public static final String BATALHA_11_OPCAO_3 = "Árvores";
 
     // BATALHA -- 12
-    public static final String NOME_MUNDO_FASE_12 = "SALA DO TRONO REAL";
+    public static final String NOME_MUNDO_FASE_12 = "FLORESTA TENEBROSA";
     public static final String DESCRICAO_BATALHA_12 = "<html>Ao entrar na floresta, você vê 3 caminhos.<br>Você vai seguir o caminho cercado por:</html>";
-    public static final String BATALHA_12_OPCAO_1 = "Arbustos";
-    public static final String BATALHA_12_OPCAO_2 = "Pedras";
-    public static final String BATALHA_12_OPCAO_3 = "Árvores";
+    public static final String NOME_BOSS_4 = "O Rei Apodrecido";
 }

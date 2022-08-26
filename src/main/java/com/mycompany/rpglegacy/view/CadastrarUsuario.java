@@ -60,6 +60,11 @@ public class CadastrarUsuario extends javax.swing.JPanel {
         cadastroTextField.setMaximumSize(new java.awt.Dimension(256, 64));
         cadastroTextField.setMinimumSize(new java.awt.Dimension(256, 64));
         cadastroTextField.setPreferredSize(new java.awt.Dimension(256, 64));
+        cadastroTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroTextFieldActionPerformed(evt);
+            }
+        });
 
         cadastrarButton.setText("SIGN UP");
         cadastrarButton.setMaximumSize(new java.awt.Dimension(256, 64));
@@ -69,6 +74,12 @@ public class CadastrarUsuario extends javax.swing.JPanel {
         cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrarButtonActionPerformed(evt);
+            }
+        });
+
+        senhaPassField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                senhaPassFieldActionPerformed(evt);
             }
         });
 
@@ -119,6 +130,14 @@ public class CadastrarUsuario extends javax.swing.JPanel {
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         controller.cadastrarUsuario();
     }//GEN-LAST:event_cadastrarButtonActionPerformed
+
+    private void cadastroTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroTextFieldActionPerformed
+        controller.autenticarUsuario();
+    }//GEN-LAST:event_cadastroTextFieldActionPerformed
+
+    private void senhaPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaPassFieldActionPerformed
+        controller.autenticarUsuario();
+    }//GEN-LAST:event_senhaPassFieldActionPerformed
 
     public JButton getCadastrarButton() {
         return cadastrarButton;

@@ -47,6 +47,8 @@ public class TelaBatalha extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(640, 480));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        voltarButton5.setBackground(new java.awt.Color(0, 0, 255));
+        voltarButton5.setForeground(new java.awt.Color(255, 255, 255));
         voltarButton5.setText("Menu");
         voltarButton5.setPreferredSize(new java.awt.Dimension(100, 50));
         voltarButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -54,7 +56,7 @@ public class TelaBatalha extends javax.swing.JPanel {
                 voltarButton5ActionPerformed(evt);
             }
         });
-        add(voltarButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+        add(voltarButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         adversarioSquarePanel.setBackground(new java.awt.Color(230, 230, 230));
         adversarioSquarePanel.setMaximumSize(new java.awt.Dimension(300, 300));
@@ -138,9 +140,9 @@ public class TelaBatalha extends javax.swing.JPanel {
         infoPanelLayout.setVerticalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(20, 20, 20)
                 .addComponent(infoLabel)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         add(infoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 6, -1, 50));
@@ -151,7 +153,7 @@ public class TelaBatalha extends javax.swing.JPanel {
         statusPanel.setMinimumSize(new java.awt.Dimension(620, 70));
         statusPanel.setPreferredSize(new java.awt.Dimension(620, 70));
         statusPanel.setLayout(new java.awt.CardLayout());
-        add(statusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        add(statusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton5ActionPerformed

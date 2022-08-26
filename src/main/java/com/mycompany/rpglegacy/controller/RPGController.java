@@ -206,6 +206,7 @@ public class RPGController {
     public void sairJogo() {
         mainFrame.setVisible(false);
         mainFrame.dispose();
+        System.exit(0);
     }
 
     public Usuario getUsr() {
@@ -315,12 +316,15 @@ public class RPGController {
 //      cavaleiro   (32) (08*10)080 - 08 - 08 - 08
 //      barbaro     (32) (08*15)120 - 12 - 06 - 06
 //      paladino    (32) (08*10)080 - 06 - 12 - 06
-
-//      monstro     (32) (05*10)050 - 16 - 06 - 05
-//      monstro     (40) (07*10)070 - 18 - 08 - 07
-//      monstro     (48) (09*10)090 - 20 - 10 - 09
-//      monstro     (56) (11*10)110 - 22 - 12 - 11
-//      monstro     (64) (13*10)130 - 24 - 14 - 13
+// 
+//      vilao       (60) (30*10)340 - 12 - 10 - 08
+//
+//      monstro     (28) (05*10)050 - 14 - 05 - 04
+//      monstro     (36) (07*10)070 - 16 - 07 - 06
+//      monstro     (44) (09*10)090 - 18 - 09 - 08
+//      monstro     (52) (11*10)110 - 20 - 11 - 10
+//      monstro     (60) (13*10)130 - 22 - 13 - 12
 //    
-//      calcuo mons XP (PontosTotal * 1+(0.1*PontosVida)) /  10
+//      calcuo mons XP (PontosTotal * (1+(0.01*PontosVida))) /  10
+//      calcuo mons XP ((PontosTotal * (1+(0.01*PontosVida))) /  10) * (atk*0,1))
 }

@@ -104,13 +104,17 @@ public class BattleController {
         atualizaTelaBatalha(heroiUsuario, Sprites.SPRITE_HEROI_IDLE);
         telaBatalha.setQualInimigo(qualInimigo);
     }
-    public void atualizaTelaBatalha(Heroi heroi, String spriteHeroi){
+
+    public void atualizaTelaBatalha(Heroi heroi, String spriteHeroi) {
         setHeroiSpriteBatalha(heroi, spriteHeroi);
         atualizaSpriteHeroiBatalha();
-        
+
     }
+
     public void atualizaSpriteHeroiBatalha() {
-        telaBatalha.getSpriteHeroiPanel().add(this.heroiSprite, Telas.HEROI_SPRITE);
+        if (telaBatalha.getSpriteHeroiPanel().getComponentCount() <= 0) {
+            telaBatalha.getSpriteHeroiPanel().add(this.heroiSprite, Telas.HEROI_SPRITE);
+        }
         CardLayout layout = (CardLayout) telaBatalha.getSpriteHeroiPanel().getLayout();
         layout.show(telaBatalha.getSpriteHeroiPanel(), Telas.HEROI_SPRITE);
     }
@@ -118,6 +122,37 @@ public class BattleController {
     public void voltarTelaIncial() {
         navPanel.removeAll();
         mainController.iniciaTelas();
+    }
+
+    private void receberBoss() {
+        int mundo = this.heroiUsuario.getProgress().getMundo();
+        switch (mundo) {
+            case 1: {
+                try {
+                    iniciarBatalha(inmDao.getVilaoPorLvel(5));
+                } catch (SQLException ex) {
+                    Logger.getLogger(BattleController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
+            case 2: {
+                try {
+                    iniciarBatalha(inmDao.getVilaoPorLvel(10));
+                } catch (SQLException ex) {
+                    Logger.getLogger(BattleController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
+            case 3: {
+                try {
+                    iniciarBatalha(inmDao.getVilaoPorLvel(15));
+                } catch (SQLException ex) {
+                    Logger.getLogger(BattleController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
+
+        }
     }
 
     public void receberMonstros(String dificuldade) {
@@ -197,6 +232,7 @@ public class BattleController {
 
     public void iniciarBatalha(Vilao boss) {
         this.batalha = new Battle(this.heroiUsuario, boss, this);
+        System.out.println(boss);
         irTelaBatalha(Batalha.VILAO);
     }
 
@@ -241,6 +277,7 @@ public class BattleController {
         atualizaTelaStatus();
         statusHeroi.setVisible(true);
     }
+
     public void abrirStatus(Heroi heroi) {
         atualizaTelaStatus(heroi);
         statusHeroi.setVisible(true);
@@ -248,16 +285,17 @@ public class BattleController {
 
     private void atualizaTelaStatus() {
         statusHeroi.getNomeHeroiLabel().setText(heroiUsuario.getPersonName());
-        statusHeroi.getVidaValorLabel().setText(String.valueOf(heroiUsuario.getVidaAtual())+" / "+String.valueOf(heroiUsuario.getVidaMaxima()));
+        statusHeroi.getVidaValorLabel().setText(String.valueOf(heroiUsuario.getVidaAtual()) + " / " + String.valueOf(heroiUsuario.getVidaMaxima()));
         statusHeroi.getAtaqueValorLabel().setText(String.valueOf(heroiUsuario.getAtak()));
         statusHeroi.getDefesaValorLabel().setText(String.valueOf(heroiUsuario.getDefe()));
         statusHeroi.getVelocidadeValorLabel().setText(String.valueOf(heroiUsuario.getSped()));
         statusHeroi.getLevelValorLabel().setText(String.valueOf(heroiUsuario.getLvel()));
         statusHeroi.getXpProxLvlValorLabel().setText(String.valueOf(heroiUsuario.getExpNxtLvel()));
     }
+
     private void atualizaTelaStatus(Heroi heroi) {
         statusHeroi.getNomeHeroiLabel().setText(heroi.getPersonName());
-        statusHeroi.getVidaValorLabel().setText(String.valueOf(heroi.getVidaAtual())+" / "+String.valueOf(heroiUsuario.getVidaMaxima()));
+        statusHeroi.getVidaValorLabel().setText(String.valueOf(heroi.getVidaAtual()) + " / " + String.valueOf(heroiUsuario.getVidaMaxima()));
         statusHeroi.getAtaqueValorLabel().setText(String.valueOf(heroi.getAtak()));
         statusHeroi.getDefesaValorLabel().setText(String.valueOf(heroi.getDefe()));
         statusHeroi.getVelocidadeValorLabel().setText(String.valueOf(heroi.getSped()));
@@ -307,67 +345,86 @@ public class BattleController {
     }
 
     public void setPropiedadesBatalha(String nomeMundo, String descricaoBatalha, String batalhaOpcao1, String batalhaOpcao2, String batalhaOpcao3) {
-        menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString()+ " / " + nomeMundo);
+        menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString() + " / " + nomeMundo);
         menuPrincipal.getTextoLabel().setText(descricaoBatalha);
         menuPrincipal.getAcao1Button().setText(batalhaOpcao1);
+        menuPrincipal.getAcao1Button().setVisible(true);
         menuPrincipal.getAcao2Button().setText(batalhaOpcao2);
+        menuPrincipal.getAcao3Button().setVisible(true);
         menuPrincipal.getAcao3Button().setText(batalhaOpcao3);
     }
 
+    public void setPropiedadesBatalha(String nomeMundo, String descricaoBatalha, String batalhaBoss) {
+        menuPrincipal.getProgressoLabel().setText(heroiUsuario.getProgress().toString() + " / " + nomeMundo);
+        menuPrincipal.getTextoLabel().setText(descricaoBatalha);
+        menuPrincipal.getAcao2Button().setText(batalhaBoss);
+        menuPrincipal.getAcao1Button().setVisible(false);
+        menuPrincipal.getAcao3Button().setVisible(false);
+    }
+
     public void selecionaDificuldade(int numBotao) {
-        Random rng = new Random();
-        int padrao = rng.nextInt(6) + 1;
-        int facil;
-        int medio;
-        int dificil;
-
-        switch (padrao) {
-            case 1:
-                facil = 1;
-                medio = 2;
-                dificil = 3;
-                break;
-            case 2:
-                facil = 1;
-                medio = 3;
-                dificil = 2;
-                break;
-            case 3:
-                facil = 2;
-                medio = 1;
-                dificil = 3;
-                break;
-            case 4:
-                facil = 2;
-                medio = 3;
-                dificil = 1;
-                break;
-            case 5:
-                facil = 3;
-                medio = 2;
-                dificil = 1;
-                break;
-            case 6:
-                facil = 3;
-                medio = 1;
-                dificil = 2;
-                break;
-            default:
-                facil = 1;
-                medio = 2;
-                dificil = 3;
-                break;
-        }
-
-        if (numBotao == facil) {
-            setDificuldade(Batalha.BATALHA_FACIL);
-        } else if (numBotao == medio) {
-            setDificuldade(Batalha.BATALHA_MEDIA);
-        } else if (numBotao == dificil) {
-            setDificuldade(Batalha.BATALHA_DIFICIL);
+        if (!menuPrincipal.getAcao1Button().isVisible() && !menuPrincipal.getAcao1Button().isVisible() && numBotao == 2) {
+            setBoss();
         } else {
-            setDificuldade(Batalha.BATALHA_MEDIA);
+
+            Random rng = new Random();
+            int padrao = rng.nextInt(6) + 1;
+            int facil;
+            int medio;
+            int dificil;
+
+            switch (padrao) {
+                case 1:
+                    facil = 1;
+                    medio = 2;
+                    dificil = 3;
+                    break;
+                case 2:
+                    facil = 1;
+                    medio = 3;
+                    dificil = 2;
+                    break;
+                case 3:
+                    facil = 2;
+                    medio = 1;
+                    dificil = 3;
+                    break;
+                case 4:
+                    facil = 2;
+                    medio = 3;
+                    dificil = 1;
+                    break;
+                case 5:
+                    facil = 3;
+                    medio = 2;
+                    dificil = 1;
+                    break;
+                case 6:
+                    facil = 3;
+                    medio = 1;
+                    dificil = 2;
+                    break;
+                default:
+                    facil = 1;
+                    medio = 2;
+                    dificil = 3;
+                    break;
+            }
+
+            if (numBotao == facil) {
+                setDificuldade(Batalha.BATALHA_FACIL);
+            } else if (numBotao == medio) {
+                setDificuldade(Batalha.BATALHA_MEDIA);
+            } else if (numBotao == dificil) {
+                setDificuldade(Batalha.BATALHA_DIFICIL);
+            } else {
+                setDificuldade(Batalha.BATALHA_MEDIA);
+            }
         }
+    }
+
+    private void setBoss() {
+        receberBoss();
     }
 
     private void setDificuldade(String dificuldade) {
@@ -396,7 +453,7 @@ public class BattleController {
                 break;
             case 3:
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.BATALHA_3_OPCAO_1, Batalha.BATALHA_3_OPCAO_2, Batalha.BATALHA_3_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_1);
                 break;
             case 4:
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
@@ -408,7 +465,7 @@ public class BattleController {
                 break;
             case 6:
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_6, Batalha.DESCRICAO_BATALHA_6, Batalha.BATALHA_6_OPCAO_1, Batalha.BATALHA_6_OPCAO_2, Batalha.BATALHA_6_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_2);
                 break;
             case 7:
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
@@ -420,7 +477,7 @@ public class BattleController {
                 break;
             case 9:
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_9, Batalha.DESCRICAO_BATALHA_9, Batalha.BATALHA_9_OPCAO_1, Batalha.BATALHA_9_OPCAO_2, Batalha.BATALHA_9_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_3);
                 break;
             case 10:
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
@@ -432,7 +489,7 @@ public class BattleController {
                 break;
             case 12:
                 mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
-                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_12, Batalha.DESCRICAO_BATALHA_12, Batalha.BATALHA_12_OPCAO_1, Batalha.BATALHA_12_OPCAO_2, Batalha.BATALHA_12_OPCAO_3);
+                setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_4);
                 break;
         }
     }

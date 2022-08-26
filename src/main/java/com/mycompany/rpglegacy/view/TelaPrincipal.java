@@ -96,12 +96,13 @@ public class TelaPrincipal extends javax.swing.JPanel {
         add(usuarioPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
 
         sairButton.setText("SAIR");
+        sairButton.setPreferredSize(new java.awt.Dimension(128, 64));
         sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sairButtonActionPerformed(evt);
             }
         });
-        add(sairButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 110, 60));
+        add(sairButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButtonActionPerformed

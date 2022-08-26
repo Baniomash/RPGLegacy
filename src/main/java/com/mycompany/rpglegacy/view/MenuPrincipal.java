@@ -138,6 +138,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         botoesPanel.setMaximumSize(new java.awt.Dimension(360, 300));
         botoesPanel.setMinimumSize(new java.awt.Dimension(360, 300));
         botoesPanel.setPreferredSize(new java.awt.Dimension(360, 300));
+        botoesPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         acao1Button.setBackground(new Color(0,51,255, 40));
         acao1Button.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,6 +151,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 acao1ButtonActionPerformed(evt);
             }
         });
+        botoesPanel.add(acao1Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 65, -1, -1));
 
         acao2Button.setBackground(new Color(0,51,255, 40));
         acao2Button.setForeground(new java.awt.Color(255, 255, 255));
@@ -162,6 +164,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 acao2ButtonActionPerformed(evt);
             }
         });
+        botoesPanel.add(acao2Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 141, -1, -1));
 
         acao3Button.setBackground(new Color(0,51,255, 40));
         acao3Button.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,30 +177,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 acao3ButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout botoesPanelLayout = new javax.swing.GroupLayout(botoesPanel);
-        botoesPanel.setLayout(botoesPanelLayout);
-        botoesPanelLayout.setHorizontalGroup(
-            botoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botoesPanelLayout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addGroup(botoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(acao3Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(acao2Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(acao1Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
-        );
-        botoesPanelLayout.setVerticalGroup(
-            botoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botoesPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(acao1Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(acao2Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(acao3Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
-        );
+        botoesPanel.add(acao3Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 217, -1, -1));
 
         add(botoesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 

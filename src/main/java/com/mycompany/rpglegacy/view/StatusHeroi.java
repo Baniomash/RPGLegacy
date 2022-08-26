@@ -46,7 +46,7 @@ public class StatusHeroi extends javax.swing.JDialog {
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(201, 265));
+        setPreferredSize(new java.awt.Dimension(201, 275));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nomeHeroiLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
