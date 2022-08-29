@@ -13,12 +13,12 @@ import javax.swing.JProgressBar;
  *
  * @author Administrador
  */
-public class HeroiSprite extends javax.swing.JPanel {
+public class PersonagemSprite extends javax.swing.JPanel {
     private BattleController controller;
     /**
      * Creates new form HeroiSprite
      */
-    public HeroiSprite() {
+    public PersonagemSprite() {
         initComponents();
     }
 

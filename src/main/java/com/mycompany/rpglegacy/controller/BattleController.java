@@ -14,7 +14,7 @@ import com.mycompany.rpglegacy.util.Batalha;
 import com.mycompany.rpglegacy.util.Outros;
 import com.mycompany.rpglegacy.util.Sprites;
 import com.mycompany.rpglegacy.util.Telas;
-import com.mycompany.rpglegacy.view.HeroiSprite;
+import com.mycompany.rpglegacy.view.PersonagemSprite;
 import com.mycompany.rpglegacy.view.MainFrame;
 import com.mycompany.rpglegacy.view.MenuBatalha;
 import com.mycompany.rpglegacy.view.MenuPrincipal;
@@ -45,7 +45,7 @@ public class BattleController {
     private MenuPrincipal menuPrincipal = new MenuPrincipal();
     private TelaBatalha telaBatalha = new TelaBatalha();
     private MenuBatalha menuBatalha = new MenuBatalha(mainFrame, true);
-    private HeroiSprite heroiSprite = new HeroiSprite();
+    private PersonagemSprite heroiSprite = new PersonagemSprite();
     private StatusHeroi statusHeroi = new StatusHeroi(mainFrame, true);
 
     private JPanel navPanel;

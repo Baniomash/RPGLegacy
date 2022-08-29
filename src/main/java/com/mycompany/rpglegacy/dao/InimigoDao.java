@@ -223,52 +223,52 @@ public class InimigoDao {
         return respostaFinal;
     }
     
-//    public static void main(String[] args) throws SQLException {
-//        InimigoDao dao = new InimigoDao();
-//        
-////      Bosses
-//        Vilao boss1 = new Vilao(Batalha.NOME_BOSS_1, 12, 10, 8, 340, 5, 32);
-//        Vilao boss2 = new Vilao(Batalha.NOME_BOSS_2, 5, 5, 5, 5, 5, 5);
-//        Vilao boss3 = new Vilao(Batalha.NOME_BOSS_3, 5, 5, 5, 5, 5, 5);
-//        
-////      ARANHAS =>>
-//        Monstro monstro1 = new Monstro(MonsTipos.ARANHA, 14, 5, 4, 50, 1, 5);
-//        Monstro monstro2 = new Monstro(MonsTipos.ARANHA, 16, 4, 3, 50, 1, 5);
-//        Monstro monstro3 = new Monstro(MonsTipos.ARANHA, 14, 4, 3, 70, 1, 5);
-//        Monstro monstro4 = new Monstro(MonsTipos.ARANHA, 16, 7, 6, 70, 2, 7);
-//        Monstro monstro5 = new Monstro(MonsTipos.ARANHA, 18, 6, 5, 70, 2, 7);
-//        Monstro monstro6 = new Monstro(MonsTipos.ARANHA, 16, 6, 5, 90, 2, 8);
-//        Monstro monstro7 = new Monstro(MonsTipos.ARANHA, 18, 9, 8, 90, 3, 9);
-//        Monstro monstro8 = new Monstro(MonsTipos.ARANHA, 20, 8, 7, 90, 3, 9);
-//        Monstro monstro9 = new Monstro(MonsTipos.ARANHA, 18, 8, 7, 110, 3, 10);
-//        Monstro monstro10 = new Monstro(MonsTipos.ARANHA, 20, 11, 10, 110, 4, 11);
-//        Monstro monstro11 = new Monstro(MonsTipos.ARANHA, 22, 10, 9, 110, 4, 11);
-//        Monstro monstro12 = new Monstro(MonsTipos.ARANHA, 20, 10, 9, 130, 4, 12);
-//        Monstro monstro13 = new Monstro(MonsTipos.ARANHA, 22, 13, 12, 130, 5, 15);
-//        Monstro monstro14 = new Monstro(MonsTipos.ARANHA, 24, 12, 11, 130, 5, 15);
-//        Monstro monstro15 = new Monstro(MonsTipos.ARANHA, 22, 12, 11, 150, 5, 16);
-//        
-//        
-////      CRIAR VILÕES NO DB =>>
-//        dao.criar(boss1);
-//        dao.criar(boss2);
-//        dao.criar(boss3);
-//        
-////      CRIAR MONSTROS NO DB =>>
-//        dao.criar(monstro1);
-//        dao.criar(monstro2);
-//        dao.criar(monstro3);
-//        dao.criar(monstro4);
-//        dao.criar(monstro5);
-//        dao.criar(monstro6);
-//        dao.criar(monstro7);
-//        dao.criar(monstro8);
-//        dao.criar(monstro9);
-//        dao.criar(monstro10);
-//        dao.criar(monstro11);
-//        dao.criar(monstro12);
-//        dao.criar(monstro13);
-//        dao.criar(monstro14);
-//        dao.criar(monstro15);
-//    }
+    public static void main(String[] args) throws SQLException {
+        InimigoDao dao = new InimigoDao();
+        
+//      Bosses
+        Vilao boss1 = new Vilao(Batalha.NOME_BOSS_1, 12, 10, 8, 340, 5, 32);
+        Vilao boss2 = new Vilao(Batalha.NOME_BOSS_2, 5, 5, 5, 5, 5, 5);
+        Vilao boss3 = new Vilao(Batalha.NOME_BOSS_3, 5, 5, 5, 5, 5, 5);
+        
+//      ARANHAS =>>
+        Monstro monstro1 = new Monstro(MonsTipos.ARANHA, 14, 5, 4, 50, 1, 5);
+        Monstro monstro2 = new Monstro(MonsTipos.ARANHA, 16, 4, 3, 50, 1, 5);
+        Monstro monstro3 = new Monstro(MonsTipos.ARANHA, 14, 4, 3, 70, 1, 5);
+        Monstro monstro4 = new Monstro(MonsTipos.ARANHA, 16, 7, 6, 70, 2, 7);
+        Monstro monstro5 = new Monstro(MonsTipos.ARANHA, 18, 6, 5, 70, 2, 7);
+        Monstro monstro6 = new Monstro(MonsTipos.ARANHA, 16, 6, 5, 90, 2, 8);
+        Monstro monstro7 = new Monstro(MonsTipos.ARANHA, 18, 9, 8, 90, 3, 9);
+        Monstro monstro8 = new Monstro(MonsTipos.ARANHA, 20, 8, 7, 90, 3, 9);
+        Monstro monstro9 = new Monstro(MonsTipos.ARANHA, 18, 8, 7, 110, 3, 10);
+        Monstro monstro10 = new Monstro(MonsTipos.ARANHA, 20, 11, 10, 110, 4, 11);
+        Monstro monstro11 = new Monstro(MonsTipos.ARANHA, 22, 10, 9, 110, 4, 11);
+        Monstro monstro12 = new Monstro(MonsTipos.ARANHA, 20, 10, 9, 130, 4, 12);
+        Monstro monstro13 = new Monstro(MonsTipos.ARANHA, 22, 13, 12, 130, 5, 15);
+        Monstro monstro14 = new Monstro(MonsTipos.ARANHA, 24, 12, 11, 130, 5, 15);
+        Monstro monstro15 = new Monstro(MonsTipos.ARANHA, 22, 12, 11, 150, 5, 16);
+        
+        
+//      CRIAR VILÕES NO DB =>>
+        dao.criar(boss1);
+        dao.criar(boss2);
+        dao.criar(boss3);
+        
+//      CRIAR MONSTROS NO DB =>>
+        dao.criar(monstro1);
+        dao.criar(monstro2);
+        dao.criar(monstro3);
+        dao.criar(monstro4);
+        dao.criar(monstro5);
+        dao.criar(monstro6);
+        dao.criar(monstro7);
+        dao.criar(monstro8);
+        dao.criar(monstro9);
+        dao.criar(monstro10);
+        dao.criar(monstro11);
+        dao.criar(monstro12);
+        dao.criar(monstro13);
+        dao.criar(monstro14);
+        dao.criar(monstro15);
+    }
 }

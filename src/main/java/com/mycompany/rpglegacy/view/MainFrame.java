@@ -18,6 +18,8 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        this.logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png")));
+        
     }
 
     /**
@@ -29,12 +31,20 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        logoLabel = new javax.swing.JLabel();
         navegacaoPanel = new javax.swing.JPanel();
         fundoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
+        setPreferredSize(new java.awt.Dimension(640, 480));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logoLabel.setMaximumSize(new java.awt.Dimension(250, 125));
+        logoLabel.setMinimumSize(new java.awt.Dimension(250, 125));
+        logoLabel.setPreferredSize(new java.awt.Dimension(250, 125));
+        getContentPane().add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, -1, -1));
 
         navegacaoPanel.setBackground(new java.awt.Color(255, 255, 255));
         navegacaoPanel.setMaximumSize(new java.awt.Dimension(640, 480));
@@ -93,9 +103,14 @@ public class MainFrame extends javax.swing.JFrame {
         return fundoLabel;
     }
 
+    public JLabel getLogoLabel() {
+        return logoLabel;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fundoLabel;
+    private javax.swing.JLabel logoLabel;
     private javax.swing.JPanel navegacaoPanel;
     // End of variables declaration//GEN-END:variables
 }
