@@ -20,6 +20,12 @@ public interface Batalha {
     public static final String BATALHA_MEDIA = "batalhaMedia";
     public static final String BATALHA_DIFICIL = "batalhaDificil";
 
+    public static final String BATALHANDO = "Btalha esta acontecendo!";
+    public static final String BATALHA_ENCERRADA_HEROI_MORREU = "Heroi morreu!";
+    public static final String BATALHA_ENCERRADA_HEROI_DESISTIU = "Heroi desistiu!";
+    public static final String BATALHA_ENCERRADA_HEROI_VENCEU_MONSTRO = "Heroi Venceu 1 Monstro!";
+    public static final String BATALHA_ENCERRADA_HEROI_VENCEU_BATALHA = "Heroi Venceu Batalha!";
+    
     // BATALHA -- 1
     public static final String NOME_MUNDO_FASE_1 = "FLORESTA TENEBROSA";
     public static final String DESCRICAO_BATALHA_1 = "<html>Ao entrar na floresta, você vê 3 caminhos.<br>Você vai seguir o caminho cercado por:</html>";
@@ -96,4 +102,6 @@ public interface Batalha {
     public static final String NOME_MUNDO_FASE_12 = "FLORESTA TENEBROSA";
     public static final String DESCRICAO_BATALHA_12 = "<html>Ao entrar na floresta, você vê 3 caminhos.<br>Você vai seguir o caminho cercado por:</html>";
     public static final String NOME_BOSS_4 = "O Rei Apodrecido";
+    
+    
 }

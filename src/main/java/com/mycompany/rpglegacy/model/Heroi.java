@@ -8,11 +8,12 @@ package com.mycompany.rpglegacy.model;
  *
  * @author aluno
  */
-public class Heroi extends Personagem <Vilao>{
+public class Heroi extends Personagem<Vilao> {
+
     private int expNxtLvel;
     private Progress progress;
     private Usuario usuario;
-    
+
     public Heroi(String personaName, int atak, int defe, int sped, int vidaMaxima, Usuario usuario) {
         super(personaName, atak, defe, sped, vidaMaxima);
         this.usuario = usuario;
@@ -26,23 +27,32 @@ public class Heroi extends Personagem <Vilao>{
         this.expNxtLvel = expNxtLvel;
         this.progress = progress;
     }
-    
-    public boolean setLvel(){
-        int upLvelRule = (int) ((this.getLvel()*10)/2);
-        if(expNxtLvel>= upLvelRule){
-            int lvelAtual = this.getLvel();
-            this.setLvel(lvelAtual++);
+
+    public boolean setLvel() {
+        int upLvelRule = (int) ((this.getLvel() * 10) / 2);
+        if (expNxtLvel >= upLvelRule) {
+            levelUp();
             this.expNxtLvel = this.expNxtLvel - upLvelRule;
             setLvel();
             return true;
         }
         return false;
     }
-    
+
+    private void levelUp() {
+        int lvelAtual = this.getLvel();
+        this.setLvel(lvelAtual++);
+        this.setVidaMaxima(this.getVidaMaxima()+20);
+        this.setVidaAtual(this.getVidaMaxima());
+        this.setAtak(this.getAtak()+2);
+        this.setDefe(this.getDefe()+2);
+        this.setSped(this.getSped()+2);
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
-    
+
     public int getExpNxtLvel() {
         return expNxtLvel;
     }
@@ -51,7 +61,6 @@ public class Heroi extends Personagem <Vilao>{
         this.expNxtLvel += expAdicional;
         this.setLvel();
     }
-    
 
     public Progress getProgress() {
         return progress;
@@ -60,34 +69,34 @@ public class Heroi extends Personagem <Vilao>{
     public void setProgress(Progress progress) {
         this.progress = progress;
     }
-    
-    
+
     public int atacar(Vilao alvo) {
         int dano = this.getAtak();
         int diferencaSpd = this.spdDisputa(alvo);
-        if(diferencaSpd < 1){
-                return 0;
-        }else{
-            return alvo.receberDano(dano+diferencaSpd);
+        if (diferencaSpd < 1) {
+            return 0;
+        } else {
+            return alvo.receberDano(dano + diferencaSpd);
         }
     }
+
     public int atacar(Monstro alvo) {
         int dano = this.getAtak();
         int diferencaSpd = this.spdDisputa(alvo);
-        if(diferencaSpd < 1){
-                return 0;
-        }else{
-            return alvo.receberDano(dano+diferencaSpd);
+        if (diferencaSpd < 1) {
+            return 0;
+        } else {
+            return alvo.receberDano(dano + diferencaSpd);
         }
     }
 
     public int receberDano(int dano) {
         int danoFinal = dano - this.getDefe();
-        if (danoFinal < 0){
-            this.setVidaAtual(this.getVidaAtual()- 1);
+        if (danoFinal < 0) {
+            this.setVidaAtual(this.getVidaAtual() - 1);
             return danoFinal;
         } else {
-            this.setVidaAtual(this.getVidaAtual()-danoFinal);
+            this.setVidaAtual(this.getVidaAtual() - danoFinal);
             return danoFinal;
         }
     }
@@ -96,12 +105,12 @@ public class Heroi extends Personagem <Vilao>{
     public String toString() {
         int dif = 22 - this.getPersonName().length();
         String separa = " ";
-        if(dif>0){
-            for(int i=1; i<dif; i++){
+        if (dif > 0) {
+            for (int i = 1; i < dif; i++) {
                 separa += " ";
             }
         }
-        return this.getPersonName()+ separa + this.getLvel() + "       " + progress;
+        return this.getPersonName() + separa + this.getLvel() + "       " + progress;
     }
-    
+
 }

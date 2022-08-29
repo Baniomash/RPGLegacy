@@ -6,8 +6,10 @@ package com.mycompany.rpglegacy.model;
 
 import com.mycompany.rpglegacy.controller.BattleController;
 import com.mycompany.rpglegacy.util.Batalha;
+import com.mycompany.rpglegacy.util.FrasesBatalha;
 import com.mycompany.rpglegacy.util.Sprites;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -18,21 +20,22 @@ public class Battle {
     private Heroi heroi;
     private Boolean heroiDefende = false;
     private int defeInicialHeroi;
-    private List<Monstro> inimigos;
     private Vilao boss;
     private Boolean vilaoCarrega = false;
-    private int atakInicialVilao;
-    private Monstro monstro1;
-    private Monstro monstro2;
-    private Monstro monstro3;
+    private int atakInicialVilao = 0;
+    private Monstro monstro1 = null;
+    private Monstro monstro2 = null;
+    private Monstro monstro3 = null;
+    private int quantidadeInimigos;
     private BattleController controller;
+    private String batalhaStatus;
 
     public Battle(Heroi heroi, List<Monstro> inimigos, BattleController controller) {
         this.heroi = heroi;
-        this.inimigos = inimigos;
-        setMonstros();
+        setMonstros(inimigos);
         this.defeInicialHeroi = heroi.getDefe();
         this.controller = controller;
+        this.batalhaStatus = Batalha.BATALHANDO;
     }
 
     public Battle(Heroi heroi, Vilao boss, BattleController controller) {
@@ -41,6 +44,8 @@ public class Battle {
         this.defeInicialHeroi = heroi.getDefe();
         this.atakInicialVilao = boss.getAtak();
         this.controller = controller;
+        this.batalhaStatus = Batalha.BATALHANDO;
+        this.quantidadeInimigos = 1;
     }
 
     public Heroi getHeroi() {
@@ -67,8 +72,10 @@ public class Battle {
     }
 
     public void vilaoDescarregaPoder() {
-        boss.setAtak(atakInicialVilao);
-        vilaoCarrega = false;
+        if (vilaoCarrega) {
+            boss.setAtak(atakInicialVilao);
+            vilaoCarrega = false;
+        }
     }
 
     public Vilao getBoss() {
@@ -88,28 +95,64 @@ public class Battle {
         }
     }
 
-    public void setMonstros() {
-        int counter = 1;
-        for (Monstro monstroAtual : this.inimigos) {
+    public void setMonstros(List<Monstro> listaInimigos) {
+        int counter = 0;
+        for (Monstro monstroAtual : listaInimigos) {
             switch (counter) {
-                case 1:
+                case 0:
                     this.monstro1 = monstroAtual;
                     counter++;
                     break;
-                case 2:
+                case 1:
                     this.monstro2 = monstroAtual;
                     counter++;
                     break;
-                case 3:
+                case 2:
                     this.monstro3 = monstroAtual;
                 default:
                     break;
             }
         }
+        this.quantidadeInimigos = counter;
+    }
+
+    public Boolean algumInimigoVivo() {
+        if (monstro1.estaVivo()) {
+            return true;
+        } else if (quantidadeInimigos >= 2 && monstro2.estaVivo()) {
+            return true;
+        } else {
+            if (quantidadeInimigos == 3) {
+                return monstro3.estaVivo();
+            }
+            return false;
+        }
+    }
+
+    public String alguemMorto() {
+        if (!heroi.estaVivo()) {
+            return Batalha.BATALHA_ENCERRADA_HEROI_MORREU;
+        } else if (atakInicialVilao != 0) {
+            if (!boss.estaVivo()) {
+                return Batalha.BATALHA_ENCERRADA_HEROI_VENCEU_BATALHA;
+            }
+            return Batalha.BATALHANDO;
+        } else {
+            if (!algumInimigoVivo()) {
+                return Batalha.BATALHA_ENCERRADA_HEROI_VENCEU_BATALHA;
+            }
+            return Batalha.BATALHANDO;
+        }
     }
 
     public void atualizaTela(String heroiSprite) {
-        controller.setHeroiSpriteBatalha(this.heroi, heroiSprite);
+        String qualInimigo;
+        if(atakInicialVilao != 0){
+            qualInimigo = Batalha.VILAO;
+        }else{
+            qualInimigo = Batalha.MONSTROS;
+        }
+        controller.atualizaSpritesBatalha(this.heroi, heroiSprite, qualInimigo);
     }
 
     public void atacar(String atacante, String alvo) {
@@ -130,25 +173,68 @@ public class Battle {
                 break;
             case Batalha.VILAO:
                 boss.atacar(heroi);
+                vilaoAcao();
                 heroiParaDefender();
-                vilaoDescarregaPoder();
+                atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
                 break;
             default:
                 switch (atacante) {
                     case Batalha.MONSTRO_1: {
                         monstro1.atacar(heroi);
                         heroiParaDefender();
+                        atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
                     }
                     case Batalha.MONSTRO_2: {
                         monstro2.atacar(heroi);
                         heroiParaDefender();
+                        atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
                     }
                     case Batalha.MONSTRO_3: {
                         monstro3.atacar(heroi);
                         heroiParaDefender();
+                        atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
                     }
                 }
                 break;
+        }
+    }
+
+    public void vilaoAcao() {
+        if (vilaoCarrega) {
+            boss.atacar(heroi);
+            vilaoDescarregaPoder();
+        } else {
+            if (boss.getVidaAtual() < boss.getVidaMaxima() / 2) {
+                Random rng = new Random();
+                if (rng.nextInt(10) > 5) {
+                    vilaoCarregaPoder();
+                } else {
+                    boss.atacar(heroi);
+                    vilaoDescarregaPoder();
+                }
+            } else {
+                boss.atacar(heroi);
+                vilaoDescarregaPoder();
+            }
+
+        }
+    }
+
+    public String serTextoBatalha(String argumento) {
+        switch (argumento) {
+            case FrasesBatalha.FRASE_INICIA_BATALHA_1:
+                return FrasesBatalha.FRASE_INICIA_BATALHA_1 + quantidadeInimigos + FrasesBatalha.FRASE_INICIA_BATALHA_2;
+            case FrasesBatalha.FRASE_INICIA_BATALHA_3:
+                if (atakInicialVilao != 0) {
+                    return FrasesBatalha.FRASE_INICIA_BATALHA_3 + boss.getPersonName();
+                }
+                return FrasesBatalha.FRASE_INICIA_BATALHA_3 + monstro1.getTipo();
+            case FrasesBatalha.FRASE_INICIA_BATALHA_4:
+                return monstro2.getTipo() + FrasesBatalha.FRASE_INICIA_BATALHA_4;
+            case FrasesBatalha.FRASE_INICIA_BATALHA_5:
+                return monstro3.getTipo() + FrasesBatalha.FRASE_INICIA_BATALHA_5;
+            default:
+                return argumento;
         }
     }
 

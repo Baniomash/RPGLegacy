@@ -17,4 +17,7 @@ public interface Telas {
     public static final String TELA_BATALHA = "telaBatalha";
     public static final String MENU_PRINCIPAL = "menuPrincipal";
     public static final String HEROI_SPRITE = "heroiSprite";
+    public static final String INIMIGO_SPRITE = "inimigoSprite";
+    public static final String BATALHA_BOTOES = "batalhaBotoesPanel";
+    public static final String INFO_PANEL = "infoPanel";
 }

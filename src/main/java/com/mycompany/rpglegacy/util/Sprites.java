@@ -11,6 +11,13 @@ package com.mycompany.rpglegacy.util;
 public interface Sprites {
     public static final String SPRITE_HEROI_IDLE = "/hero_idle.png";
     public static final String SPRITE_HEROI_ATAQUE = "/hero_attack.png";
+    public static final String SPRITE_HEROI_TOMA_DANO = "/hero_damage_taken.png";
     
     public static final String SPRITE_ARANHA_IDLE = "/spider.png";
+    public static final String SPRITE_COISA_FLORESTA_IDLE = "/swamp_thing.png";
+    public static final String SPRITE_LOBISOMEN_SANGUINARIO_IDLE = "/bloodthirsty_werewolf.png";
+    public static final String SPRITE_LAGARTO_TOXICO_IDLE = "/toxic_lizard.png";
+    public static final String SPRITE_HEROI_MORTO_VIVO_IDLE = "/undead_hero.png";
+    
+    public static final String SPRITE_VILAO_IDLE = "/villain_idle_1.png";
 }

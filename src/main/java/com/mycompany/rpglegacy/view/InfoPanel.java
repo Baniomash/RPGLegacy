@@ -4,12 +4,15 @@
  */
 package com.mycompany.rpglegacy.view;
 
+import com.mycompany.rpglegacy.controller.BattleController;
+import javax.swing.JLabel;
+
 /**
  *
  * @author aluno
  */
 public class InfoPanel extends javax.swing.JPanel {
-
+    private BattleController controller;
     /**
      * Creates new form InfoPanel
      */
@@ -27,34 +30,41 @@ public class InfoPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         infoTextoLabel = new javax.swing.JLabel();
+        botaoTexto = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(620, 70));
         setMinimumSize(new java.awt.Dimension(620, 70));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(620, 70));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         infoTextoLabel.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
         infoTextoLabel.setText("some text rigth here!");
+        add(infoTextoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 608, 58));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(infoTextoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(infoTextoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        botaoTexto.setText("Próximo");
+        botaoTexto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoTextoActionPerformed(evt);
+            }
+        });
+        add(botaoTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botaoTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoTextoActionPerformed
+//        controller.proximo();
+    }//GEN-LAST:event_botaoTextoActionPerformed
+
+    public void setController(BattleController controller) {
+        this.controller = controller;
+    }
+    
+    public JLabel getInfoTextoLabel() {
+        return infoTextoLabel;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoTexto;
     private javax.swing.JLabel infoTextoLabel;
     // End of variables declaration//GEN-END:variables
 }

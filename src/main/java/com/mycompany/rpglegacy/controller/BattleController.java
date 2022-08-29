@@ -11,10 +11,14 @@ import com.mycompany.rpglegacy.model.Heroi;
 import com.mycompany.rpglegacy.model.Monstro;
 import com.mycompany.rpglegacy.model.Vilao;
 import com.mycompany.rpglegacy.util.Batalha;
+import com.mycompany.rpglegacy.util.FrasesBatalha;
+import com.mycompany.rpglegacy.util.MonsTipos;
 import com.mycompany.rpglegacy.util.Outros;
 import com.mycompany.rpglegacy.util.Sprites;
 import com.mycompany.rpglegacy.util.Telas;
+import com.mycompany.rpglegacy.view.BatalhaBotoesPanel;
 import com.mycompany.rpglegacy.view.PersonagemSprite;
+import com.mycompany.rpglegacy.view.InfoPanel;
 import com.mycompany.rpglegacy.view.MainFrame;
 import com.mycompany.rpglegacy.view.MenuBatalha;
 import com.mycompany.rpglegacy.view.MenuPrincipal;
@@ -46,16 +50,24 @@ public class BattleController {
     private TelaBatalha telaBatalha = new TelaBatalha();
     private MenuBatalha menuBatalha = new MenuBatalha(mainFrame, true);
     private PersonagemSprite heroiSprite = new PersonagemSprite();
+    private PersonagemSprite inimigoSprite = new PersonagemSprite();
     private StatusHeroi statusHeroi = new StatusHeroi(mainFrame, true);
+    private BatalhaBotoesPanel batalhaBotoes = new BatalhaBotoesPanel();
+    private InfoPanel infoPanel = new InfoPanel();
 
     private JPanel navPanel;
     private CardLayout navLayout;
+
+    private JPanel statPanel;
+    private CardLayout statLayout;
 
     public BattleController(RPGController mainController, MainFrame mainFrame, JPanel navPanel, CardLayout navLayout) {
         this.mainController = mainController;
         this.mainFrame = mainFrame;
         this.navPanel = navPanel;
         this.navLayout = navLayout;
+        this.statPanel = telaBatalha.getStatusPanel();
+        this.statLayout = (CardLayout) telaBatalha.getStatusPanel().getLayout();
         setController();
     }
 
@@ -65,6 +77,8 @@ public class BattleController {
         menuBatalha.setController(this);
         heroiSprite.setController(this);
         statusHeroi.setController(this);
+        batalhaBotoes.setController(this);
+        infoPanel.setController(this);
     }
 
     public void iniciaTelas() {
@@ -87,6 +101,39 @@ public class BattleController {
         heroiSprite.getHeroiProgressBar().setValue(heroi.getVidaAtual());
     }
 
+    public void setInimigoSpriteBatalha(Monstro monstro) {
+        inimigoSprite.getNomeHeroiLabel().setText(monstro.getTipo());
+        switch (monstro.getTipo()) {
+            case MonsTipos.ARANHA:
+                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_ARANHA_IDLE)));
+                break;
+            case MonsTipos.COISA_FLORESTA:
+                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_COISA_FLORESTA_IDLE)));
+                break;
+            case MonsTipos.LAGARTO_TOXICO:
+                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_LAGARTO_TOXICO_IDLE)));
+                break;
+            case MonsTipos.LOBISOMEN_SANGUINARIO:
+                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_LOBISOMEN_SANGUINARIO_IDLE)));
+                break;
+            case MonsTipos.HEROI_MORTO_VIVO:
+                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_HEROI_MORTO_VIVO_IDLE)));
+                break;
+            default:
+                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_HEROI_MORTO_VIVO_IDLE)));
+                break;
+        }
+        inimigoSprite.getHeroiProgressBar().setMaximum(monstro.getVidaMaxima());
+        inimigoSprite.getHeroiProgressBar().setValue(monstro.getVidaAtual());
+    }
+
+    public void setInimigoSpriteBatalha(Vilao boss) {
+        inimigoSprite.getNomeHeroiLabel().setText(boss.getPersonName());
+        inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_VILAO_IDLE)));
+        inimigoSprite.getHeroiProgressBar().setMaximum(boss.getVidaMaxima());
+        inimigoSprite.getHeroiProgressBar().setValue(boss.getVidaAtual());
+    }
+
     public void irTelaPrincipal() {
         navLayout.show(navPanel, Telas.MENU_PRINCIPAL);
         setHeroiSpriteMapa();
@@ -97,24 +144,55 @@ public class BattleController {
     }
 
     public void irTelaBatalha(String qualInimigo) {
-//        navPanel.removeAll();
         navPanel.add(telaBatalha, Telas.TELA_BATALHA);
         navLayout.show(navPanel, Telas.TELA_BATALHA);
-        telaBatalha.getInfoLabel().setText(heroiUsuario.getProgress().toString());
-        atualizaTelaBatalha(heroiUsuario, Sprites.SPRITE_HEROI_IDLE);
         telaBatalha.setQualInimigo(qualInimigo);
+        telaBatalha.getInfoLabel().setText(heroiUsuario.getProgress().toString());
+        setFilhosInfoPanel();
+        atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_IDLE, qualInimigo);
+        atualizaStatusBatalha(FrasesBatalha.FRASE_INICIA_BATALHA_1);
     }
 
-    public void atualizaTelaBatalha(Heroi heroi, String spriteHeroi) {
+    public void sairTelaBatalha() {
+        navPanel.remove(telaBatalha);
+    }
+
+    public void setFilhosInfoPanel() {
+        statPanel.add(batalhaBotoes, Telas.BATALHA_BOTOES);
+        statPanel.add(infoPanel, Telas.INFO_PANEL);
+        telaBatalha.getSpriteAdversarioPanel().add(this.inimigoSprite, Telas.INIMIGO_SPRITE);
+        telaBatalha.getSpriteHeroiPanel().add(this.heroiSprite, Telas.HEROI_SPRITE);
+        
+    }
+
+    public void atualizaSpritesBatalha(Heroi heroi, String spriteHeroi, String qualInimigo) {
         setHeroiSpriteBatalha(heroi, spriteHeroi);
         atualizaSpriteHeroiBatalha();
+        if (telaBatalha.getQualInimigo().equals(Batalha.MONSTROS)) {
+            setInimigoSpriteBatalha(batalha.getMonstro(1));
+            atualizaSpriteInimigo();
+        } else {
+            setInimigoSpriteBatalha(batalha.getBoss());
+            atualizaSpriteInimigo();
+        }
 
+    }
+
+    public void atualizaStatusBatalha() {
+        statLayout.show(statPanel, Telas.BATALHA_BOTOES);
+    }
+
+    public void atualizaStatusBatalha(String texto) {
+        statLayout.show(statPanel, Telas.INFO_PANEL);
+        infoPanel.getInfoTextoLabel().setText(batalha.serTextoBatalha(texto));
+    }
+
+    public void atualizaSpriteInimigo() {
+        CardLayout layout = (CardLayout) telaBatalha.getSpriteAdversarioPanel().getLayout();
+        layout.show(telaBatalha.getSpriteAdversarioPanel(), Telas.INIMIGO_SPRITE);
     }
 
     public void atualizaSpriteHeroiBatalha() {
-        if (telaBatalha.getSpriteHeroiPanel().getComponentCount() <= 0) {
-            telaBatalha.getSpriteHeroiPanel().add(this.heroiSprite, Telas.HEROI_SPRITE);
-        }
         CardLayout layout = (CardLayout) telaBatalha.getSpriteHeroiPanel().getLayout();
         layout.show(telaBatalha.getSpriteHeroiPanel(), Telas.HEROI_SPRITE);
     }

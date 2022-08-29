@@ -36,7 +36,9 @@ public class BatalhaBotoesPanel extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(620, 70));
         setMinimumSize(new java.awt.Dimension(620, 70));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(620, 70));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atkButton.setText("Atacar");
         atkButton.setMaximumSize(new java.awt.Dimension(128, 64));
@@ -47,7 +49,7 @@ public class BatalhaBotoesPanel extends javax.swing.JPanel {
                 atkButtonActionPerformed(evt);
             }
         });
-        add(atkButton);
+        add(atkButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 5, -1, -1));
 
         defenderButton.setText("Defender");
         defenderButton.setMaximumSize(new java.awt.Dimension(128, 64));
@@ -58,7 +60,7 @@ public class BatalhaBotoesPanel extends javax.swing.JPanel {
                 defenderButtonActionPerformed(evt);
             }
         });
-        add(defenderButton);
+        add(defenderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 5, -1, -1));
 
         seRenderButton.setText("Se Render");
         seRenderButton.setMaximumSize(new java.awt.Dimension(128, 64));
@@ -69,7 +71,7 @@ public class BatalhaBotoesPanel extends javax.swing.JPanel {
                 seRenderButtonActionPerformed(evt);
             }
         });
-        add(seRenderButton);
+        add(seRenderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 5, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void atkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atkButtonActionPerformed
