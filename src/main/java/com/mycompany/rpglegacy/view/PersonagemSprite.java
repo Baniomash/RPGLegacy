@@ -49,19 +49,22 @@ public class PersonagemSprite extends javax.swing.JPanel {
         heroiProgressBar.setMinimumSize(new java.awt.Dimension(160, 20));
         heroiProgressBar.setPreferredSize(new java.awt.Dimension(160, 20));
         heroiProgressBar.setString("asdasdasd");
-        add(heroiProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, -1, -1));
+        add(heroiProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, -1, -1));
 
-        spriteHeroiLabel.setMaximumSize(new java.awt.Dimension(148, 200));
-        spriteHeroiLabel.setMinimumSize(new java.awt.Dimension(148, 200));
-        spriteHeroiLabel.setPreferredSize(new java.awt.Dimension(148, 200));
-        add(spriteHeroiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 130));
+        spriteHeroiLabel.setMaximumSize(new java.awt.Dimension(128, 128));
+        spriteHeroiLabel.setMinimumSize(new java.awt.Dimension(128, 128));
+        spriteHeroiLabel.setPreferredSize(new java.awt.Dimension(128, 128));
+        add(spriteHeroiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 60, -1, -1));
 
         nomeHeroiLabel.setBackground(new Color(0,51,255, 40));
         nomeHeroiLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         nomeHeroiLabel.setForeground(new java.awt.Color(255, 255, 255));
         nomeHeroiLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nomeHeroiLabel.setMaximumSize(new java.awt.Dimension(128, 32));
+        nomeHeroiLabel.setMinimumSize(new java.awt.Dimension(128, 32));
         nomeHeroiLabel.setOpaque(true);
-        add(nomeHeroiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 20));
+        nomeHeroiLabel.setPreferredSize(new java.awt.Dimension(128, 32));
+        add(nomeHeroiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
     
     public void setController(BattleController controller) {

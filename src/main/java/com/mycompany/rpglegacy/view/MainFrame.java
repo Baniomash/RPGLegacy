@@ -38,13 +38,12 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
-        setPreferredSize(new java.awt.Dimension(640, 480));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logoLabel.setMaximumSize(new java.awt.Dimension(250, 125));
         logoLabel.setMinimumSize(new java.awt.Dimension(250, 125));
         logoLabel.setPreferredSize(new java.awt.Dimension(250, 125));
-        getContentPane().add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, -1, -1));
+        getContentPane().add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         navegacaoPanel.setBackground(new java.awt.Color(255, 255, 255));
         navegacaoPanel.setMaximumSize(new java.awt.Dimension(640, 480));
@@ -55,7 +54,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(navegacaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         fundoLabel.setPreferredSize(new java.awt.Dimension(640, 480));
-        getContentPane().add(fundoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 640, 490));
+        getContentPane().add(fundoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

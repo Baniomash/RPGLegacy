@@ -142,7 +142,7 @@ public class AutenticarUsuario extends javax.swing.JPanel {
                 voltarButtonActionPerformed(evt);
             }
         });
-        add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
