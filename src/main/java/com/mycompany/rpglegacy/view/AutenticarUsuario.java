@@ -21,6 +21,7 @@ public class AutenticarUsuario extends javax.swing.JPanel {
      */
     public AutenticarUsuario() {
         initComponents();
+        this.backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wooden_board.png")));
     }
 
     /**
@@ -39,6 +40,7 @@ public class AutenticarUsuario extends javax.swing.JPanel {
         signUpButton = new javax.swing.JButton();
         erroLabel = new javax.swing.JLabel();
         senhaPassField = new javax.swing.JPasswordField();
+        backgroundLabel = new javax.swing.JLabel();
         voltarButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
@@ -50,89 +52,66 @@ public class AutenticarUsuario extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(220, 220, 220));
         jPanel1.setMaximumSize(new java.awt.Dimension(300, 300));
         jPanel1.setMinimumSize(new java.awt.Dimension(300, 300));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(300, 300));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         loginLabel.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         loginLabel.setText("LOGIN");
+        jPanel1.add(loginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
 
         loginTextField.setToolTipText("Digite o seu Login");
-        loginTextField.setMaximumSize(new java.awt.Dimension(256, 64));
-        loginTextField.setMinimumSize(new java.awt.Dimension(256, 64));
-        loginTextField.setPreferredSize(new java.awt.Dimension(256, 64));
+        loginTextField.setMaximumSize(new java.awt.Dimension(200, 32));
+        loginTextField.setMinimumSize(new java.awt.Dimension(200, 32));
+        loginTextField.setPreferredSize(new java.awt.Dimension(200, 32));
         loginTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginTextFieldActionPerformed(evt);
             }
         });
+        jPanel1.add(loginTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
         logarButton.setText("SIGN IN");
-        logarButton.setMaximumSize(new java.awt.Dimension(120, 64));
-        logarButton.setMinimumSize(new java.awt.Dimension(120, 64));
-        logarButton.setPreferredSize(new java.awt.Dimension(120, 64));
+        logarButton.setMaximumSize(new java.awt.Dimension(90, 32));
+        logarButton.setMinimumSize(new java.awt.Dimension(90, 32));
+        logarButton.setPreferredSize(new java.awt.Dimension(90, 32));
         logarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logarButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(logarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
         signUpButton.setText("SIGN UP");
-        signUpButton.setMaximumSize(new java.awt.Dimension(120, 64));
-        signUpButton.setMinimumSize(new java.awt.Dimension(120, 64));
-        signUpButton.setPreferredSize(new java.awt.Dimension(120, 64));
+        signUpButton.setMaximumSize(new java.awt.Dimension(90, 32));
+        signUpButton.setMinimumSize(new java.awt.Dimension(90, 32));
+        signUpButton.setPreferredSize(new java.awt.Dimension(90, 32));
         signUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signUpButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(signUpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
 
         erroLabel.setForeground(new java.awt.Color(255, 0, 0));
         erroLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(erroLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 45, 256, 15));
 
         senhaPassField.setToolTipText("Digite sua senha");
+        senhaPassField.setMaximumSize(new java.awt.Dimension(200, 32));
+        senhaPassField.setMinimumSize(new java.awt.Dimension(200, 32));
+        senhaPassField.setPreferredSize(new java.awt.Dimension(200, 32));
         senhaPassField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaPassFieldActionPerformed(evt);
             }
         });
+        jPanel1.add(senhaPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(loginLabel)
-                        .addGap(118, 118, 118))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(loginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(senhaPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(erroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(logarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(19, 19, 19))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(loginLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(erroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(loginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(senhaPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(logarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        backgroundLabel.setMaximumSize(new java.awt.Dimension(300, 300));
+        backgroundLabel.setMinimumSize(new java.awt.Dimension(300, 300));
+        backgroundLabel.setPreferredSize(new java.awt.Dimension(300, 300));
+        jPanel1.add(backgroundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, -1, -1));
 
@@ -194,6 +173,7 @@ public class AutenticarUsuario extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backgroundLabel;
     private javax.swing.JLabel erroLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logarButton;

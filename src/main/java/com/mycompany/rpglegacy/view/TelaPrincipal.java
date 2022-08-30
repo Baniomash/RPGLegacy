@@ -20,6 +20,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
      */
     public TelaPrincipal() {
         initComponents();
+        this.backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usuario_board.png")));
     }
 
     /**
@@ -36,6 +37,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
         signInButton = new javax.swing.JButton();
         usuarioPanel = new javax.swing.JPanel();
         bolinhaLabel = new javax.swing.JLabel();
+        backgroundLabel = new javax.swing.JLabel();
         sairButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(620, 440));
@@ -83,15 +85,21 @@ public class TelaPrincipal extends javax.swing.JPanel {
         usuarioPanel.setBackground(new java.awt.Color(220, 220, 220));
         usuarioPanel.setMaximumSize(new java.awt.Dimension(256, 90));
         usuarioPanel.setMinimumSize(new java.awt.Dimension(256, 90));
+        usuarioPanel.setOpaque(false);
         usuarioPanel.setPreferredSize(new java.awt.Dimension(256, 90));
         usuarioPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bolinhaLabel.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
         bolinhaLabel.setText("USUARIO");
-        bolinhaLabel.setMaximumSize(new java.awt.Dimension(256, 64));
-        bolinhaLabel.setMinimumSize(new java.awt.Dimension(256, 64));
-        bolinhaLabel.setPreferredSize(new java.awt.Dimension(256, 64));
-        usuarioPanel.add(bolinhaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+        bolinhaLabel.setMaximumSize(new java.awt.Dimension(200, 30));
+        bolinhaLabel.setMinimumSize(new java.awt.Dimension(200, 30));
+        bolinhaLabel.setPreferredSize(new java.awt.Dimension(200, 30));
+        usuarioPanel.add(bolinhaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 44, -1, -1));
+
+        backgroundLabel.setMaximumSize(new java.awt.Dimension(256, 90));
+        backgroundLabel.setMinimumSize(new java.awt.Dimension(256, 90));
+        backgroundLabel.setPreferredSize(new java.awt.Dimension(256, 90));
+        usuarioPanel.add(backgroundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 90));
 
         add(usuarioPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
 
@@ -148,6 +156,7 @@ public class TelaPrincipal extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backgroundLabel;
     private javax.swing.JLabel bolinhaLabel;
     private javax.swing.JButton carregarJogoButton;
     private javax.swing.JButton novoJogoButton;
