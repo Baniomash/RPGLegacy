@@ -149,8 +149,8 @@ public class BattleController {
         telaBatalha.setQualInimigo(qualInimigo);
         telaBatalha.getInfoLabel().setText(heroiUsuario.getProgress().toString());
         setFilhosInfoPanel();
-        atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_IDLE, qualInimigo);
-        atualizaStatusBatalha(FrasesBatalha.FRASE_INICIA_BATALHA_1);
+        atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_IDLE);
+        atualizaStatusBatalha();
     }
 
     public void sairTelaBatalha() {
@@ -162,14 +162,14 @@ public class BattleController {
         statPanel.add(infoPanel, Telas.INFO_PANEL);
         telaBatalha.getSpriteAdversarioPanel().add(this.inimigoSprite, Telas.INIMIGO_SPRITE);
         telaBatalha.getSpriteHeroiPanel().add(this.heroiSprite, Telas.HEROI_SPRITE);
-        
+
     }
 
-    public void atualizaSpritesBatalha(Heroi heroi, String spriteHeroi, String qualInimigo) {
+    public void atualizaSpritesBatalha(Heroi heroi, String spriteHeroi) {
         setHeroiSpriteBatalha(heroi, spriteHeroi);
         atualizaSpriteHeroiBatalha();
         if (telaBatalha.getQualInimigo().equals(Batalha.MONSTROS)) {
-            setInimigoSpriteBatalha(batalha.getMonstro(1));
+            setInimigoSpriteBatalha(batalha.getMonstro());
             atualizaSpriteInimigo();
         } else {
             setInimigoSpriteBatalha(batalha.getBoss());
@@ -179,12 +179,29 @@ public class BattleController {
     }
 
     public void atualizaStatusBatalha() {
-        statLayout.show(statPanel, Telas.BATALHA_BOTOES);
+        statLayout.show(statPanel, Telas.INFO_PANEL);
+        String textoBatalha = batalha.serTextoBatalha();
+        if (textoBatalha.equals(Outros.NAO_TEXTO)) {
+            statLayout.show(statPanel, Telas.BATALHA_BOTOES);
+        } else {
+            infoPanel.getInfoTextoLabel().setText(batalha.serTextoBatalha());
+
+        }
     }
 
-    public void atualizaStatusBatalha(String texto) {
-        statLayout.show(statPanel, Telas.INFO_PANEL);
-        infoPanel.getInfoTextoLabel().setText(batalha.serTextoBatalha(texto));
+    public void proximo() {
+        int pointer = batalha.getTextoBatalhaPointer();
+        if (pointer == 1) {
+            batalha.setTextoBatalhaPointer(2);
+        } else if(pointer == 2 || pointer == 10 || pointer == 13 || pointer == 15){
+            batalha.setTextoBatalhaPointer(0);
+        }
+        atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_IDLE);
+        atualizaStatusBatalha();
+    }
+
+    public void setPointer(int fraseId) {
+        batalha.setTextoBatalhaPointer(fraseId);
     }
 
     public void atualizaSpriteInimigo() {
@@ -571,5 +588,12 @@ public class BattleController {
                 break;
         }
     }
-
+    
+    
+    public void heroiAtaca(){
+        batalha.setTextoBatalhaPointer(5);
+        atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_ATAQUE);
+        atualizaStatusBatalha();
+        batalha.atacar(Batalha.HEROI, Batalha.MONSTRO_1);
+    }
 }

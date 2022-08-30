@@ -83,7 +83,6 @@ public class RPGController {
         }
         navPanel.add(this.telaPrincipal, Telas.TELA_PRINCIPAL);
         navPanel.add(this.carregarPersonagem, Telas.CARREGAR_PERSONAGEM);
-
         irTelaPrincipal();
     }
 
@@ -99,6 +98,7 @@ public class RPGController {
         navLayout.show(navPanel, Telas.TELA_PRINCIPAL);
         telaPrincipal.confirmaAutenticacao();
         mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/fundo.gif")));
+        mainFrame.getLogoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png")));
     }
 
     public void irAutenticarUsuario() {
@@ -124,11 +124,13 @@ public class RPGController {
     public void irCriarPersonagem() {
         navPanel.add(this.criarPersonagem, Telas.CRIAR_PERSONAGEM);
         navLayout.show(navPanel, Telas.CRIAR_PERSONAGEM);
+        mainFrame.getLogoLabel().setIcon(null);
 //        criarPersonagem.confirmaAutenticacao();
     }
 
     public void sairCriarPersonagem() {
         navPanel.remove(this.criarPersonagem);
+        mainFrame.getLogoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png")));
 //        criarPersonagem.confirmaAutenticacao();
     }
 
@@ -196,6 +198,7 @@ public class RPGController {
     public void iniciarJogo() {
         if (carregarPersonagem.getListaHerois().getSelectedValue() != null) {
             navPanel.removeAll();
+            mainFrame.getLogoLabel().setIcon(null);
             btController = new BattleController(this, this.mainFrame, this.navPanel, this.navLayout);
             Heroi heroi = carregarPersonagem.getListaHerois().getSelectedValue();
             btController.setHeroiUsuario(heroi.getId());

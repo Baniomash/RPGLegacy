@@ -18,8 +18,6 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        this.logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png")));
-        
     }
 
     /**

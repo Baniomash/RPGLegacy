@@ -38,8 +38,11 @@ public class InfoPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(620, 70));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        infoTextoLabel.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
+        infoTextoLabel.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
+        infoTextoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        infoTextoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         infoTextoLabel.setText("some text rigth here!");
+        infoTextoLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         add(infoTextoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 608, 58));
 
         botaoTexto.setText("Próximo");
@@ -48,11 +51,11 @@ public class InfoPanel extends javax.swing.JPanel {
                 botaoTextoActionPerformed(evt);
             }
         });
-        add(botaoTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, -1, -1));
+        add(botaoTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoTextoActionPerformed
-//        controller.proximo();
+        controller.proximo();
     }//GEN-LAST:event_botaoTextoActionPerformed
 
     public void setController(BattleController controller) {
