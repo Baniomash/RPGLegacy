@@ -50,7 +50,7 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(640, 480));
 
-        listaHeroisPanel.setBackground(new java.awt.Color(51, 51, 0));
+        listaHeroisPanel.setBackground(new java.awt.Color(232, 232, 232));
         listaHeroisPanel.setMaximumSize(new java.awt.Dimension(400, 400));
         listaHeroisPanel.setMinimumSize(new java.awt.Dimension(400, 400));
         listaHeroisPanel.setPreferredSize(new java.awt.Dimension(400, 400));
@@ -109,7 +109,6 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         listaHeroisPanel.add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 437, -1, -1));
 
         tituloLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        tituloLabel.setForeground(new java.awt.Color(255, 255, 255));
         tituloLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tituloLabel.setText("Escolha seu personagem");
         tituloLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

@@ -193,8 +193,8 @@ public class CriarPersonagem extends javax.swing.JPanel {
         tituloPanel.add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
         erroLabel.setForeground(new java.awt.Color(255, 0, 0));
-        erroLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        tituloPanel.add(erroLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 295, 360, 28));
+        erroLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloPanel.add(erroLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 250, 28));
 
         fundoTaboaLabel.setMaximumSize(new java.awt.Dimension(600, 400));
         fundoTaboaLabel.setMinimumSize(new java.awt.Dimension(600, 400));
