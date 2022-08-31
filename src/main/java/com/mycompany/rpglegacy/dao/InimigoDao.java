@@ -232,21 +232,36 @@ public class InimigoDao {
         Vilao boss3 = new Vilao(Batalha.NOME_BOSS_3, 5, 5, 5, 5, 5, 5);
         
 //      ARANHAS =>>
-        Monstro monstro1 = new Monstro(MonsTipos.ARANHA, 14, 5, 4, 50, 1, 5);
-        Monstro monstro2 = new Monstro(MonsTipos.ARANHA, 16, 4, 3, 50, 1, 5);
-        Monstro monstro3 = new Monstro(MonsTipos.ARANHA, 14, 4, 3, 70, 1, 5);
-        Monstro monstro4 = new Monstro(MonsTipos.ARANHA, 16, 7, 6, 70, 2, 7);
-        Monstro monstro5 = new Monstro(MonsTipos.ARANHA, 18, 6, 5, 70, 2, 7);
-        Monstro monstro6 = new Monstro(MonsTipos.ARANHA, 16, 6, 5, 90, 2, 8);
-        Monstro monstro7 = new Monstro(MonsTipos.ARANHA, 18, 9, 8, 90, 3, 9);
-        Monstro monstro8 = new Monstro(MonsTipos.ARANHA, 20, 8, 7, 90, 3, 9);
-        Monstro monstro9 = new Monstro(MonsTipos.ARANHA, 18, 8, 7, 110, 3, 10);
-        Monstro monstro10 = new Monstro(MonsTipos.ARANHA, 20, 11, 10, 110, 4, 11);
-        Monstro monstro11 = new Monstro(MonsTipos.ARANHA, 22, 10, 9, 110, 4, 11);
-        Monstro monstro12 = new Monstro(MonsTipos.ARANHA, 20, 10, 9, 130, 4, 12);
-        Monstro monstro13 = new Monstro(MonsTipos.ARANHA, 22, 13, 12, 130, 5, 15);
-        Monstro monstro14 = new Monstro(MonsTipos.ARANHA, 24, 12, 11, 130, 5, 15);
-        Monstro monstro15 = new Monstro(MonsTipos.ARANHA, 22, 12, 11, 150, 5, 16);
+        Monstro monstro1 = new Monstro(MonsTipos.ARANHA, 10, 4, 5, 50, 1, 5);
+        Monstro monstro2 = new Monstro(MonsTipos.ARANHA, 12, 5, 4, 50, 1, 5);
+        Monstro monstro3 = new Monstro(MonsTipos.ARANHA, 10, 3, 4, 70, 1, 5);
+        Monstro monstro4 = new Monstro(MonsTipos.ARANHA, 12, 6, 7, 70, 2, 7);
+        Monstro monstro5 = new Monstro(MonsTipos.ARANHA, 14, 5, 6, 70, 2, 7);
+        Monstro monstro6 = new Monstro(MonsTipos.ARANHA, 12, 5, 6, 90, 2, 8);
+        Monstro monstro7 = new Monstro(MonsTipos.ARANHA, 14, 8, 9, 90, 3, 9);
+        Monstro monstro8 = new Monstro(MonsTipos.ARANHA, 16, 7, 8, 90, 3, 9);
+        Monstro monstro9 = new Monstro(MonsTipos.ARANHA, 14, 7, 8, 110, 3, 10);
+        Monstro monstro10 = new Monstro(MonsTipos.ARANHA, 16, 10, 11, 110, 4, 11);
+        Monstro monstro11 = new Monstro(MonsTipos.ARANHA, 18, 9, 10, 110, 4, 11);
+        Monstro monstro12 = new Monstro(MonsTipos.ARANHA, 18, 12, 13, 130, 5, 15);
+
+//      COISAS DA FLORESTA =>>        
+        Monstro monstro13 = new Monstro(MonsTipos.COISA_FLORESTA, 14, 12, 10, 90, 3, 8);
+        Monstro monstro14 = new Monstro(MonsTipos.COISA_FLORESTA, 12, 14, 10, 90, 3, 8);
+        Monstro monstro15 = new Monstro(MonsTipos.COISA_FLORESTA, 16, 16, 12, 110, 4, 10);
+        Monstro monstro16 = new Monstro(MonsTipos.COISA_FLORESTA, 14, 18, 12, 110, 4, 10);
+        Monstro monstro17 = new Monstro(MonsTipos.COISA_FLORESTA, 20, 18, 14, 130, 5, 13);
+        Monstro monstro18 = new Monstro(MonsTipos.COISA_FLORESTA, 18, 20, 14, 130, 5, 13);
+        Monstro monstro19 = new Monstro(MonsTipos.COISA_FLORESTA, 24, 24, 12, 150, 6, 16);
+        Monstro monstro20 = new Monstro(MonsTipos.COISA_FLORESTA, 24, 26, 16, 170, 7, 19);
+        
+//      LAGARTOS =>>
+        Monstro monstro21 = new Monstro(MonsTipos.LAGARTO_TOXICO, 12, 10, 14, 90, 3, 8);
+        Monstro monstro22 = new Monstro(MonsTipos.LAGARTO_TOXICO, 11, 11, 14, 90, 3, 8);
+        Monstro monstro23 = new Monstro(MonsTipos.LAGARTO_TOXICO, 15, 12, 17, 110, 4, 10);
+        Monstro monstro24 = new Monstro(MonsTipos.LAGARTO_TOXICO, 15, 13, 16, 110, 4, 10);
+        Monstro monstro25 = new Monstro(MonsTipos.LAGARTO_TOXICO, 18, 14, 20, 130, 5, 13);
+        
         
         
 //      CRIAR VILÕES NO DB =>>
@@ -270,5 +285,14 @@ public class InimigoDao {
         dao.criar(monstro13);
         dao.criar(monstro14);
         dao.criar(monstro15);
+        dao.criar(monstro16);
+        dao.criar(monstro17);
+        dao.criar(monstro18);
+        dao.criar(monstro19);
+        dao.criar(monstro20);
+        dao.criar(monstro21);
+        dao.criar(monstro22);
+        dao.criar(monstro23);
+        dao.criar(monstro24);
     }
 }

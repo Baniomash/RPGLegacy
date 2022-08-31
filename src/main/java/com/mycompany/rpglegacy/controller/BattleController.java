@@ -198,6 +198,7 @@ public class BattleController {
             statLayout.show(statPanel, Telas.BATALHA_BOTOES);
         } else {
             infoPanel.getInfoTextoLabel().setText(batalha.serTextoBatalha());
+            infoPanel.validate();
 
         }
     }
