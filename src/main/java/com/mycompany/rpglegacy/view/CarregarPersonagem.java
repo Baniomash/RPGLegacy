@@ -41,6 +41,7 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         listaHerois = new javax.swing.JList<>();
         voltarButton = new javax.swing.JButton();
+        tituloLabel = new javax.swing.JLabel();
         voltarButton1 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
@@ -49,11 +50,11 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(640, 480));
 
-        listaHeroisPanel.setBackground(new java.awt.Color(232, 232, 232));
-        listaHeroisPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escolha um Heroi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        listaHeroisPanel.setBackground(new java.awt.Color(51, 51, 0));
         listaHeroisPanel.setMaximumSize(new java.awt.Dimension(400, 400));
         listaHeroisPanel.setMinimumSize(new java.awt.Dimension(400, 400));
         listaHeroisPanel.setPreferredSize(new java.awt.Dimension(400, 400));
+        listaHeroisPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ListHeaderPanel.setBackground(new java.awt.Color(255, 255, 255));
         ListHeaderPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -88,9 +89,13 @@ public class CarregarPersonagem extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        listaHeroisPanel.add(ListHeaderPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 39, 279, -1));
+
         listaHerois.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
         listaHerois.setAutoscrolls(false);
         jScrollPane2.setViewportView(listaHerois);
+
+        listaHeroisPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 75, 279, 361));
 
         voltarButton.setText("Carregar Heroi");
         voltarButton.setMaximumSize(new java.awt.Dimension(256, 32));
@@ -101,34 +106,14 @@ public class CarregarPersonagem extends javax.swing.JPanel {
                 voltarButtonActionPerformed(evt);
             }
         });
+        listaHeroisPanel.add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 437, -1, -1));
 
-        javax.swing.GroupLayout listaHeroisPanelLayout = new javax.swing.GroupLayout(listaHeroisPanel);
-        listaHeroisPanel.setLayout(listaHeroisPanelLayout);
-        listaHeroisPanelLayout.setHorizontalGroup(
-            listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(listaHeroisPanelLayout.createSequentialGroup()
-                .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, listaHeroisPanelLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(listaHeroisPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ListHeaderPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        listaHeroisPanelLayout.setVerticalGroup(
-            listaHeroisPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listaHeroisPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ListHeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        tituloLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tituloLabel.setForeground(new java.awt.Color(255, 255, 255));
+        tituloLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloLabel.setText("Escolha seu personagem");
+        tituloLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        listaHeroisPanel.add(tituloLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         voltarButton1.setText("Voltar");
         voltarButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +169,7 @@ public class CarregarPersonagem extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<Heroi> listaHerois;
     private javax.swing.JPanel listaHeroisPanel;
+    private javax.swing.JLabel tituloLabel;
     private javax.swing.JButton voltarButton;
     private javax.swing.JButton voltarButton1;
     // End of variables declaration//GEN-END:variables

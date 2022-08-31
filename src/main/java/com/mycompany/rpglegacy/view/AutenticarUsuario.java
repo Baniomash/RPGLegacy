@@ -95,7 +95,7 @@ public class AutenticarUsuario extends javax.swing.JPanel {
 
         erroLabel.setForeground(new java.awt.Color(255, 0, 0));
         erroLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(erroLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 45, 256, 15));
+        jPanel1.add(erroLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 256, 15));
 
         senhaPassField.setToolTipText("Digite sua senha");
         senhaPassField.setMaximumSize(new java.awt.Dimension(200, 32));

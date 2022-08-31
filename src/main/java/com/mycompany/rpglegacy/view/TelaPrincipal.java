@@ -37,8 +37,8 @@ public class TelaPrincipal extends javax.swing.JPanel {
         signInButton = new javax.swing.JButton();
         usuarioPanel = new javax.swing.JPanel();
         bolinhaLabel = new javax.swing.JLabel();
-        backgroundLabel = new javax.swing.JLabel();
         sairButton = new javax.swing.JButton();
+        backgroundLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(620, 440));
         setMinimumSize(new java.awt.Dimension(620, 440));
@@ -48,69 +48,73 @@ public class TelaPrincipal extends javax.swing.JPanel {
 
         novoJogoButton.setText("NOVO JOGO");
         novoJogoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        novoJogoButton.setMaximumSize(new java.awt.Dimension(255, 64));
-        novoJogoButton.setMinimumSize(new java.awt.Dimension(255, 64));
-        novoJogoButton.setPreferredSize(new java.awt.Dimension(255, 64));
+        novoJogoButton.setMaximumSize(new java.awt.Dimension(128, 32));
+        novoJogoButton.setMinimumSize(new java.awt.Dimension(128, 32));
+        novoJogoButton.setPreferredSize(new java.awt.Dimension(128, 32));
         novoJogoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 novoJogoButtonActionPerformed(evt);
             }
         });
-        add(novoJogoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
+        add(novoJogoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, -1));
 
         carregarJogoButton.setText("CARREGAR");
         carregarJogoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        carregarJogoButton.setMaximumSize(new java.awt.Dimension(255, 64));
-        carregarJogoButton.setMinimumSize(new java.awt.Dimension(255, 64));
-        carregarJogoButton.setPreferredSize(new java.awt.Dimension(255, 64));
+        carregarJogoButton.setMaximumSize(new java.awt.Dimension(128, 32));
+        carregarJogoButton.setMinimumSize(new java.awt.Dimension(128, 32));
+        carregarJogoButton.setPreferredSize(new java.awt.Dimension(128, 32));
         carregarJogoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 carregarJogoButtonActionPerformed(evt);
             }
         });
-        add(carregarJogoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
+        add(carregarJogoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, -1, -1));
 
         signInButton.setText("SIGN IN");
         signInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        signInButton.setMaximumSize(new java.awt.Dimension(128, 64));
-        signInButton.setMinimumSize(new java.awt.Dimension(64, 64));
-        signInButton.setPreferredSize(new java.awt.Dimension(128, 64));
+        signInButton.setMaximumSize(new java.awt.Dimension(128, 32));
+        signInButton.setMinimumSize(new java.awt.Dimension(128, 32));
+        signInButton.setPreferredSize(new java.awt.Dimension(128, 32));
         signInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signInButtonActionPerformed(evt);
             }
         });
-        add(signInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
+        add(signInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, -1, -1));
 
         usuarioPanel.setBackground(new java.awt.Color(220, 220, 220));
-        usuarioPanel.setMaximumSize(new java.awt.Dimension(256, 90));
-        usuarioPanel.setMinimumSize(new java.awt.Dimension(256, 90));
+        usuarioPanel.setMaximumSize(new java.awt.Dimension(256, 64));
+        usuarioPanel.setMinimumSize(new java.awt.Dimension(256, 64));
         usuarioPanel.setOpaque(false);
-        usuarioPanel.setPreferredSize(new java.awt.Dimension(256, 90));
+        usuarioPanel.setPreferredSize(new java.awt.Dimension(256, 64));
         usuarioPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bolinhaLabel.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        bolinhaLabel.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        bolinhaLabel.setForeground(new java.awt.Color(255, 255, 255));
+        bolinhaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bolinhaLabel.setText("USUARIO");
-        bolinhaLabel.setMaximumSize(new java.awt.Dimension(200, 30));
-        bolinhaLabel.setMinimumSize(new java.awt.Dimension(200, 30));
-        bolinhaLabel.setPreferredSize(new java.awt.Dimension(200, 30));
-        usuarioPanel.add(bolinhaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 44, -1, -1));
+        bolinhaLabel.setMaximumSize(new java.awt.Dimension(128, 30));
+        bolinhaLabel.setMinimumSize(new java.awt.Dimension(128, 30));
+        bolinhaLabel.setPreferredSize(new java.awt.Dimension(128, 30));
+        usuarioPanel.add(bolinhaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
-        backgroundLabel.setMaximumSize(new java.awt.Dimension(256, 90));
-        backgroundLabel.setMinimumSize(new java.awt.Dimension(256, 90));
-        backgroundLabel.setPreferredSize(new java.awt.Dimension(256, 90));
-        usuarioPanel.add(backgroundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 90));
-
-        add(usuarioPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
+        add(usuarioPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
 
         sairButton.setText("SAIR");
-        sairButton.setPreferredSize(new java.awt.Dimension(128, 64));
+        sairButton.setMaximumSize(new java.awt.Dimension(128, 32));
+        sairButton.setMinimumSize(new java.awt.Dimension(128, 32));
+        sairButton.setPreferredSize(new java.awt.Dimension(128, 32));
         sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sairButtonActionPerformed(evt);
             }
         });
-        add(sairButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, -1));
+        add(sairButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, -1, -1));
+
+        backgroundLabel.setMaximumSize(new java.awt.Dimension(286, 320));
+        backgroundLabel.setMinimumSize(new java.awt.Dimension(286, 320));
+        backgroundLabel.setPreferredSize(new java.awt.Dimension(286, 320));
+        add(backgroundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButtonActionPerformed
