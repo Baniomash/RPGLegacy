@@ -371,7 +371,7 @@ public class Battle {
             case 6:
                 return getMonstro().getTipo() + FrasesBatalha.FRASE_INIMIGO_ATAQUE;
             case 7:
-                return boss.getPersonName() + FrasesBatalha.FRASE_INIMIGO_ATAQUE;
+                return boss.getPersonName() + " está pronto para atacar!";
             case 8:
                 return boss.getPersonName() + FrasesBatalha.FRASE_BOSS_CARREGA;
             case 9:

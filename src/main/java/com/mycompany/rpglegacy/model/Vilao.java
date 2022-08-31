@@ -28,7 +28,7 @@ public class Vilao extends Personagem <Heroi>{
     }
     
     public int atacar(Heroi alvo) {
-        int dano = (int) (this.getAtak() * 2.5);
+        int dano = (int) (this.getAtak() * 1.5);
         int diferencaSpd = this.spdDisputa(alvo);
         if(diferencaSpd < 1){
                 return 0;

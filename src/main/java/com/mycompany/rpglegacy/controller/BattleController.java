@@ -211,9 +211,17 @@ public class BattleController {
             atualizaSpritesBatalha(heroiUsuario, heroiPadraoSprite());
             atualizaStatusBatalha();
         } else if (pointer == 5) {
-            batalha.atacar(Batalha.HEROI, qualMonstro(batalha.getMonstroPointer()));
+            if (batalha.bossExiste()) {
+                batalha.atacar(Batalha.HEROI, Batalha.VILAO);
+            } else {
+                batalha.atacar(Batalha.HEROI, qualMonstro(batalha.getMonstroPointer()));
+            }
         } else if (pointer == 6) {
             batalha.atacar(qualMonstro(batalha.getMonstroPointer()), Batalha.HEROI);
+        } else if (pointer == 7) {
+            batalha.atacar(Batalha.VILAO, Batalha.HEROI);
+        } else if (pointer == 9) {
+            batalha.atacar(Batalha.VILAO, Batalha.HEROI);
         } else if (pointer == 11 || pointer == 16) {
             if (batalha.getMonstro().estaVivo()) {
                 inimigoAtaca();
@@ -221,6 +229,11 @@ public class BattleController {
                 terminaLuta();
             }
         } else if (pointer == 12 || pointer == 17) {
+            if (batalha.getBoss().estaVivo()) {
+                inimigoAtaca();
+            } else {
+                terminaLuta();
+            }
         } else if (pointer == 13) {
             inimigoAtaca();
         } else if (pointer == 15) {
@@ -245,34 +258,35 @@ public class BattleController {
             atualizaStatusBatalha();
         }
     }
-    
-    public void setFinalLuta(){
+
+    public void setFinalLuta() {
         if (batalha.algumInimigoVivo()) {
-                switch (qualMonstro(batalha.getMonstroPointer())) {
-                    case Batalha.MONSTRO_2:
-                        batalha.setTextoBatalhaPointer(3);
-                        setInimigoSpriteBatalha(batalha.getMonstro());
-                        atualizaStatusBatalha();
-                        break;
-                    case Batalha.MONSTRO_3:
-                        batalha.setTextoBatalhaPointer(4);
-                        setInimigoSpriteBatalha(batalha.getMonstro());
-                        atualizaStatusBatalha();
-                        break;
-                }
-            } else {
-                batalha.setTextoBatalhaPointer(21);
-                atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_VITORIA);
-                atualizaStatusBatalha();
+            switch (qualMonstro(batalha.getMonstroPointer())) {
+                case Batalha.MONSTRO_2:
+                    batalha.setTextoBatalhaPointer(3);
+                    setInimigoSpriteBatalha(batalha.getMonstro());
+                    setHeroiSpriteBatalha(heroiUsuario, Sprites.SPRITE_HEROI_IDLE);
+                    atualizaStatusBatalha();
+                    break;
+                case Batalha.MONSTRO_3:
+                    batalha.setTextoBatalhaPointer(4);
+                    setHeroiSpriteBatalha(heroiUsuario, Sprites.SPRITE_HEROI_IDLE);
+                    setInimigoSpriteBatalha(batalha.getMonstro());
+                    atualizaStatusBatalha();
+                    break;
             }
-    }
-    
-    public void setFinalBatalha(){
+        } else {
             batalha.setTextoBatalhaPointer(21);
             atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_VITORIA);
             atualizaStatusBatalha();
+        }
     }
-    
+
+    public void setFinalBatalha() {
+        batalha.setTextoBatalhaPointer(21);
+        atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_VITORIA);
+        atualizaStatusBatalha();
+    }
 
     public void setPointer(int fraseId) {
         batalha.setTextoBatalhaPointer(fraseId);
@@ -329,15 +343,15 @@ public class BattleController {
             int lvel = this.heroiUsuario.getLvel();
             switch (dificuldade) {
                 case Batalha.BATALHA_FACIL:
-                    List<Monstro> monstrosFacha1 = inmDao.getMonstroPorFachaLvel(lvel - 2, lvel);
-                    List<Monstro> monstrosFacil = selecionaMonstros(monstrosFacha1, 1, 2);
+                    List<Monstro> monstrosFacha1 = inmDao.getMonstroPorFachaLvel(lvel - 1, lvel);
+                    List<Monstro> monstrosFacil = selecionaMonstros(monstrosFacha1, 2, 3);
                     System.out.println(monstrosFacha1 + "    " + monstrosFacil);
                     iniciarBatalha(monstrosFacil);
                     monstrosFacha1.clear();
                     monstrosFacil.clear();
                     break;
                 case Batalha.BATALHA_MEDIA:
-                    List<Monstro> monstrosFacha2 = inmDao.getMonstroPorFachaLvel(lvel - 1, lvel + 1);
+                    List<Monstro> monstrosFacha2 = inmDao.getMonstroPorFachaLvel(lvel, lvel);
                     List<Monstro> monstrosMedio = selecionaMonstros(monstrosFacha2, 2, 2);
                     System.out.println(monstrosFacha2 + "    " + monstrosMedio);
                     iniciarBatalha(monstrosMedio);
@@ -345,8 +359,8 @@ public class BattleController {
                     monstrosMedio.clear();
                     break;
                 case Batalha.BATALHA_DIFICIL:
-                    List<Monstro> monstrosFacha3 = inmDao.getMonstroPorFachaLvel(lvel, lvel + 2);
-                    List<Monstro> monstrosDificil = selecionaMonstros(monstrosFacha3, 2, 3);
+                    List<Monstro> monstrosFacha3 = inmDao.getMonstroPorFachaLvel(lvel, lvel + 1);
+                    List<Monstro> monstrosDificil = selecionaMonstros(monstrosFacha3, 1, 3);
                     System.out.println(monstrosFacha3 + "    " + monstrosDificil);
                     iniciarBatalha(monstrosDificil);
                     monstrosFacha3.clear();
@@ -485,11 +499,9 @@ public class BattleController {
 
     public void confirmar() {
         if (menuBatalha.getAcao().equals(Outros.VOLTAR_PRINCIPAL)) {
-            salvarJogo();
             sairMenu();
             voltarTelaIncial();
         } else if (menuBatalha.getAcao().equals(Outros.SAIR_JOGO)) {
-            salvarJogo();
             sairMenu();
             mainController.sairJogo();
         } else if (menuBatalha.getAcao().equals(Outros.VER_STATUS)) {
@@ -599,12 +611,15 @@ public class BattleController {
     private void setDificuldade(String dificuldade) {
         switch (dificuldade) {
             case Batalha.BATALHA_FACIL:
+                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() / 0.1));
                 receberMonstros(Batalha.BATALHA_FACIL);
                 break;
             case Batalha.BATALHA_MEDIA:
+                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() / 0.2));
                 receberMonstros(Batalha.BATALHA_MEDIA);
                 break;
             case Batalha.BATALHA_DIFICIL:
+                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() / 0.3));
                 receberMonstros(Batalha.BATALHA_DIFICIL);
                 break;
         }
@@ -625,39 +640,39 @@ public class BattleController {
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_1);
                 break;
             case 4:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_bg.png")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_bg.jpg")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_4, Batalha.DESCRICAO_BATALHA_4, Batalha.BATALHA_4_OPCAO_1, Batalha.BATALHA_4_OPCAO_2, Batalha.BATALHA_4_OPCAO_3);
                 break;
             case 5:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_bg.png")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_bg.jpg")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_5, Batalha.DESCRICAO_BATALHA_5, Batalha.BATALHA_5_OPCAO_1, Batalha.BATALHA_5_OPCAO_2, Batalha.BATALHA_5_OPCAO_3);
                 break;
             case 6:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_bg.png")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_bg.jpg")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_2);
                 break;
             case 7:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/castle_bg.png")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/castle_bg.jpg")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_7, Batalha.DESCRICAO_BATALHA_7, Batalha.BATALHA_7_OPCAO_1, Batalha.BATALHA_7_OPCAO_2, Batalha.BATALHA_7_OPCAO_3);
                 break;
             case 8:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/castle_bg.png")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/castle_bg.jpg")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_8, Batalha.DESCRICAO_BATALHA_8, Batalha.BATALHA_8_OPCAO_1, Batalha.BATALHA_8_OPCAO_2, Batalha.BATALHA_8_OPCAO_3);
                 break;
             case 9:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/castle_bg.png")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/castle_bg.jpg")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_3);
                 break;
             case 10:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/throne_bg.png")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/throne_bg.jpg")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_10, Batalha.DESCRICAO_BATALHA_10, Batalha.BATALHA_10_OPCAO_1, Batalha.BATALHA_10_OPCAO_2, Batalha.BATALHA_10_OPCAO_3);
                 break;
             case 11:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/throne_bg.png")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/throne_bg.jpg")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_11, Batalha.DESCRICAO_BATALHA_11, Batalha.BATALHA_11_OPCAO_1, Batalha.BATALHA_11_OPCAO_2, Batalha.BATALHA_11_OPCAO_3);
                 break;
             case 12:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/throne_bg.png")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/throne_bg.jpg")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_4);
                 break;
         }
@@ -720,7 +735,7 @@ public class BattleController {
 
     private void bossAtaca() {
         if (batalha.getVilaoCarrega()) {
-            batalha.setTextoBatalhaPointer(8);
+            batalha.setTextoBatalhaPointer(9);
             atualizaStatusBatalha();
         } else {
             batalha.setTextoBatalhaPointer(7);
@@ -738,6 +753,7 @@ public class BattleController {
             case Batalha.BATALHA_ENCERRADA_HEROI_VENCEU_BATALHA:
                 batalha.setXpGanho(batalha.getBoss().getExpGanho());
                 batalha.setTextoBatalhaPointer(20);
+                setInimigoSpriteBatalha(batalha.getBoss(), Sprites.SPRITE_VILAO_DERROTA);
                 atualizaStatusBatalha();
                 break;
             case Batalha.BATALHA_ENCERRADA_HEROI_VENCEU_MONSTRO:
@@ -770,16 +786,16 @@ public class BattleController {
                 batalha.getHeroi().getVidaMaxima(), batalha.getHeroi().getVidaAtual(), batalha.getHeroi().getExpNxtLvel(),
                 batalha.getHeroi().getLvel(), batalha.getHeroi().getProgress(), batalha.getHeroi().getUsuario());
         Boolean levlUp = batalha.getHeroi().setExpNxtLvel(batalha.getXpGanho());
-        if(levlUp){
+        if (levlUp) {
             dialogVitoriaLvlUp(antigoHeroi);
-        }else{
+        } else {
             dialogVitoriaXpUp(antigoHeroi);
         }
         this.dialogVitoria.setVisible(true);
-        
+
     }
-    
-    public void sairVitoriaDialog(){
+
+    public void sairVitoriaDialog() {
         dialogVitoria.setVisible(false);
         dialogVitoria.dispose();
         setFinalLuta();
@@ -791,20 +807,20 @@ public class BattleController {
         dialogVitoria.getAdicionadoDefesaLabel().setVisible(true);
         dialogVitoria.getAdicionadoVelLabel().setVisible(true);
         dialogVitoria.getAdicionadoLevelLabel().setVisible(true);
-        
+
         dialogVitoria.getVidaValorLabel().setText(String.valueOf(heroi.getVidaMaxima()));
         dialogVitoria.getAtaqueValorLabel().setText(String.valueOf(heroi.getAtak()));
         dialogVitoria.getDefesaValorLabel().setText(String.valueOf(heroi.getDefe()));
         dialogVitoria.getVelValorLabel().setText(String.valueOf(heroi.getSped()));
         dialogVitoria.getLevelValorLabel().setText(String.valueOf(heroi.getLvel()));
         dialogVitoria.getXpValorLabel().setText(String.valueOf(heroi.getExpNxtLvel()));
-        
-        dialogVitoria.getAdicionadoVidaLabel().setText("===>"+String.valueOf(batalha.getHeroi().getVidaMaxima()));
-        dialogVitoria.getAdicionadoAtaqueLabel().setText("===>"+String.valueOf(batalha.getHeroi().getAtak()));
-        dialogVitoria.getAdicionadoDefesaLabel().setText("===>"+String.valueOf(batalha.getHeroi().getDefe()));
-        dialogVitoria.getAdicionadoVelLabel().setText("===>"+String.valueOf(batalha.getHeroi().getSped()));
-        dialogVitoria.getAdicionadoLevelLabel().setText("===>"+String.valueOf(batalha.getHeroi().getLvel()));
-        dialogVitoria.getAdicionadoXpLabel().setText("===>"+String.valueOf(batalha.getHeroi().getExpNxtLvel()));
+
+        dialogVitoria.getAdicionadoVidaLabel().setText("===>" + String.valueOf(batalha.getHeroi().getVidaMaxima()));
+        dialogVitoria.getAdicionadoAtaqueLabel().setText("===>" + String.valueOf(batalha.getHeroi().getAtak()));
+        dialogVitoria.getAdicionadoDefesaLabel().setText("===>" + String.valueOf(batalha.getHeroi().getDefe()));
+        dialogVitoria.getAdicionadoVelLabel().setText("===>" + String.valueOf(batalha.getHeroi().getSped()));
+        dialogVitoria.getAdicionadoLevelLabel().setText("===>" + String.valueOf(batalha.getHeroi().getLvel()));
+        dialogVitoria.getAdicionadoXpLabel().setText("===>" + String.valueOf(batalha.getHeroi().getExpNxtLvel()));
     }
 
     private void dialogVitoriaXpUp(Heroi heroi) {
@@ -813,15 +829,15 @@ public class BattleController {
         dialogVitoria.getAdicionadoDefesaLabel().setVisible(false);
         dialogVitoria.getAdicionadoVelLabel().setVisible(false);
         dialogVitoria.getAdicionadoLevelLabel().setVisible(false);
-        
+
         dialogVitoria.getVidaValorLabel().setText(String.valueOf(heroi.getVidaMaxima()));
         dialogVitoria.getAtaqueValorLabel().setText(String.valueOf(heroi.getAtak()));
         dialogVitoria.getDefesaValorLabel().setText(String.valueOf(heroi.getDefe()));
         dialogVitoria.getVelValorLabel().setText(String.valueOf(heroi.getSped()));
         dialogVitoria.getLevelValorLabel().setText(String.valueOf(heroi.getLvel()));
         dialogVitoria.getXpValorLabel().setText(String.valueOf(heroi.getExpNxtLvel()));
-        
-        dialogVitoria.getAdicionadoXpLabel().setText("===>"+String.valueOf(batalha.getHeroi().getExpNxtLvel()));
+
+        dialogVitoria.getAdicionadoXpLabel().setText("===>" + String.valueOf(batalha.getHeroi().getExpNxtLvel()));
     }
 
     private void finalizar() {
@@ -829,6 +845,6 @@ public class BattleController {
         salvarJogo();
         sairTelaBatalha();
         irTelaPrincipal();
-        
+
     }
 }

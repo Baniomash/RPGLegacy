@@ -100,6 +100,14 @@ public class Heroi extends Personagem<Vilao> {
             return danoFinal;
         }
     }
+    public void receberVida(int vidaAdicional){
+        int soma = this.getVidaAtual()+vidaAdicional;
+        if(soma < this.getVidaMaxima()){
+            this.setVidaAtual(soma);
+        }else{
+            this.setVidaAtual(this.getVidaMaxima());
+        }
+    }
 
     @Override
     public String toString() {

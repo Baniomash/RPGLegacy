@@ -19,7 +19,7 @@ public interface FrasesBatalha {
         public static final String FRASE_INIMIGO_ATAQUE = " ataca ferozmente!";
         
         public static final String FRASE_BOSS_CARREGA = " está carregando seu poder!";
-        public static final String FRASE_BOSS_DESCARREGA = " descarrega todo seu poder em um ataque!";
+        public static final String FRASE_BOSS_DESCARREGA = " vai atacar com todo seu poder!";
         
         public static final String FRASE_DESVIA = " desviou do ataque!";
         
