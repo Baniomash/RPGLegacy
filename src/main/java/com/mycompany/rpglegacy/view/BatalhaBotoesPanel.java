@@ -79,11 +79,11 @@ public class BatalhaBotoesPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_atkButtonActionPerformed
 
     private void defenderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defenderButtonActionPerformed
-//        controller.getBatalha().heroiDefender();
+        controller.heroiDefende();
     }//GEN-LAST:event_defenderButtonActionPerformed
 
     private void seRenderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seRenderButtonActionPerformed
-//        controller.getBatalha()
+        controller.heroiDesiste();
     }//GEN-LAST:event_seRenderButtonActionPerformed
 
     public void setController(BattleController controller) {

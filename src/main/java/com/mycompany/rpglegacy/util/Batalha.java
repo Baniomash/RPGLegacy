@@ -23,7 +23,7 @@ public interface Batalha {
     public static final String BATALHANDO = "Btalha esta acontecendo!";
     public static final String BATALHA_ENCERRADA_HEROI_MORREU = "Heroi morreu!";
     public static final String BATALHA_ENCERRADA_HEROI_DESISTIU = "Heroi desistiu!";
-    public static final String BATALHA_ENCERRADA_HEROI_VENCEU_MONSTRO = "Heroi Venceu 1 Monstro!";
+    public static final String BATALHA_ENCERRADA_HEROI_VENCEU_MONSTRO = "Heroi Venceu Monstro!";
     public static final String BATALHA_ENCERRADA_HEROI_VENCEU_BATALHA = "Heroi Venceu Batalha!";
     
     // BATALHA -- 1
@@ -74,7 +74,7 @@ public interface Batalha {
 
     // BATALHA -- 8
     public static final String NOME_MUNDO_FASE_8 = "CASTELO APODRECIDO";
-    public static final String DESCRICAO_BATALHA_8 = "<html>Ainda no castelo, você vê 3 caminhos.<br>Você vai seguir o caminho cercado por:</html>";
+    public static final String DESCRICAO_BATALHA_8 = "<html>Ainda no castelo, você vê 3 caminhos.<br>Você vai seguir seu instinto e vai:</html>";
     public static final String BATALHA_8_OPCAO_1 = "Abrir porta";
     public static final String BATALHA_8_OPCAO_2 = "Dar meia volta";
     public static final String BATALHA_8_OPCAO_3 = "Ir a masmorra";

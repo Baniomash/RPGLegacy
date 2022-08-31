@@ -63,8 +63,8 @@ public class Battle {
     }
 
     public void heroiDefender() {
-        heroi.setDefe((int) heroi.getDefe() + (heroi.getDefe() / 4));
-        heroiDefende = true;        
+        heroi.setDefe((int) heroi.getDefe() + (heroi.getDefe() / 3));
+        heroiDefende = true;
         if (bossExiste()) {
             this.turno = Batalha.VILAO;
         } else {
@@ -178,7 +178,7 @@ public class Battle {
             return Batalha.BATALHANDO;
         } else {
             if (!algumInimigoVivo()) {
-                return Batalha.BATALHA_ENCERRADA_HEROI_VENCEU_BATALHA;
+                return Batalha.BATALHA_ENCERRADA_HEROI_VENCEU_MONSTRO;
             }
             return Batalha.BATALHANDO;
         }
@@ -195,12 +195,13 @@ public class Battle {
                 switch (alvo) {
                     case Batalha.MONSTRO_1:
                         this.danoEnvolvido = heroi.atacar(monstro1);
-                        atualizaTela(Sprites.SPRITE_HEROI_ATAQUE);
                         this.turno = alvo;
                         if (danoEnvolvido > 0) {
                             this.textoBatalhaPointer = 16;
+                            controller.atualizaStatusBatalha();
                         } else {
                             this.textoBatalhaPointer = 11;
+                            controller.atualizaStatusBatalha();
                         }
                         break;
                     case Batalha.MONSTRO_2:
@@ -208,8 +209,10 @@ public class Battle {
                         this.turno = alvo;
                         if (danoEnvolvido > 0) {
                             this.textoBatalhaPointer = 16;
+                            controller.atualizaStatusBatalha();
                         } else {
                             this.textoBatalhaPointer = 11;
+                            controller.atualizaStatusBatalha();
                         }
                         break;
                     case Batalha.MONSTRO_3:
@@ -217,8 +220,10 @@ public class Battle {
                         this.turno = alvo;
                         if (danoEnvolvido > 0) {
                             this.textoBatalhaPointer = 16;
+                            controller.atualizaStatusBatalha();
                         } else {
                             this.textoBatalhaPointer = 11;
+                            controller.atualizaStatusBatalha();
                         }
                         break;
                     case Batalha.VILAO:
@@ -226,52 +231,62 @@ public class Battle {
                         this.turno = alvo;
                         if (danoEnvolvido > 0) {
                             this.textoBatalhaPointer = 17;
+                            controller.atualizaStatusBatalha();
+                            controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_TOMA_DANO);
                         } else {
                             this.textoBatalhaPointer = 12;
+                            controller.atualizaStatusBatalha();
+                            controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_DESVIA);
                         }
                         break;
                 }
+                atualizaTela(Sprites.SPRITE_HEROI_ATAQUE);
                 break;
             case Batalha.VILAO:
                 vilaoAcao();
                 this.turno = Batalha.HEROI;
                 break;
-            default:
-                switch (atacante) {
-                    case Batalha.MONSTRO_1: {
-                        this.danoEnvolvido = monstro1.atacar(heroi);
-                        if (danoEnvolvido > 0) {
-                            this.textoBatalhaPointer = 15;
-                            heroiParaDefender();
-                            atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
-                        } else {
-                            this.textoBatalhaPointer = 10;
-                        }
-                        this.turno = Batalha.HEROI;
-                    }
-                    case Batalha.MONSTRO_2: {
-                        this.danoEnvolvido = monstro2.atacar(heroi);
-                        if (danoEnvolvido > 0) {
-                            this.textoBatalhaPointer = 15;
-                            heroiParaDefender();
-                            atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
-                        } else {
-                            this.textoBatalhaPointer = 10;
-                        }
-                        this.turno = Batalha.HEROI;
-                    }
-                    case Batalha.MONSTRO_3: {
-                        this.danoEnvolvido = monstro3.atacar(heroi);
-                        if (danoEnvolvido > 0) {
-                            this.textoBatalhaPointer = 15;
-                            heroiParaDefender();
-                            atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
-                        } else {
-                            this.textoBatalhaPointer = 10;
-                        }
-                        this.turno = Batalha.HEROI;
-                    }
+            case Batalha.MONSTRO_1:
+                this.danoEnvolvido = monstro1.atacar(heroi);
+                if (danoEnvolvido > 0) {
+                    this.textoBatalhaPointer = 15;
+                    controller.atualizaStatusBatalha();
+                    heroiParaDefender();
+                    atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
+                } else {
+                    this.textoBatalhaPointer = 10;
+                    controller.atualizaStatusBatalha();
+                    atualizaTela(Sprites.SPRITE_HEROI_DESVIA);
                 }
+                this.turno = Batalha.HEROI;
+                break;
+            case Batalha.MONSTRO_2:
+                this.danoEnvolvido = monstro2.atacar(heroi);
+                if (danoEnvolvido > 0) {
+                    this.textoBatalhaPointer = 15;
+                    controller.atualizaStatusBatalha();
+                    heroiParaDefender();
+                    atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
+                } else {
+                    this.textoBatalhaPointer = 10;
+                    controller.atualizaStatusBatalha();
+                    atualizaTela(Sprites.SPRITE_HEROI_DESVIA);
+                }
+                this.turno = Batalha.HEROI;
+                break;
+            case Batalha.MONSTRO_3:
+                this.danoEnvolvido = monstro3.atacar(heroi);
+                if (danoEnvolvido > 0) {
+                    this.textoBatalhaPointer = 15;
+                    controller.atualizaStatusBatalha();
+                    heroiParaDefender();
+                    atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
+                } else {
+                    this.textoBatalhaPointer = 10;
+                    controller.atualizaStatusBatalha();
+                    atualizaTela(Sprites.SPRITE_HEROI_DESVIA);
+                }
+                this.turno = Batalha.HEROI;
                 break;
         }
     }
@@ -280,10 +295,15 @@ public class Battle {
         if (vilaoCarrega) {
             if (danoEnvolvido > 0) {
                 this.textoBatalhaPointer = 15;
+                controller.atualizaStatusBatalha();
                 heroiParaDefender();
                 atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
+                controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_DESCARREGA);
             } else {
                 this.textoBatalhaPointer = 10;
+                controller.atualizaStatusBatalha();
+                atualizaTela(Sprites.SPRITE_HEROI_DESVIA);
+                controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_DESCARREGA);
             }
             vilaoDescarregaPoder();
         } else {
@@ -291,15 +311,22 @@ public class Battle {
                 Random rng = new Random();
                 if (rng.nextInt(10) > 5) {
                     vilaoCarregaPoder();
-                    this.textoBatalhaPointer = 0;
+                    this.textoBatalhaPointer = 8;
+                    controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_CARREGA);
+                    controller.atualizaStatusBatalha();
                 } else {
                     this.danoEnvolvido = boss.atacar(heroi);
                     if (danoEnvolvido > 0) {
                         this.textoBatalhaPointer = 15;
+                        controller.atualizaStatusBatalha();
                         heroiParaDefender();
+                        controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
                         atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
                     } else {
                         this.textoBatalhaPointer = 10;
+                        controller.atualizaStatusBatalha();
+                        controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
+                        atualizaTela(Sprites.SPRITE_HEROI_DESVIA);
                     }
                     vilaoDescarregaPoder();
                 }
@@ -307,10 +334,13 @@ public class Battle {
                 this.danoEnvolvido = boss.atacar(heroi);
                 if (danoEnvolvido > 0) {
                     this.textoBatalhaPointer = 15;
+                    controller.atualizaStatusBatalha();
                     heroiParaDefender();
                     atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
                 } else {
                     this.textoBatalhaPointer = 10;
+                    controller.atualizaStatusBatalha();
+                    atualizaTela(Sprites.SPRITE_HEROI_DESVIA);
                 }
                 vilaoDescarregaPoder();
             }
@@ -328,7 +358,7 @@ public class Battle {
                 if (bossExiste()) {
                     return FrasesBatalha.FRASE_INICIA_BATALHA_3 + boss.getPersonName() + "!";
                 }
-                return FrasesBatalha.FRASE_INICIA_BATALHA_3 + monstro1.getTipo()+ "!";
+                return FrasesBatalha.FRASE_INICIA_BATALHA_3 + monstro1.getTipo() + "!";
             case 3:
                 return monstro2.getTipo() + FrasesBatalha.FRASE_INICIA_BATALHA_4;
             case 4:
@@ -366,7 +396,9 @@ public class Battle {
             case 20:
                 return boss.getPersonName() + FrasesBatalha.FRASE_PERDE_LUTA;
             case 21:
-                return boss.getPersonName() + FrasesBatalha.FRASE_HEROI_VENCE_BATALHA;
+                return heroi.getPersonName() + FrasesBatalha.FRASE_HEROI_VENCE_BATALHA;
+            case 22:
+                return FrasesBatalha.FRASE_HEROI_DESISTE;
             default:
                 return "Erro No Texto!!!";
         }
@@ -395,5 +427,9 @@ public class Battle {
     public Boolean getVilaoCarrega() {
         return vilaoCarrega;
     }
-    
+
+    public int getQuantidadeInimigos() {
+        return quantidadeInimigos;
+    }
+
 }

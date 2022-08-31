@@ -42,13 +42,15 @@ public class PersonagemSprite extends javax.swing.JPanel {
         setRequestFocusEnabled(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        heroiProgressBar.setBackground(new java.awt.Color(153, 0, 0));
         heroiProgressBar.setForeground(new java.awt.Color(51, 204, 0));
         heroiProgressBar.setMaximum(0);
         heroiProgressBar.setToolTipText("");
         heroiProgressBar.setMaximumSize(new java.awt.Dimension(160, 20));
         heroiProgressBar.setMinimumSize(new java.awt.Dimension(160, 20));
         heroiProgressBar.setPreferredSize(new java.awt.Dimension(160, 20));
-        heroiProgressBar.setString("asdasdasd");
+        heroiProgressBar.setString("");
+        heroiProgressBar.setStringPainted(true);
         add(heroiProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, -1, -1));
 
         spriteHeroiLabel.setMaximumSize(new java.awt.Dimension(128, 128));

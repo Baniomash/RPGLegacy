@@ -17,6 +17,7 @@ import com.mycompany.rpglegacy.util.Outros;
 import com.mycompany.rpglegacy.util.Sprites;
 import com.mycompany.rpglegacy.util.Telas;
 import com.mycompany.rpglegacy.view.BatalhaBotoesPanel;
+import com.mycompany.rpglegacy.view.GameOverDialog;
 import com.mycompany.rpglegacy.view.PersonagemSprite;
 import com.mycompany.rpglegacy.view.InfoPanel;
 import com.mycompany.rpglegacy.view.MainFrame;
@@ -24,6 +25,7 @@ import com.mycompany.rpglegacy.view.MenuBatalha;
 import com.mycompany.rpglegacy.view.MenuPrincipal;
 import com.mycompany.rpglegacy.view.StatusHeroi;
 import com.mycompany.rpglegacy.view.TelaBatalha;
+import com.mycompany.rpglegacy.view.VictoryDialog;
 import java.awt.CardLayout;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -54,6 +56,9 @@ public class BattleController {
     private StatusHeroi statusHeroi = new StatusHeroi(mainFrame, true);
     private BatalhaBotoesPanel batalhaBotoes = new BatalhaBotoesPanel();
     private InfoPanel infoPanel = new InfoPanel();
+    private VictoryDialog dialogVitoria = new VictoryDialog(mainFrame, true);
+    private GameOverDialog dialogGameOver = new GameOverDialog(mainFrame, true);
+            
 
     private JPanel navPanel;
     private CardLayout navLayout;
@@ -92,6 +97,7 @@ public class BattleController {
         heroiSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_HEROI_IDLE)));
         heroiSprite.getHeroiProgressBar().setMaximum(heroiUsuario.getVidaMaxima());
         heroiSprite.getHeroiProgressBar().setValue(heroiUsuario.getVidaAtual());
+        heroiSprite.getHeroiProgressBar().setString(heroiUsuario.getVidaAtual() + " / " + heroiUsuario.getVidaMaxima());
     }
 
     public void setHeroiSpriteBatalha(Heroi heroi, String heroSprite) {
@@ -99,39 +105,46 @@ public class BattleController {
         heroiSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(heroSprite)));
         heroiSprite.getHeroiProgressBar().setMaximum(heroi.getVidaMaxima());
         heroiSprite.getHeroiProgressBar().setValue(heroi.getVidaAtual());
+        heroiSprite.getHeroiProgressBar().setString(heroi.getVidaAtual() + " / " + heroi.getVidaMaxima());
     }
 
     public void setInimigoSpriteBatalha(Monstro monstro) {
         inimigoSprite.getNomeHeroiLabel().setText(monstro.getTipo());
-        switch (monstro.getTipo()) {
-            case MonsTipos.ARANHA:
-                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_ARANHA_IDLE)));
-                break;
-            case MonsTipos.COISA_FLORESTA:
-                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_COISA_FLORESTA_IDLE)));
-                break;
-            case MonsTipos.LAGARTO_TOXICO:
-                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_LAGARTO_TOXICO_IDLE)));
-                break;
-            case MonsTipos.LOBISOMEN_SANGUINARIO:
-                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_LOBISOMEN_SANGUINARIO_IDLE)));
-                break;
-            case MonsTipos.HEROI_MORTO_VIVO:
-                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_HEROI_MORTO_VIVO_IDLE)));
-                break;
-            default:
-                inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_HEROI_MORTO_VIVO_IDLE)));
-                break;
+        if (monstro.estaVivo()) {
+            switch (monstro.getTipo()) {
+                case MonsTipos.ARANHA:
+                    inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_ARANHA_IDLE)));
+                    break;
+                case MonsTipos.COISA_FLORESTA:
+                    inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_COISA_FLORESTA_IDLE)));
+                    break;
+                case MonsTipos.LAGARTO_TOXICO:
+                    inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_LAGARTO_TOXICO_IDLE)));
+                    break;
+                case MonsTipos.LOBISOMEN_SANGUINARIO:
+                    inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_LOBISOMEN_SANGUINARIO_IDLE)));
+                    break;
+                case MonsTipos.HEROI_MORTO_VIVO:
+                    inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_HEROI_MORTO_VIVO_IDLE)));
+                    break;
+                default:
+                    inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_HEROI_MORTO_VIVO_IDLE)));
+                    break;
+            }
+        } else {
+            inimigoSprite.getSpriteHeroiLabel().setIcon(null);
         }
         inimigoSprite.getHeroiProgressBar().setMaximum(monstro.getVidaMaxima());
         inimigoSprite.getHeroiProgressBar().setValue(monstro.getVidaAtual());
+        inimigoSprite.getHeroiProgressBar().setString(monstro.getVidaAtual() + " / " + monstro.getVidaMaxima());
     }
 
-    public void setInimigoSpriteBatalha(Vilao boss) {
+    public void setInimigoSpriteBatalha(Vilao boss, String heroSprite) {
         inimigoSprite.getNomeHeroiLabel().setText(boss.getPersonName());
         inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_VILAO_IDLE)));
         inimigoSprite.getHeroiProgressBar().setMaximum(boss.getVidaMaxima());
         inimigoSprite.getHeroiProgressBar().setValue(boss.getVidaAtual());
+        inimigoSprite.getHeroiProgressBar().setString(boss.getVidaAtual() + " / " + boss.getVidaMaxima());
     }
 
     public void irTelaPrincipal() {
@@ -149,7 +162,7 @@ public class BattleController {
         telaBatalha.setQualInimigo(qualInimigo);
         telaBatalha.getInfoLabel().setText(heroiUsuario.getProgress().toString());
         setFilhosInfoPanel();
-        atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_IDLE);
+        atualizaSpritesBatalha(heroiUsuario, heroiPadraoSprite());
         atualizaStatusBatalha();
     }
 
@@ -172,7 +185,7 @@ public class BattleController {
             setInimigoSpriteBatalha(batalha.getMonstro());
             atualizaSpriteInimigo();
         } else {
-            setInimigoSpriteBatalha(batalha.getBoss());
+            setInimigoSpriteBatalha(batalha.getBoss(), bossPadraoSprite());
             atualizaSpriteInimigo();
         }
 
@@ -193,11 +206,59 @@ public class BattleController {
         int pointer = batalha.getTextoBatalhaPointer();
         if (pointer == 1) {
             batalha.setTextoBatalhaPointer(2);
-        } else if(pointer == 2 || pointer == 10 || pointer == 13 || pointer == 15){
+            atualizaSpritesBatalha(heroiUsuario, heroiPadraoSprite());
+            atualizaStatusBatalha();
+        } else if (pointer == 5) {
+            batalha.atacar(Batalha.HEROI, qualMonstro(batalha.getMonstroPointer()));
+        } else if (pointer == 6) {
+            batalha.atacar(qualMonstro(batalha.getMonstroPointer()), Batalha.HEROI);
+        } else if (pointer == 11 || pointer == 16) {
+            if (batalha.getMonstro().estaVivo()) {
+                inimigoAtaca();
+            } else {
+                terminaLuta();
+            }
+        } else if (pointer == 12 || pointer == 17) {
+        } else if (pointer == 13) {
+            inimigoAtaca();
+        } else if (pointer == 15) {
+            if (batalha.getHeroi().estaVivo()) {
+                batalha.setTextoBatalhaPointer(0);
+                atualizaSpritesBatalha(heroiUsuario, heroiPadraoSprite());
+                atualizaStatusBatalha();
+            } else {
+                terminaLuta();
+            }
+        } else if (pointer == 19) {
+            if (batalha.algumInimigoVivo()) {
+                switch (qualMonstro(batalha.getMonstroPointer())) {
+                    case Batalha.MONSTRO_2:
+                        batalha.setTextoBatalhaPointer(3);
+                        setInimigoSpriteBatalha(batalha.getMonstro());
+                        atualizaStatusBatalha();
+                        break;
+                    case Batalha.MONSTRO_3:
+                        batalha.setTextoBatalhaPointer(4);
+                        setInimigoSpriteBatalha(batalha.getMonstro());
+                        atualizaStatusBatalha();
+                        break;
+                }
+            } else {
+                batalha.setTextoBatalhaPointer(21);
+                atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_VITORIA);
+                atualizaStatusBatalha();
+            }
+        } else if (pointer == 20) {
+            batalha.setTextoBatalhaPointer(21);
+            atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_VITORIA);
+            atualizaStatusBatalha();
+        } else if (pointer == 22 || pointer == 18) {
+            gameOver();
+        } else if (pointer == 2 || pointer == 3 || pointer == 4 || pointer == 8 || pointer == 10) {
             batalha.setTextoBatalhaPointer(0);
+            atualizaSpritesBatalha(heroiUsuario, heroiPadraoSprite());
+            atualizaStatusBatalha();
         }
-        atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_IDLE);
-        atualizaStatusBatalha();
     }
 
     public void setPointer(int fraseId) {
@@ -539,61 +600,143 @@ public class BattleController {
     public void setMapa() {
         switch (heroiUsuario.getProgress().getValor()) {
             case 1:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/forest_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_1, Batalha.DESCRICAO_BATALHA_1, Batalha.BATALHA_1_OPCAO_1, Batalha.BATALHA_1_OPCAO_2, Batalha.BATALHA_1_OPCAO_3);
                 break;
             case 2:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/forest_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_2, Batalha.DESCRICAO_BATALHA_2, Batalha.BATALHA_2_OPCAO_1, Batalha.BATALHA_2_OPCAO_2, Batalha.BATALHA_2_OPCAO_3);
                 break;
             case 3:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("forest_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_1);
                 break;
             case 4:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_4, Batalha.DESCRICAO_BATALHA_4, Batalha.BATALHA_4_OPCAO_1, Batalha.BATALHA_4_OPCAO_2, Batalha.BATALHA_4_OPCAO_3);
                 break;
             case 5:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_5, Batalha.DESCRICAO_BATALHA_5, Batalha.BATALHA_5_OPCAO_1, Batalha.BATALHA_5_OPCAO_2, Batalha.BATALHA_5_OPCAO_3);
                 break;
             case 6:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_2);
                 break;
             case 7:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/castle_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_7, Batalha.DESCRICAO_BATALHA_7, Batalha.BATALHA_7_OPCAO_1, Batalha.BATALHA_7_OPCAO_2, Batalha.BATALHA_7_OPCAO_3);
                 break;
             case 8:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/castle_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_8, Batalha.DESCRICAO_BATALHA_8, Batalha.BATALHA_8_OPCAO_1, Batalha.BATALHA_8_OPCAO_2, Batalha.BATALHA_8_OPCAO_3);
                 break;
             case 9:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/castle_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_3);
                 break;
             case 10:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/throne_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_10, Batalha.DESCRICAO_BATALHA_10, Batalha.BATALHA_10_OPCAO_1, Batalha.BATALHA_10_OPCAO_2, Batalha.BATALHA_10_OPCAO_3);
                 break;
             case 11:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/throne_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_11, Batalha.DESCRICAO_BATALHA_11, Batalha.BATALHA_11_OPCAO_1, Batalha.BATALHA_11_OPCAO_2, Batalha.BATALHA_11_OPCAO_3);
                 break;
             case 12:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.gif")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/throne_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_4);
                 break;
         }
     }
-    
-    
-    public void heroiAtaca(){
+
+    public void heroiAtaca() {
         batalha.setTextoBatalhaPointer(5);
         atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_ATAQUE);
         atualizaStatusBatalha();
-        batalha.atacar(Batalha.HEROI, Batalha.MONSTRO_1);
+    }
+
+    public void heroiDefende() {
+        batalha.setTextoBatalhaPointer(13);
+        batalha.heroiDefender();
+        atualizaSpritesBatalha(heroiUsuario, heroiPadraoSprite());
+        atualizaStatusBatalha();
+    }
+    public void heroiDesiste() {
+        batalha.setTextoBatalhaPointer(22);
+        atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_DESISTE);
+        atualizaStatusBatalha();
+    }
+
+    private void inimigoAtaca() {
+        if (!batalha.bossExiste()) {
+            batalha.setTextoBatalhaPointer(6);
+            atualizaStatusBatalha();
+        } else {
+            bossAtaca();
+        }
+    }
+
+    private String qualMonstro(int monstroPointer) {
+        switch (monstroPointer) {
+            case 1:
+                return Batalha.MONSTRO_1;
+            case 2:
+                return Batalha.MONSTRO_2;
+            case 3:
+                return Batalha.MONSTRO_3;
+            default:
+                return Batalha.MONSTRO_1;
+        }
+    }
+
+    public String heroiPadraoSprite() {
+        if (batalha.getHeroiDefende()) {
+            return Sprites.SPRITE_HEROI_DEFENDE;
+        }
+        return Sprites.SPRITE_HEROI_IDLE;
+    }
+    public String bossPadraoSprite() {
+        if (batalha.getVilaoCarrega()) {
+            return Sprites.SPRITE_VILAO_CARREGA;
+        }
+        return Sprites.SPRITE_VILAO_IDLE;
+    }
+
+    private void bossAtaca() {
+        if (batalha.getVilaoCarrega()) {
+            batalha.setTextoBatalhaPointer(8);
+            atualizaStatusBatalha();
+        } else {
+            batalha.setTextoBatalhaPointer(7);
+            atualizaStatusBatalha();
+        }
+    }
+
+    private void terminaLuta() {
+        switch (batalha.alguemMorto()) {
+            case Batalha.BATALHA_ENCERRADA_HEROI_MORREU:
+                batalha.setTextoBatalhaPointer(18);
+                setHeroiSpriteBatalha(batalha.getHeroi(), Sprites.SPRITE_HEROI_DERROTA);
+                atualizaStatusBatalha();
+                break;
+            case Batalha.BATALHA_ENCERRADA_HEROI_VENCEU_BATALHA:
+                batalha.setTextoBatalhaPointer(20);
+                atualizaStatusBatalha();
+                break;
+            case Batalha.BATALHA_ENCERRADA_HEROI_VENCEU_MONSTRO:
+                batalha.setTextoBatalhaPointer(19);
+                atualizaStatusBatalha();
+                break;
+            case Batalha.BATALHANDO:
+                batalha.setMonstroPointer(batalha.getMonstroPointer() + 1);
+                batalha.setTextoBatalhaPointer(19);
+                atualizaStatusBatalha();
+                break;
+        }
+    }
+
+    private void gameOver() {
+
     }
 }

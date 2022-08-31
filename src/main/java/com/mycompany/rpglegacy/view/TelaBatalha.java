@@ -72,20 +72,20 @@ public class TelaBatalha extends javax.swing.JPanel {
         adversarioSquarePanel.setLayout(adversarioSquarePanelLayout);
         adversarioSquarePanelLayout.setHorizontalGroup(
             adversarioSquarePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adversarioSquarePanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(spriteAdversarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adversarioSquarePanelLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(spriteAdversarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         adversarioSquarePanelLayout.setVerticalGroup(
             adversarioSquarePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adversarioSquarePanelLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(spriteAdversarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(spriteAdversarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
         );
 
-        add(adversarioSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+        add(adversarioSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 190, 230));
 
         heroiSquarePanel.setBackground(new java.awt.Color(230, 230, 230));
         heroiSquarePanel.setMaximumSize(new java.awt.Dimension(200, 300));
@@ -109,12 +109,12 @@ public class TelaBatalha extends javax.swing.JPanel {
         heroiSquarePanelLayout.setVerticalGroup(
             heroiSquarePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, heroiSquarePanelLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(spriteHeroiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(spriteHeroiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
         );
 
-        add(heroiSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        add(heroiSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, 230));
 
         infoPanel.setBackground(new java.awt.Color(220, 220, 220));
         infoPanel.setMaximumSize(new java.awt.Dimension(512, 64));
@@ -153,7 +153,7 @@ public class TelaBatalha extends javax.swing.JPanel {
         statusPanel.setMinimumSize(new java.awt.Dimension(620, 70));
         statusPanel.setPreferredSize(new java.awt.Dimension(620, 70));
         statusPanel.setLayout(new java.awt.CardLayout());
-        add(statusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        add(statusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton5ActionPerformed

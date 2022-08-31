@@ -6,6 +6,7 @@ package com.mycompany.rpglegacy.view;
 
 import com.mycompany.rpglegacy.controller.RPGController;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -13,14 +14,14 @@ import javax.swing.JPanel;
  * @author aluno
  */
 public class TelaPrincipal extends javax.swing.JPanel {
+
     private RPGController controller;
-    
+
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
-        this.backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usuario_board.png")));
     }
 
     /**
@@ -133,31 +134,28 @@ public class TelaPrincipal extends javax.swing.JPanel {
         controller.sairJogo();
     }//GEN-LAST:event_sairButtonActionPerformed
 
-    
-    
-    
     public void setController(RPGController controller) {
         this.controller = controller;
     }
-  
-    
-    
-    public void confirmaAutenticacao(){
-        if(controller.getIsAuth()){
+
+    public void confirmaAutenticacao() {
+        if (controller.getIsAuth()) {
             this.signInButton.setVisible(false);
             this.usuarioPanel.setVisible(true);
             this.bolinhaLabel.setText(controller.getUsr().getLogin());
             this.carregarJogoButton.setVisible(true);
             this.novoJogoButton.setVisible(true);
+            this.backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usuario_board.png")));
         } else {
             this.signInButton.setVisible(true);
             this.usuarioPanel.setVisible(false);
             this.bolinhaLabel.setText("USUARIO");
             this.carregarJogoButton.setVisible(false);
             this.novoJogoButton.setVisible(false);
+            this.backgroundLabel.setIcon(null);
         }
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;

@@ -33,6 +33,8 @@ public interface FrasesBatalha {
         
         public static final String FRASE_HEROI_VENCE_BATALHA = " derrotou todos os inimigos!";
         
+        public static final String FRASE_HEROI_DESISTE = "Desistiu?! Sério?!";
+        
         public static final String FRASE_HEROI_GAME_OVER = "GAME OVER";
         
         
