@@ -106,6 +106,9 @@
           <Dimension value="[256, 48]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="continuarButtonActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="70" y="320" width="-1" height="-1"/>
@@ -141,9 +144,9 @@
                   <Component id="infoLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="vidaValorLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="79" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="adicionadoVidaLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace pref="145" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -151,12 +154,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="adicionadoVidaLabel" alignment="1" max="32767" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="infoLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="vidaValorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="infoLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="vidaValorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="adicionadoVidaLabel" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="7" max="32767" attributes="0"/>
               </Group>
@@ -179,7 +180,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="adicionadoVidaLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="adicionado"/>
+            <Property name="text" type="java.lang.String" value="++"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -210,9 +211,9 @@
                   <Component id="infoLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="ataqueValorLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="117" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="adicionadoAtaqueLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace pref="183" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -220,12 +221,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="adicionadoAtaqueLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="infoLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ataqueValorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="infoLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ataqueValorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="adicionadoAtaqueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="7" max="32767" attributes="0"/>
               </Group>
@@ -248,7 +247,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="adicionadoAtaqueLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="adicionado"/>
+            <Property name="text" type="java.lang.String" value="++"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -279,9 +278,9 @@
                   <Component id="infoLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="defesaValorLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="121" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="adicionadoDefesaLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace pref="187" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -289,12 +288,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="adicionadoDefesaLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="infoLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="defesaValorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="infoLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="defesaValorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="adicionadoDefesaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="7" max="32767" attributes="0"/>
               </Group>
@@ -317,7 +314,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="adicionadoDefesaLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="adicionado"/>
+            <Property name="text" type="java.lang.String" value="++"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -348,9 +345,9 @@
                   <Component id="infoLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="levelValorLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="145" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="adicionadoLevelLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace pref="211" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -358,12 +355,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="adicionadoLevelLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="infoLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="levelValorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="infoLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="levelValorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="adicionadoLevelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="7" max="32767" attributes="0"/>
               </Group>
@@ -386,7 +381,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="adicionadoLevelLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="adicionado"/>
+            <Property name="text" type="java.lang.String" value="++"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -416,10 +411,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="infoLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="levelValorLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="176" max="32767" attributes="0"/>
-                  <Component id="adicionadoLevelLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="xpValorLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="adicionadoXpLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="242" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -427,12 +422,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="adicionadoLevelLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="infoLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="levelValorLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="infoLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="xpValorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="adicionadoXpLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="7" max="32767" attributes="0"/>
               </Group>
@@ -448,14 +441,14 @@
             <Property name="text" type="java.lang.String" value="XP:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="levelValorLabel1">
+        <Component class="javax.swing.JLabel" name="xpValorLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Valor Xp"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="adicionadoLevelLabel1">
+        <Component class="javax.swing.JLabel" name="adicionadoXpLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="adicionado"/>
+            <Property name="text" type="java.lang.String" value="++"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -486,9 +479,9 @@
                   <Component id="infoLabel6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="velValorLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="67" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="adicionadoVelLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace pref="133" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -496,12 +489,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="adicionadoVelLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="infoLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="velValorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="infoLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="velValorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="adicionadoVelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="7" max="32767" attributes="0"/>
               </Group>
@@ -524,7 +515,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="adicionadoVelLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="adicionado"/>
+            <Property name="text" type="java.lang.String" value="++"/>
           </Properties>
         </Component>
       </SubComponents>

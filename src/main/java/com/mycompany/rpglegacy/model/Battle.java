@@ -33,6 +33,9 @@ public class Battle {
     private String batalhaStatus;
     private String turno = Batalha.HEROI;
     private int textoBatalhaPointer = 1;
+    
+    
+    private int xpGanho = 0;
 
     private int danoEnvolvido = 0;
 
@@ -432,4 +435,12 @@ public class Battle {
         return quantidadeInimigos;
     }
 
+    public int getXpGanho() {
+        return xpGanho;
+    }
+
+    public void setXpGanho(int xpGanho) {
+        this.xpGanho = xpGanho;
+    }
+    
 }

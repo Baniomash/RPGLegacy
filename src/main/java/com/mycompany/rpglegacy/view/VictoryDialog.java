@@ -5,12 +5,15 @@
 
 package com.mycompany.rpglegacy.view;
 
+import com.mycompany.rpglegacy.controller.BattleController;
+import javax.swing.JLabel;
+
 /**
  *
  * @author aluno
  */
 public class VictoryDialog extends javax.swing.JDialog {
-
+    private BattleController controller;
     /** Creates new form VictoryDialog */
     public VictoryDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -47,8 +50,8 @@ public class VictoryDialog extends javax.swing.JDialog {
         adicionadoLevelLabel = new javax.swing.JLabel();
         xpPanel = new javax.swing.JPanel();
         infoLabel3 = new javax.swing.JLabel();
-        levelValorLabel1 = new javax.swing.JLabel();
-        adicionadoLevelLabel1 = new javax.swing.JLabel();
+        xpValorLabel = new javax.swing.JLabel();
+        adicionadoXpLabel = new javax.swing.JLabel();
         velocidadePanel = new javax.swing.JPanel();
         infoLabel6 = new javax.swing.JLabel();
         velValorLabel = new javax.swing.JLabel();
@@ -94,6 +97,11 @@ public class VictoryDialog extends javax.swing.JDialog {
         continuarButton.setMaximumSize(new java.awt.Dimension(256, 48));
         continuarButton.setMinimumSize(new java.awt.Dimension(256, 48));
         continuarButton.setPreferredSize(new java.awt.Dimension(256, 48));
+        continuarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                continuarButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(continuarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
 
         vidaMaximaPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -106,7 +114,7 @@ public class VictoryDialog extends javax.swing.JDialog {
 
         vidaValorLabel.setText("Valor da vida");
 
-        adicionadoVidaLabel.setText("adicionado");
+        adicionadoVidaLabel.setText("++");
 
         javax.swing.GroupLayout vidaMaximaPanelLayout = new javax.swing.GroupLayout(vidaMaximaPanel);
         vidaMaximaPanel.setLayout(vidaMaximaPanelLayout);
@@ -117,19 +125,18 @@ public class VictoryDialog extends javax.swing.JDialog {
                 .addComponent(infoLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(vidaValorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(adicionadoVidaLabel)
-                .addGap(31, 31, 31))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         vidaMaximaPanelLayout.setVerticalGroup(
             vidaMaximaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(vidaMaximaPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(vidaMaximaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(adicionadoVidaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, vidaMaximaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(infoLabel1)
-                        .addComponent(vidaValorLabel)))
+                .addGroup(vidaMaximaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(infoLabel1)
+                    .addComponent(vidaValorLabel)
+                    .addComponent(adicionadoVidaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -144,7 +151,7 @@ public class VictoryDialog extends javax.swing.JDialog {
 
         ataqueValorLabel.setText("Valor ataque");
 
-        adicionadoAtaqueLabel.setText("adicionado");
+        adicionadoAtaqueLabel.setText("++");
 
         javax.swing.GroupLayout ataquePanelLayout = new javax.swing.GroupLayout(ataquePanel);
         ataquePanel.setLayout(ataquePanelLayout);
@@ -155,19 +162,18 @@ public class VictoryDialog extends javax.swing.JDialog {
                 .addComponent(infoLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(ataqueValorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(adicionadoAtaqueLabel)
-                .addGap(31, 31, 31))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         ataquePanelLayout.setVerticalGroup(
             ataquePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ataquePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ataquePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(adicionadoAtaqueLabel)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ataquePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(infoLabel4)
-                        .addComponent(ataqueValorLabel)))
+                .addGroup(ataquePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(infoLabel4)
+                    .addComponent(ataqueValorLabel)
+                    .addComponent(adicionadoAtaqueLabel))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -182,7 +188,7 @@ public class VictoryDialog extends javax.swing.JDialog {
 
         defesaValorLabel.setText("Valor defesa");
 
-        adicionadoDefesaLabel.setText("adicionado");
+        adicionadoDefesaLabel.setText("++");
 
         javax.swing.GroupLayout defesaPanelLayout = new javax.swing.GroupLayout(defesaPanel);
         defesaPanel.setLayout(defesaPanelLayout);
@@ -193,19 +199,18 @@ public class VictoryDialog extends javax.swing.JDialog {
                 .addComponent(infoLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(defesaValorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(adicionadoDefesaLabel)
-                .addGap(31, 31, 31))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         defesaPanelLayout.setVerticalGroup(
             defesaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(defesaPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(defesaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(adicionadoDefesaLabel)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, defesaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(infoLabel5)
-                        .addComponent(defesaValorLabel)))
+                .addGroup(defesaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(infoLabel5)
+                    .addComponent(defesaValorLabel)
+                    .addComponent(adicionadoDefesaLabel))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -220,7 +225,7 @@ public class VictoryDialog extends javax.swing.JDialog {
 
         levelValorLabel.setText("Valor level");
 
-        adicionadoLevelLabel.setText("adicionado");
+        adicionadoLevelLabel.setText("++");
 
         javax.swing.GroupLayout levelPanelLayout = new javax.swing.GroupLayout(levelPanel);
         levelPanel.setLayout(levelPanelLayout);
@@ -231,19 +236,18 @@ public class VictoryDialog extends javax.swing.JDialog {
                 .addComponent(infoLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(levelValorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(adicionadoLevelLabel)
-                .addGap(31, 31, 31))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
         levelPanelLayout.setVerticalGroup(
             levelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(levelPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(levelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(adicionadoLevelLabel)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, levelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(infoLabel2)
-                        .addComponent(levelValorLabel)))
+                .addGroup(levelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(infoLabel2)
+                    .addComponent(levelValorLabel)
+                    .addComponent(adicionadoLevelLabel))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -256,9 +260,9 @@ public class VictoryDialog extends javax.swing.JDialog {
         infoLabel3.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
         infoLabel3.setText("XP:");
 
-        levelValorLabel1.setText("Valor Xp");
+        xpValorLabel.setText("Valor Xp");
 
-        adicionadoLevelLabel1.setText("adicionado");
+        adicionadoXpLabel.setText("++");
 
         javax.swing.GroupLayout xpPanelLayout = new javax.swing.GroupLayout(xpPanel);
         xpPanel.setLayout(xpPanelLayout);
@@ -268,20 +272,19 @@ public class VictoryDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(infoLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(levelValorLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
-                .addComponent(adicionadoLevelLabel1)
-                .addGap(31, 31, 31))
+                .addComponent(xpValorLabel)
+                .addGap(18, 18, 18)
+                .addComponent(adicionadoXpLabel)
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         xpPanelLayout.setVerticalGroup(
             xpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(xpPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(xpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(adicionadoLevelLabel1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, xpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(infoLabel3)
-                        .addComponent(levelValorLabel1)))
+                .addGroup(xpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(infoLabel3)
+                    .addComponent(xpValorLabel)
+                    .addComponent(adicionadoXpLabel))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -296,7 +299,7 @@ public class VictoryDialog extends javax.swing.JDialog {
 
         velValorLabel.setText("Valor velocidade");
 
-        adicionadoVelLabel.setText("adicionado");
+        adicionadoVelLabel.setText("++");
 
         javax.swing.GroupLayout velocidadePanelLayout = new javax.swing.GroupLayout(velocidadePanel);
         velocidadePanel.setLayout(velocidadePanelLayout);
@@ -307,19 +310,18 @@ public class VictoryDialog extends javax.swing.JDialog {
                 .addComponent(infoLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(velValorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(adicionadoVelLabel)
-                .addGap(31, 31, 31))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         velocidadePanelLayout.setVerticalGroup(
             velocidadePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(velocidadePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(velocidadePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(adicionadoVelLabel)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, velocidadePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(infoLabel6)
-                        .addComponent(velValorLabel)))
+                .addGroup(velocidadePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(infoLabel6)
+                    .addComponent(velValorLabel)
+                    .addComponent(adicionadoVelLabel))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -327,6 +329,10 @@ public class VictoryDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void continuarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarButtonActionPerformed
+        controller.sairVitoriaDialog();
+    }//GEN-LAST:event_continuarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,13 +376,65 @@ public class VictoryDialog extends javax.swing.JDialog {
         });
     }
 
+    public void setController(BattleController controller) {
+        this.controller = controller;
+    }
+    
+    public JLabel getAdicionadoAtaqueLabel() {
+        return adicionadoAtaqueLabel;
+    }
+
+    public JLabel getAdicionadoDefesaLabel() {
+        return adicionadoDefesaLabel;
+    }
+
+    public JLabel getAdicionadoLevelLabel() {
+        return adicionadoLevelLabel;
+    }
+
+    public JLabel getAdicionadoVelLabel() {
+        return adicionadoVelLabel;
+    }
+
+    public JLabel getAdicionadoVidaLabel() {
+        return adicionadoVidaLabel;
+    }
+
+    public JLabel getAdicionadoXpLabel() {
+        return adicionadoXpLabel;
+    }
+
+    public JLabel getAtaqueValorLabel() {
+        return ataqueValorLabel;
+    }
+
+    public JLabel getDefesaValorLabel() {
+        return defesaValorLabel;
+    }
+
+    public JLabel getLevelValorLabel() {
+        return levelValorLabel;
+    }
+
+    public JLabel getVelValorLabel() {
+        return velValorLabel;
+    }
+
+    public JLabel getVidaValorLabel() {
+        return vidaValorLabel;
+    }
+
+    public JLabel getXpValorLabel() {
+        return xpValorLabel;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adicionadoAtaqueLabel;
     private javax.swing.JLabel adicionadoDefesaLabel;
     private javax.swing.JLabel adicionadoLevelLabel;
-    private javax.swing.JLabel adicionadoLevelLabel1;
     private javax.swing.JLabel adicionadoVelLabel;
     private javax.swing.JLabel adicionadoVidaLabel;
+    private javax.swing.JLabel adicionadoXpLabel;
     private javax.swing.JPanel ataquePanel;
     private javax.swing.JLabel ataqueValorLabel;
     private javax.swing.JButton continuarButton;
@@ -390,7 +448,6 @@ public class VictoryDialog extends javax.swing.JDialog {
     private javax.swing.JLabel infoLabel6;
     private javax.swing.JPanel levelPanel;
     private javax.swing.JLabel levelValorLabel;
-    private javax.swing.JLabel levelValorLabel1;
     private javax.swing.JLabel velValorLabel;
     private javax.swing.JPanel velocidadePanel;
     private javax.swing.JPanel vidaMaximaPanel;
@@ -398,6 +455,7 @@ public class VictoryDialog extends javax.swing.JDialog {
     private javax.swing.JLabel vitoriaLabel;
     private javax.swing.JPanel vitoriaPanel;
     private javax.swing.JPanel xpPanel;
+    private javax.swing.JLabel xpValorLabel;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -58,7 +58,6 @@ public class BattleController {
     private InfoPanel infoPanel = new InfoPanel();
     private VictoryDialog dialogVitoria = new VictoryDialog(mainFrame, true);
     private GameOverDialog dialogGameOver = new GameOverDialog(mainFrame, true);
-            
 
     private JPanel navPanel;
     private CardLayout navLayout;
@@ -84,6 +83,8 @@ public class BattleController {
         statusHeroi.setController(this);
         batalhaBotoes.setController(this);
         infoPanel.setController(this);
+        dialogGameOver.setController(this);
+        dialogVitoria.setController(this);
     }
 
     public void iniciaTelas() {
@@ -148,6 +149,7 @@ public class BattleController {
     }
 
     public void irTelaPrincipal() {
+        atualizaHeroi();
         navLayout.show(navPanel, Telas.MENU_PRINCIPAL);
         setHeroiSpriteMapa();
         menuPrincipal.getSpriteHeroiPanel().add(this.heroiSprite, Telas.HEROI_SPRITE);
@@ -198,7 +200,6 @@ public class BattleController {
             statLayout.show(statPanel, Telas.BATALHA_BOTOES);
         } else {
             infoPanel.getInfoTextoLabel().setText(batalha.serTextoBatalha());
-            infoPanel.validate();
 
         }
     }
@@ -231,7 +232,22 @@ public class BattleController {
                 terminaLuta();
             }
         } else if (pointer == 19) {
-            if (batalha.algumInimigoVivo()) {
+            setVitoriaDialog();
+        } else if (pointer == 20) {
+            setVitoriaDialog();
+        } else if (pointer == 21) {
+            finalizar();
+        } else if (pointer == 22 || pointer == 18) {
+            gameOver();
+        } else if (pointer == 2 || pointer == 3 || pointer == 4 || pointer == 8 || pointer == 10) {
+            batalha.setTextoBatalhaPointer(0);
+            atualizaSpritesBatalha(heroiUsuario, heroiPadraoSprite());
+            atualizaStatusBatalha();
+        }
+    }
+    
+    public void setFinalLuta(){
+        if (batalha.algumInimigoVivo()) {
                 switch (qualMonstro(batalha.getMonstroPointer())) {
                     case Batalha.MONSTRO_2:
                         batalha.setTextoBatalhaPointer(3);
@@ -249,18 +265,14 @@ public class BattleController {
                 atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_VITORIA);
                 atualizaStatusBatalha();
             }
-        } else if (pointer == 20) {
+    }
+    
+    public void setFinalBatalha(){
             batalha.setTextoBatalhaPointer(21);
             atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_VITORIA);
             atualizaStatusBatalha();
-        } else if (pointer == 22 || pointer == 18) {
-            gameOver();
-        } else if (pointer == 2 || pointer == 3 || pointer == 4 || pointer == 8 || pointer == 10) {
-            batalha.setTextoBatalhaPointer(0);
-            atualizaSpritesBatalha(heroiUsuario, heroiPadraoSprite());
-            atualizaStatusBatalha();
-        }
     }
+    
 
     public void setPointer(int fraseId) {
         batalha.setTextoBatalhaPointer(fraseId);
@@ -609,7 +621,7 @@ public class BattleController {
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_2, Batalha.DESCRICAO_BATALHA_2, Batalha.BATALHA_2_OPCAO_1, Batalha.BATALHA_2_OPCAO_2, Batalha.BATALHA_2_OPCAO_3);
                 break;
             case 3:
-                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("forest_bg.png")));
+                mainFrame.getFundoLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/forest_bg.png")));
                 setPropiedadesBatalha(Batalha.NOME_MUNDO_FASE_3, Batalha.DESCRICAO_BATALHA_3, Batalha.NOME_BOSS_1);
                 break;
             case 4:
@@ -663,6 +675,7 @@ public class BattleController {
         atualizaSpritesBatalha(heroiUsuario, heroiPadraoSprite());
         atualizaStatusBatalha();
     }
+
     public void heroiDesiste() {
         batalha.setTextoBatalhaPointer(22);
         atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_DESISTE);
@@ -697,6 +710,7 @@ public class BattleController {
         }
         return Sprites.SPRITE_HEROI_IDLE;
     }
+
     public String bossPadraoSprite() {
         if (batalha.getVilaoCarrega()) {
             return Sprites.SPRITE_VILAO_CARREGA;
@@ -722,14 +736,17 @@ public class BattleController {
                 atualizaStatusBatalha();
                 break;
             case Batalha.BATALHA_ENCERRADA_HEROI_VENCEU_BATALHA:
+                batalha.setXpGanho(batalha.getBoss().getExpGanho());
                 batalha.setTextoBatalhaPointer(20);
                 atualizaStatusBatalha();
                 break;
             case Batalha.BATALHA_ENCERRADA_HEROI_VENCEU_MONSTRO:
+                batalha.setXpGanho(batalha.getMonstro().getExpGanho());
                 batalha.setTextoBatalhaPointer(19);
                 atualizaStatusBatalha();
                 break;
             case Batalha.BATALHANDO:
+                batalha.setXpGanho(batalha.getMonstro().getExpGanho());
                 batalha.setMonstroPointer(batalha.getMonstroPointer() + 1);
                 batalha.setTextoBatalhaPointer(19);
                 atualizaStatusBatalha();
@@ -738,6 +755,80 @@ public class BattleController {
     }
 
     private void gameOver() {
+        this.dialogGameOver.setVisible(true);
+    }
 
+    public void sairGameOver() {
+        dialogGameOver.setVisible(false);
+        dialogGameOver.dispose();
+        voltarTelaIncial();
+    }
+
+    private void setVitoriaDialog() {
+        Heroi antigoHeroi = new Heroi(batalha.getHeroi().getId(), batalha.getHeroi().getPersonName(),
+                batalha.getHeroi().getAtak(), batalha.getHeroi().getDefe(), batalha.getHeroi().getSped(),
+                batalha.getHeroi().getVidaMaxima(), batalha.getHeroi().getVidaAtual(), batalha.getHeroi().getExpNxtLvel(),
+                batalha.getHeroi().getLvel(), batalha.getHeroi().getProgress(), batalha.getHeroi().getUsuario());
+        Boolean levlUp = batalha.getHeroi().setExpNxtLvel(batalha.getXpGanho());
+        if(levlUp){
+            dialogVitoriaLvlUp(antigoHeroi);
+        }else{
+            dialogVitoriaXpUp(antigoHeroi);
+        }
+        this.dialogVitoria.setVisible(true);
+        
+    }
+    
+    public void sairVitoriaDialog(){
+        dialogVitoria.setVisible(false);
+        dialogVitoria.dispose();
+        setFinalLuta();
+    }
+
+    private void dialogVitoriaLvlUp(Heroi heroi) {
+        dialogVitoria.getAdicionadoVidaLabel().setVisible(true);
+        dialogVitoria.getAdicionadoAtaqueLabel().setVisible(true);
+        dialogVitoria.getAdicionadoDefesaLabel().setVisible(true);
+        dialogVitoria.getAdicionadoVelLabel().setVisible(true);
+        dialogVitoria.getAdicionadoLevelLabel().setVisible(true);
+        
+        dialogVitoria.getVidaValorLabel().setText(String.valueOf(heroi.getVidaMaxima()));
+        dialogVitoria.getAtaqueValorLabel().setText(String.valueOf(heroi.getAtak()));
+        dialogVitoria.getDefesaValorLabel().setText(String.valueOf(heroi.getDefe()));
+        dialogVitoria.getVelValorLabel().setText(String.valueOf(heroi.getSped()));
+        dialogVitoria.getLevelValorLabel().setText(String.valueOf(heroi.getLvel()));
+        dialogVitoria.getXpValorLabel().setText(String.valueOf(heroi.getExpNxtLvel()));
+        
+        dialogVitoria.getAdicionadoVidaLabel().setText("===>"+String.valueOf(batalha.getHeroi().getVidaMaxima()));
+        dialogVitoria.getAdicionadoAtaqueLabel().setText("===>"+String.valueOf(batalha.getHeroi().getAtak()));
+        dialogVitoria.getAdicionadoDefesaLabel().setText("===>"+String.valueOf(batalha.getHeroi().getDefe()));
+        dialogVitoria.getAdicionadoVelLabel().setText("===>"+String.valueOf(batalha.getHeroi().getSped()));
+        dialogVitoria.getAdicionadoLevelLabel().setText("===>"+String.valueOf(batalha.getHeroi().getLvel()));
+        dialogVitoria.getAdicionadoXpLabel().setText("===>"+String.valueOf(batalha.getHeroi().getExpNxtLvel()));
+    }
+
+    private void dialogVitoriaXpUp(Heroi heroi) {
+        dialogVitoria.getAdicionadoVidaLabel().setVisible(false);
+        dialogVitoria.getAdicionadoAtaqueLabel().setVisible(false);
+        dialogVitoria.getAdicionadoDefesaLabel().setVisible(false);
+        dialogVitoria.getAdicionadoVelLabel().setVisible(false);
+        dialogVitoria.getAdicionadoLevelLabel().setVisible(false);
+        
+        dialogVitoria.getVidaValorLabel().setText(String.valueOf(heroi.getVidaMaxima()));
+        dialogVitoria.getAtaqueValorLabel().setText(String.valueOf(heroi.getAtak()));
+        dialogVitoria.getDefesaValorLabel().setText(String.valueOf(heroi.getDefe()));
+        dialogVitoria.getVelValorLabel().setText(String.valueOf(heroi.getSped()));
+        dialogVitoria.getLevelValorLabel().setText(String.valueOf(heroi.getLvel()));
+        dialogVitoria.getXpValorLabel().setText(String.valueOf(heroi.getExpNxtLvel()));
+        
+        dialogVitoria.getAdicionadoXpLabel().setText("===>"+String.valueOf(batalha.getHeroi().getExpNxtLvel()));
+    }
+
+    private void finalizar() {
+        batalha.getHeroi().getProgress().aumentaValor();
+        salvarJogo();
+        sairTelaBatalha();
+        irTelaPrincipal();
+        
     }
 }
