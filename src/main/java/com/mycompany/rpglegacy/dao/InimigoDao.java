@@ -227,7 +227,7 @@ public class InimigoDao {
         InimigoDao dao = new InimigoDao();
         
 //      Bosses
-        Vilao boss1 = new Vilao(Batalha.NOME_BOSS_1, 12, 10, 8, 340, 5, 32);
+        Vilao boss1 = new Vilao(Batalha.NOME_BOSS_1, 12, 6, 8, 340, 5, 32);
         Vilao boss2 = new Vilao(Batalha.NOME_BOSS_2, 5, 5, 5, 5, 5, 5);
         Vilao boss3 = new Vilao(Batalha.NOME_BOSS_3, 5, 5, 5, 5, 5, 5);
         
@@ -259,8 +259,19 @@ public class InimigoDao {
         Monstro monstro21 = new Monstro(MonsTipos.LAGARTO_TOXICO, 18, 14, 20, 130, 5, 13);
         Monstro monstro22 = new Monstro(MonsTipos.LAGARTO_TOXICO, 17, 13, 22, 130, 5, 13);
         Monstro monstro23 = new Monstro(MonsTipos.LAGARTO_TOXICO, 16, 15, 21, 130, 5, 13);
+        Monstro monstro24 = new Monstro(MonsTipos.LAGARTO_TOXICO, 22, 17, 19, 150, 6, 16);
+        Monstro monstro25 = new Monstro(MonsTipos.LAGARTO_TOXICO, 24, 20, 22, 170, 7, 19);
+
+//      LOBISOMENS =>>
+        Monstro monstro26 = new Monstro(MonsTipos.LAGARTO_TOXICO, 28, 22, 16, 170, 7, 19);
+        Monstro monstro27 = new Monstro(MonsTipos.LAGARTO_TOXICO, 26, 22, 18, 170, 7, 19);
+        Monstro monstro28 = new Monstro(MonsTipos.LAGARTO_TOXICO, 24, 24, 18, 170, 7, 19);
+        Monstro monstro29 = new Monstro(MonsTipos.LAGARTO_TOXICO, 30, 22, 22, 190, 8, 23);
+        Monstro monstro30 = new Monstro(MonsTipos.LAGARTO_TOXICO, 32, 28, 32, 210, 9, 27);
         
-        
+//      UNDEAD:
+//      Monstro monstro30 = new Monstro(MonsTipos.LAGARTO_TOXICO, , , , 310, 10, );
+             
 //      CRIAR VILÕES NO DB =>>
         dao.criar(boss1);
         dao.criar(boss2);
@@ -290,5 +301,12 @@ public class InimigoDao {
         dao.criar(monstro21);
         dao.criar(monstro22);
         dao.criar(monstro23);
+        dao.criar(monstro24);
+        dao.criar(monstro25);
+        dao.criar(monstro26);
+        dao.criar(monstro27);
+        dao.criar(monstro28);
+        dao.criar(monstro29);
+        dao.criar(monstro30);
     }
 }

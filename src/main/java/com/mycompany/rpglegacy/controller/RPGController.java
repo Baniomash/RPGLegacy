@@ -374,14 +374,17 @@ public class RPGController {
 // 
 //      vilao       (60) (30*10)340 - 12 - 10 - 08
 //
-//      monstro     (24) (05*10)050 - 10 - 04 - 05
-//      monstro     (32) (07*10)070 - 16 - 07 - 06
-//      monstro     (40) (09*10)090 - 18 - 09 - 08
-//      monstro     (48) (11*10)110 - 20 - 11 - 10
-//      monstro     (56) (13*10)130 - 22 - 13 - 12
-//      monstro     (62) (15*10)150
-//      mosntro     (70) (17*10)170
-//    
+//      monstro1     (24) (05*10)050 - 10 - 04 - 05
+//      monstro2     (32) (07*10)070 - 16 - 07 - 06
+//      monstro3     (40) (09*10)090 - 18 - 09 - 08
+//      monstro4     (48) (11*10)110 - 20 - 11 - 10
+//      monstro5     (56) (13*10)130 - 22 - 13 - 12
+//      monstro6     (62) (15*10)150
+//      mosntro7     (70) (17*10)170
+//      mosntro8     (78) (19*10)190
+//      mosntro9     (86) (21*10)210
+//      monstro10    (94) ()
+//
 //      calcuo mons XP (PontosTotal * (1+(0.01*PontosVida))) /  10
 //      calcuo mons XP ((PontosTotal * (1+(0.01*PontosVida))) /  10) * (atk*0,1))
 }
