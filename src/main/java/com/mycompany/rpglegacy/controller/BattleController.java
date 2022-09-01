@@ -345,7 +345,6 @@ public class BattleController {
                 case Batalha.BATALHA_FACIL:
                     List<Monstro> monstrosFacha1 = inmDao.getMonstroPorFachaLvel(lvel - 1, lvel);
                     List<Monstro> monstrosFacil = selecionaMonstros(monstrosFacha1, 2, 3);
-                    System.out.println(monstrosFacha1 + "    " + monstrosFacil);
                     iniciarBatalha(monstrosFacil);
                     monstrosFacha1.clear();
                     monstrosFacil.clear();
@@ -353,7 +352,6 @@ public class BattleController {
                 case Batalha.BATALHA_MEDIA:
                     List<Monstro> monstrosFacha2 = inmDao.getMonstroPorFachaLvel(lvel, lvel);
                     List<Monstro> monstrosMedio = selecionaMonstros(monstrosFacha2, 2, 2);
-                    System.out.println(monstrosFacha2 + "    " + monstrosMedio);
                     iniciarBatalha(monstrosMedio);
                     monstrosFacha2.clear();
                     monstrosMedio.clear();
@@ -361,7 +359,6 @@ public class BattleController {
                 case Batalha.BATALHA_DIFICIL:
                     List<Monstro> monstrosFacha3 = inmDao.getMonstroPorFachaLvel(lvel, lvel + 1);
                     List<Monstro> monstrosDificil = selecionaMonstros(monstrosFacha3, 1, 3);
-                    System.out.println(monstrosFacha3 + "    " + monstrosDificil);
                     iniciarBatalha(monstrosDificil);
                     monstrosFacha3.clear();
                     monstrosDificil.clear();
@@ -419,7 +416,6 @@ public class BattleController {
 
     public void iniciarBatalha(Vilao boss) {
         this.batalha = new Battle(this.heroiUsuario, boss, this);
-        System.out.println(boss);
         irTelaBatalha(Batalha.VILAO);
     }
 
@@ -615,15 +611,15 @@ public class BattleController {
     private void setDificuldade(String dificuldade) {
         switch (dificuldade) {
             case Batalha.BATALHA_FACIL:
-                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() / 0.1));
+                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.15));
                 receberMonstros(Batalha.BATALHA_FACIL);
                 break;
             case Batalha.BATALHA_MEDIA:
-                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() / 0.2));
+                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.25));
                 receberMonstros(Batalha.BATALHA_MEDIA);
                 break;
             case Batalha.BATALHA_DIFICIL:
-                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() / 0.3));
+                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.35));
                 receberMonstros(Batalha.BATALHA_DIFICIL);
                 break;
         }

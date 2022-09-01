@@ -21,13 +21,14 @@ import java.util.List;
  * @author aluno
  */
 public class InimigoDao {
+
     public void criar(Vilao vilao) throws SQLException {
         String sql = "INSERT INTO inimigos (personName, atak, defe, sped, vidaMaxima, vidaAtual, lvel, expGanho) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement pstm = con.prepareStatement(sql);
-        
+
         pstm.setString(1, vilao.getPersonName());
         pstm.setInt(2, vilao.getAtak());
         pstm.setInt(3, vilao.getDefe());
@@ -36,30 +37,29 @@ public class InimigoDao {
         pstm.setInt(6, vilao.getVidaAtual());
         pstm.setInt(7, vilao.getLvel());
         pstm.setInt(8, vilao.getExpGanho());
-        
 
         pstm.execute();
     }
-    
+
     public void criar(Monstro monstro) throws SQLException {
         String sql = "INSERT INTO inimigos (tipo, atak, defe, sped, vidaMaxima, vidaAtual, lvel, expGanho) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement pstm = con.prepareStatement(sql);
-        
+
         pstm.setString(1, monstro.getTipo());
         pstm.setInt(2, monstro.getAtak());
         pstm.setInt(3, monstro.getDefe());
         pstm.setInt(4, monstro.getSped());
         pstm.setInt(5, monstro.getVidaMaxima());
         pstm.setInt(6, monstro.getVidaAtual());
-        pstm.setInt(7, monstro.getLvel());        
-        pstm.setInt(8, monstro.getExpGanho());        
+        pstm.setInt(7, monstro.getLvel());
+        pstm.setInt(8, monstro.getExpGanho());
 
         pstm.execute();
     }
-    
+
     public Vilao getVilaoPorId(int id) throws SQLException {
         String sql = "SELECT * FROM inimigos WHERE "
                 + "id = ? AND personName IS NOT NULL";
@@ -71,9 +71,8 @@ public class InimigoDao {
 
         ResultSet resultado = pstm.executeQuery();
         Vilao respostaFinal = null;
-        
-        
-        if(resultado.next()){
+
+        if (resultado.next()) {
             int novoId = resultado.getInt("id");
             int novoAtak = resultado.getInt("atak");
             int novoDefe = resultado.getInt("defe");
@@ -88,9 +87,10 @@ public class InimigoDao {
 
             return respostaFinal;
         }
-        
+
         return respostaFinal;
     }
+
     public Vilao getVilaoPorLvel(int lvel) throws SQLException {
         String sql = "SELECT * FROM inimigos WHERE "
                 + "lvel = ? AND personName IS NOT NULL";
@@ -102,8 +102,8 @@ public class InimigoDao {
 
         ResultSet resultado = pstm.executeQuery();
         Vilao respostaFinal = null;
-        
-        if(resultado.next()){
+
+        if (resultado.next()) {
             int novoId = resultado.getInt("id");
             int novoAtak = resultado.getInt("atak");
             int novoDefe = resultado.getInt("defe");
@@ -118,9 +118,10 @@ public class InimigoDao {
 
             return respostaFinal;
         }
-        
+
         return respostaFinal;
     }
+
     public Monstro getMonstroPorId(int id) throws SQLException {
         String sql = "SELECT * FROM inimigos WHERE "
                 + "id = ? AND tipo IS NOT NULL";
@@ -132,9 +133,8 @@ public class InimigoDao {
 
         ResultSet resultado = pstm.executeQuery();
         Monstro respostaFinal = null;
-        
-        
-        if(resultado.next()){
+
+        if (resultado.next()) {
             int novoId = resultado.getInt("id");
             int novoAtak = resultado.getInt("atak");
             int novoDefe = resultado.getInt("defe");
@@ -149,9 +149,10 @@ public class InimigoDao {
 
             return respostaFinal;
         }
-        
+
         return respostaFinal;
     }
+
     public List<Monstro> getMonstroPorLvel(int lvel) throws SQLException {
         String sql = "SELECT * FROM inimigos WHERE "
                 + "lvel = ? AND tipo IS NOT NULL";
@@ -163,8 +164,8 @@ public class InimigoDao {
 
         ResultSet resultado = pstm.executeQuery();
         ArrayList<Monstro> respostaFinal = new ArrayList();
-        
-        while(resultado.next()){
+
+        while (resultado.next()) {
             int novoId = resultado.getInt("id");
             int novoAtak = resultado.getInt("atak");
             int novoDefe = resultado.getInt("defe");
@@ -178,34 +179,35 @@ public class InimigoDao {
             Monstro monstro = new Monstro(novoId, novoTipo, novoAtak, novoDefe, novoSped, novoVidaMaxima, novoVidaAtual, novoLvel, novoExpGanho);
             respostaFinal.add(monstro);
         }
-        
+
         return respostaFinal;
     }
+
     public List<Monstro> getMonstroPorFachaLvel(int lvelMin, int lvelMax) throws SQLException {
         String sql = "SELECT * FROM inimigos WHERE "
                 + "tipo IS NOT NULL AND (lvel >= ? AND lvel <= ?)";
 
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement pstm = con.prepareStatement(sql);
-        
-        if(lvelMin<1){
-        pstm.setInt(1, 1);
+
+        if (lvelMin < 1) {
+            pstm.setInt(1, 1);
         }
-        if(lvelMax<1 || lvelMax<lvelMin){
-        pstm.setInt(2, lvelMin);
+        if (lvelMax < 1 || lvelMax < lvelMin) {
+            pstm.setInt(2, lvelMin);
         }
-        
-        if(lvelMin>=1 && lvelMax>=lvelMin){
-        pstm.setInt(1, lvelMin);      
+
+        if (lvelMin >= 1 && lvelMax >= lvelMin) {
+            pstm.setInt(1, lvelMin);
         }
-        if(lvelMax>=1 && lvelMax>=lvelMin){
-        pstm.setInt(2, lvelMax);            
+        if (lvelMax >= 1 && lvelMax >= lvelMin) {
+            pstm.setInt(2, lvelMax);
         }
 
         ResultSet resultado = pstm.executeQuery();
         ArrayList<Monstro> respostaFinal = new ArrayList();
-        
-        while(resultado.next()){
+
+        while (resultado.next()) {
             int novoId = resultado.getInt("id");
             int novoAtak = resultado.getInt("atak");
             int novoDefe = resultado.getInt("defe");
@@ -219,18 +221,19 @@ public class InimigoDao {
             Monstro monstro = new Monstro(novoId, novoTipo, novoAtak, novoDefe, novoSped, novoVidaMaxima, novoVidaAtual, novoLvel, novoExpGanho);
             respostaFinal.add(monstro);
         }
-        
+
         return respostaFinal;
     }
-    
+
     public static void main(String[] args) throws SQLException {
         InimigoDao dao = new InimigoDao();
-        
+
 //      Bosses
         Vilao boss1 = new Vilao(Batalha.NOME_BOSS_1, 12, 6, 8, 340, 5, 32);
-        Vilao boss2 = new Vilao(Batalha.NOME_BOSS_2, 5, 5, 5, 5, 5, 5);
-        Vilao boss3 = new Vilao(Batalha.NOME_BOSS_3, 5, 5, 5, 5, 5, 5);
-        
+        Vilao boss2 = new Vilao(Batalha.NOME_BOSS_2, 5, 5, 5, 5, 7, 5);
+        Vilao boss3 = new Vilao(Batalha.NOME_BOSS_3, 5, 5, 5, 5, 9, 5);
+        Vilao boss4 = new Vilao(Batalha.NOME_BOSS_4, 5, 5, 5, 5, 12, 5);
+
 //      ARANHAS =>>
         Monstro monstro1 = new Monstro(MonsTipos.ARANHA, 10, 4, 5, 50, 1, 5);
         Monstro monstro2 = new Monstro(MonsTipos.ARANHA, 12, 5, 4, 50, 1, 5);
@@ -254,7 +257,7 @@ public class InimigoDao {
         Monstro monstro18 = new Monstro(MonsTipos.COISA_FLORESTA, 18, 20, 14, 130, 5, 13);
         Monstro monstro19 = new Monstro(MonsTipos.COISA_FLORESTA, 24, 24, 12, 150, 6, 16);
         Monstro monstro20 = new Monstro(MonsTipos.COISA_FLORESTA, 24, 26, 16, 170, 7, 19);
-        
+
 //      LAGARTOS =>>
         Monstro monstro21 = new Monstro(MonsTipos.LAGARTO_TOXICO, 18, 14, 20, 130, 5, 13);
         Monstro monstro22 = new Monstro(MonsTipos.LAGARTO_TOXICO, 17, 13, 22, 130, 5, 13);
@@ -268,15 +271,16 @@ public class InimigoDao {
         Monstro monstro28 = new Monstro(MonsTipos.LAGARTO_TOXICO, 24, 24, 18, 170, 7, 19);
         Monstro monstro29 = new Monstro(MonsTipos.LAGARTO_TOXICO, 30, 22, 22, 190, 8, 23);
         Monstro monstro30 = new Monstro(MonsTipos.LAGARTO_TOXICO, 32, 28, 32, 210, 9, 27);
-        
+
 //      UNDEAD:
-//      Monstro monstro30 = new Monstro(MonsTipos.LAGARTO_TOXICO, , , , 310, 10, );
-             
+        Monstro monstro31 = new Monstro(MonsTipos.HEROI_MORTO_VIVO, 21, 14, 18, 410, 10, 101);
+
 //      CRIAR VILÕES NO DB =>>
         dao.criar(boss1);
         dao.criar(boss2);
         dao.criar(boss3);
-        
+        dao.criar(boss4);
+
 //      CRIAR MONSTROS NO DB =>>
         dao.criar(monstro1);
         dao.criar(monstro2);
@@ -308,5 +312,6 @@ public class InimigoDao {
         dao.criar(monstro28);
         dao.criar(monstro29);
         dao.criar(monstro30);
+        dao.criar(monstro31);
     }
 }

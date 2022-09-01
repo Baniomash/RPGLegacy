@@ -383,7 +383,7 @@ public class RPGController {
 //      mosntro7     (70) (17*10)170
 //      mosntro8     (78) (19*10)190
 //      mosntro9     (86) (21*10)210
-//      monstro10    (94) ()
+//      monstro10    (94) (41*10)410
 //
 //      calcuo mons XP (PontosTotal * (1+(0.01*PontosVida))) /  10
 //      calcuo mons XP ((PontosTotal * (1+(0.01*PontosVida))) /  10) * (atk*0,1))
