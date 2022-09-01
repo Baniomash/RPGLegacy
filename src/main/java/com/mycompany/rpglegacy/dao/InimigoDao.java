@@ -229,10 +229,10 @@ public class InimigoDao {
         InimigoDao dao = new InimigoDao();
 
 //      Bosses
-        Vilao boss1 = new Vilao(Batalha.NOME_BOSS_1, 12, 6, 8, 340, 5, 30);
-        Vilao boss2 = new Vilao(Batalha.NOME_BOSS_2, 27, 12, 27, 560, 7, 125);
-        Vilao boss3 = new Vilao(Batalha.NOME_BOSS_3, 28, 24, 30, 780, 9, 212);
-        Vilao boss4 = new Vilao(Batalha.NOME_BOSS_4, 42, 24, 40, 910, 12, 467);
+        Vilao boss1 = new Vilao(Batalha.NOME_BOSS_1, 12, 4, 8, 230, 5, 30);
+        Vilao boss2 = new Vilao(Batalha.NOME_BOSS_2, 27, 8, 27, 270, 7, 125);
+        Vilao boss3 = new Vilao(Batalha.NOME_BOSS_3, 28, 16, 30, 310, 9, 212);
+        Vilao boss4 = new Vilao(Batalha.NOME_BOSS_4, 42, 22, 40, 810, 12, 467);
 
 //      ARANHAS =>>
         Monstro monstro1 = new Monstro(MonsTipos.ARANHA, 10, 4, 5, 50, 1, 5);
