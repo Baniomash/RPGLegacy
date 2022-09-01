@@ -29,7 +29,7 @@ public class Heroi extends Personagem<Vilao> {
     }
 
     public boolean setLvel() {
-        int upLvelRule = (int) ((this.getLvel() * 10) / 2);
+        int upLvelRule = (int) ((this.getLvel() * 10) / 2.3);
         if (expNxtLvel >= upLvelRule) {
             levelUp();
             this.expNxtLvel = this.expNxtLvel - upLvelRule;
@@ -45,7 +45,7 @@ public class Heroi extends Personagem<Vilao> {
         this.setVidaMaxima(this.getVidaMaxima()+20);
         this.setVidaAtual(this.getVidaMaxima());
         this.setAtak(this.getAtak()+2);
-        this.setDefe(this.getDefe()+2);
+        this.defeLvlUp();
         this.setSped(this.getSped()+2);
     }
 

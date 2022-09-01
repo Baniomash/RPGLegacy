@@ -33,8 +33,7 @@ public class Battle {
     private String batalhaStatus;
     private String turno = Batalha.HEROI;
     private int textoBatalhaPointer = 1;
-    
-    
+
     private int xpGanho = 0;
 
     private int danoEnvolvido = 0;
@@ -234,12 +233,12 @@ public class Battle {
                         this.turno = alvo;
                         if (danoEnvolvido > 0) {
                             this.textoBatalhaPointer = 17;
-                            controller.atualizaStatusBatalha();
                             controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_TOMA_DANO);
+                            controller.atualizaStatusBatalha();
                         } else {
                             this.textoBatalhaPointer = 12;
-                            controller.atualizaStatusBatalha();
                             controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_DESVIA);
+                            controller.atualizaStatusBatalha();
                         }
                         break;
                 }
@@ -296,6 +295,7 @@ public class Battle {
 
     public void vilaoAcao() {
         if (vilaoCarrega) {
+            this.danoEnvolvido = boss.atacar(heroi);
             if (danoEnvolvido > 0) {
                 this.textoBatalhaPointer = 15;
                 controller.atualizaStatusBatalha();
@@ -339,10 +339,12 @@ public class Battle {
                     this.textoBatalhaPointer = 15;
                     controller.atualizaStatusBatalha();
                     heroiParaDefender();
+                    controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
                     atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
                 } else {
                     this.textoBatalhaPointer = 10;
                     controller.atualizaStatusBatalha();
+                    controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
                     atualizaTela(Sprites.SPRITE_HEROI_DESVIA);
                 }
                 vilaoDescarregaPoder();
@@ -442,5 +444,5 @@ public class Battle {
     public void setXpGanho(int xpGanho) {
         this.xpGanho = xpGanho;
     }
-    
+
 }

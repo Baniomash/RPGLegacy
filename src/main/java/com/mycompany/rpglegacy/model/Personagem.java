@@ -42,6 +42,10 @@ public abstract class Personagem <T extends Personagem> {
         this.vidaMaxima = vidaMaxima;
         this.lvel = 01;
     }
+    
+    public void defeLvlUp(){
+        this.defe += 2;
+    }
 
     public void setLvel(int lvel) {
         this.lvel = lvel;

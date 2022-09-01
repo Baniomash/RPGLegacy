@@ -312,6 +312,7 @@ public class BattleController {
         switch (mundo) {
             case 1: {
                 try {
+                    heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.6));
                     iniciarBatalha(inmDao.getVilaoPorLvel(5));
                 } catch (SQLException ex) {
                     Logger.getLogger(BattleController.class.getName()).log(Level.SEVERE, null, ex);
@@ -320,7 +321,8 @@ public class BattleController {
             break;
             case 2: {
                 try {
-                    iniciarBatalha(inmDao.getVilaoPorLvel(10));
+                    heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.8));
+                    iniciarBatalha(inmDao.getVilaoPorLvel(7));
                 } catch (SQLException ex) {
                     Logger.getLogger(BattleController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -328,7 +330,17 @@ public class BattleController {
             break;
             case 3: {
                 try {
-                    iniciarBatalha(inmDao.getVilaoPorLvel(15));
+                    heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.9));
+                    iniciarBatalha(inmDao.getVilaoPorLvel(9));
+                } catch (SQLException ex) {
+                    Logger.getLogger(BattleController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
+            case 4: {
+                try {
+                    heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima()));
+                    iniciarBatalha(inmDao.getVilaoPorLvel(12));
                 } catch (SQLException ex) {
                     Logger.getLogger(BattleController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -375,6 +387,14 @@ public class BattleController {
         int numMonstros = 1 + rng.nextInt(limiteNumeroMonstros);
         if (numMonstros < minNumeroMonstros) {
             numMonstros = minNumeroMonstros;
+        }
+        if(numMonstros == 1){
+            Monstro monstro = monstroPorFachaLvel.get(rng.nextInt(monstroPorFachaLvel.size()));
+            while(monstro.getLvel()<=heroiUsuario.getLvel() ){
+                monstro = monstroPorFachaLvel.get(rng.nextInt(monstroPorFachaLvel.size()));
+            }
+            monstrosSelecionados.add(monstro);
+            return monstrosSelecionados;
         }
         for (int i = 0; i < numMonstros; i++) {
             monstrosSelecionados.add(monstroPorFachaLvel.get(rng.nextInt(monstroPorFachaLvel.size())));
@@ -611,15 +631,15 @@ public class BattleController {
     private void setDificuldade(String dificuldade) {
         switch (dificuldade) {
             case Batalha.BATALHA_FACIL:
-                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.15));
+                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.25));
                 receberMonstros(Batalha.BATALHA_FACIL);
                 break;
             case Batalha.BATALHA_MEDIA:
-                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.25));
+                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.40));
                 receberMonstros(Batalha.BATALHA_MEDIA);
                 break;
             case Batalha.BATALHA_DIFICIL:
-                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.35));
+                heroiUsuario.receberVida((int) (heroiUsuario.getVidaMaxima() * 0.50));
                 receberMonstros(Batalha.BATALHA_DIFICIL);
                 break;
         }
