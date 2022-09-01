@@ -38,7 +38,7 @@ public class Vilao extends Personagem <Heroi>{
     }
 
     public int receberDano(int dano) {
-        int danoFinal = (int) (dano * 0.8 - this.getDefe());
+        int danoFinal = (int) (dano * 1.2 - this.getDefe());
         if (danoFinal < 0){
             this.setVidaAtual(this.getVidaAtual()- 1);
             return danoFinal;

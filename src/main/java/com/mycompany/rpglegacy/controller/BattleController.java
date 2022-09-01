@@ -260,7 +260,11 @@ public class BattleController {
     }
 
     public void setFinalLuta() {
-        if (batalha.algumInimigoVivo()) {
+        if(batalha.bossExiste()){
+            batalha.setTextoBatalhaPointer(21);
+            atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_VITORIA);
+            atualizaStatusBatalha();
+        }else if (batalha.algumInimigoVivo()) {
             switch (qualMonstro(batalha.getMonstroPointer())) {
                 case Batalha.MONSTRO_2:
                     batalha.setTextoBatalhaPointer(3);
