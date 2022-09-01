@@ -85,7 +85,7 @@ public class TelaBatalha extends javax.swing.JPanel {
                 .addGap(76, 76, 76))
         );
 
-        add(adversarioSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 190, 230));
+        add(adversarioSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 190, 230));
 
         heroiSquarePanel.setBackground(new java.awt.Color(230, 230, 230));
         heroiSquarePanel.setMaximumSize(new java.awt.Dimension(200, 300));
@@ -114,7 +114,7 @@ public class TelaBatalha extends javax.swing.JPanel {
                 .addGap(76, 76, 76))
         );
 
-        add(heroiSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, 230));
+        add(heroiSquarePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, 230));
 
         infoPanel.setBackground(new java.awt.Color(220, 220, 220));
         infoPanel.setMaximumSize(new java.awt.Dimension(512, 64));

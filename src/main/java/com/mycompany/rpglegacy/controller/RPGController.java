@@ -22,6 +22,7 @@ import com.mycompany.rpglegacy.util.Telas;
 import com.mycompany.rpglegacy.view.AutenticarUsuario;
 import com.mycompany.rpglegacy.view.CadastrarUsuario;
 import com.mycompany.rpglegacy.view.CarregarPersonagem;
+import com.mycompany.rpglegacy.view.ConfirmaDelete;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -38,6 +39,7 @@ public class RPGController {
     private final CarregarPersonagem carregarPersonagem = new CarregarPersonagem();
     private final AutenticarUsuario autenticarUsuario = new AutenticarUsuario();
     private final CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+    private final ConfirmaDelete confirmaDelete = new ConfirmaDelete(mainFrame, true);
     private BattleController btController;
 
     private JPanel navPanel;
@@ -92,6 +94,7 @@ public class RPGController {
         carregarPersonagem.setController(this);
         autenticarUsuario.setController(this);
         cadastrarUsuario.setController(this);
+        confirmaDelete.setController(this);
     }
 
     public void irTelaPrincipal() {
@@ -164,13 +167,13 @@ public class RPGController {
         return false;
     }
 
-    public Boolean criarHeroi(String personName, int atak, int defe, int sped, int vidaMaxima, Usuario usuario) {
+    public String criarHeroi(String personName, int atak, int defe, int sped, int vidaMaxima, Usuario usuario) {
         try {
             return hroDao.criar(new Heroi(personName, atak, defe, sped, vidaMaxima, usuario));
         } catch (SQLException ex) {
             Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+        return "Erro!";
     }
 
     public List<Heroi> carregarHerois(int id) {
@@ -182,17 +185,25 @@ public class RPGController {
         return new ArrayList();
     }
 
-    public void atualizaListaHerois() {
+    public List<Heroi> recebeTodosHeroi() {
+        ArrayList<Heroi> herois = new ArrayList();
         try {
-            carregarPersonagem.getListaHerois().setModel(new DefaultListModel<>());
-            DefaultListModel modelo = (DefaultListModel) carregarPersonagem.getListaHerois().getModel();
-            List<Heroi> herois = hroDao.getHeroisPorIdUsuario(this.usr.getId());
-            for (Heroi hroAtual : herois) {
-                modelo.addElement(hroAtual);
-            }
+            herois = (ArrayList<Heroi>) hroDao.getHeroisPorIdUsuario(this.usr.getId());
         } catch (SQLException ex) {
             Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return herois;
+    }
+
+    public void atualizaListaHerois() {
+
+        carregarPersonagem.getListaHerois().setModel(new DefaultListModel<>());
+        DefaultListModel modelo = (DefaultListModel) carregarPersonagem.getListaHerois().getModel();
+        List<Heroi> herois = recebeTodosHeroi();
+        for (Heroi hroAtual : herois) {
+            modelo.addElement(hroAtual);
+        }
+
     }
 
     public void iniciarJogo() {
@@ -237,12 +248,41 @@ public class RPGController {
         }
     }
 
+    public void deletaHeroi() {
+        try {
+            hroDao.deletarHeroiPorId(carregarPersonagem.getListaHerois().getSelectedValue().getId());
+        } catch (SQLException ex) {
+            Logger.getLogger(RPGController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void abrirTelaDeletaHeroi() {
+        if (carregarPersonagem.getListaHerois().getSelectedValue() != null) {
+            confirmaDelete.setVisible(true);
+        }
+    }
+
+    public void confirmaDeletar() {
+        deletaHeroi();
+        confirmaDelete.setVisible(false);
+        confirmaDelete.dispose();
+        atualizaListaHerois();
+    }
+
+    public void cancelaDeletar() {
+        confirmaDelete.setVisible(false);
+        confirmaDelete.dispose();
+    }
+
     private void erroNoHeroi(String erroTipo) {
         switch (erroTipo) {
             case Outros.ERRO_HEROI_EXISTE:
                 this.criarPersonagem.getErroLabel().setText(erroTipo);
                 break;
             case Outros.ERRO_NAO_PREENCHIDO:
+                this.criarPersonagem.getErroLabel().setText(erroTipo);
+                break;
+            case Outros.ERRO_HEROI_LIMITE:
                 this.criarPersonagem.getErroLabel().setText(erroTipo);
                 break;
         }
@@ -254,6 +294,9 @@ public class RPGController {
                 this.cadastrarUsuario.getErroLabel().setText(erroTipo);
                 break;
             case Outros.ERRO_CREDENCIAIS_ERRADAS:
+                this.cadastrarUsuario.getErroLabel().setText(erroTipo);
+                break;
+            case Outros.ERRO_USUARIO_EXISTE:
                 this.cadastrarUsuario.getErroLabel().setText(erroTipo);
                 break;
         }
@@ -305,11 +348,20 @@ public class RPGController {
         int defe = Integer.parseInt(this.criarPersonagem.getDefValorLabel().getText());
         int sped = Integer.parseInt(this.criarPersonagem.getSpdValorLabel().getText());
         if (!"".equals(personName)) {
-            Boolean sucesso = criarHeroi(personName, atak, defe, sped, vidaMaxima, this.usr);
-            if (sucesso) {
-                this.irCarregarPersonagem();
-            } else {
-                erroNoHeroi(Outros.ERRO_HEROI_EXISTE);
+            String sucesso = criarHeroi(personName, atak, defe, sped, vidaMaxima, this.usr);
+            switch (sucesso) {
+                case Outros.SUCESSO_HEROI_CRIADO:
+                    this.irCarregarPersonagem();
+                    break;
+                case Outros.ERRO_HEROI_EXISTE:
+                    erroNoHeroi(sucesso);
+                    break;
+                case Outros.ERRO_NAO_PREENCHIDO:
+                    erroNoHeroi(sucesso);
+                    break;
+                case Outros.ERRO_HEROI_LIMITE:
+                    erroNoHeroi(sucesso);
+                    break;
             }
         } else {
             erroNoHeroi(Outros.ERRO_NAO_PREENCHIDO);

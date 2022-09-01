@@ -40,8 +40,9 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         ListNameHeaderLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaHerois = new javax.swing.JList<>();
-        voltarButton = new javax.swing.JButton();
+        deletarButton = new javax.swing.JButton();
         tituloLabel = new javax.swing.JLabel();
+        carregarButton = new javax.swing.JButton();
         voltarButton1 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(640, 480));
@@ -97,22 +98,33 @@ public class CarregarPersonagem extends javax.swing.JPanel {
 
         listaHeroisPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 75, 279, 361));
 
-        voltarButton.setText("Carregar Heroi");
-        voltarButton.setMaximumSize(new java.awt.Dimension(256, 32));
-        voltarButton.setMinimumSize(new java.awt.Dimension(256, 32));
-        voltarButton.setPreferredSize(new java.awt.Dimension(256, 32));
-        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+        deletarButton.setText("Deletar");
+        deletarButton.setMaximumSize(new java.awt.Dimension(256, 32));
+        deletarButton.setMinimumSize(new java.awt.Dimension(256, 32));
+        deletarButton.setPreferredSize(new java.awt.Dimension(256, 32));
+        deletarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarButtonActionPerformed(evt);
+                deletarButtonActionPerformed(evt);
             }
         });
-        listaHeroisPanel.add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 437, -1, -1));
+        listaHeroisPanel.add(deletarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 90, -1));
 
         tituloLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tituloLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tituloLabel.setText("Escolha seu personagem");
         tituloLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         listaHeroisPanel.add(tituloLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        carregarButton.setText("Carregar");
+        carregarButton.setMaximumSize(new java.awt.Dimension(256, 32));
+        carregarButton.setMinimumSize(new java.awt.Dimension(256, 32));
+        carregarButton.setPreferredSize(new java.awt.Dimension(256, 32));
+        carregarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carregarButtonActionPerformed(evt);
+            }
+        });
+        listaHeroisPanel.add(carregarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 110, -1));
 
         voltarButton1.setText("Voltar");
         voltarButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -142,14 +154,17 @@ public class CarregarPersonagem extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
-//        controller.irTelaPrincipal();
-        this.controller.iniciarJogo();
-    }//GEN-LAST:event_voltarButtonActionPerformed
+    private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
+        controller.abrirTelaDeletaHeroi();
+    }//GEN-LAST:event_deletarButtonActionPerformed
 
     private void voltarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton1ActionPerformed
         controller.irTelaPrincipal();
     }//GEN-LAST:event_voltarButton1ActionPerformed
+
+    private void carregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregarButtonActionPerformed
+        this.controller.iniciarJogo();
+    }//GEN-LAST:event_carregarButtonActionPerformed
 
     public void setController(RPGController controller) {
         this.controller = controller;
@@ -165,11 +180,12 @@ public class CarregarPersonagem extends javax.swing.JPanel {
     private javax.swing.JLabel ListNameHeaderLabel;
     private javax.swing.JLabel ListNameHeaderLabel1;
     private javax.swing.JLabel ListNameHeaderLabel2;
+    private javax.swing.JButton carregarButton;
+    private javax.swing.JButton deletarButton;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<Heroi> listaHerois;
     private javax.swing.JPanel listaHeroisPanel;
     private javax.swing.JLabel tituloLabel;
-    private javax.swing.JButton voltarButton;
     private javax.swing.JButton voltarButton1;
     // End of variables declaration//GEN-END:variables
 }

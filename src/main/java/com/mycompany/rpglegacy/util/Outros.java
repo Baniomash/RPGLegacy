@@ -13,6 +13,8 @@ public interface Outros {
     public static final String ERRO_USUARIO_EXISTE = "*NOME DE USUARIO JÁ EXISTE!";
     public static final String ERRO_CREDENCIAIS_ERRADAS = "*LOGIN E/OU SENHA ERRADO/S(A)";
     public static final String ERRO_HEROI_EXISTE = "*NOME DO HERÓI JA USADO POR ESTE USUARIO";
+    public static final String ERRO_HEROI_LIMITE = "*LIMITE DE HEROIS ALCANÇADO!";
+    public static final String SUCESSO_HEROI_CRIADO = "heroiCriado";
     public static final String NAO_TEXTO = "DEFAULT TEXT";
     public static final String CAVALEIRO = "Cavaleiro";
     public static final String BARBARO = "Barbaro";

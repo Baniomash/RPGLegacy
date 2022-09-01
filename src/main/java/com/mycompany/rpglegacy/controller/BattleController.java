@@ -394,12 +394,16 @@ public class BattleController {
                     iniciarBatalha(vilao1);
                     break;
                 case 2:
-                    Vilao vilao2 = inmDao.getVilaoPorLvel(10);
+                    Vilao vilao2 = inmDao.getVilaoPorLvel(7);
                     iniciarBatalha(vilao2);
                     break;
                 case 3:
-                    Vilao vilao3 = inmDao.getVilaoPorLvel(15);
+                    Vilao vilao3 = inmDao.getVilaoPorLvel(9);
                     iniciarBatalha(vilao3);
+                    break;
+                case 4:
+                    Vilao vilao4 = inmDao.getVilaoPorLvel(12);
+                    iniciarBatalha(vilao4);
                     break;
             }
         } catch (SQLException ex) {
