@@ -256,12 +256,9 @@ public class InimigoDao {
         Monstro monstro20 = new Monstro(MonsTipos.COISA_FLORESTA, 24, 26, 16, 170, 7, 19);
         
 //      LAGARTOS =>>
-        Monstro monstro21 = new Monstro(MonsTipos.LAGARTO_TOXICO, 12, 10, 14, 90, 3, 8);
-        Monstro monstro22 = new Monstro(MonsTipos.LAGARTO_TOXICO, 11, 11, 14, 90, 3, 8);
-        Monstro monstro23 = new Monstro(MonsTipos.LAGARTO_TOXICO, 15, 12, 17, 110, 4, 10);
-        Monstro monstro24 = new Monstro(MonsTipos.LAGARTO_TOXICO, 15, 13, 16, 110, 4, 10);
-        Monstro monstro25 = new Monstro(MonsTipos.LAGARTO_TOXICO, 18, 14, 20, 130, 5, 13);
-        
+        Monstro monstro21 = new Monstro(MonsTipos.LAGARTO_TOXICO, 18, 14, 20, 130, 5, 13);
+        Monstro monstro22 = new Monstro(MonsTipos.LAGARTO_TOXICO, 17, 13, 22, 130, 5, 13);
+        Monstro monstro23 = new Monstro(MonsTipos.LAGARTO_TOXICO, 16, 15, 21, 130, 5, 13);
         
         
 //      CRIAR VILÕES NO DB =>>
@@ -293,6 +290,5 @@ public class InimigoDao {
         dao.criar(monstro21);
         dao.criar(monstro22);
         dao.criar(monstro23);
-        dao.criar(monstro24);
     }
 }
