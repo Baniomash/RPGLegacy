@@ -44,7 +44,7 @@ public abstract class Personagem <T extends Personagem> {
     }
     
     public void defeLvlUp(){
-        this.defe += 2;
+        this.defe += 3;
     }
 
     public void setLvel(int lvel) {
@@ -137,9 +137,9 @@ public abstract class Personagem <T extends Personagem> {
             return 0;
         }else{
             if(difSped<1){
-                return ((difSped%10)*-1)+rng.nextInt(7);
+                return ((difSped%10)*-1)+rng.nextInt(4);
             }else{
-                return difSped%10+rng.nextInt(7);
+                return difSped%10+rng.nextInt(4);
             }
         }
 //        int totalThisSpd = (rng.nextInt(20))+this.sped;
@@ -154,9 +154,9 @@ public abstract class Personagem <T extends Personagem> {
             return 0;
         }else{
             if(difSped<1){
-                return ((difSped%10)*-1)+rng.nextInt(7);
+                return ((difSped%10)*-1)+rng.nextInt(10);
             }else{
-                return difSped%10+rng.nextInt(7);
+                return difSped%10+rng.nextInt(10);
             }
         }
     }

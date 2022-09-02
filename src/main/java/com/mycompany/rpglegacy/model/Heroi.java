@@ -29,10 +29,10 @@ public class Heroi extends Personagem<Vilao> {
     }
 
     public boolean setLvel() {
-        int upLvelRule = (int) ((this.getLvel() * 10) / 2.3);
+        int upLvelRule = (int) ((this.getLvel() * 10) / 2);
         if (expNxtLvel >= upLvelRule) {
-            levelUp();
             this.expNxtLvel = this.expNxtLvel - upLvelRule;
+            levelUp();
             setLvel();
             return true;
         }
@@ -41,12 +41,12 @@ public class Heroi extends Personagem<Vilao> {
 
     private void levelUp() {
         int lvelAtual = this.getLvel();
-        this.setLvel(lvelAtual+1);
-        this.setVidaMaxima(this.getVidaMaxima()+20);
+        this.setLvel(lvelAtual + 1);
+        this.setVidaMaxima(this.getVidaMaxima() + 25);
         this.setVidaAtual(this.getVidaMaxima());
-        this.setAtak(this.getAtak()+2);
+        this.setAtak(this.getAtak() + 3);
         this.defeLvlUp();
-        this.setSped(this.getSped()+2);
+        this.setSped(this.getSped() + 3);
     }
 
     public Usuario getUsuario() {
@@ -73,11 +73,7 @@ public class Heroi extends Personagem<Vilao> {
     public int atacar(Vilao alvo) {
         int dano = this.getAtak();
         int diferencaSpd = this.spdDisputa(alvo);
-        if (diferencaSpd < 1) {
-            return 0;
-        } else {
-            return alvo.receberDano(dano + diferencaSpd);
-        }
+        return alvo.receberDano(dano + diferencaSpd);
     }
 
     public int atacar(Monstro alvo) {
@@ -92,19 +88,21 @@ public class Heroi extends Personagem<Vilao> {
 
     public int receberDano(int dano) {
         int danoFinal = dano - this.getDefe();
-        if (danoFinal < 0) {
-            this.setVidaAtual(this.getVidaAtual() - 1);
+        if (danoFinal < this.getVidaAtual() * 0.05) {
+            danoFinal = (int) (this.getVidaAtual() * 0.05);
+            this.setVidaAtual(this.getVidaAtual() - danoFinal);
             return danoFinal;
         } else {
             this.setVidaAtual(this.getVidaAtual() - danoFinal);
             return danoFinal;
         }
     }
-    public void receberVida(int vidaAdicional){
-        int soma = this.getVidaAtual()+vidaAdicional;
-        if(soma < this.getVidaMaxima()){
+
+    public void receberVida(int vidaAdicional) {
+        int soma = this.getVidaAtual() + vidaAdicional;
+        if (soma < this.getVidaMaxima()) {
             this.setVidaAtual(soma);
-        }else{
+        } else {
             this.setVidaAtual(this.getVidaMaxima());
         }
     }

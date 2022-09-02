@@ -140,9 +140,9 @@ public class BattleController {
         inimigoSprite.getHeroiProgressBar().setString(monstro.getVidaAtual() + " / " + monstro.getVidaMaxima());
     }
 
-    public void setInimigoSpriteBatalha(Vilao boss, String heroSprite) {
+    public void setInimigoSpriteBatalha(Vilao boss, String bossSprite) {
         inimigoSprite.getNomeHeroiLabel().setText(boss.getPersonName());
-        inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(Sprites.SPRITE_VILAO_IDLE)));
+        inimigoSprite.getSpriteHeroiLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource(bossSprite)));
         inimigoSprite.getHeroiProgressBar().setMaximum(boss.getVidaMaxima());
         inimigoSprite.getHeroiProgressBar().setValue(boss.getVidaAtual());
         inimigoSprite.getHeroiProgressBar().setString(boss.getVidaAtual() + " / " + boss.getVidaMaxima());
@@ -187,8 +187,13 @@ public class BattleController {
             setInimigoSpriteBatalha(batalha.getMonstro());
             atualizaSpriteInimigo();
         } else {
-            setInimigoSpriteBatalha(batalha.getBoss(), bossPadraoSprite());
-            atualizaSpriteInimigo();
+            if (batalha.getBoss().estaVivo()) {
+                setInimigoSpriteBatalha(batalha.getBoss(), bossPadraoSprite());
+                atualizaSpriteInimigo();
+            } else {
+                setInimigoSpriteBatalha(batalha.getBoss(), Sprites.SPRITE_VILAO_DERROTA);
+                atualizaSpriteInimigo();
+            }
         }
 
     }
@@ -260,11 +265,11 @@ public class BattleController {
     }
 
     public void setFinalLuta() {
-        if(batalha.bossExiste()){
+        if (batalha.bossExiste()) {
             batalha.setTextoBatalhaPointer(21);
             atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_VITORIA);
             atualizaStatusBatalha();
-        }else if (batalha.algumInimigoVivo()) {
+        } else if (batalha.algumInimigoVivo()) {
             switch (qualMonstro(batalha.getMonstroPointer())) {
                 case Batalha.MONSTRO_2:
                     batalha.setTextoBatalhaPointer(3);
@@ -374,7 +379,7 @@ public class BattleController {
                     break;
                 case Batalha.BATALHA_DIFICIL:
                     List<Monstro> monstrosFacha3 = inmDao.getMonstroPorFachaLvel(lvel, lvel + 1);
-                    List<Monstro> monstrosDificil = selecionaMonstros(monstrosFacha3, 1, 3);
+                    List<Monstro> monstrosDificil = selecionaMonstros(monstrosFacha3, 1, 2);
                     iniciarBatalha(monstrosDificil);
                     monstrosFacha3.clear();
                     monstrosDificil.clear();
@@ -392,9 +397,9 @@ public class BattleController {
         if (numMonstros < minNumeroMonstros) {
             numMonstros = minNumeroMonstros;
         }
-        if(numMonstros == 1){
+        if (numMonstros == 1) {
             Monstro monstro = monstroPorFachaLvel.get(rng.nextInt(monstroPorFachaLvel.size()));
-            while(monstro.getLvel()<=heroiUsuario.getLvel() ){
+            while (monstro.getLvel() <= heroiUsuario.getLvel()) {
                 monstro = monstroPorFachaLvel.get(rng.nextInt(monstroPorFachaLvel.size()));
             }
             monstrosSelecionados.add(monstro);
@@ -704,20 +709,20 @@ public class BattleController {
 
     public void heroiAtaca() {
         batalha.setTextoBatalhaPointer(5);
-        atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_ATAQUE);
+        setHeroiSpriteBatalha(heroiUsuario, Sprites.SPRITE_HEROI_ATAQUE);
         atualizaStatusBatalha();
     }
 
     public void heroiDefende() {
         batalha.setTextoBatalhaPointer(13);
         batalha.heroiDefender();
-        atualizaSpritesBatalha(heroiUsuario, heroiPadraoSprite());
+        setHeroiSpriteBatalha(heroiUsuario, heroiPadraoSprite());
         atualizaStatusBatalha();
     }
 
     public void heroiDesiste() {
         batalha.setTextoBatalhaPointer(22);
-        atualizaSpritesBatalha(heroiUsuario, Sprites.SPRITE_HEROI_DESISTE);
+        setHeroiSpriteBatalha(heroiUsuario, Sprites.SPRITE_HEROI_DESISTE);
         atualizaStatusBatalha();
     }
 

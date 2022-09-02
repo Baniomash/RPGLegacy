@@ -45,7 +45,7 @@ public class Monstro {
     }
 
     public int atacar(Heroi alvo) {
-        int dano = (int) (this.getAtak() * 1.2);
+        int dano = (int) (this.getAtak() * 0.9);
         int diferencaSpd = this.spdDisputa(alvo);
         if(diferencaSpd < 1){
                 return 0;
@@ -56,8 +56,9 @@ public class Monstro {
 
     public int receberDano(int dano) {
         int danoFinal = (int) (dano - this.getDefe());
-        if (danoFinal < 0){
-            this.setVidaAtual(this.getVidaAtual()- 1);
+        if (danoFinal < 5){
+            danoFinal =(int) (this.getVidaAtual() * 0.08);
+            this.setVidaAtual(this.getVidaAtual() - danoFinal) ;
             return danoFinal;
         } else {
             this.setVidaAtual(this.getVidaAtual()-danoFinal);

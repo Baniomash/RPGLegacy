@@ -28,19 +28,20 @@ public class Vilao extends Personagem <Heroi>{
     }
     
     public int atacar(Heroi alvo) {
-        int dano = (int) (this.getAtak() * 1.5);
+        int dano = (int) (this.getAtak() * 1.2);
         int diferencaSpd = this.spdDisputa(alvo);
         if(diferencaSpd < 1){
                 return 0;
         }else{
-            return alvo.receberDano(dano+diferencaSpd);
+            return alvo.receberDano(dano);
         }
     }
 
     public int receberDano(int dano) {
         int danoFinal = (int) (dano * 1.2 - this.getDefe());
-        if (danoFinal < 0){
-            this.setVidaAtual(this.getVidaAtual()- 1);
+        if (danoFinal < 5){
+            danoFinal =(int) (this.getVidaAtual() * 0.04);
+            this.setVidaAtual(this.getVidaAtual() - danoFinal) ;
             return danoFinal;
         } else {
             this.setVidaAtual(this.getVidaAtual()-danoFinal);

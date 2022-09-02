@@ -65,7 +65,7 @@ public class Battle {
     }
 
     public void heroiDefender() {
-        heroi.setDefe((int) heroi.getDefe() + (heroi.getDefe() / 3));
+        heroi.setDefe((int) (heroi.getDefe() + (heroi.getDefe())));
         heroiDefende = true;
         if (bossExiste()) {
             this.turno = Batalha.VILAO;
@@ -90,7 +90,7 @@ public class Battle {
     }
 
     public void vilaoCarregaPoder() {
-        boss.setAtak((int) boss.getAtak() + (boss.getAtak() / 5));
+        boss.setAtak((int) boss.getAtak() + (boss.getAtak()));
         vilaoCarrega = true;
     }
 
@@ -200,9 +200,11 @@ public class Battle {
                         this.turno = alvo;
                         if (danoEnvolvido > 0) {
                             this.textoBatalhaPointer = 16;
+                            controller.setHeroiSpriteBatalha(heroi, controller.heroiPadraoSprite());
                             controller.atualizaStatusBatalha();
                         } else {
                             this.textoBatalhaPointer = 11;
+                            controller.setHeroiSpriteBatalha(heroi, controller.heroiPadraoSprite());
                             controller.atualizaStatusBatalha();
                         }
                         break;
@@ -211,9 +213,11 @@ public class Battle {
                         this.turno = alvo;
                         if (danoEnvolvido > 0) {
                             this.textoBatalhaPointer = 16;
+                            controller.setHeroiSpriteBatalha(heroi, controller.heroiPadraoSprite());
                             controller.atualizaStatusBatalha();
                         } else {
                             this.textoBatalhaPointer = 11;
+                            controller.setHeroiSpriteBatalha(heroi, controller.heroiPadraoSprite());
                             controller.atualizaStatusBatalha();
                         }
                         break;
@@ -221,10 +225,12 @@ public class Battle {
                         this.danoEnvolvido = heroi.atacar(monstro3);
                         this.turno = alvo;
                         if (danoEnvolvido > 0) {
+                            controller.setHeroiSpriteBatalha(heroi, controller.heroiPadraoSprite());
                             this.textoBatalhaPointer = 16;
                             controller.atualizaStatusBatalha();
                         } else {
                             this.textoBatalhaPointer = 11;
+                            controller.setHeroiSpriteBatalha(heroi, controller.heroiPadraoSprite());
                             controller.atualizaStatusBatalha();
                         }
                         break;
@@ -233,10 +239,12 @@ public class Battle {
                         this.turno = alvo;
                         if (danoEnvolvido > 0) {
                             this.textoBatalhaPointer = 17;
+                            controller.setHeroiSpriteBatalha(heroi, controller.heroiPadraoSprite());
                             controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_TOMA_DANO);
                             controller.atualizaStatusBatalha();
                         } else {
                             this.textoBatalhaPointer = 12;
+                            controller.setHeroiSpriteBatalha(heroi, controller.heroiPadraoSprite());
                             controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_DESVIA);
                             controller.atualizaStatusBatalha();
                         }
@@ -256,6 +264,7 @@ public class Battle {
                     heroiParaDefender();
                     atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
                 } else {
+                            controller.setHeroiSpriteBatalha(heroi, controller.heroiPadraoSprite());
                     this.textoBatalhaPointer = 10;
                     controller.atualizaStatusBatalha();
                     atualizaTela(Sprites.SPRITE_HEROI_DESVIA);
@@ -312,7 +321,7 @@ public class Battle {
         } else {
             if (boss.getVidaAtual() < boss.getVidaMaxima() / 2) {
                 Random rng = new Random();
-                if (rng.nextInt(10) > 5) {
+                if (rng.nextInt(10) > 4) {
                     vilaoCarregaPoder();
                     this.textoBatalhaPointer = 8;
                     controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_CARREGA);
@@ -323,13 +332,13 @@ public class Battle {
                         this.textoBatalhaPointer = 15;
                         controller.atualizaStatusBatalha();
                         heroiParaDefender();
-                        controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
                         atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
+                        controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
                     } else {
                         this.textoBatalhaPointer = 10;
                         controller.atualizaStatusBatalha();
-                        controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
                         atualizaTela(Sprites.SPRITE_HEROI_DESVIA);
+                        controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
                     }
                     vilaoDescarregaPoder();
                 }
@@ -339,13 +348,13 @@ public class Battle {
                     this.textoBatalhaPointer = 15;
                     controller.atualizaStatusBatalha();
                     heroiParaDefender();
-                    controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
                     atualizaTela(Sprites.SPRITE_HEROI_TOMA_DANO);
+                    controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
                 } else {
                     this.textoBatalhaPointer = 10;
                     controller.atualizaStatusBatalha();
-                    controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
                     atualizaTela(Sprites.SPRITE_HEROI_DESVIA);
+                    controller.setInimigoSpriteBatalha(this.boss, Sprites.SPRITE_VILAO_ATACA);
                 }
                 vilaoDescarregaPoder();
             }
